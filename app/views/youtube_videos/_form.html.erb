@@ -1,0 +1,31 @@
+<%= form_for(youtube) do |f| %>
+  <% if youtube.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= youtube.errors.count %> 個のエラーがあります</h2>
+      <ul>
+        <% youtube.errors.messages.each do |message| %>
+          <li><%= message[1][0] %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title, 'タイトル' %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :url, 'URL' %>
+    <%= f.text_field :url %>
+  </div>
+
+  <div class="field">
+    <%= f.label :text, 'テキスト' %>
+    <%= f.text_area :text %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

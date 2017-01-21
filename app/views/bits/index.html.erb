@@ -1,0 +1,9 @@
+<h1>Bits#index</h1>
+
+<%= link_to 'youtube登録', new_youtube_video_path %>
+
+<% @youtubes.each do |youtube| %>
+  <p><%= youtube.title %></p>
+<% end %>
+
+<p>Find me in app/views/bits/index.html.erb</p>
