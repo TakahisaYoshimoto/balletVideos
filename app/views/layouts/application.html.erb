@@ -15,17 +15,17 @@
           <% if user_signed_in? %>
             <strong><%= current_user.username %></strong>
             <%= link_to(edit_user_registration_path) do %>
-              <button class="btn btn-primary"><i class="glyphicon glyphicon glyphicon glyphicon-edit"></i>プロフィール変更</button>
+              <button class="btn btn-primary"><i class="glyphicon glyphicon glyphicon glyphicon-edit"></i> プロフィール変更</button>
             <% end %>
             <%= link_to(destroy_user_session_path, method: :delete) do %>
-              <button class="btn btn-primary"><i class="glyphicon glyphicon glyphicon-log-out"></i>ログアウト</button>
+              <button class="btn btn-primary"><i class="glyphicon glyphicon glyphicon-log-out"></i> ログアウト</button>
             <% end %>
           <% else %>
             <%= link_to(new_user_registration_path) do %>
-              <button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>新規会員登録</button>
+              <button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> 新規会員登録</button>
             <% end %>
             <%= link_to(new_user_session_path) do %>
-              <button class="btn btn-primary"><i class="glyphicon glyphicon glyphicon-log-in"></i>ログイン</button>
+              <button class="btn btn-primary"><i class="glyphicon glyphicon glyphicon-log-in"></i> ログイン</button>
             <% end %>
           <% end %>
         </nav>
