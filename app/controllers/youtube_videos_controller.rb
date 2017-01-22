@@ -1,5 +1,6 @@
 class YoutubeVideosController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :create, :update]
+  before_action :set_youtube, only: [:show, :edit, :update]
 
   def new
     @youtube = YoutubeVideo.new
@@ -18,9 +19,20 @@ class YoutubeVideosController < ApplicationController
   def edit
   end
 
+  def update
+    if @youtube.update(youtube_params)
+      redirect_to @youtube
+    else
+      render 'edit'
+    end
+  end
+
+  def show
+  end
+
   private
     def set_youtube
-      @youtube = YouyubeVideo.find(params[:id])
+      @youtube = YoutubeVideo.find(params[:id])
     end
 
     def youtube_params

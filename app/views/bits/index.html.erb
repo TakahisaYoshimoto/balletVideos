@@ -1,9 +1,14 @@
-<h1>Bits#index</h1>
-
 <%= link_to 'youtube登録', new_youtube_video_path %>
 
-<% @youtubes.each do |youtube| %>
-  <p><%= youtube.title %></p>
-<% end %>
-
-<p>Find me in app/views/bits/index.html.erb</p>
+<div class="y_index_links">
+  <% @youtubes.each do |youtube| %>
+    <div class="y_video col-xs-12 col-sm-4 col-md-3">
+      <% url = youtube.url.gsub(/http.+v=/, "") %>
+      <% url = url.gsub(/&list.+./, "") %>
+      <% url = url.gsub(/&index.+./, "") %>
+      <%= link_to image_tag('http://i.ytimg.com/vi/' + url + '/hqdefault.jpg', width: 250),
+          youtube_video_path(youtube) %>
+      <h4 class="title"><%= link_to youtube.title, youtube_video_path(youtube) %></h4>
+    </div>
+  <% end %>
+</div><%# y_index_link %>
