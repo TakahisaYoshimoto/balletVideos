@@ -1,4 +1,4 @@
-<%= form_for(youtube) do |f| %>
+<%= form_for(youtube, html: { class: 'form-horizontal' }) do |f| %>
   <% if youtube.errors.any? %>
     <div id="error_explanation">
       <h2><%= youtube.errors.count %> 個のエラーがあります</h2>
@@ -10,22 +10,44 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title, 'タイトル' %>
-    <%= f.text_field :title %>
+  <div class="field form-group">
+    <%= f.label :title, 'タイトル', class: 'control-label col-sm-2' %>
+    <div class="col-sm-4">
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :url, 'URL' %>
-    <%= f.text_field :url %>
+  <div class="field form-group">
+    <%= f.label :url, 'URL', class: 'control-label col-sm-2' %>
+    <div class="col-sm-4">
+      <%= f.text_field :url, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :text, 'テキスト' %>
-    <%= f.text_area :text %>
+  <div class="field form-group">
+    <%= f.label :text, 'テキスト', class: 'control-label col-sm-2' %>
+    <div class="col-sm-4">
+      <%= f.text_area :text, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <%= f.fields_for :youtube_video_tags do |sf| %>
+    <div class="field form-group">
+      <%= sf.label :name, 'ユーザーによる変更禁止のタグ: ', class: 'control-label col-sm-2' %>
+      <div class="col-sm-4 form-inline">
+        <%= sf.text_field :name, class: 'form-control' %>
+        <label>
+          <%= sf.check_box :_destroy, tabindex: -1 %>削除
+        </label>
+        <%#= sf.label :_destroy,"削除", class: 'checkbox-inline' %>
+        <%= sf.hidden_field :master_tag, value: true %><br>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="actions　form-group">
+    <div class="col-sm-offset-2 col-sm-4">
+      <%= f.submit '保存', class: 'btn btn-primary' %>
+    </div>
   </div>
 <% end %>

@@ -1,3 +1,26 @@
 // Place all the styles related to the youtubeVideos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.y_video {
+
+}
+.y_video_body {
+  background: white;
+  border-radius: 10px;
+  margin: 5px;
+}
+.y_video_body_textarea {
+  margin: 10px;
+}
+.y_video_body_textarea h4 {
+  font-size: 14px;
+}
+
+.bits_index_link_img {
+  border-radius: 10px 10px 0 0;
+}
+
+.y_video_show_body {
+  background: white;
+}

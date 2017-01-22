@@ -1,8 +1,15 @@
-<div class="col-sm-8">
+<div class="y_video_show_body col-sm-8">
   <h2><%= @youtube.title %></h2>
+
+  <p>
+    <strong>タグ:</strong>
+    <% @youtube.youtube_video_tags.each do |tag| %>
+      #<%= tag.name %>
+    <% end -%>
+  </p>
+
   <% url = @youtube.url.gsub(/http.+v=/, "") %>
-  <% url = url.gsub(/&list.+./, "") %>
-  <% url = url.gsub(/&index.+./, "") %>
+  <% url = url.gsub(/&.+./, "") %>
 
   <%== '<iframe width="560" height="315" src="https://www.youtube.com/embed/' + url + '" frameborder="0" allowfullscreen></iframe>' %>
   <%= simple_format(@youtube.text, class: :text) %>

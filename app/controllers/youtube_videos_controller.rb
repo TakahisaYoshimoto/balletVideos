@@ -4,6 +4,7 @@ class YoutubeVideosController < ApplicationController
 
   def new
     @youtube = YoutubeVideo.new
+    3.times{ @youtube.youtube_video_tags.build }
   end
 
   def create
@@ -17,6 +18,9 @@ class YoutubeVideosController < ApplicationController
   end
 
   def edit
+    tagcount = YoutubeVideoTag.where('youtube_video_id = ? AND master_tag = ?', @youtube.id, true).count
+    tagcount = 3 - tagcount
+    tagcount.times{ @youtube.youtube_video_tags.build }
   end
 
   def update
@@ -36,6 +40,9 @@ class YoutubeVideosController < ApplicationController
     end
 
     def youtube_params
-      params.require(:youtube_video).permit(:title, :url, :text)
+      params.require(:youtube_video).permit(:title,
+                                            :url,
+                                            :text,
+                                            youtube_video_tags_attributes: [:id, :name, :master_tag, :_destroy])
     end
 end
