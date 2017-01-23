@@ -16,7 +16,7 @@
   <% end %>
 </div>
 
-<div class="y_index_links">
+<div class="y_index_links row-eq-height">
   <% @youtubes.each do |youtube| %>
     <div class="y_video col-xs-12 col-sm-4 col-md-3">
       <div class="y_video_body">
@@ -27,6 +27,14 @@
                                 width: '100%',
                                 class: 'bits_index_link_img'),
                               youtube_video_path(youtube) %>
+        <div class="y_video_body_tagarea">
+          <p>
+            <strong>タグ:</strong>
+            <% youtube.youtube_video_tags.each do |tag| %>
+              #<%= tag.name %>
+            <% end -%>
+          </p>
+        </div>
         <div class="y_video_body_textarea">
           <h4 class="title"><%= link_to youtube.title, youtube_video_path(youtube) %></h4>
         </div>

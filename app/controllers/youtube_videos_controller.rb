@@ -4,7 +4,7 @@ class YoutubeVideosController < ApplicationController
 
   def new
     @youtube = YoutubeVideo.new
-    3.times{ @youtube.youtube_video_tags.build }
+    10.times{ @youtube.youtube_video_tags.build }
   end
 
   def create
@@ -19,7 +19,7 @@ class YoutubeVideosController < ApplicationController
 
   def edit
     tagcount = YoutubeVideoTag.where('youtube_video_id = ? AND master_tag = ?', @youtube.id, true).count
-    tagcount = 3 - tagcount
+    tagcount = 10 - tagcount
     tagcount.times{ @youtube.youtube_video_tags.build }
   end
 

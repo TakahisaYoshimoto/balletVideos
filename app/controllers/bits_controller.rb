@@ -24,16 +24,15 @@ class BitsController < ApplicationController
         ph_tag += " OR youtube_video_tags.name like ?"
       }
 
-      @youtubes = YoutubeVideo.includes(:youtube_video_tags)
+      @youtubes = YoutubeVideo.joins(:youtube_video_tags)
                   .where("((#{ph_title}) AND (#{ph_tag}))",
                          *sp2,*tg2).references(:youtube_video_tags)#引数に配列を渡す時に先頭に*をつけると展開されて要素の数だけ引数の数も増えて渡される
     else
-      @youtubes = YoutubeVideo.includes(:youtube_video_tags)
+      @youtubes = YoutubeVideo.joins(:youtube_video_tags)
                   .where("#{ph_title}",
                          *sp2).references(:youtube_video_tags)#引数に配列を渡す時に先頭に*をつけると展開されて要素の数だけ引数の数も増えて渡される
     end
   else
-
     #@youtubes = YoutubeVideo.where('title like ?', '%' + params[:search_title] + '%')
     session[:search_title_params] = params[:search_title]
     session[:search_tag_params] = params[:search_tag]

@@ -1,14 +1,10 @@
 <%= form_for(youtube, html: { class: 'form-horizontal' }) do |f| %>
   <% if youtube.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= youtube.errors.count %> 個のエラーがあります</h2>
-      <ul>
-        <% youtube.errors.messages.each do |message| %>
-          <li><%= message[1][0] %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <%= youtube.errors.count %>個のエラーがあります<br>
+    <% youtube.errors.full_messages.each do |msg| %>
+      <%= msg %><br>
+    <% end -%>
+  <% end -%>
 
   <div class="field form-group">
     <%= f.label :title, 'タイトル', class: 'control-label col-sm-2' %>
@@ -33,7 +29,7 @@
 
   <%= f.fields_for :youtube_video_tags do |sf| %>
     <div class="field form-group">
-      <%= sf.label :name, 'ユーザーによる変更禁止のタグ: ', class: 'control-label col-sm-2' %>
+      <%= sf.label :name, 'タグ: ', class: 'control-label col-sm-2' %>
       <div class="col-sm-4 form-inline">
         <%= sf.text_field :name, class: 'form-control' %>
         <label>
