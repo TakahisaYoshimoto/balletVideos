@@ -1,11 +1,15 @@
 class BitsController < ApplicationController
   def index
     @youtubes = YoutubeVideo.all
+    @tags = YoutubeVideoTag.group(:name).order('count_name desc').count('name').keys
+    @tags.slice!(10..-1)
     session[:search_title_params] = ""
     session[:search_tag_params] = ""
   end
 
   def Search
+    @tags = YoutubeVideoTag.group(:name).order('count_name desc').count('name').keys
+    @tags.slice!(10..-1)
     sp = params[:search_title].gsub("　"," ")#全角スペースを半角スペースに変換
     sp2 = sp.gsub(" ","%,%")#半角スペースをカンマに変換(プレスホルダーの第二引数以降に使用する変数sp2に代入)
     sp2 = '%'+sp2+'%'

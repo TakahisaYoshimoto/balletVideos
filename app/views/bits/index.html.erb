@@ -1,4 +1,10 @@
-<%= link_to 'youtube登録', new_youtube_video_path %>
+<%= link_to 'youtube登録', new_youtube_video_path %><br>
+
+<% @tags.each do |tag| %>
+  <div class="search_tag">
+    <%= link_to "##{tag}", { controller: :bits, action: :Search, search_title: '', search_tag: tag } %>
+  </div>
+<% end %>
 
 <div class="form-group row">
   <%= form_tag({action: :Search, id: @Search}, method: :get) do %>
