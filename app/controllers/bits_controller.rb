@@ -1,15 +1,13 @@
 class BitsController < ApplicationController
   def index
     @youtubes = YoutubeVideo.all
-    @tags = YoutubeVideoTag.group(:name).order('count_name desc').count('name').keys
-    @tags.slice!(10..-1)
+    @tags = YoutubeVideoTag.group(:name).order('count_name desc').limit(10).offset(0).count('name').keys
     session[:search_title_params] = ""
     session[:search_tag_params] = ""
   end
 
   def Search
-    @tags = YoutubeVideoTag.group(:name).order('count_name desc').count('name').keys
-    @tags.slice!(10..-1)
+    @tags = YoutubeVideoTag.group(:name).order('count_name desc').limit(10).offset(0).count('name').keys
     sp = params[:search_title].gsub("　"," ")#全角スペースを半角スペースに変換
     sp2 = sp.gsub(" ","%,%")#半角スペースをカンマに変換(プレスホルダーの第二引数以降に使用する変数sp2に代入)
     sp2 = '%'+sp2+'%'
@@ -29,15 +27,12 @@ class BitsController < ApplicationController
       }
 
       @youtubes = YoutubeVideo.joins(:youtube_video_tags)
-                  .where("((#{ph_title}) AND (#{ph_tag}))",
-                         *sp2,*tg2).references(:youtube_video_tags)#引数に配列を渡す時に先頭に*をつけると展開されて要素の数だけ引数の数も増えて渡される
+                  .where("(#{ph_title}) AND (#{ph_tag})",
+                         *sp2,*tg2).references(:youtube_video_tags).distinct#引数に配列を渡す時に先頭に*をつけると展開されて要素の数だけ引数の数も増えて渡される
     else
-      @youtubes = YoutubeVideo.joins(:youtube_video_tags)
-                  .where("#{ph_title}",
-                         *sp2).references(:youtube_video_tags)#引数に配列を渡す時に先頭に*をつけると展開されて要素の数だけ引数の数も増えて渡される
+      @youtubes = YoutubeVideo.where("#{ph_title}",
+                         *sp2)#引数に配列を渡す時に先頭に*をつけると展開されて要素の数だけ引数の数も増えて渡される
     end
-  else
-    #@youtubes = YoutubeVideo.where('title like ?', '%' + params[:search_title] + '%')
     session[:search_title_params] = params[:search_title]
     session[:search_tag_params] = params[:search_tag]
     render 'index'
