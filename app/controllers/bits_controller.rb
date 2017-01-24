@@ -17,21 +17,22 @@ class BitsController < ApplicationController
       ph_title += " AND title like ?"
     }
     unless params[:search_tag].blank?
+      @youtubes = YoutubeVideo.where("#{ph_title}", *sp2)
+                              # .references(:youtube_video_tags)
+                              # .distinct#引数に配列を渡す時に先頭に*をつけると展開されて要素の数だけ引数の数も増えて渡される
       tg = params[:search_tag].gsub("　"," ")
       tg2 = tg.gsub(" ","%,%")
       tg2 = '%'+tg2+'%'
       tg2 = tg2.split(",")
-      ph_tag = "youtube_video_tags.name like ?"
+      ph_tag = "name like ?"
       tg.count(" ").times{
-        ph_tag += " OR youtube_video_tags.name like ?"
+        ph_tag += " OR name like ?"
       }
-
-      @youtubes = YoutubeVideo.joins(:youtube_video_tags)
-                  .where("(#{ph_title}) AND (#{ph_tag})",
-                         *sp2,*tg2).references(:youtube_video_tags).distinct#引数に配列を渡す時に先頭に*をつけると展開されて要素の数だけ引数の数も増えて渡される
+      @youtubetags = YoutubeVideoTag.select(:youtube_video_id).where("#{ph_tag}", *tg2).group(:youtube_video_id).having('count(youtube_video_id) >= ?', tg2.length)
+      @youtubes = @youtubes.where(id: @youtubetags)
+      #@youtubes = @youtubes.where("#{ph_tag}", *tg2)
     else
-      @youtubes = YoutubeVideo.where("#{ph_title}",
-                         *sp2)#引数に配列を渡す時に先頭に*をつけると展開されて要素の数だけ引数の数も増えて渡される
+      @youtubes = YoutubeVideo.where("#{ph_title}", *sp2)#引数に配列を渡す時に先頭に*をつけると展開されて要素の数だけ引数の数も増えて渡される
     end
     session[:search_title_params] = params[:search_title]
     session[:search_tag_params] = params[:search_tag]
