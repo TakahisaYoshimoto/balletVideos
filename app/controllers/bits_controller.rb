@@ -18,8 +18,6 @@ class BitsController < ApplicationController
     }
     unless params[:search_tag].blank?
       @youtubes = YoutubeVideo.where("#{ph_title}", *sp2)
-                              # .references(:youtube_video_tags)
-                              # .distinct#引数に配列を渡す時に先頭に*をつけると展開されて要素の数だけ引数の数も増えて渡される
       tg = params[:search_tag].gsub("　"," ")
       tg2 = tg.gsub(" ","%,%")
       tg2 = '%'+tg2+'%'
@@ -28,9 +26,11 @@ class BitsController < ApplicationController
       tg.count(" ").times{
         ph_tag += " OR name like ?"
       }
-      @youtubetags = YoutubeVideoTag.select(:youtube_video_id).where("#{ph_tag}", *tg2).group(:youtube_video_id).having('count(youtube_video_id) >= ?', tg2.length)
+      @youtubetags = YoutubeVideoTag.select(:youtube_video_id)
+                                    .where("#{ph_tag}", *tg2)
+                                    .group(:youtube_video_id)
+                                    .having('count(youtube_video_id) >= ?', tg2.length)
       @youtubes = @youtubes.where(id: @youtubetags)
-      #@youtubes = @youtubes.where("#{ph_tag}", *tg2)
     else
       @youtubes = YoutubeVideo.where("#{ph_title}", *sp2)#引数に配列を渡す時に先頭に*をつけると展開されて要素の数だけ引数の数も増えて渡される
     end
