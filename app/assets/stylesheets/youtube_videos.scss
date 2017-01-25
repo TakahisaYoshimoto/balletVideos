@@ -16,11 +16,39 @@
 .y_video_body_textarea h4 {
   font-size: 14px;
 }
-
 .bits_index_link_img {
   border-radius: 10px 10px 0 0;
 }
 
-.y_video_show_body {
+#y_video_show_titlearea {
   background: white;
+}
+#y_video_show_body {
+  padding-left: 0;
+  /*background: white;*/
+}
+#y_video_show_titlearea{
+  /*background: white;*/
+}
+#y_video_show_comment {
+  margin-top: 10px;
+  padding: 5px;
+  background: white;
+  border-radius: 5px;
+  border: 2px solid #485A6C;
+}
+#related_videos_list {
+  background: white;
+  padding: 3px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+#related_videos_link {
+  margin-bottom: 5px;
+}
+#related_videos_link_img {
+  padding: 0;
+}
+#related_videos_link_title {
+  padding: 0;
 }

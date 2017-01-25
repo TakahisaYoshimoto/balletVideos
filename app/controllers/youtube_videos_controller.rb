@@ -32,6 +32,18 @@ class YoutubeVideosController < ApplicationController
   end
 
   def show
+    each_count = 0
+    ph_tag = ""
+    tags = Array.new
+    @youtube.youtube_video_tags.each do |tag|
+      tags.push(tag.name)
+      if each_count > 0
+        ph_tag += " OR " 
+      end
+      ph_tag += "youtube_video_tags.name like ?"
+      each_count += 1
+    end
+    @relatedVideos = YoutubeVideo.joins(:youtube_video_tags).where("#{ph_tag}", *tags).distinct
   end
 
   private

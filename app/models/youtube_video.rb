@@ -6,5 +6,5 @@ class YoutubeVideo < ApplicationRecord
 
   validates :url, uniqueness: true
 
-  paginates_per 3  # 1ページあたり4項目表示
+  paginates_per 12  # 1ページあたり4項目表示
 end

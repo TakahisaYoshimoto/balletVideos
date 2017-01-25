@@ -3,41 +3,41 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+  <div class="field form-group">
+    <%= f.label :email, 'メールアドレス', class: 'control-label col-sm-2' %><br />
+    <%= f.email_field :email, class: 'form-control' , autofocus: true %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
+  <div class="field form-group">
+    <%= f.label :username, 'ユーザーネーム', class: 'control-label col-sm-6' %><br />
+    <%= f.text_field :username, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+  <div class="field form-group">
+    <%= f.label :password, '新しいパスワード', class: 'control-label col-sm-6' %> <i>(パスワードを変更する場合入力して下さい。)</i><br />
+    <%= f.password_field :password, class: 'form-control', autocomplete: "off" %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <em><%= @minimum_password_length %> 文字以上にしてください。</em>
     <% end %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  <div class="field form-group">
+    <%= f.label :password_confirmation, '新しいパスワードを確認の為もう一度入力して下さい', class: 'control-label col-sm-6' %><br />
+    <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: "off" %>
   </div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
+  <div class="field form-group">
+    <%= f.label :current_password, '現在のパスワード', class: 'control-label col-sm-6' %> <i>(プロフィール情報を変更するには、現在のパスワードが必要です。)</i><br />
+    <%= f.password_field :current_password, class: 'form-control', autocomplete: "off" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
+  <div class="actions form-group">
+    <%= f.submit "Update", class: 'btn btn-primary' %>
   </div>
 <% end %>
 
