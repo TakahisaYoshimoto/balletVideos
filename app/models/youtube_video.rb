@@ -5,4 +5,6 @@ class YoutubeVideo < ApplicationRecord
                                 reject_if: proc { |attributes| attributes['name'].blank? }
 
   validates :url, uniqueness: true
+
+  paginates_per 3  # 1ページあたり4項目表示
 end

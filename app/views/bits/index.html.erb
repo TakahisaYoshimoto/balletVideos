@@ -22,6 +22,8 @@
   <% end %>
 </div>
 
+<%= page_entries_info @youtubes %>
+
 <div class="y_index_links row-eq-height">
   <% @youtubes.each do |youtube| %>
     <div class="y_video col-xs-12 col-sm-4 col-md-3">
@@ -48,3 +50,7 @@
     </div>
   <% end %>
 </div><%# y_index_link %>
+
+<div class="pagenation_bar">
+  <%= paginate @youtubes %>
+</div>
