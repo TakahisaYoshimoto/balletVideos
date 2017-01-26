@@ -43,7 +43,24 @@ class YoutubeVideosController < ApplicationController
       ph_tag += "youtube_video_tags.name like ?"
       each_count += 1
     end
-    @relatedVideos = YoutubeVideo.joins(:youtube_video_tags).where("#{ph_tag}", *tags).distinct
+    #表示する動画と同じタグが付いてる動画を一致するタグが多い順にIDを配列で格納
+    relatedVideos_count = YoutubeVideo.joins(:youtube_video_tags)
+                                        .where("#{ph_tag}", *tags)
+                                        .group(:id)
+                                        .order('count_id desc')
+                                        .limit(10)
+                                        .offset(0)
+                                        .count(:id).keys
+    #関連動画一覧のID一覧配列から表示する動画のIDを削除
+    relatedVideos_count.each do |rvc|
+      if rvc == params[:id].to_i
+        relatedVideos_count.delete(rvc)
+      end
+    end 
+    #上で作った一致タグが多い順のID配列でwhereして並び替え
+    @relatedVideos = YoutubeVideo.where(id: relatedVideos_count)
+                                  .order_as_specified(id: relatedVideos_count)
+
   end
 
   private

@@ -30,12 +30,15 @@
 #y_video_show_titlearea{
   /*background: white;*/
 }
+#y_video_show_titlearea h2{
+  font-family: Roboto;
+}
 #y_video_show_comment {
   margin-top: 10px;
   padding: 5px;
   background: white;
-  border-radius: 5px;
-  border: 2px solid #485A6C;
+/*  border-radius: 5px;
+  border: 2px solid #485A6C;*/
 }
 #related_videos_list {
   background: white;

@@ -7,4 +7,6 @@ class YoutubeVideo < ApplicationRecord
   validates :url, uniqueness: true
 
   paginates_per 12  # 1ページあたり4項目表示
+
+  extend OrderAsSpecified #gem extend OrderAsSpecified で並び替えする為の記述
 end
