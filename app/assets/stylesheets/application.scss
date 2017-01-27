@@ -24,10 +24,17 @@ body {
 #header {
   background: white;
 }
+#site_logo {
+  padding: 0 0 0 10px;
+  margin: 0;
+}
+#site_logo img {
+}
 #site_logo a {
   color: black;
   margin: 0;
 }
+
 #login_status {
   margin-top: 10px;
   padding-right: 20px;
