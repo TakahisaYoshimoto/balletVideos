@@ -6,27 +6,11 @@
   </div>
 <% end %>
 
-<div class="form-group row">
-  <%= form_tag({action: :Search, id: @Search}, method: :get) do %>
-    <div class="form-group">
-      <div class="col-sm-3">
-        <%= search_field_tag :search_title, session[:search_title_params], class: 'form-control', placeholder: 'タイトル' %>
-      </div>
-      <div class="col-sm-3">
-        <%= search_field_tag :search_tag, session[:search_tag_params], class: 'form-control', placeholder: 'タグ' %>
-      </div>
-      <button type="submit" class="btn btn-primary col-sm-1">
-        <i class="glyphicon glyphicon-search"></i> 検索
-      </button>
-    </div>
-  <% end %>
-</div>
-
 <p class="pagenation_count"><%= page_entries_info @youtubes %></p>
 
 <div class="y_index_links row-eq-height">
   <% @youtubes.each do |youtube| %>
-    <div class="y_video col-xs-12 col-sm-4 col-md-3">
+    <div class="y_video col-xs-6 col-sm-4 col-md-3">
       <div class="y_video_body">
         <% url = youtube.url.gsub(/http.+v=/, "") %>
         <%# url = url.gsub(/&list.+./, "") %>

@@ -12,32 +12,45 @@
 
   <body>  
     <div id="header">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-2">
-            <h2 class="site_logo"><%= link_to 'Ballet!!', bits_path %></h2>
-          </div>
-          <div class="login_status col-sm-offset-4 col-md-offset-6 col-sm-6 col-md-4" >
-            <header>
-              <nav>
-                <% if user_signed_in? %>
-                  <strong><%#= current_user.username %></strong>
-                  <%= link_to(edit_user_registration_path) do %>
-                    <button class="btn btn-primary"><i class="glyphicon glyphicon glyphicon glyphicon-edit"></i> プロフィール変更</button>
-                  <% end %>
-                  <%= link_to(destroy_user_session_path, method: :delete) do %>
-                    <button class="btn btn-primary"><i class="glyphicon glyphicon glyphicon-log-out"></i> ログアウト</button>
-                  <% end %>
-                <% else %>
-                  <%= link_to(new_user_registration_path) do %>
-                    <button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> 新規会員登録</button>
-                  <% end %>
-                  <%= link_to(new_user_session_path) do %>
-                    <button class="btn btn-primary"><i class="glyphicon glyphicon glyphicon-log-in"></i> ログイン</button>
-                  <% end %>
-                <% end %>
-              </nav>
-            </header>
+      <div class="row">
+        <div class="col-xs-6 col-sm-2">
+          <h2 id="site_logo"><%= link_to 'Ballet!!', bits_path %></h2>
+        </div>
+
+        <div id="login_status" class="col-xs-6 col-sm-4 col-sm-push-6">
+          <% if user_signed_in? %>
+            <strong><%#= current_user.username %></strong>
+            <%= link_to(edit_user_registration_path) do %>
+              <button class="btn btn-primary"><i class="glyphicon glyphicon glyphicon glyphicon-edit"></i> プロフィール変更</button>
+            <% end %>
+            <%= link_to(destroy_user_session_path, method: :delete) do %>
+              <button class="btn btn-primary"><i class="glyphicon glyphicon glyphicon-log-out"></i> ログアウト</button>
+            <% end %>
+          <% else %>
+            <%= link_to(new_user_registration_path) do %>
+              <button class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> 新規会員登録</button>
+            <% end %>
+            <%= link_to(new_user_session_path) do %>
+              <button class="btn btn-primary"><i class="glyphicon glyphicon glyphicon-log-in"></i> ログイン</button>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="col-sm-6 col-sm-pull-4">
+          <div class="form-group row">
+            <%= form_tag({controller: :bits, action: :Search, id: @Search}, method: :get) do %>
+              <div class="form-group">
+                <div class="col-sm-5">
+                  <%= search_field_tag :search_title, session[:search_title_params], class: 'form-control', placeholder: 'タイトル' %>
+                </div>
+                <div class="col-sm-5">
+                  <%= search_field_tag :search_tag, session[:search_tag_params], class: 'form-control', placeholder: 'タグ' %>
+                </div>
+                <button type="submit" class="btn btn-primary col-sm-2">
+                  <i class="glyphicon glyphicon-search"></i> 検索
+                </button>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>

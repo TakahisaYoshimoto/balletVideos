@@ -1,5 +1,5 @@
 class BitsController < ApplicationController
-  def index
+  def index   
     @youtubes = YoutubeVideo.page(params[:page]).order(created_at: :desc)
     @tags = YoutubeVideoTag.group(:name).order('count_name desc').limit(10).offset(0).count('name').keys
     session[:search_title_params] = ""
