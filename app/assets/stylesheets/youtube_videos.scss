@@ -37,8 +37,6 @@
   margin-top: 10px;
   padding: 5px;
   background: white;
-/*  border-radius: 5px;
-  border: 2px solid #485A6C;*/
 }
 #y_video_newcomment_edit_area {
   margin-top: 10px;
@@ -48,7 +46,7 @@
 #comment_text_area {
   max-width: 100%;
 }
-#comment_submit {
+#comment_submit, #reply_submit {
   text-align: right;
 }
 #y_video_comment_list_area {
@@ -58,7 +56,14 @@
 }
 .y_video_comment_list_view{
   border-bottom: 1px solid #DCDEE0;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
 }
+.y_video_reply_list_view {
+  padding-left: 7%;
+  border-top: 1px dotted #DCDEE0;
+}
+
 #related_videos_list {
   background: white;
   padding: 3px;
