@@ -33,12 +33,31 @@
 #y_video_show_titlearea h2{
   font-family: Roboto;
 }
-#y_video_show_comment {
+#y_video_show_text {
   margin-top: 10px;
   padding: 5px;
   background: white;
 /*  border-radius: 5px;
   border: 2px solid #485A6C;*/
+}
+#y_video_newcomment_edit_area {
+  margin-top: 10px;
+  padding: 5px;
+  background: white;
+}
+#comment_text_area {
+  max-width: 100%;
+}
+#comment_submit {
+  text-align: right;
+}
+#y_video_comment_list_area {
+  margin-top: 10px;
+  padding: 5px;
+  background: white;
+}
+.y_video_comment_list_view{
+  border-bottom: 1px solid #DCDEE0;
 }
 #related_videos_list {
   background: white;

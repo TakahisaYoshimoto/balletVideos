@@ -32,6 +32,8 @@ class YoutubeVideosController < ApplicationController
   end
 
   def show
+    @comment = Comment.new
+    @comments = Comment.where('youtube_video_id = ?', params[:id]).order('created_at desc')
     each_count = 0
     ph_tag = ""
     tags = Array.new
@@ -45,12 +47,12 @@ class YoutubeVideosController < ApplicationController
     end
     #表示する動画と同じタグが付いてる動画を一致するタグが多い順にIDを配列で格納
     relatedVideos_count = YoutubeVideo.joins(:youtube_video_tags)
-                                        .where("#{ph_tag}", *tags)
-                                        .group(:id)
-                                        .order('count_id desc')
-                                        .limit(10)
-                                        .offset(0)
-                                        .count(:id).keys
+      .where("#{ph_tag}", *tags)
+      .group(:id)
+      .order('count_id desc')
+      .limit(10)
+      .offset(0)
+      .count(:id).keys
     #関連動画一覧のID一覧配列から表示する動画のIDを削除
     relatedVideos_count.each do |rvc|
       if rvc == params[:id].to_i
@@ -59,7 +61,7 @@ class YoutubeVideosController < ApplicationController
     end 
     #上で作った一致タグが多い順のID配列でwhereして並び替え
     @relatedVideos = YoutubeVideo.where(id: relatedVideos_count)
-                                  .order_as_specified(id: relatedVideos_count)
+      .order_as_specified(id: relatedVideos_count)
 
   end
 
@@ -70,8 +72,8 @@ class YoutubeVideosController < ApplicationController
 
     def youtube_params
       params.require(:youtube_video).permit(:title,
-                                            :url,
-                                            :text,
-                                            youtube_video_tags_attributes: [:id, :name, :master_tag, :_destroy])
+        :url,
+        :text,
+        youtube_video_tags_attributes: [:id, :name, :master_tag, :_destroy])
     end
 end
