@@ -43,7 +43,7 @@
   padding: 5px;
   background: white;
 }
-#comment_text_area {
+#comment_text_area, .reply_text_area {
   max-width: 100%;
 }
 #comment_submit, #reply_submit {
@@ -57,11 +57,29 @@
 .y_video_comment_list_view{
   border-bottom: 1px solid #DCDEE0;
   margin-bottom: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
 }
 .y_video_reply_list_view {
-  padding-left: 7%;
+  margin-left: 7%;
   border-top: 1px dotted #DCDEE0;
+}
+.y_video_reply_list_view p {
+  word-wrap:break-word;
+}
+.reply_view_button_area {
+  overflow: hidden;
+}
+.reply_view_button {
+  text-align: right;
+  color: #B2B2B2;
+  margin-top: 10px;
+  margin-bottom: 0;
+  float: right;
+}
+.reply_view_button:hover {
+  text-align: right;
+  color: #5C5C5C;
+  cursor: pointer;  
 }
 
 #related_videos_list {

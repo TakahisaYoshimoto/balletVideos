@@ -62,27 +62,35 @@
                 <div class="y_video_reply_list_view">
                   <strong><%= reply.user.username %></strong>
                   <%= reply.created_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %><br>
-                  <p><%= simple_format(reply.text) %></p>
+                  <%= simple_format(reply.text) %>
                 </div>
               <% end %>
             <% end %>
 
-            <div id="y_video_reply_edit_area">
-              <%= form_tag('/comments/reply', method: :post) do %>
-                <div class="form-group">
-                  <%= text_area_tag :text,
-                    "",
-                    maxlength: "500",
-                    id: 'reply_text_area',
-                    class: 'form-control' %>
-                </div>
-                <div id="reply_submit" class="actions　form-group">
-                  <%= submit_tag '返信', class: 'btn btn-primary' %>
-                </div>
-                <%= hidden_field :reply_params, :youtube_video_id, value: @youtube.id%>
-                <%= hidden_field :reply_params, :comment_id, value: comment.id %>
-              <% end %>
-            </div>
+            <% unless current_user.nil? %>
+              <div id="y_video_reply_edit_area<%= comment.id %>" class="y_video_reply_edit_area" style="display: none;">
+                <%= form_tag('/comments/reply', method: :post) do %>
+                  <div class="form-group">
+                    <%= text_area_tag :text,
+                      "",
+                      maxlength: "500",
+                      class: 'reply_text_area form-control' %>
+                  </div>
+                  <div id="reply_submit" class="actions　form-group">
+                    <%= submit_tag '返信', class: 'btn btn-primary' %>
+                  </div>
+                  <%= hidden_field :reply_params, :youtube_video_id, value: @youtube.id%>
+                  <%= hidden_field :reply_params, :comment_id, value: comment.id %>
+                <% end %>
+              </div>
+
+              <div class="reply_view_button_area">
+                <p id="reply_view_button<%= comment.id %>"
+                  class="reply_view_button"
+                  onClick="reply_display(<%= comment.id %>)">返信する
+                </p>
+              </div>
+            <% end %>
           </div>
         <% end %>
       <% end %>
@@ -109,3 +117,17 @@
     </div>
   <% end %>
 </div>
+
+<script>
+  function reply_display(comment_id) {
+    var display = document.getElementById("y_video_reply_edit_area"+comment_id).style.display;
+
+    if (display == 'none'){
+      document.getElementById("y_video_reply_edit_area"+comment_id).style.display = 'block';
+      document.getElementById("reply_view_button"+comment_id).innerHTML = 'キャンセル';
+    }else {
+      document.getElementById("y_video_reply_edit_area"+comment_id).style.display = 'none';
+      document.getElementById("reply_view_button"+comment_id).innerHTML = '返信する';
+    }
+  }
+</script>
