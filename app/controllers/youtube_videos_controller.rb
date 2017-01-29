@@ -34,6 +34,7 @@ class YoutubeVideosController < ApplicationController
   def show
     @comment = Comment.new
     @comments = Comment.where('youtube_video_id = ?', params[:id]).order('created_at desc')
+    @replys = @comments.where('reply != ?', 0).reorder('created_at asc')
     each_count = 0
     ph_tag = ""
     tags = Array.new

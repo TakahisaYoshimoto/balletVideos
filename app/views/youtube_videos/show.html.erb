@@ -57,7 +57,7 @@
             <%= comment.created_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %><br>
             <p><%= simple_format(comment.text) %></p>
 
-            <% @comments.each do |reply| %>
+            <% @replys.each do |reply| %>
               <% if reply.reply == comment.id %>
                 <div class="y_video_reply_list_view">
                   <strong><%= reply.user.username %></strong>
