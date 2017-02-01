@@ -43,13 +43,18 @@ body {
 }
 #site_logo {
   padding: 0 0 0 10px;
-  margin: 0;
+  margin: 5px 0 0 0;
 }
 #site_logo img {
 }
 #site_logo a {
   color: black;
   margin: 0;
+}
+
+#search_area {
+  margin-top: 10px;
+  height: 40px;
 }
 
 #login_status {
