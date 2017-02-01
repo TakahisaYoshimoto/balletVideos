@@ -27,23 +27,25 @@
     </div>
   </div>
 
-  <%= f.fields_for :youtube_video_tags do |sf| %>
-    <div class="field form-group">
-      <%= sf.label :name, 'タグ: ', class: 'control-label col-sm-2' %>
-      <div class="col-sm-4 form-inline">
-        <%= sf.text_field :name, class: 'form-control' %>
-        <label>
-          <%= sf.check_box :_destroy, tabindex: -1 %>削除
-        </label>
-        <%#= sf.label :_destroy,"削除", class: 'checkbox-inline' %>
-        <%= sf.hidden_field :master_tag, value: true %><br>
-      </div>
+  <%= f.nested_fields_for :youtube_video_tags, wrapper_tag: :div, wrapper_options: { class: 'row field form-group' } do |q| %>
+    <%= q.label :name, 'タグ', class: 'control-label col-sm-2' %>
+    <div class="col-sm-4">
+      <%= q.text_field :name, class: 'form-control' %>
     </div>
+    <%= q.remove_nested_fields_link '削除', class: 'btn btn-danger', role: 'button', tabindex: -1 %>
   <% end %>
 
-  <div class="actions　form-group">
-    <div class="col-sm-offset-2 col-sm-4">
-      <%= f.submit '保存', class: 'btn btn-primary' %>
+  <div class="row">
+    <div class="div_right_button col-sm-6">
+      <%= f.add_nested_fields_link :youtube_video_tags, 'タグ追加', class: 'btn btn-primary right_button', role: 'button' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="actions　form-group">
+      <div class="col-sm-offset-2 col-sm-4">
+        <%= f.submit '保存', class: 'btn btn-primary right_button' %>
+      </div>
     </div>
   </div>
 <% end %>

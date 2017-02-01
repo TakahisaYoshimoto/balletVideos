@@ -1,0 +1,11 @@
+    <div class="field form-group">
+      <%= sf.label :name, 'タグ: ', class: 'control-label col-sm-2' %>
+      <div class="col-sm-4 form-inline">
+        <%= sf.text_field :name, class: 'form-control' %>
+        <label>
+          <%= link_to '削除', '#', class: 'remove_fields' %>
+          <%#= sf.check_box :_destroy, tabindex: -1 %>
+        </label>
+        <%= sf.hidden_field :master_tag, value: true %><br>
+      </div>
+    </div>
