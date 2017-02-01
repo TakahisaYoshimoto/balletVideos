@@ -17,6 +17,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
 body {
   background: #DCDEE0;
 }
@@ -24,7 +28,15 @@ body {
 #header {
   background: white;
 }
+#contants {
+  min-height: 100%;
+  margin-bottom: -200px;
+}
+#push {
+  height: 200px;
+}
 #footer {
+  width: 100%;
   height: 200px;
   background: #B1AFB6;
 }
