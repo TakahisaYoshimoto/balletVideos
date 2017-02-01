@@ -97,6 +97,7 @@
   <% unless current_user.nil? %>
     <% if @youtube.user_id == current_user.id && current_user.user_level > 1 %>
       <%= link_to '編集する', edit_youtube_video_path(@youtube) %>
+      <%= link_to '削除する', youtube_video_path(@youtube), method: :delete, data: { confirm: "削除してよろしいですか？" } %>
     <% end %>
   <% end %>
 </div>

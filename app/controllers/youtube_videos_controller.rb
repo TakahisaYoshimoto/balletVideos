@@ -1,6 +1,6 @@
 class YoutubeVideosController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit, :create, :update]
-  before_action :set_youtube, only: [:show, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
+  before_action :set_youtube, only: [:show, :edit, :update, :destroy]
 
   def new
     user_level_check(2)
@@ -35,6 +35,11 @@ class YoutubeVideosController < ApplicationController
     end
   end
 
+  def destroy
+    @youtube.destroy
+    redirect_to bits_path
+  end
+
   def show
     @comment = Comment.new
     @comments = Comment.where('youtube_video_id = ?', params[:id]).order('created_at desc')
@@ -67,7 +72,6 @@ class YoutubeVideosController < ApplicationController
     #上で作った一致タグが多い順のID配列でwhereして並び替え
     @relatedVideos = YoutubeVideo.where(id: relatedVideos_count)
       .order_as_specified(id: relatedVideos_count)
-
   end
 
   private

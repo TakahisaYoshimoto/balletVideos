@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       get :Search
     end
   end
-  resources :youtube_videos, only: [:new, :create, :edit, :update, :show]
+  resources :youtube_videos, only: [:new, :create, :edit, :update, :show, :destroy]
   resources :comments, only: [:create] do
     collection do
       post :reply
