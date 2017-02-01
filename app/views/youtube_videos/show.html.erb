@@ -23,14 +23,6 @@
     <%= simple_format(@youtube.text, class: :text) %>
   </div>
 
-  <%= link_to '動画一覧へ戻る', bits_path %>
-
-  <% unless current_user.nil? %>
-    <% if @youtube.user_id == current_user.id && current_user.user_level > 1 %>
-      <%= link_to '編集する', edit_youtube_video_path(@youtube) %>
-    <% end %>
-  <% end %>
-
   <div id="y_video_commentsarea">
     <% unless current_user.nil? %>
       <div id="y_video_newcomment_edit_area">
@@ -48,7 +40,9 @@
         <% end %>
       </div>
     <% else %>
-      <p>ログインするとコメントの投稿ができます。</p>
+      <div id="y_video_newcomment_edit_area">
+        <p>ログインするとコメントの投稿ができます。</p>
+      </div>
     <% end %>
 
     <div id="y_video_comment_list_area">
@@ -98,6 +92,13 @@
       <% end %>
     </div>
   </div>
+  <%= link_to '動画一覧へ戻る', bits_path %>
+
+  <% unless current_user.nil? %>
+    <% if @youtube.user_id == current_user.id && current_user.user_level > 1 %>
+      <%= link_to '編集する', edit_youtube_video_path(@youtube) %>
+    <% end %>
+  <% end %>
 </div>
 
 <div id="related_videos_list" class="col-sm-3">
