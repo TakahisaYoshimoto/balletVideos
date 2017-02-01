@@ -8,8 +8,7 @@ class BitsController < ApplicationController
       .offset(0)
       .count('name')
       .keys
-    session[:search_title_params] = ""
-    session[:search_tag_params] = ""
+    session[:search_params] = ""
   end
 
   def Search
@@ -19,36 +18,43 @@ class BitsController < ApplicationController
       .offset(0)
       .count('name')
       .keys
-    sp = params[:search_title].gsub("　"," ")#全角スペースを半角スペースに変換
+    sp = params[:search_params].gsub("　"," ")#全角スペースを半角スペースに変換
     sp2 = sp.gsub(" ","%,%")#半角スペースをカンマに変換(プレスホルダーの第二引数以降に使用する変数sp2に代入)
     sp2 = '%'+sp2+'%'
     sp2 = sp2.split(",")#ひとつの文字列だったsp2をカンマで区切って配列にする
     ph_title = "title like ?"
     sp.count(" ").times{
-      ph_title += " AND title like ?"
+      ph_title += " OR title like ?"
     }
-    unless params[:search_tag].blank?
-      @youtubes = YoutubeVideo.where("#{ph_title}", *sp2)
-      tg = params[:search_tag].gsub("　"," ")
-      tg2 = tg.gsub(" ","%,%")
-      tg2 = '%'+tg2+'%'
-      tg2 = tg2.split(",")
-      ph_tag = "name like ?"
-      tg.count(" ").times{
-        ph_tag += " OR name like ?"
-      }
-      @youtubetags = YoutubeVideoTag.select(:youtube_video_id)
-        .where("#{ph_tag}", *tg2)
-        .group(:youtube_video_id)
-        .having('count(youtube_video_id) >= ?', tg2.length)
-      @youtubes = @youtubes.where(id: @youtubetags)
-        .page(params[:page])
-        .order(created_at: :desc)
-    else
-      @youtubes = YoutubeVideo.where("#{ph_title}", *sp2).page(params[:page])#引数に配列を渡す時に先頭に*をつけると展開されて要素の数だけ引数の数も増えて渡される
-    end
-    session[:search_title_params] = params[:search_title]
-    session[:search_tag_params] = params[:search_tag]
+
+    tg = params[:search_params].gsub("　"," ")
+    tg2 = tg.gsub(" ","%,%")
+    tg2 = '%'+tg2+'%'
+    tg2 = tg2.split(",")
+    ph_tag = "name like ?"
+    tg.count(" ").times{
+      ph_tag += " OR name like ?"
+    }
+    youtubetags = YoutubeVideoTag.select(:youtube_video_id)
+      .where("#{ph_tag}", *tg2)
+      .group(:youtube_video_id)
+      .having('count(youtube_video_id) >= ?', tg2.length)
+
+    #動画を一致するタグが多い順にIDを配列で格納
+    tag_keys = YoutubeVideo.joins(:youtube_video_tags)
+      .where("#{ph_tag}", *tg2)
+      .group(:id)
+      .order('count_id desc')
+      .limit(10)
+      .offset(0)
+      .count(:id).keys
+
+    @youtubes = YoutubeVideo.where("(#{ph_title}) OR (id IN (?))", *sp2, youtubetags)
+      .page(params[:page])
+      .order_as_specified(id: tag_keys)
+      .order(created_at: :desc)
+
+    session[:search_params] = params[:search_params]
     render 'index'
   end
 end

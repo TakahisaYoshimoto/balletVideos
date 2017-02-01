@@ -6,7 +6,7 @@
 
 <% @tags.each do |tag| %>
   <div class="search_tag">
-    <%= link_to "##{tag}", { controller: :bits, action: :Search, search_title: '', search_tag: tag } %>
+    <%= link_to "##{tag}", { controller: :bits, action: :Search, search_params: tag } %>
   </div>
 <% end %>
 

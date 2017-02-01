@@ -42,11 +42,8 @@
           <div class="form-group row">
             <%= form_tag({controller: '/bits', action: :Search, id: @Search}, method: :get) do %>
               <div class="form-group">
-                <div class="col-sm-5">
-                  <%= search_field_tag :search_title, session[:search_title_params], class: 'form-control', placeholder: 'タイトル' %>
-                </div>
-                <div class="col-sm-5">
-                  <%= search_field_tag :search_tag, session[:search_tag_params], class: 'form-control', placeholder: 'タグ' %>
+                <div class="col-sm-10">
+                  <%= search_field_tag :search_params, session[:search_params], class: 'form-control', placeholder: 'キーワード' %>
                 </div>
                 <button type="submit" class="btn btn-primary col-sm-2">
                   <i class="glyphicon glyphicon-search"></i> 検索
