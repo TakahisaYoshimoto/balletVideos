@@ -1,4 +1,8 @@
-<%= link_to 'youtube登録', new_youtube_video_path %><br>
+<% unless current_user.nil? %>
+  <% if current_user.user_level > 1 %>
+    <%= link_to 'youtube登録', new_youtube_video_path %><br>
+  <% end %>
+<% end %>
 
 <% @tags.each do |tag| %>
   <div class="search_tag">

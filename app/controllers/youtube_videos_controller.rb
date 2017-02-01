@@ -3,11 +3,13 @@ class YoutubeVideosController < ApplicationController
   before_action :set_youtube, only: [:show, :edit, :update]
 
   def new
+    user_level_check(2)
     @youtube = YoutubeVideo.new
     1.times{ @youtube.youtube_video_tags.build }
   end
 
   def create
+    user_level_check(2)
     @youtube = YoutubeVideo.new(youtube_params)
     @youtube.user_id = current_user.id
     if @youtube.save
@@ -18,12 +20,14 @@ class YoutubeVideosController < ApplicationController
   end
 
   def edit
+    user_level_check(2)
     tagcount = YoutubeVideoTag.where('youtube_video_id = ? AND master_tag = ?', @youtube.id, true).count
     tagcount = 1 - tagcount
     tagcount.times{ @youtube.youtube_video_tags.build }
   end
 
   def update
+    user_level_check(2)
     if @youtube.update(youtube_params)
       redirect_to @youtube
     else
@@ -76,5 +80,16 @@ class YoutubeVideosController < ApplicationController
         :url,
         :text,
         youtube_video_tags_attributes: [:id, :name, :master_tag, :_destroy])
+    end
+
+    def user_level_check(level)
+      if current_user.nil?
+        redirect_to bits_path and return
+      end
+      unless current_user.nil?
+        if level > current_user.user_level
+          redirect_to bits_path and return
+        end
+      end      
     end
 end

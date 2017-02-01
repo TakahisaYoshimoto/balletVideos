@@ -15,7 +15,7 @@
       <div class="row">
         <div id="login_status" class="col-xs-12 col-sm-4 col-sm-push-8">
           <% if user_signed_in? %>
-            <strong><%#= current_user.username %></strong>
+            <strong><%= current_user.username %></strong>
             <%= link_to(edit_user_registration_path) do %>
               <button class="btn btn-primary"><i class="glyphicon glyphicon glyphicon glyphicon-edit"></i> プロフィール変更</button>
             <% end %>

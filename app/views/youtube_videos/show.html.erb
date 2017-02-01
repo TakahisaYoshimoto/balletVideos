@@ -26,10 +26,8 @@
   <%= link_to '動画一覧へ戻る', bits_path %>
 
   <% unless current_user.nil? %>
-    <% if @youtube.user_id == current_user.id %>
-      <% if @youtube.user_id == current_user.id %>
-        <%= link_to '編集する', edit_youtube_video_path(@youtube) %>
-      <% end %>
+    <% if @youtube.user_id == current_user.id && current_user.user_level > 1 %>
+      <%= link_to '編集する', edit_youtube_video_path(@youtube) %>
     <% end %>
   <% end %>
 
@@ -49,6 +47,8 @@
           <%= f.hidden_field :youtube_video_id, value: @youtube.id %>
         <% end %>
       </div>
+    <% else %>
+      <p>ログインするとコメントの投稿ができます。</p>
     <% end %>
 
     <div id="y_video_comment_list_area">
