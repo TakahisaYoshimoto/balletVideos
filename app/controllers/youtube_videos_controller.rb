@@ -5,7 +5,7 @@ class YoutubeVideosController < ApplicationController
   def new
     user_level_check(2)
     @youtube = YoutubeVideo.new
-    1.times{ @youtube.youtube_video_tags.build }
+    @youtube.youtube_video_tags.build
   end
 
   def create
@@ -21,9 +21,7 @@ class YoutubeVideosController < ApplicationController
 
   def edit
     user_level_check(2)
-    tagcount = YoutubeVideoTag.where('youtube_video_id = ? AND master_tag = ?', @youtube.id, true).count
-    tagcount = 1 - tagcount
-    tagcount.times{ @youtube.youtube_video_tags.build }
+    @youtube.youtube_video_tags.build
   end
 
   def update

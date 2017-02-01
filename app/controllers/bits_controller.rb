@@ -4,7 +4,7 @@ class BitsController < ApplicationController
       .order(created_at: :desc)
     @tags = YoutubeVideoTag.group(:name)
       .order('count_name desc')
-      .limit(10)
+      .limit(20)
       .offset(0)
       .count('name')
       .keys
@@ -14,7 +14,7 @@ class BitsController < ApplicationController
   def Search
     @tags = YoutubeVideoTag.group(:name)
       .order('count_name desc')
-      .limit(10)
+      .limit(20)
       .offset(0)
       .count('name')
       .keys
