@@ -4,16 +4,30 @@
     <title>BalletVideos</title>
     <%= csrf_meta_tags %>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
   <body>
+
     <div id="header">
       <div class="row">
-        <div id="login_status" class="col-xs-12 col-sm-4 col-sm-push-8">
+
+        <div class="col-xs-12 col-sm-2">
+          <div id="site_logo">
+            <%= link_to image_tag('site_logo.jpg'), bits_path %>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+            <%= link_to 'ビデオ', bits_path %>
+            <%= link_to 'コミュニティ', bits_path %>
+        </div>
+
+        <div id="login_status">
           <% if user_signed_in? %>
             <strong class="hidden-sm hidden-md hidden-lg col-xs-12"><%= current_user.username %></strong>
             <strong class="hidden-xs"><%= current_user.username %></strong>
@@ -41,29 +55,6 @@
           <% end %>
         </div>
 
-        <div class="col-xs-12 col-sm-2 col-sm-pull-4">
-          <div id="site_logo">
-            <%= link_to image_tag('site_logo.jpg'), bits_path %>
-          </div>
-        </div>
-
-        <div id="search_area" class="col-xs-12 col-sm-6 col-sm-pull-4">
-          <div class="form-group row">
-            <%= form_tag({controller: '/bits', action: :Search, id: @Search}, method: :get) do %>
-              <div class="input-group form-group">
-                <%= search_field_tag :search_params,
-                  session[:search_params],
-                  class: 'form-control',
-                  placeholder: 'キーワード' %>
-                <span class="input-group-btn">
-                <button type="submit" class="btn btn-default">
-                  <i class="glyphicon glyphicon-search"></i> 検索
-                </button>
-                </span>
-              </div>
-            <% end %>
-          </div>
-        </div>
       </div>
     </div>
 

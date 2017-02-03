@@ -1,44 +1,72 @@
-<% unless current_user.nil? %>
-  <% if current_user.user_level > 1 %>
-    <%= link_to 'youtube登録', new_youtube_video_path %><br>
+<div id="bits_index_sidebar" class="col-sm-3">
+  <% unless current_user.nil? %>
+    <% if current_user.user_level > 1 %>
+      <%= link_to 'youtube登録', new_youtube_video_path %><br>
+    <% end %>
   <% end %>
-<% end %>
 
-<% @tags.each do |tag| %>
-  <div class="search_tag">
-    <%= link_to "##{tag}", { controller: :bits, action: :Search, search_params: tag } %>
+  <div id="search_area" class="col-xs-12">
+    <div class="form-group row">
+      <%= form_tag({controller: '/bits', action: :Search, id: @Search}, method: :get) do %>
+        <div class="input-group form-group">
+          <%= search_field_tag :search_params,
+            session[:search_params],
+            class: 'form-control',
+            placeholder: 'キーワード' %>
+          <span class="input-group-btn">
+          <button type="submit" class="btn btn-default">
+            <i class="glyphicon glyphicon-search"></i> 検索
+          </button>
+          </span>
+        </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
 
-<p class="pagenation_count"><%= page_entries_info @youtubes %></p>
-
-<div class="y_index_links row-eq-height">
-  <% @youtubes.each do |youtube| %>
-    <div class="y_video col-xs-6 col-sm-4 col-md-3">
-      <div class="y_video_body">
-        <% url = youtube.url.gsub(/http.+v=/, "") %>
-        <%# url = url.gsub(/&list.+./, "") %>
-        <% url = url.gsub(/&.+./, "") %>
-        <%= link_to image_tag('http://i.ytimg.com/vi/' + url + '/hqdefault.jpg',
-                                width: '100%',
-                                class: 'bits_index_link_img'),
-                              youtube_video_path(youtube) %>
-        <div class="y_video_body_tagarea">
-          <p>
-            <strong>タグ:</strong>
-            <% youtube.youtube_video_tags.each do |tag| %>
-              #<%= tag.name %>
-            <% end %>
-          </p>
-        </div>
-        <div class="y_video_body_textarea">
-          <h4 class="title"><%= link_to youtube.title, youtube_video_path(youtube) %></h4>
-        </div>
-      </div>
+  <% @tags.each do |tag| %>
+    <div class="search_tag">
+      <%= link_to "##{tag}", { controller: :bits, action: :Search, search_params: tag } %><br>
     </div>
   <% end %>
-</div><%# y_index_link %>
+</div>
 
-<div class="pagenation_bar">
-  <%= paginate @youtubes %>
+<div class="col-sm-9">
+  <div class="y_index_links col-sm-12">
+    <% @youtubes.each do |youtube| %>
+      <%= link_to  youtube_video_path(youtube) do %>
+        <div class="y_video_body row">
+          <div class="y_video_img_area col-sm-4" style="padding: 0;">
+            <% url = youtube.url.gsub(/http.+v=/, "") %>
+            <%# url = url.gsub(/&list.+./, "") %>
+            <% url = url.gsub(/&.+./, "") %>
+            <%= image_tag('http://i.ytimg.com/vi/' + url + '/hqdefault.jpg',
+              width: '100%',
+              class: 'bits_index_link_img') %>
+          </div>
+          <div class="y_vide_rightarea col-sm-8">
+            <div class="y_video_body_titlearea">
+              <h4 class="title"><%= youtube.title %></h4>
+            </div>
+            <div class="y_video_body_tagarea">
+              <p>
+                <strong>タグ:</strong>
+                <% youtube.youtube_video_tags.each do |tag| %>
+                  #<%= tag.name %>
+                <% end %>
+              </p>
+            </div>
+            <div class="y_video_textarea">
+              <p><%= truncate(youtube.text, length: 100)%></p>
+            </div>
+          </div>
+        </div>
+      <% end -%>
+    <% end %>
+  </div><%# y_index_link %>
+
+  <p class="pagenation_count"><%= page_entries_info @youtubes %></p>
+
+  <div class="pagenation_bar">
+    <%= paginate @youtubes %>
+  </div>
 </div>
