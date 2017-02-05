@@ -2,6 +2,7 @@ class BitsController < ApplicationController
   def index
     @youtubes = YoutubeVideo.page(params[:page])
       .order(created_at: :desc)
+      .includes(:youtube_video_tags)
     @tags = YoutubeVideoTag.group(:name)
       .order('count_name desc')
       .limit(20)
@@ -53,6 +54,7 @@ class BitsController < ApplicationController
       .page(params[:page])
       .order_as_specified(id: tag_keys)
       .order(created_at: :desc)
+      .includes(:youtube_video_tags)
 
     session[:search_params] = params[:search_params]
     render 'index'

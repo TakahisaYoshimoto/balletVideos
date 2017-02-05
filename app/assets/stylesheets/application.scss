@@ -30,23 +30,9 @@ body {
   background: white;
   margin-bottom: 20px;
 }
-#contants {
-  min-height: 100%;
-  margin-bottom: -200px;
-}
-#push {
-  height: 200px;
-}
-#footer {
-  width: 100%;
-  height: 200px;
-  background: #B1AFB6;
-}
-
 #site_logo {
   padding-top: 4px;
 }
-
 .nav > li > button {
   margin-left: 10px;
 }
@@ -56,4 +42,26 @@ body {
 .nav > li > button > a:hover {
   color: white;
   text-decoration: none;
+}
+
+#contants {
+  min-height: 100%;
+  margin-bottom: -200px;
+}
+
+#push {
+  height: 200px;
+}
+
+#footer {
+  width: 100%;
+  height: 200px;
+  background: #B1AFB6;
+  position: relative;
+}
+#footer_text {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
 }
