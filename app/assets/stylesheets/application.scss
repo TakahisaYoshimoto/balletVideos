@@ -42,20 +42,18 @@ body {
   height: 200px;
   background: #B1AFB6;
 }
+
 #site_logo {
-  padding: 0 0 0 10px;
-  margin: 5px 0 0 0;
-}
-#site_logo img {
-}
-#site_logo a {
-  color: black;
-  margin: 0;
+  padding-top: 4px;
 }
 
-#login_status {
-  margin-top: 10px;
-  padding-right: 20px;
-  height: 100%;
-  text-align: right;
+.nav > li > button {
+  margin-left: 10px;
+}
+.nav > li > button > a {
+  color: white;
+}
+.nav > li > button > a:hover {
+  color: white;
+  text-decoration: none;
 }

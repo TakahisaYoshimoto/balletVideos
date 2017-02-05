@@ -13,50 +13,51 @@
 
   <body>
 
-    <div id="header">
-      <div class="row">
-
-        <div class="col-xs-12 col-sm-2">
-          <div id="site_logo">
-            <%= link_to image_tag('site_logo.jpg'), bits_path %>
-          </div>
-        </div>
-
-        <div class="col-sm-6">
-            <%= link_to 'ビデオ', bits_path %>
-            <%= link_to 'コミュニティ', bits_path %>
-        </div>
-
-        <div id="login_status">
-          <% if user_signed_in? %>
-            <strong class="hidden-sm hidden-md hidden-lg col-xs-12"><%= current_user.username %></strong>
-            <strong class="hidden-xs"><%= current_user.username %></strong>
-            <%= link_to(edit_user_registration_path) do %>
-              <button class="btn btn-primary">
-                <i class="glyphicon glyphicon glyphicon glyphicon-edit"></i> プロフィール変更
-              </button>
-            <% end %>
-            <%= link_to(destroy_user_session_path, method: :delete) do %>
-              <button class="btn btn-primary">
-                <i class="glyphicon glyphicon glyphicon-log-out"></i> ログアウト
-              </button>
-            <% end %>
-          <% else %>
-            <%= link_to(new_user_registration_path) do %>
-              <button class="btn btn-primary">
-                <i class="glyphicon glyphicon-plus"></i> 新規会員登録
-              </button>
-            <% end %>
-            <%= link_to(new_user_session_path) do %>
-              <button class="btn btn-primary">
-                <i class="glyphicon glyphicon glyphicon-log-in"></i> ログイン
-              </button>
-            <% end %>
-          <% end %>
-        </div>
-
+    <nav class="navbar navbar-default">
+      <div class="navbar-header">
+        <button class="navbar-toggle" data-toggle="collapse" data-target=".target">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to image_tag('site_logo.jpg', id: 'site_logo'), bits_path %>
       </div>
-    </div>
+      <div class="collapse navbar-collapse target">
+        <ul class="nav navbar-nav">
+          <li style="height: 100%;"><%= link_to 'ビデオ', bits_path %></li>
+          <li style="height: 100%;"><%= link_to 'コミュニティ', bits_path %></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li>
+              <button class="navbar-btn btn btn-primary">
+                <i class="glyphicon glyphicon glyphicon glyphicon-edit"></i>
+                <%= link_to ' プロフィール変更', edit_user_registration_path %>
+              </button>
+            </li>
+            <li>
+              <button class="navbar-btn btn btn-primary">
+                <i class="glyphicon glyphicon glyphicon-log-out"></i>
+                <%= link_to ' ログアウト', destroy_user_session_path, method: :delete %>
+              </button>
+            </li>
+          <% else %>
+            <li>
+              <button class="navbar-btn btn btn-primary">
+                <i class="glyphicon glyphicon-plus"></i>
+                <%= link_to '新規会員登録', new_user_registration_path %>
+              </button>
+            </li>
+            <li>
+              <button class="navbar-btn btn btn-primary">
+                <i class="glyphicon glyphicon glyphicon-log-in"></i>
+                <%= link_to 'ログイン', new_user_session_path %>
+              </button>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
 
     <div id="contants" class="container">
       <%= yield %>
