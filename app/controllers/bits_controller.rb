@@ -29,8 +29,8 @@ class BitsController < ApplicationController
     }
 
     tg = params[:search_params].gsub("　"," ")
-    tg2 = tg.gsub(" ","%,%")
-    tg2 = '%'+tg2+'%'
+    tg2 = tg.gsub(" ",",")
+    tg2 = tg2
     tg2 = tg2.split(",")
     ph_tag = "name like ?"
     tg.count(" ").times{
