@@ -30,43 +30,45 @@
   <% end %>
 </div>
 
-<div class="col-sm-9">
-  <div class="y_index_links col-sm-12">
-    <% @youtubes.each do |youtube| %>
-      <%= link_to  youtube_video_path(youtube) do %>
-        <div class="y_video_body row">
-          <div class="y_video_img_area col-sm-4" style="padding: 0;">
-            <% url = youtube.url.gsub(/http.+v=/, "") %>
-            <%# url = url.gsub(/&list.+./, "") %>
-            <% url = url.gsub(/&.+./, "") %>
-            <%= image_tag('http://i.ytimg.com/vi/' + url + '/hqdefault.jpg',
-              width: '100%',
-              class: 'bits_index_link_img') %>
+<div id="y_index_links">
+  <div class="col-sm-9">
+    <div class="col-sm-12">
+      <% @youtubes.each do |youtube| %>
+        <%= link_to  youtube_video_path(youtube) do %>
+          <div class="y_video_body row">
+            <div class="y_video_img_area col-sm-4" style="padding: 0;">
+              <% url = youtube.url.gsub(/http.+v=/, "") %>
+              <%# url = url.gsub(/&list.+./, "") %>
+              <% url = url.gsub(/&.+./, "") %>
+              <%= image_tag('http://i.ytimg.com/vi/' + url + '/hqdefault.jpg',
+                width: '100%',
+                class: 'bits_index_link_img') %>
+            </div>
+            <div class="y_vide_rightarea col-sm-8">
+              <div class="y_video_body_titlearea">
+                <h4 class="title"><%= youtube.title %></h4>
+              </div>
+              <div class="y_video_body_tagarea">
+                <p>
+                  <strong>タグ:</strong>
+                  <% youtube.youtube_video_tags.each do |tag| %>
+                    #<%= tag.name %>
+                  <% end %>
+                </p>
+              </div>
+              <div class="y_video_textarea">
+                <p><%= truncate(youtube.text, length: 100)%></p>
+              </div>
+            </div>
           </div>
-          <div class="y_vide_rightarea col-sm-8">
-            <div class="y_video_body_titlearea">
-              <h4 class="title"><%= youtube.title %></h4>
-            </div>
-            <div class="y_video_body_tagarea">
-              <p>
-                <strong>タグ:</strong>
-                <% youtube.youtube_video_tags.each do |tag| %>
-                  #<%= tag.name %>
-                <% end %>
-              </p>
-            </div>
-            <div class="y_video_textarea">
-              <p><%= truncate(youtube.text, length: 100)%></p>
-            </div>
-          </div>
-        </div>
-      <% end -%>
-    <% end %>
-  </div><%# y_index_link %>
+        <% end -%>
+      <% end %>
+    </div><%# y_index_link %>
 
-  <p class="pagenation_count"><%= page_entries_info @youtubes %></p>
+    <p class="pagenation_count"><%= page_entries_info @youtubes %></p>
 
-  <div class="pagenation_bar">
-    <%= paginate @youtubes %>
+    <div class="pagenation_bar">
+      <%= paginate @youtubes %>
+    </div>
   </div>
 </div>

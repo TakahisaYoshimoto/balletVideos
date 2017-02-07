@@ -17,9 +17,15 @@
 
 #bits_index_sidebar {
   background: white;
+  margin-bottom: 15px;
 }
-
-.y_index_links {
+#y_index_links .col-sm-9 {
+  padding-right: 0;
+}
+@media screen and (max-width:768px) {
+  #y_index_links .col-sm-9 {
+      padding: 0;
+  }
 }
 .y_video_body {
   background: white;
