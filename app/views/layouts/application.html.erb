@@ -14,48 +14,50 @@
   <body>
 
     <nav class="navbar navbar-default">
-      <div class="navbar-header">
-        <button class="navbar-toggle" data-toggle="collapse" data-target=".target">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <%= link_to image_tag('site_logo.jpg', id: 'site_logo'), bits_path %>
-      </div>
-      <div class="collapse navbar-collapse target">
-        <ul class="nav navbar-nav">
-          <li style="height: 100%;"><%= link_to 'ビデオ', bits_path %></li>
-          <li style="height: 100%;"><%= link_to 'コミュニティ', bits_path %></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <% if user_signed_in? %>
-            <li>
-              <button class="navbar-btn btn btn-primary">
-                <i class="glyphicon glyphicon glyphicon glyphicon-edit"></i>
-                <%= link_to ' プロフィール変更', edit_user_registration_path %>
-              </button>
-            </li>
-            <li>
-              <button class="navbar-btn btn btn-primary">
-                <i class="glyphicon glyphicon glyphicon-log-out"></i>
-                <%= link_to ' ログアウト', destroy_user_session_path, method: :delete %>
-              </button>
-            </li>
-          <% else %>
-            <li>
-              <button class="navbar-btn btn btn-primary">
-                <i class="glyphicon glyphicon-plus"></i>
-                <%= link_to '新規会員登録', new_user_registration_path %>
-              </button>
-            </li>
-            <li>
-              <button class="navbar-btn btn btn-primary">
-                <i class="glyphicon glyphicon glyphicon-log-in"></i>
-                <%= link_to 'ログイン', new_user_session_path %>
-              </button>
-            </li>
-          <% end %>
-        </ul>
+      <div class="container">
+        <div class="navbar-header">
+          <button class="navbar-toggle" data-toggle="collapse" data-target=".target">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to image_tag('bit_logo.png', id: 'site_logo', height: 35), bits_path %>
+        </div>
+        <div class="collapse navbar-collapse target">
+          <ul class="nav navbar-nav">
+            <li style="height: 100%;"><%= link_to 'ビデオ', bits_path %></li>
+            <li style="height: 100%;"><%= link_to 'コミュニティ', bits_path %></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+              <li>
+                <button class="navbar-btn btn btn-primary">
+                  <i class="glyphicon glyphicon glyphicon glyphicon-edit"></i>
+                  <%= link_to ' プロフィール変更', edit_user_registration_path %>
+                </button>
+              </li>
+              <li>
+                <button class="navbar-btn btn btn-primary">
+                  <i class="glyphicon glyphicon glyphicon-log-out"></i>
+                  <%= link_to ' ログアウト', destroy_user_session_path, method: :delete %>
+                </button>
+              </li>
+            <% else %>
+              <li>
+                <button class="navbar-btn btn btn-primary">
+                  <i class="glyphicon glyphicon-plus"></i>
+                  <%= link_to '新規会員登録', new_user_registration_path %>
+                </button>
+              </li>
+              <li>
+                <button class="navbar-btn btn btn-primary">
+                  <i class="glyphicon glyphicon glyphicon-log-in"></i>
+                  <%= link_to 'ログイン', new_user_session_path %>
+                </button>
+              </li>
+            <% end %>
+          </ul>
+        </div>
       </div>
     </nav>
 

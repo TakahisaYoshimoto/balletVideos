@@ -39,10 +39,11 @@
   /*background: white;*/
 }
 #y_video_show_titlearea{
-  /*background: white;*/
+  margin-top: 10px;
 }
 #y_video_show_titlearea h2{
   font-family: Roboto;
+  margin: 0;
 }
 #y_video_show_text {
   margin-top: 10px;
@@ -96,7 +97,7 @@
 #related_videos_list {
   background: white;
   padding: 3px;
-  margin-top: 0;
+  margin-top: 10px;
 }
 #related_videos_link {
   margin-bottom: 5px;
