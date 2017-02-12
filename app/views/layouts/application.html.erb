@@ -13,7 +13,7 @@
 
   <body>
 
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-inverse">
       <div class="container">
         <div class="navbar-header">
           <button class="navbar-toggle" data-toggle="collapse" data-target=".target">
@@ -24,10 +24,19 @@
           <%= link_to image_tag('bit_logo.png', id: 'site_logo', height: 50), bits_path %>
         </div>
         <div class="collapse navbar-collapse target">
+        <% if user_signed_in? %>
+          <p class="navbar-text" style="margin-top:25px;">ようこそ <strong><%= current_user.username %></strong> さん</p>
+        <% end %>
+<%
+=begin
+%>
           <ul class="nav navbar-nav">
             <li style="height: 100%;"><%= link_to 'ビデオ', bits_path %></li>
             <li style="height: 100%;"><%= link_to 'コミュニティ', bits_path %></li>
           </ul>
+<%
+=end
+%>
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
               <li>
