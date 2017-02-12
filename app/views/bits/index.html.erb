@@ -31,44 +31,57 @@
 </div>
 
 <div id="y_index_links">
-  <div class="col-sm-9">
-    <div class="col-sm-12">
-      <% @youtubes.each do |youtube| %>
-        <%= link_to  youtube_video_path(youtube) do %>
-          <div class="y_video_body row">
-            <div class="y_video_img_area col-sm-4" style="padding: 0;">
-              <% url = youtube.url.gsub(/http.+v=/, "") %>
-              <%# url = url.gsub(/&list.+./, "") %>
-              <% url = url.gsub(/&.+./, "") %>
-              <%= image_tag('http://i.ytimg.com/vi/' + url + '/hqdefault.jpg',
-                width: '100%',
-                class: 'bits_index_link_img') %>
-            </div>
-            <div class="y_vide_rightarea col-sm-8">
-              <div class="y_video_body_titlearea">
-                <h4 class="title"><%= youtube.title %></h4>
-              </div>
-              <div class="y_video_body_tagarea">
-                <p>
-                  <strong>タグ:</strong>
-                  <% youtube.youtube_video_tags.each do |tag| %>
-                    #<%= tag.name %>
-                  <% end %>
-                </p>
-              </div>
-              <div class="y_video_textarea">
-                <p><%= truncate(youtube.text, length: 100)%></p>
-              </div>
-            </div>
+  <div class="col-sm-9 row-eq-height">
+    <% @youtubes.each do |youtube| %>
+      <% if youtube.pickup_level == 4 || youtube.pickup_level == 6 %>
+        <% if youtube.pickup_level == 6  %>
+          <div class="col-sm-4" style="border: 1px dotted orange;">
+            こうこく
           </div>
-        <% end -%>
+        <% end %>
+        <div class="col-sm-8 row-eq-height">
+          <%= link_to youtube_video_path(youtube), class: 'y_video_top_link_lg' do %>
+            <div class="y_video_top_body_lg row">
+              <div class="y_video_top_img_area col-sm-12" style="padding: 0;">
+                <% url = youtube.url.gsub(/http.+v=/, "") %>
+                <% url = url.gsub(/&.+./, "") %>
+                <%= image_tag('http://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
+                  width: '100%',
+                  class: 'bits_index_link_img') %>
+
+                <div class="y_video_top_titlearea_lg">
+                  <h4 class="title"><%= youtube.title %></h4>
+                </div>
+                <div class="y_video_top_catchphrase_lg">
+                  <h5 class="catchphrase"><%= youtube.catchphrase %></h5>
+                </div>
+              </div>
+            </div>
+          <% end -%>
+        </div>
+      <% else %>
+        <div class="col-sm-4 row-eq-height" style="height: 100%;">
+          <%= link_to youtube_video_path(youtube) do %>
+            <div class="y_video_top_body_sm row">
+              <div class="y_video_img_area col-sm-12" style="padding: 0;">
+                <% url = youtube.url.gsub(/http.+v=/, "") %>
+                <% url = url.gsub(/&.+./, "") %>
+                <%= image_tag('http://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
+                  width: '100%',
+                  class: 'bits_index_link_img') %>
+              </div>
+              <div class="y_vide_rightarea">
+                <div class="y_video_top_titlearea_sm">
+                  <h4 class="title"><%= youtube.title %></h4>
+                </div>
+                <div class="y_video_top_catchphrase_sm">
+                  <h5 class="catchphrase"><%= youtube.catchphrase %></h5>
+                </div>
+              </div>
+            </div>
+          <% end -%>
+        </div>
       <% end %>
-    </div><%# y_index_link %>
-
-    <p class="pagenation_count"><%= page_entries_info @youtubes %></p>
-
-    <div class="pagenation_bar">
-      <%= paginate @youtubes %>
-    </div>
+    <% end %>
   </div>
-</div>
+</div><%# y_index_link %>

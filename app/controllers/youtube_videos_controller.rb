@@ -26,6 +26,15 @@ class YoutubeVideosController < ApplicationController
 
   def update
     user_level_check(2)
+    #同じピックアップレベルの他の動画があればピックアップレベルを0にする
+    old_pickup_video = YoutubeVideo.where('pickup_level = ? AND id <> ?',
+      params[:youtube_video][:pickup_level],
+      @youtube.id)
+    old_pickup_video.each do |opv|
+      opv.pickup_level = 0
+      opv.save
+    end
+
     if @youtube.update(youtube_params)
       redirect_to @youtube
     else
@@ -81,6 +90,9 @@ class YoutubeVideosController < ApplicationController
       params.require(:youtube_video).permit(:title,
         :url,
         :text,
+        :pickup_level,
+        :category,
+        :catchphrase,
         youtube_video_tags_attributes: [:id, :name, :master_tag, :_destroy])
     end
 

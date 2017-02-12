@@ -7,6 +7,13 @@
   <% end -%>
 
   <div class="field form-group">
+    <%= f.label :pickup_level, 'ピックアップレベル', class: 'control-label col-sm-2' %>
+    <div class="col-sm-2">
+      <%= f.number_field :pickup_level, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="field form-group">
     <%= f.label :title, 'タイトル', class: 'control-label col-sm-2' %>
     <div class="col-sm-4">
       <%= f.text_field :title, class: 'form-control' %>
@@ -24,6 +31,20 @@
     <%= f.label :text, 'テキスト', class: 'control-label col-sm-2' %>
     <div class="col-sm-4">
       <%= f.text_area :text, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :category, 'カテゴリ', class: 'control-label col-sm-2' %>
+    <div class="col-sm-4">
+      <%= f.select :category, ['クラシック', 'その他'], { include_blank: '選択してください' }, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :catchphrase, 'キャッチフレーズ', class: 'control-label col-sm-2' %>
+    <div class="col-sm-4">
+      <%= f.text_field :catchphrase, class: 'form-control' %>
     </div>
   </div>
 
