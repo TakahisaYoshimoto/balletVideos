@@ -56,8 +56,11 @@
 .y_video_top_titlearea_lg h4, .y_video_top_catchphrase_lg h5 {
   color: white;
 }
-.y_video_top_link_lg {
+.y_video_top_link_lg, .y_video_top_link_sm {
   width: 100%;
+}
+.y_video_top_textarea {
+  margin-top: 10px;
 }
 .y_video_top_titlearea_sm, .y_video_top_catchphrase_sm {
   border-bottom: 1px solid #C9C9C9;
