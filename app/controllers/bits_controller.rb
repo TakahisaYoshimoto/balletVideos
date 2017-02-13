@@ -3,7 +3,7 @@ class BitsController < ApplicationController
     # @youtubes = YoutubeVideo.page(params[:page])
     #   .order(created_at: :desc)
     #   .includes(:youtube_video_tags)
-    @youtubes = YoutubeVideo.where('pickup_level > ? AND pickup_level < ?', 0, 7).order('pickup_level asc').includes(:youtube_video_tags)
+    @youtubes = YoutubeVideo.where('pickup_level > ? AND pickup_level < ?', 0, 8).order('pickup_level asc').includes(:youtube_video_tags)
     @tags = YoutubeVideoTag.group(:name)
       .order('count_name desc')
       .limit(20)

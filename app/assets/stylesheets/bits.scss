@@ -43,7 +43,9 @@
 .y_video_top_catchphrase_lg {
   position: absolute;
   top: 85%;
-  left: 50%;
+  left: 0;
+  display: inline;
+  width: 100%;
 }
 .y_video_top_titlearea_lg h4 {
   font-size: 20px;
@@ -52,6 +54,7 @@
 .y_video_top_catchphrase_lg h5 {
   font-size: 16px;
   text-shadow: 2px 2px 4px #000;
+  text-align: right;
 }
 .y_video_top_titlearea_lg h4, .y_video_top_catchphrase_lg h5 {
   color: white;
@@ -75,6 +78,32 @@
 .y_video_top_titlearea_sm h4, .y_video_top_catchphrase_sm h5 {
   color: black;
   margin: 5px;
+}
+.pickup_level_4 {
+  margin-top: 60%;
+}
+.y_video_top_poster_comment {
+  background: #D3D3D3;
+  border-radius: 3px;
+  position: relative;
+  margin-top: 10px;
+}
+.y_video_top_poster_comment:before {
+  position: absolute;
+  left: 50%;
+  top: -30px;
+  content: '';
+  width: 0;
+  height: 0;
+  background: transparent;
+  border: 20px solid;
+  border-color: transparent transparent #D3D3D3 transparent;
+}
+.y_video_top_poster_comment p {
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 15px;
 }
 
 .y_video_body {

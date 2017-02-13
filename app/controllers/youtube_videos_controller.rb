@@ -93,6 +93,7 @@ class YoutubeVideosController < ApplicationController
         :pickup_level,
         :category,
         :catchphrase,
+        :poster_comment,
         youtube_video_tags_attributes: [:id, :name, :master_tag, :_destroy])
     end
 

@@ -48,6 +48,13 @@
     </div>
   </div>
 
+  <div class="field form-group">
+    <%= f.label :poster_comment, '投稿者コメント', class: 'control-label col-sm-2' %>
+    <div class="col-sm-4">
+      <%= f.text_area :poster_comment, class: 'form-control' %>
+    </div>
+  </div>
+
   <%= f.nested_fields_for :youtube_video_tags, wrapper_tag: :div, wrapper_options: { class: 'row field form-group' } do |q| %>
     <%= q.label :name, 'タグ', class: 'control-label col-sm-2' %>
     <div class="col-sm-4">

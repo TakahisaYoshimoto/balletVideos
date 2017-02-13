@@ -32,31 +32,61 @@
 
 <div id="y_index_links">
   <div class="col-sm-9 row-eq-height">
-    <% @youtubes.each do |youtube| %>
-      <% if youtube.pickup_level == 4 || youtube.pickup_level == 6 %>
-        <% if youtube.pickup_level == 6  %>
-          <div class="hidden-xs col-sm-4" style="border: 1px dotted black;">
-            こうこく
+    <%# @youtubes.each do |youtube| %>
+    <% for pul in 1..7 do %>
+      <% youtube = @youtubes.where('pickup_level = ?', pul).first %>
+      <% unless youtube.nil? %>
+        <% if youtube.pickup_level == 4 %>
+          <div class="col-xs-12 col-sm-8 row-eq-height">
+            <%= link_to youtube_video_path(youtube), class: 'y_video_top_link_lg' do %>
+              <div class="y_video_top_body_lg row">
+                <div class="y_video_top_img_area col-sm-12" style="padding: 0;">
+                  <% url = youtube.url.gsub(/http.+v=/, "") %>
+                  <% url = url.gsub(/&.+./, "") %>
+                  <%= image_tag('http://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
+                    width: '100%',
+                    class: 'bits_index_link_img') %>
+
+                  <div class="y_video_top_titlearea_lg hidden-xs">
+                    <h4 class="title"><%= youtube.title %></h4>
+                  </div>
+                  <div class="y_video_top_catchphrase_lg hidden-xs">
+                    <h5 class="catchphrase"><%= youtube.catchphrase %></h5>
+                  </div>
+                  <div class="y_video_top_textarea hidden-sm hidden-md hidden-lg" style="padding: 0;">
+                    <div class="y_video_top_titlearea_sm">
+                      <h4 class="title"><%= youtube.title %></h4>
+                    </div>
+                    <div class="y_video_top_catchphrase_sm">
+                      <h5 class="catchphrase"><%= youtube.catchphrase %></h5>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="pickup_level_4 hidden-xs">
+                  <div class="y_video_top_poster_comment">
+                    <%= simple_format(youtube.poster_comment) %>
+                  </div>
+                </div>
+
+              </div>
+            <% end -%>
           </div>
-        <% end %>
-        <div class="col-xs-12 col-sm-8 row-eq-height">
-          <%= link_to youtube_video_path(youtube), class: 'y_video_top_link_lg' do %>
-            <div class="y_video_top_body_lg row">
-              <div class="y_video_top_img_area col-sm-12" style="padding: 0;">
-                <% url = youtube.url.gsub(/http.+v=/, "") %>
-                <% url = url.gsub(/&.+./, "") %>
-                <%= image_tag('http://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
-                  width: '100%',
-                  class: 'bits_index_link_img') %>
-
-                <div class="y_video_top_titlearea_lg hidden-xs">
-                  <h4 class="title"><%= youtube.title %></h4>
+        <% elsif youtube.pickup_level == 5 || youtube.pickup_level == 6 %>
+          <% if youtube.pickup_level == 5 %>
+          <div class="col-xs-12 col-sm-4 row-eq-height" style="height: 100%;">
+          <% end %>
+            <%= link_to youtube_video_path(youtube), class: 'y_video_top_link_sm' do %>
+              <div class="y_video_top_body_sm row">
+                <div class="y_video_img_area col-sm-12" style="padding: 0;">
+                  <% url = youtube.url.gsub(/http.+v=/, "") %>
+                  <% url = url.gsub(/&.+./, "") %>
+                  <%= image_tag('http://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
+                    width: '100%',
+                    class: 'bits_index_link_img') %>
                 </div>
-                <div class="y_video_top_catchphrase_lg hidden-xs">
-                  <h5 class="catchphrase"><%= youtube.catchphrase %></h5>
-                </div>
-
-                <div class="y_video_top_textarea hidden-sm hidden-md hidden-lg" style="padding: 0;">
+                <div class="y_video_top_textarea col-sm-12" style="padding: 0;">
                   <div class="y_video_top_titlearea_sm">
                     <h4 class="title"><%= youtube.title %></h4>
                   </div>
@@ -65,31 +95,69 @@
                   </div>
                 </div>
               </div>
+            <% end %>
+          <% if youtube.pickup_level == 6 %>
+          </div>
+          <% end %>
+        <% elsif youtube.pickup_level == 7 %>
+          <div class="hidden-xs col-sm-4">
+            <div style="border: 1px dotted black; height:100%;">
+              こうこく
             </div>
-          <% end -%>
-        </div>
-      <% else %>
-        <div class="col-xs-12 col-sm-4 row-eq-height" style="height: 100%;">
-          <%= link_to youtube_video_path(youtube), class: 'y_video_top_link_sm' do %>
-            <div class="y_video_top_body_sm row">
-              <div class="y_video_img_area col-sm-12" style="padding: 0;">
-                <% url = youtube.url.gsub(/http.+v=/, "") %>
-                <% url = url.gsub(/&.+./, "") %>
-                <%= image_tag('http://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
-                  width: '100%',
-                  class: 'bits_index_link_img') %>
-              </div>
-              <div class="y_video_top_textarea col-sm-12" style="padding: 0;">
-                <div class="y_video_top_titlearea_sm">
-                  <h4 class="title"><%= youtube.title %></h4>
+          </div>
+
+          <div class="col-xs-12 col-sm-8 row-eq-height">
+            <%= link_to youtube_video_path(youtube), class: 'y_video_top_link_lg' do %>
+              <div class="y_video_top_body_lg row">
+                <div class="y_video_top_img_area col-sm-12" style="padding: 0;">
+                  <% url = youtube.url.gsub(/http.+v=/, "") %>
+                  <% url = url.gsub(/&.+./, "") %>
+                  <%= image_tag('http://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
+                    width: '100%',
+                    class: 'bits_index_link_img') %>
+
+                  <div class="y_video_top_titlearea_lg hidden-xs">
+                    <h4 class="title"><%= youtube.title %></h4>
+                  </div>
+                  <div class="y_video_top_catchphrase_lg hidden-xs">
+                    <h5 class="catchphrase"><%= youtube.catchphrase %></h5>
+                  </div>
+
+                  <div class="y_video_top_textarea hidden-sm hidden-md hidden-lg" style="padding: 0;">
+                    <div class="y_video_top_titlearea_sm">
+                      <h4 class="title"><%= youtube.title %></h4>
+                    </div>
+                    <div class="y_video_top_catchphrase_sm">
+                      <h5 class="catchphrase"><%= youtube.catchphrase %></h5>
+                    </div>
+                  </div>
                 </div>
-                <div class="y_video_top_catchphrase_sm">
-                  <h5 class="catchphrase"><%= youtube.catchphrase %></h5>
+              </div>
+            <% end -%>
+          </div>
+        <% else %>
+          <div class="col-xs-12 col-sm-4 row-eq-height" style="height: 100%;">
+            <%= link_to youtube_video_path(youtube), class: 'y_video_top_link_sm' do %>
+              <div class="y_video_top_body_sm row">
+                <div class="y_video_img_area col-sm-12" style="padding: 0;">
+                  <% url = youtube.url.gsub(/http.+v=/, "") %>
+                  <% url = url.gsub(/&.+./, "") %>
+                  <%= image_tag('http://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
+                    width: '100%',
+                    class: 'bits_index_link_img') %>
+                </div>
+                <div class="y_video_top_textarea col-sm-12" style="padding: 0;">
+                  <div class="y_video_top_titlearea_sm">
+                    <h4 class="title"><%= youtube.title %></h4>
+                  </div>
+                  <div class="y_video_top_catchphrase_sm">
+                    <h5 class="catchphrase"><%= youtube.catchphrase %></h5>
+                  </div>
                 </div>
               </div>
-            </div>
-          <% end -%>
-        </div>
+            <% end -%>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
   </div>
