@@ -1,6 +1,6 @@
 class BitsController < ApplicationController
   def index
-    @youtubes = YoutubeVideo.where('pickup_level > ? AND pickup_level < ?', 0, 8).order('pickup_level asc').includes(:youtube_video_tags)
+    @youtubes = YoutubeVideo.where('pickup_level > ? AND pickup_level < ?', 0, 14).order('pickup_level asc').includes(:youtube_video_tags)
     @tags = TopTagList.all.select(:genre, :tag_name).order('genre asc, tag_name asc')
     @genres = TopTagList.select(:genre).order('genre asc').group(:genre)
     session[:search_params] = ""

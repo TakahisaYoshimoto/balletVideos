@@ -4,7 +4,8 @@ class YoutubeVideo < ApplicationRecord
                                 allow_destroy: true,
                                 reject_if: proc { |attributes| attributes['name'].blank? }
 
-  validates :url, uniqueness: true
+  validates :title, presence: true
+  validates :url, uniqueness: true, presence: true
 
   paginates_per 12  # 1ページあたり4項目表示
 

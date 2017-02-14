@@ -67,5 +67,54 @@
         <% end %>
       <% end %>
     </div>
+
+    <div class="col-xs-12 col-sm-4 row-eq-height" style="height: 100%;">
+      <% unless @youtubes[view_num].nil? %>
+        <% if @youtubes[view_num][:pickup_level] == 8 %>
+          <%= render 'list_sm123', youtube: @youtubes[view_num] %>
+          <% view_num = view_num + 1 %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-xs-12 col-sm-4 row-eq-height" style="height: 100%;">
+      <% unless @youtubes[view_num].nil? %>
+        <% if @youtubes[view_num][:pickup_level] == 9 %>
+          <%= render 'list_sm123', youtube: @youtubes[view_num] %>
+          <% view_num = view_num + 1 %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-xs-12 col-sm-4 row-eq-height" style="height: 100%;">
+      <% unless @youtubes[view_num].nil? %>
+        <% if @youtubes[view_num][:pickup_level] == 10 %>
+          <%= render 'list_sm123', youtube: @youtubes[view_num] %>
+          <% view_num = view_num + 1 %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="col-xs-12 col-sm-4 row-eq-height" style="height: 100%;">
+      <% unless @youtubes[view_num].nil? %>
+        <% if @youtubes[view_num][:pickup_level] == 11 %>
+          <%= render 'list_sm56', youtube: @youtubes[view_num] %>
+          <% view_num = view_num + 1 %>
+        <% end %>
+      <% end %>
+      <% unless @youtubes[view_num].nil? %>
+        <% if @youtubes[view_num][:pickup_level] == 12 %>
+          <%= render 'list_sm56', youtube: @youtubes[view_num] %>
+          <% view_num = view_num + 1 %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="col-xs-12 col-sm-8 row-eq-height">
+      <% unless @youtubes[view_num].nil? %>
+        <% if @youtubes[view_num][:pickup_level] == 13 %>
+          <%= render 'list_md4', youtube: @youtubes[view_num] %>
+          <% view_num = view_num + 1 %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
