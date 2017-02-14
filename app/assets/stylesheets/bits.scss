@@ -10,13 +10,14 @@
 #search_area {
   margin-top: 15px;
 }
+
 .search_tag {
-  margin-left: 15px;
+  margin: 5px 0 5px 15px;
 }
-.search_tag a {
+.search_tag a, .genre a {
   color: black;
 }
-.search_tag a:hover {
+.search_tag a:hover, .genre a:hover {
   color: gray;
   text-decoration: none;
 }

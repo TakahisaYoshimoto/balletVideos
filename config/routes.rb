@@ -1,20 +1,10 @@
 Rails.application.routes.draw do
-  get 'top_tag_lists/index'
-
-  get 'top_tag_lists/new'
-
-  get 'top_tag_lists/edit'
-
-  get 'top_tag_list/new'
-
-  get 'top_tag_list/edit'
-
-  get 'top_tag_list/show'
-
   devise_for :users
   resources :bits, only: [:index] do
     collection do
       get :Search
+      get :genreSearch
+      get :nogenreSearch
     end
   end
   resources :youtube_videos, only: [:new, :create, :edit, :update, :show, :destroy]
