@@ -1,0 +1,27 @@
+  <%= link_to youtube_video_path(youtube), class: 'y_video_top_link_lg' do %>
+    <div class="y_video_top_body_lg row">
+      <div class="y_video_top_img_area col-sm-12" style="padding: 0;">
+        <% url = youtube.url.gsub(/http.+v=/, "") %>
+        <% url = url.gsub(/&.+./, "") %>
+        <%= image_tag('http://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
+          width: '100%',
+          class: 'bits_index_link_img') %>
+
+        <div class="y_video_top_titlearea_lg hidden-xs">
+          <h4 class="title"><%= youtube.title %></h4>
+        </div>
+        <div class="y_video_top_catchphrase_lg hidden-xs">
+          <h5 class="catchphrase"><%= youtube.catchphrase %></h5>
+        </div>
+
+        <div class="y_video_top_textarea hidden-sm hidden-md hidden-lg" style="padding: 0;">
+          <div class="y_video_top_titlearea_sm">
+            <h4 class="title"><%= youtube.title %></h4>
+          </div>
+          <div class="y_video_top_catchphrase_sm">
+            <h5 class="catchphrase"><%= youtube.catchphrase %></h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end -%>
