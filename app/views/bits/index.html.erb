@@ -2,6 +2,7 @@
   <% unless current_user.nil? %>
     <% if current_user.user_level > 1 %>
       <%= link_to 'youtube登録', new_youtube_video_path %><br>
+      <%= link_to '表示タグ編集', top_tag_lists_path %><br>
     <% end %>
   <% end %>
 
@@ -23,10 +24,17 @@
     </div>
   </div>
 
-  <% @tags.each do |tag| %>
-    <div class="search_tag">
-      <%= link_to "##{tag}", { controller: :bits, action: :Search, search_params: tag } %><br>
+  <% @genres.each do |genre| %>
+    <div class="genre">
+      <strong><%= genre.genre %></strong>
     </div>
+    <% @tags.each do |tag| %>
+      <% if tag.genre == genre.genre %>
+        <div class="search_tag">
+          <%= link_to "#{tag.tag_name}", { controller: :bits, action: :Search, search_params: tag.tag_name } %><br>
+        </div>
+      <% end %>
+    <% end %>
   <% end %>
 </div>
 

@@ -1,0 +1,2 @@
+class TopTagList < ApplicationRecord
+end

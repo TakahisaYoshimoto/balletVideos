@@ -1,0 +1,11 @@
+<h2>タグ一覧</h2>
+
+<%= link_to '新規タグ登録', new_top_tag_list_path %>
+
+<% @tags.each do |tag| %>
+  <div style="margin: 15px;">
+    <strong><%= tag.genre %></strong>: <%= tag.tag_name %>
+    <%= link_to '編集する', edit_top_tag_list_path(tag) %>
+    <%= link_to '削除する', top_tag_list_path(tag), method: :delete, data: { confirm: "削除してよろしいですか？" } %>
+  </div>
+<% end %>

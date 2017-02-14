@@ -11,8 +11,14 @@
   margin-top: 15px;
 }
 .search_tag {
-  margin-right: 5px;
-  display: inline;
+  margin-left: 15px;
+}
+.search_tag a {
+  color: black;
+}
+.search_tag a:hover {
+  color: gray;
+  text-decoration: none;
 }
 
 #bits_index_sidebar {
