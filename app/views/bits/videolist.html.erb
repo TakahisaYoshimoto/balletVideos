@@ -2,6 +2,14 @@
 
 <div id="y_index_links">
   <div class="col-sm-9">
+  <%= session[:genre] %>
+  <% if controller.action_name == 'genreSearch' %>
+    <%= link_to '新着順', { controller: :bits, action: :genreSearch, search_params: session[:genre], or: 'time' } %>
+  <% elsif controller.action_name == 'Search' %>
+    <%= link_to '新着順', { controller: :bits, action: :Search, search_params: session[:genre], or: 'time' } %>
+  <% else %>
+    <%= link_to '新着順', { controller: :bits, action: :nogenreSearch, search_params: session[:genre], or: 'time' } %>
+  <% end %>
     <div class="col-sm-12">
       <% @youtubes.each do |youtube| %>
         <%= link_to  youtube_video_path(youtube) do %>
@@ -18,6 +26,7 @@
               <div class="y_video_body_titlearea">
                 <h4 class="title"><%= youtube.title %></h4>
               </div>
+              <%= youtube.pv_count %>
               <div class="y_video_body_tagarea">
                 <p>
                   <strong>タグ:</strong>

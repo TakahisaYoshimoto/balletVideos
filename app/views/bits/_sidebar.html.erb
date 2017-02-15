@@ -19,17 +19,17 @@
 
   <% genres.each do |genre| %>
     <div class="genre">
-      <strong><%= link_to genre.genre, { controller: :bits, action: :genreSearch, search_params: genre.genre } %></strong>
+      <strong><%= link_to genre.genre, { controller: :bits, action: :genreSearch, search_params: genre.genre, or: 'pv' } %></strong>
     </div>
     <% tags.each do |tag| %>
       <% if tag.genre == genre.genre %>
         <div class="search_tag">
-          <%= link_to "#{tag.tag_name}", { controller: :bits, action: :Search, search_params: tag.tag_name } %><br>
+          <%= link_to "#{tag.tag_name}", { controller: :bits, action: :Search, search_params: tag.tag_name, or: 'pv' } %><br>
         </div>
       <% end %>
     <% end %>
   <% end %>
   <div class="genre">
-    <strong><%= link_to 'その他', { controller: :bits, action: :nogenreSearch, search_params: "その他" } %></strong>
+    <strong><%= link_to 'その他', { controller: :bits, action: :nogenreSearch, search_params: "その他", or: 'pv' } %></strong>
   </div>
 </div>

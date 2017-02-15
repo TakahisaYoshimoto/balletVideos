@@ -41,13 +41,31 @@ class BitsController < ApplicationController
       .offset(0)
       .count(:id).keys
 
-    @youtubes = YoutubeVideo.where("(#{ph_title}) OR (id IN (?))", *sp, youtubetags)
-      .page(params[:page])
-      .order_as_specified(id: tag_keys)
-      .order(created_at: :desc)
-      .includes(:youtube_video_tags)
+    if params[:or] == "pv"
+      @youtubes = YoutubeVideo.where("(#{ph_title}) OR (id IN (?))", *sp, youtubetags)
+        .page(params[:page])
+        .order(pv_count: :desc)
+        .includes(:youtube_video_tags)
+    elsif params[:or] == "time"
+      @youtubes = YoutubeVideo.where("(#{ph_title}) OR (id IN (?))", *sp, youtubetags)
+        .page(params[:page])
+        .order(created_at: :desc)
+        .includes(:youtube_video_tags)
+    else
+      @youtubes = YoutubeVideo.where("(#{ph_title}) OR (id IN (?))", *sp, youtubetags)
+        .page(params[:page])
+        .order_as_specified(id: tag_keys)
+        .order(created_at: :desc)
+        .includes(:youtube_video_tags)
+    end
+    # @youtubes = YoutubeVideo.where("(#{ph_title}) OR (id IN (?))", *sp, youtubetags)
+    #   .page(params[:page])
+    #   .order_as_specified(id: tag_keys)
+    #   .order(created_at: :desc)
+    #   .includes(:youtube_video_tags)
 
     session[:search_params] = params[:search_params]
+    session[:genre] = params[:search_params]
     render 'videolist'
   end
 
@@ -60,11 +78,19 @@ class BitsController < ApplicationController
     c = tg.length-1
     c.times{ ph_tag += " OR youtube_video_tags.name like ?" } if tg.length > 1
 
-    @youtubes = YoutubeVideo.joins(:youtube_video_tags).where("#{ph_tag}", *tg)
-      .page(params[:page])
-      .order(created_at: :desc)
-      .includes(:youtube_video_tags)
+    if params[:or] == "pv"
+      @youtubes = YoutubeVideo.joins(:youtube_video_tags).where("#{ph_tag}", *tg)
+        .page(params[:page])
+        .order(pv_count: :desc)
+        .includes(:youtube_video_tags)
+    else
+      @youtubes = YoutubeVideo.joins(:youtube_video_tags).where("#{ph_tag}", *tg)
+        .page(params[:page])
+        .order(created_at: :desc)
+        .includes(:youtube_video_tags)
+    end
 
+    session[:genre] = params[:search_params]
     render 'videolist'
   end
 
@@ -82,11 +108,20 @@ class BitsController < ApplicationController
       .group(:youtube_video_id)
       .having('count(youtube_video_id) >= ?', 1)
 
-    @youtubes = YoutubeVideo.where.not("id IN (?)", youtubetags)
-      .page(params[:page])
-      .order(created_at: :desc)
-      .includes(:youtube_video_tags)
+    if params[:or] == "pv"
+      @youtubes = YoutubeVideo.where.not("id IN (?)", youtubetags)
+        .page(params[:page])
+        .order(pv_count: :desc)
+        .includes(:youtube_video_tags)
+    else
+      @youtubes = YoutubeVideo.where.not("id IN (?)", youtubetags)
+        .page(params[:page])
+        .order(created_at: :desc)
+        .includes(:youtube_video_tags)
+    end
 
+    session[:search_params] = ""
+    session[:genre] = "その他"
     render 'videolist'
   end
 end
