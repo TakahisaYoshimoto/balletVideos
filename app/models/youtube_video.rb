@@ -7,7 +7,8 @@ class YoutubeVideo < ApplicationRecord
   validates :title, presence: true
   validates :url, uniqueness: true, presence: true
 
-  is_impressionable #PV数保存の為のGemの関数
+  #PV数保存の為のGemの関数
+  is_impressionable :counter_cache => true, :column_name => :pv_count
 
   paginates_per 12  # 1ページあたり4項目表示
 

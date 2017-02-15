@@ -52,7 +52,6 @@ class YoutubeVideosController < ApplicationController
     @comments = Comment.where('youtube_video_id = ?', params[:id]).order('created_at desc')
     @replys = @comments.where('reply != ?', 0).reorder('created_at asc')
     impressionist(@youtube, nil, :unique => [:session_hash])
-    @page_views = @youtube.impressionist_count
     each_count = 0
     ph_tag = ""
     tags = Array.new
