@@ -7,6 +7,8 @@ class YoutubeVideo < ApplicationRecord
   validates :title, presence: true
   validates :url, uniqueness: true, presence: true
 
+  is_impressionable #PV数保存の為のGemの関数
+
   paginates_per 12  # 1ページあたり4項目表示
 
   extend OrderAsSpecified #gem extend OrderAsSpecified で並び替えする為の記述

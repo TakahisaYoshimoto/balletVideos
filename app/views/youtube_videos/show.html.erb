@@ -18,6 +18,8 @@
           <%= link_to "##{tag.name}", { controller: :bits, action: :Search, search_params: tag.name } %>
         <% end -%>
       </p>
+
+      <p id="y_video_show_pv_count">視聴回数<%= number_with_delimiter(@page_views) %>回</p>
     </div>
 
     <div id="y_video_show_text">
@@ -46,6 +48,7 @@
         </div>
       <% end %>
 
+      <% if @comments.nil? %>
       <div id="y_video_comment_list_area">
         <% @comments.each do |comment| %>
           <% if comment.reply == 0 %>
@@ -92,8 +95,8 @@
           <% end %>
         <% end %>
       </div>
+      <% end %>
     </div>
-    <%= link_to '動画一覧へ戻る', bits_path %>
 
     <% unless current_user.nil? %>
       <% if @youtube.user_id == current_user.id && current_user.user_level > 1 %>
