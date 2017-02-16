@@ -45,6 +45,7 @@ class BitsController < ApplicationController
       @youtubes = YoutubeVideo.where("(#{ph_title}) OR (id IN (?))", *sp, youtubetags)
         .page(params[:page])
         .order(pv_count: :desc)
+        .order(created_at: :desc)
         .includes(:youtube_video_tags)
     elsif params[:or] == "time"
       @youtubes = YoutubeVideo.where("(#{ph_title}) OR (id IN (?))", *sp, youtubetags)
@@ -82,6 +83,7 @@ class BitsController < ApplicationController
       @youtubes = YoutubeVideo.joins(:youtube_video_tags).where("#{ph_tag}", *tg)
         .page(params[:page])
         .order(pv_count: :desc)
+        .order(created_at: :desc)
         .includes(:youtube_video_tags)
     else
       @youtubes = YoutubeVideo.joins(:youtube_video_tags).where("#{ph_tag}", *tg)
@@ -112,6 +114,7 @@ class BitsController < ApplicationController
       @youtubes = YoutubeVideo.where.not("id IN (?)", youtubetags)
         .page(params[:page])
         .order(pv_count: :desc)
+        .order(created_at: :desc)
         .includes(:youtube_video_tags)
     else
       @youtubes = YoutubeVideo.where.not("id IN (?)", youtubetags)

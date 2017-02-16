@@ -3,13 +3,30 @@
 <div id="y_index_links">
   <div class="col-sm-9">
   <%= session[:genre] %>
-  <% if controller.action_name == 'genreSearch' %>
-    <%= link_to '新着順', { controller: :bits, action: :genreSearch, search_params: session[:genre], or: 'time' } %>
-  <% elsif controller.action_name == 'Search' %>
-    <%= link_to '新着順', { controller: :bits, action: :Search, search_params: session[:genre], or: 'time' } %>
-  <% else %>
-    <%= link_to '新着順', { controller: :bits, action: :nogenreSearch, search_params: session[:genre], or: 'time' } %>
-  <% end %>
+  <div id="order_change">
+    <% if controller.action_name == 'genreSearch' %>
+      <% if /or=pv/ =~ request.fullpath %>
+        再生回数順|<%= link_to '新着順', { controller: :bits, action: :genreSearch, search_params: session[:genre], or: 'time' } %>
+      <% else %>
+        <%= link_to '再生回数順', { controller: :bits, action: :genreSearch, search_params: session[:genre], or: 'pv' } %>|新着順
+      <% end %>
+    <% elsif controller.action_name == 'Search' %>
+      <% if /or=pv/ =~ request.fullpath %>
+        再生回数順|<%= link_to '新着順', { controller: :bits, action: :Search, search_params: session[:genre], or: 'time' } %>
+      <% else %>
+        <%= link_to '再生回数順', { controller: :bits, action: :Search, search_params: session[:genre], or: 'pv' } %>|新着順
+      <% end %>
+    <% else %>
+      <% if /or=pv/ =~ request.fullpath %>
+        再生回数順|<%= link_to '新着順', { controller: :bits, action: :nogenreSearch, search_params: session[:genre], or: 'time' } %>
+      <% else %>
+        <%= link_to '再生回数順', { controller: :bits, action: :nogenreSearch, search_params: session[:genre], or: 'pv' } %>|新着順
+      <% end %>
+    <% end %>
+  </div>
+<%
+=begin
+%>
     <div class="col-sm-12">
       <% @youtubes.each do |youtube| %>
         <%= link_to  youtube_video_path(youtube) do %>
@@ -26,7 +43,6 @@
               <div class="y_video_body_titlearea">
                 <h4 class="title"><%= youtube.title %></h4>
               </div>
-              <%= youtube.pv_count %>
               <div class="y_video_body_tagarea">
                 <p>
                   <strong>タグ:</strong>
@@ -38,6 +54,30 @@
               <div class="y_video_textarea">
                 <p><%= truncate(youtube.text, length: 100)%></p>
               </div>
+            </div>
+          </div>
+        <% end -%>
+      <% end %>
+    </div><%# y_index_link %>
+<%
+=end
+%>
+    <div class="col-sm-12 row-eq-height" style="padding: 0;">
+      <% @youtubes.each do |youtube| %>
+        <%= link_to  youtube_video_path(youtube), class: 'col-xs-12 col-sm-4 row-eq-height', style: 'margin-bottom:10px;' do %>
+          <div class="y_video_img_area col-sm-12" style="padding: 0;">
+            <% url = youtube.url.gsub(/http.+v=/, "") %>
+            <% url = url.gsub(/&.+./, "") %>
+            <%= image_tag('http://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
+              width: '100%',
+              class: 'bits_index_link_img') %>
+          </div>
+          <div class="y_video_top_textarea col-sm-12" style="padding: 0;margin-top:0;">
+            <div class="y_video_top_titlearea_sm">
+              <h4 class="title"><%= youtube.title %></h4>
+            </div>
+            <div class="y_video_top_catchphrase_sm">
+              <h5 class="catchphrase"><%= youtube.catchphrase %></h5>
             </div>
           </div>
         <% end -%>
