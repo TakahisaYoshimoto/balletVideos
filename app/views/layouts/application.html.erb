@@ -28,8 +28,8 @@
         <% unless current_user.nil? %>
           <% if current_user.user_level > 1 %>
             <ul class="nav navbar-nav">
-              <li style="margin-top:15px;"><%= link_to 'youtube登録', new_youtube_video_path %></li>
-              <li style="margin-top:15px;"><%= link_to '表示タグ編集', top_tag_lists_path %></li>
+              <li><%= link_to 'youtube登録', new_youtube_video_path %></li>
+              <li><%= link_to '表示タグ編集', top_tag_lists_path %></li>
             </ul>
           <% end %>
         <% end %>
@@ -37,29 +37,17 @@
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
               <li>
-                <button class="navbar-btn btn btn-primary">
-                  <i class="glyphicon glyphicon glyphicon glyphicon-edit"></i>
                   <%= link_to ' プロフィール変更', edit_user_registration_path %>
-                </button>
               </li>
               <li>
-                <button class="navbar-btn btn btn-primary">
-                  <i class="glyphicon glyphicon glyphicon-log-out"></i>
                   <%= link_to ' ログアウト', destroy_user_session_path, method: :delete %>
-                </button>
               </li>
             <% else %>
               <li>
-                <button class="navbar-btn btn btn-primary">
-                  <i class="glyphicon glyphicon-plus"></i>
                   <%= link_to '新規会員登録', new_user_registration_path %>
-                </button>
               </li>
               <li>
-                <button class="navbar-btn btn btn-primary">
-                  <i class="glyphicon glyphicon glyphicon-log-in"></i>
                   <%= link_to 'ログイン', new_user_session_path %>
-                </button>
               </li>
             <% end %>
           </ul>

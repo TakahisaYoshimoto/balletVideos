@@ -39,16 +39,14 @@ body {
 .navbar {
   min-height: 75px;
 }
-.nav > li > button {
-  margin-left: 10px;
-  margin-top: 20px;
-}
-.nav > li > button > a {
-  color: white;
-}
-.nav > li > button > a:hover {
-  color: white;
-  text-decoration: none;
+
+@media screen and (min-width:768px) {
+  .nav > li a {
+    margin-top: 15px;
+  }
+  .nav > li:not(:last-child) a {
+    border-right: 1px solid white;
+  }
 }
 
 #contants {
