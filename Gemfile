@@ -37,8 +37,6 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'execjs'
 gem 'therubyracer'
-gem 'aws-sdk', '1.61'
-gem 'dotenv-rails'
 
 gem 'devise'
 gem 'bootstrap-sass'
