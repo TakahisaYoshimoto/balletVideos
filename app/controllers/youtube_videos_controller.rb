@@ -12,7 +12,17 @@ class YoutubeVideosController < ApplicationController
     user_level_check(2)
     @youtube = YoutubeVideo.new(youtube_params)
     @youtube.user_id = current_user.id
+
     if @youtube.save
+      #同じピックアップレベルの他の動画があればピックアップレベルを0にする
+      old_pickup_video = YoutubeVideo.where('pickup_level = ? AND id <> ?',
+        params[:youtube_video][:pickup_level],
+        @youtube.id)
+      old_pickup_video.each do |opv|
+        opv.pickup_level = 0
+        opv.save
+      end
+      
       redirect_to root_path
     else
       render 'new'

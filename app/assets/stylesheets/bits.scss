@@ -69,6 +69,10 @@
 }
 .y_video_top_link_lg, .y_video_top_link_sm {
   width: 100%;
+  text-decoration: none;
+}
+.y_video_top_link_lg:hover {
+  text-decoration: none;
 }
 .y_video_top_textarea {
   margin-top: 10px;
@@ -107,11 +111,18 @@
   border: 20px solid;
   border-color: transparent transparent #D3D3D3 transparent;
 }
-.y_video_top_poster_comment p {
-  color: black;
+.y_video_top_poster_comment_label {
   font-weight: bold;
+  color: black;
   font-size: 20px;
   padding: 15px;
+  border-bottom: 2px solid gray;
+  text-align: center;
+}
+.y_video_top_poster_comment_text {
+  color: black;
+  font-size: 20px;
+  padding: 0 15px 15px 15px;
 }
 
 .y_video_body {
