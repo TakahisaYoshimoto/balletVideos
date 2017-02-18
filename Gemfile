@@ -36,7 +36,6 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'execjs'
-gem 'therubyracer'
 
 gem 'devise'
 gem 'bootstrap-sass'
@@ -49,6 +48,7 @@ gem 'dotenv-rails'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'therubyracer'
 end
 
 group :development do
@@ -58,6 +58,10 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :production do
+  gem 'therubyracer', git: 'https://github.com/cowboyd/therubyracer.git'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
