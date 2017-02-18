@@ -141,8 +141,6 @@
 .y_video_textarea p {
   color: gray;
 }
-.bits_index_link_img {
-}
 .pagenation_count {
   font-size: 14px;
   font-weight: bold;
@@ -151,6 +149,12 @@
   text-align: center;
 }
 
+#y_video_search_result_tagarea h3 {
+ text-align: center;
+}
+#y_video_search_result_tagarea p {
+ padding: 0 15px;
+}
 #order_change {
   width: 100%;
   text-align: right;

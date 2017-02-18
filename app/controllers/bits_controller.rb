@@ -3,7 +3,7 @@ class BitsController < ApplicationController
     @pic_youtubes = YoutubeVideo.where('pickup_level > ? AND pickup_level < ?', 0, 4)
       .order('pickup_level asc')
       .includes(:youtube_video_tags)
-    @youtubes = YoutubeVideo.where('pickup_level > ? OR pickup_level IS NULL', 3)
+    @youtubes = YoutubeVideo.where('pickup_level > ? OR pickup_level = ? OR pickup_level IS NULL', 3, 0)
       .order('created_at desc')
       .limit(10)
       .offset(0)
@@ -65,11 +65,15 @@ class BitsController < ApplicationController
         .order(created_at: :desc)
         .includes(:youtube_video_tags)
     end
-    # @youtubes = YoutubeVideo.where("(#{ph_title}) OR (id IN (?))", *sp, youtubetags)
-    #   .page(params[:page])
-    #   .order_as_specified(id: tag_keys)
-    #   .order(created_at: :desc)
-    #   .includes(:youtube_video_tags)
+
+    @relation_tags = Array.new
+    @youtubes.each do |youtube|
+      youtube.youtube_video_tags.each do |tag|
+        if @relation_tags.include?(tag.name) == false && tag.name != params[:search_params]
+          @relation_tags.push(tag.name)
+        end
+      end
+    end 
 
     session[:search_params] = params[:search_params]
     session[:genre] = params[:search_params]

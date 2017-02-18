@@ -2,7 +2,18 @@
 
 <div id="y_index_links">
   <div class="col-sm-9">
-  <%= session[:genre] %>
+
+  <% unless @relation_tags.nil? %>
+    <div id="y_video_search_result_tagarea">
+      <h3><%= session[:genre] %></h3>
+      <p>
+        <% @relation_tags.each do |tag| %>
+          <%= link_to "##{tag}", { controller: :bits, action: :Search, search_params: tag, or: 'pv' } %>
+        <% end %>
+      </p>
+    </div>
+  <% end %>
+
   <div id="order_change">
     <% if controller.action_name == 'genreSearch' %>
       <% if /or=pv/ =~ request.fullpath %>
