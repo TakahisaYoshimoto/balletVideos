@@ -14,30 +14,17 @@
   </div>
 
   <div class="field form-group">
-    <%= f.label :title, 'タイトル', class: 'control-label col-sm-2' %>
-    <div class="col-sm-4">
-      <%= f.text_field :title, class: 'form-control' %>
-    </div>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :url, 'URL', class: 'control-label col-sm-2' %>
-    <div class="col-sm-4">
-      <%= f.text_field :url, class: 'form-control' %>
-    </div>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :text, 'テキスト', class: 'control-label col-sm-2' %>
-    <div class="col-sm-4">
-      <%= f.text_area :text, class: 'form-control' %>
-    </div>
-  </div>
-
-  <div class="field form-group">
     <%= f.label :category, 'カテゴリ', class: 'control-label col-sm-2' %>
     <div class="col-sm-4">
       <%= f.select :category, ['演目', 'レッスン', 'その他'], { include_blank: '選択してください' }, class: 'form-control' %>
+    </div>
+  </div>
+
+
+  <div class="field form-group">
+    <%= f.label :title, 'タイトル', class: 'control-label col-sm-2' %>
+    <div class="col-sm-4">
+      <%= f.text_field :title, class: 'form-control' %>
     </div>
   </div>
 
@@ -49,7 +36,21 @@
   </div>
 
   <div class="field form-group">
-    <%= f.label :poster_comment, '投稿者コメント', class: 'control-label col-sm-2' %>
+    <%= f.label :url, 'URL', class: 'control-label col-sm-2' %>
+    <div class="col-sm-4">
+      <%= f.text_field :url, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :text, '動画説明', class: 'control-label col-sm-2' %>
+    <div class="col-sm-4">
+      <%= f.text_area :text, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :poster_comment, '運営コメント', class: 'control-label col-sm-2' %>
     <div class="col-sm-4">
       <%= f.text_area :poster_comment, class: 'form-control' %>
     </div>
