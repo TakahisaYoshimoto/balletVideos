@@ -21,17 +21,7 @@
 
       <%# ツイートボタン %>
       <a href="https://twitter.com/share" class="twitter-share-button" data-text=<%= @youtube.title %> data-size="large">Tweet</a>
-      <script>
-      !function(d,s,id){
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (!d.getElementById(id)){
-          js = d.createElement(s);
-          js.id = id;
-          js.src = "//platform.twitter.com/widgets.js";
-          fjs.parentNode.insertBefore(js,fjs);
-        }
-      }(document,"script","twitter-wjs");
-      </script>
+      <script src="//platform.twitter.com/widgets.js"></script>
       <%# フェイスブックシェア %>
       <% facebook_share_url = "https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Fec2-13-112-39-20.ap-northeast-1.compute.amazonaws.com%2Fyoutube_videos%2F" + @youtube.id.to_s + "&layout=button&size=large&mobile_iframe=true&width=75&height=28&appId" %>
       <iframe src=<%= facebook_share_url.to_s %> width="75" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
