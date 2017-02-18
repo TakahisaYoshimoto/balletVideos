@@ -25,6 +25,9 @@
       <%# フェイスブックシェア %>
       <% facebook_share_url = "https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Fec2-13-112-39-20.ap-northeast-1.compute.amazonaws.com%2Fyoutube_videos%2F" + @youtube.id.to_s + "&layout=button&size=large&mobile_iframe=true&width=75&height=28&appId" %>
       <iframe src=<%= facebook_share_url.to_s %> width="75" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+      <%# LINEシェアボタン %>
+      <div class="line-it-button" data-lang="ja" data-type="share-c" data-url="http://ec2-13-112-39-20.ap-northeast-1.compute.amazonaws.com/youtube_videos/<%= @youtube.id.to_s %>" style="display: none;"></div>
+       <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
 
       <p id="y_video_show_pv_count">視聴回数<%= @youtube.pv_count %>回</p>
     </div>
