@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       get :Search
       get :genreSearch
       get :nogenreSearch
+      get :attentionSearch
     end
   end
   resources :youtube_videos, only: [:new, :create, :edit, :update, :show, :destroy]

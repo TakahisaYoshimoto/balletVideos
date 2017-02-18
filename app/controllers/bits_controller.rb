@@ -80,7 +80,7 @@ class BitsController < ApplicationController
     render 'videolist'
   end
 
-  def genreSearch
+  def attentionSearch
     @tags = TopTagList.all.select(:genre, :tag_name).order('genre asc, tag_name asc')
     @genres = TopTagList.select(:genre).order('genre asc').group(:genre)
 
@@ -106,35 +106,79 @@ class BitsController < ApplicationController
     render 'videolist'
   end
 
-  def nogenreSearch
+  def genreSearch
+    # @tags = TopTagList.all.select(:genre, :tag_name).order('genre asc, tag_name asc')
+    # @genres = TopTagList.select(:genre).order('genre asc').group(:genre)
+
+    # tg = TopTagList.all.where('genre like ?', params[:search_params]).pluck(:tag_name)
+    # ph_tag = "youtube_video_tags.name like ?"
+    # c = tg.length-1
+    # c.times{ ph_tag += " OR youtube_video_tags.name like ?" } if tg.length > 1
+
+    # if params[:or] == "pv"
+    #   @youtubes = YoutubeVideo.joins(:youtube_video_tags).where("#{ph_tag}", *tg)
+    #     .page(params[:page])
+    #     .order(pv_count: :desc)
+    #     .order(created_at: :desc)
+    #     .includes(:youtube_video_tags)
+    # else
+    #   @youtubes = YoutubeVideo.joins(:youtube_video_tags).where("#{ph_tag}", *tg)
+    #     .page(params[:page])
+    #     .order(created_at: :desc)
+    #     .includes(:youtube_video_tags)
+    # end
+
+    # session[:genre] = params[:search_params]
+    # render 'videolist'
     @tags = TopTagList.all.select(:genre, :tag_name).order('genre asc, tag_name asc')
     @genres = TopTagList.select(:genre).order('genre asc').group(:genre)
 
-    tg = TopTagList.all.pluck(:tag_name)
-    ph_tag = "name like ?"
-    c = tg.length-1
-    c.times{ ph_tag += " OR name like ?" } if tg.length > 1
-
-    youtubetags = YoutubeVideoTag.select(:youtube_video_id)
-      .where("#{ph_tag}", *tg)
-      .group(:youtube_video_id)
-      .having('count(youtube_video_id) >= ?', 1)
-
     if params[:or] == "pv"
-      @youtubes = YoutubeVideo.where.not("id IN (?)", youtubetags)
+      @youtubes = YoutubeVideo.where("category like ?", params[:search_params])
         .page(params[:page])
         .order(pv_count: :desc)
         .order(created_at: :desc)
         .includes(:youtube_video_tags)
     else
-      @youtubes = YoutubeVideo.where.not("id IN (?)", youtubetags)
+      @youtubes = YoutubeVideo.where("category like ?", params[:search_params])
         .page(params[:page])
         .order(created_at: :desc)
         .includes(:youtube_video_tags)
     end
 
-    session[:search_params] = ""
-    session[:genre] = "その他"
+    session[:genre] = params[:search_params]
     render 'videolist'
+  end
+
+  def nogenreSearch
+    # @tags = TopTagList.all.select(:genre, :tag_name).order('genre asc, tag_name asc')
+    # @genres = TopTagList.select(:genre).order('genre asc').group(:genre)
+
+    # tg = TopTagList.all.pluck(:tag_name)
+    # ph_tag = "name like ?"
+    # c = tg.length-1
+    # c.times{ ph_tag += " OR name like ?" } if tg.length > 1
+
+    # youtubetags = YoutubeVideoTag.select(:youtube_video_id)
+    #   .where("#{ph_tag}", *tg)
+    #   .group(:youtube_video_id)
+    #   .having('count(youtube_video_id) >= ?', 1)
+
+    # if params[:or] == "pv"
+    #   @youtubes = YoutubeVideo.where.not("id IN (?)", youtubetags)
+    #     .page(params[:page])
+    #     .order(pv_count: :desc)
+    #     .order(created_at: :desc)
+    #     .includes(:youtube_video_tags)
+    # else
+    #   @youtubes = YoutubeVideo.where.not("id IN (?)", youtubetags)
+    #     .page(params[:page])
+    #     .order(created_at: :desc)
+    #     .includes(:youtube_video_tags)
+    # end
+
+    # session[:search_params] = ""
+    # session[:genre] = "その他"
+    # render 'videolist'
   end
 end

@@ -6,6 +6,7 @@ class YoutubeVideo < ApplicationRecord
 
   validates :title, presence: true
   validates :url, uniqueness: true, presence: true
+  validates :category, presence: true
 
   #PV数保存の為のGemの関数
   is_impressionable :counter_cache => true, :column_name => :pv_count, unique: :all

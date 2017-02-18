@@ -27,12 +27,12 @@
       <% else %>
         <%= link_to '再生回数順', { controller: :bits, action: :Search, search_params: session[:genre], or: 'pv' } %>|新着順
       <% end %>
-    <% else %>
-      <% if /or=pv/ =~ request.fullpath %>
-        再生回数順|<%= link_to '新着順', { controller: :bits, action: :nogenreSearch, search_params: session[:genre], or: 'time' } %>
+    <% elsif controller.action_name == 'attentionSearch' %>
+       <% if /or=pv/ =~ request.fullpath %>
+        再生回数順|<%= link_to '新着順', { controller: :bits, action: :attentionSearch, search_params: session[:genre], or: 'time' } %>
       <% else %>
-        <%= link_to '再生回数順', { controller: :bits, action: :nogenreSearch, search_params: session[:genre], or: 'pv' } %>|新着順
-      <% end %>
+        <%= link_to '再生回数順', { controller: :bits, action: :attentionSearch, search_params: session[:genre], or: 'pv' } %>|新着順
+      <% end %>     
     <% end %>
   </div>
 <%
