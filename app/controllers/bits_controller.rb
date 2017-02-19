@@ -26,7 +26,8 @@ class BitsController < ApplicationController
     c = sp.length-1
     c.times{ ph_title += " AND title like ?" } if sp.length > 1
 
-    tg = params[:search_params].gsub("　"," ")
+    tg = params[:search_params]
+    tg.gsub("　"," ")
     tg.chop! if tg[tg.length-1] == ","#最後の文字がスペースだったら削除
     tg = tg.gsub(" ",",")
     tg = tg.split(",")
@@ -38,6 +39,14 @@ class BitsController < ApplicationController
       .group(:youtube_video_id)
       .having('count(youtube_video_id) >= ?', tg.length)
 
+    unless params[:category_params].nil?
+      cp = params[:category_params]
+      session[:category_params] = params[:category_params]
+    else
+      cp = ""
+      session[:category_params] = ""
+    end
+
     #動画を一致するタグが多い順にIDを配列で格納
     tag_keys = YoutubeVideo.joins(:youtube_video_tags)
       .where("#{ph_tag}", *tg)
@@ -48,24 +57,25 @@ class BitsController < ApplicationController
       .count(:id).keys
 
     if params[:or] == "pv"
-      @youtubes = YoutubeVideo.where("(#{ph_title}) OR (id IN (?))", *sp, youtubetags)
+      @youtubes = YoutubeVideo.where("((#{ph_title}) OR (id IN (?))) AND (category like ?)", *sp, youtubetags, "%"+cp+"%")
         .page(params[:page])
         .order(pv_count: :desc)
         .order(created_at: :desc)
         .includes(:youtube_video_tags)
     elsif params[:or] == "time"
-      @youtubes = YoutubeVideo.where("(#{ph_title}) OR (id IN (?))", *sp, youtubetags)
+      @youtubes = YoutubeVideo.where("((#{ph_title}) OR (id IN (?))) AND (category like ?)", *sp, youtubetags, "%"+cp+"%")
         .page(params[:page])
         .order(created_at: :desc)
         .includes(:youtube_video_tags)
     else
-      @youtubes = YoutubeVideo.where("(#{ph_title}) OR (id IN (?))", *sp, youtubetags)
+      @youtubes = YoutubeVideo.where("((#{ph_title}) OR (id IN (?))) AND (category like ?)", *sp, youtubetags, "%"+cp+"%")
         .page(params[:page])
         .order_as_specified(id: tag_keys)
         .order(created_at: :desc)
         .includes(:youtube_video_tags)
     end
 
+    #検索結果の動画についてるタグ一覧を取得、検索キーワードは除外
     @relation_tags = Array.new
     @youtubes.each do |youtube|
       youtube.youtube_video_tags.each do |tag|
@@ -107,29 +117,6 @@ class BitsController < ApplicationController
   end
 
   def genreSearch
-    # @tags = TopTagList.all.select(:genre, :tag_name).order('genre asc, tag_name asc')
-    # @genres = TopTagList.select(:genre).order('genre asc').group(:genre)
-
-    # tg = TopTagList.all.where('genre like ?', params[:search_params]).pluck(:tag_name)
-    # ph_tag = "youtube_video_tags.name like ?"
-    # c = tg.length-1
-    # c.times{ ph_tag += " OR youtube_video_tags.name like ?" } if tg.length > 1
-
-    # if params[:or] == "pv"
-    #   @youtubes = YoutubeVideo.joins(:youtube_video_tags).where("#{ph_tag}", *tg)
-    #     .page(params[:page])
-    #     .order(pv_count: :desc)
-    #     .order(created_at: :desc)
-    #     .includes(:youtube_video_tags)
-    # else
-    #   @youtubes = YoutubeVideo.joins(:youtube_video_tags).where("#{ph_tag}", *tg)
-    #     .page(params[:page])
-    #     .order(created_at: :desc)
-    #     .includes(:youtube_video_tags)
-    # end
-
-    # session[:genre] = params[:search_params]
-    # render 'videolist'
     @tags = TopTagList.all.select(:genre, :tag_name).order('genre asc, tag_name asc')
     @genres = TopTagList.select(:genre).order('genre asc').group(:genre)
 

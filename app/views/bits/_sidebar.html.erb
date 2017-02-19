@@ -24,7 +24,7 @@
   <% tags.each do |tag| %>
     <% if tag.genre == '注目キーワード' %>
       <div class="search_tag">
-        <%= link_to "#{tag.tag_name}", { controller: :bits, action: :Search, search_params: tag.tag_name, or: 'pv' } %><br>
+        <%= link_to "#{tag.tag_name}", { controller: :bits, action: :Search, search_params: tag.tag_name, category_params: "", or: 'pv' } %><br>
       </div>
     <% end %>
   <% end %>
@@ -35,7 +35,7 @@
   <% tags.each do |tag| %>
     <% if tag.genre == '演目' %>
       <div class="search_tag">
-        <%= link_to "#{tag.tag_name}", { controller: :bits, action: :Search, search_params: tag.tag_name, or: 'pv' } %><br>
+        <%= link_to "#{tag.tag_name}", { controller: :bits, action: :Search, search_params: tag.tag_name, category_params: tag.genre, or: 'pv' } %><br>
       </div>
     <% end %>
   <% end %>
@@ -46,7 +46,7 @@
   <% tags.each do |tag| %>
     <% if tag.genre == 'レッスン' %>
       <div class="search_tag">
-        <%= link_to "#{tag.tag_name}", { controller: :bits, action: :Search, search_params: tag.tag_name, or: 'pv' } %><br>
+        <%= link_to "#{tag.tag_name}", { controller: :bits, action: :Search, search_params: tag.tag_name, category_params: tag.genre, or: 'pv' } %><br>
       </div>
     <% end %>
   <% end %>
