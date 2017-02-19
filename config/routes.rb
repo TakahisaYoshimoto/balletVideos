@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'registrations' }
   resources :bits, only: [:index] do
     collection do
       get :Search
       get :genreSearch
       get :nogenreSearch
       get :attentionSearch
+      get :sign_up_mail
     end
   end
   resources :youtube_videos, only: [:new, :create, :edit, :update, :show, :destroy]
