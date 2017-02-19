@@ -59,7 +59,7 @@
         </div>
       <% end %>
 
-      <% if @comments.nil? %>
+      <% unless @comments.nil? %>
       <div id="y_video_comment_list_area">
         <% @comments.each do |comment| %>
           <% if comment.reply == 0 %>
