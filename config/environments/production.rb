@@ -83,4 +83,16 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.default_url_options = { host: 'http://ec2-13-112-39-20.ap-northeast-1.compute.amazonaws.com/' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :enable_starttls_auto => true,
+    :address => "smtp4.gmoserver.jp",
+    :port => 587,
+    :domain => 'smtp4.gmoserver.jp',
+    :user_name => ENV['EMAIL_ADDRESS'], #gmailアドレス
+    :password => ENV['MAIL_PASSWORD'], #gmailパスワード
+    :authentication => 'login',
+  }
 end
