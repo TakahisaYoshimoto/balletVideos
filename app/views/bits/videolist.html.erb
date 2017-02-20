@@ -12,7 +12,14 @@
       <% end %>
       <p>
         <% @relation_tags.each do |tag| %>
-          <%= link_to "##{tag}", { controller: :bits, action: :Search, search_params: tag, category_params: session[:category_params], or: 'pv' } %>
+          <% unless session[:genre].blank? %>
+            <% search = session[:genre] + " " + tag %>
+          <% else %>
+            <% search = tag %>
+          <% end %>
+          <% unless session[:genre].include?(tag) %>
+            <%= link_to "##{tag}", { controller: :bits, action: :Search, search_params: search, category_params: session[:category_params], or: 'pv' } %>
+          <% end %>
         <% end %>
       </p>
     </div>
