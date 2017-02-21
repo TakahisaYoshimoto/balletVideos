@@ -1,0 +1,11 @@
+<% unless youtube.like_user(current_user.id) %>
+  <%= link_to action: :like, remote: true, id: params[:id] do %>
+    <p id="good_button_hand"><i class="glyphicon glyphicon-thumbs-up"></i></p>
+  <% end %>
+  <%= likes.count %>
+<% else %>
+  <%= link_to action: :like, remote: true, id: params[:id] do %>
+    <p id="good_button_heart"><i class="glyphicon glyphicon-thumbs-up"></i></p>
+    <%= likes.count %>
+  <% end %>
+<% end %>

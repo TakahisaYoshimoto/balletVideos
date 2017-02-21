@@ -1,5 +1,10 @@
 class YoutubeVideo < ApplicationRecord
   has_many :youtube_video_tags, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  def like_user(user_id)
+   likes.find_by(user_id: user_id)
+  end
+  
   accepts_nested_attributes_for :youtube_video_tags,
                                 allow_destroy: true,
                                 reject_if: proc { |attributes| attributes['name'].blank? }

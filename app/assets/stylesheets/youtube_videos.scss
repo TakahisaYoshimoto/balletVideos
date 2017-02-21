@@ -53,6 +53,29 @@
   font-family: Roboto;
   margin: 0;
 }
+#video_show_button_area {
+  overflow: hidden;
+}
+#share_button_area {
+  float: left;
+}
+#good_button_area {
+  float: right;
+}
+#good_button_heart, #good_button_hand {
+  display: inline;
+  padding: 0 67px 0 0;
+  margin: 0;
+  font-size: 23px;
+  text-align: right;
+}
+#good_button_hand {
+  color: gray;
+}
+#good_button_heart {
+  color: blue;
+}
+
 #y_video_show_pv_count {
   width: 100%;
   text-align: right;

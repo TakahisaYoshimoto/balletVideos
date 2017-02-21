@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170219004321) do
+ActiveRecord::Schema.define(version: 20170220224012) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
@@ -45,6 +45,13 @@ ActiveRecord::Schema.define(version: 20170219004321) do
     t.index ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index"
     t.index ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index"
     t.index ["user_id"], name: "index_impressions_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "youtube_video_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "top_tag_lists", force: :cascade do |t|
@@ -97,6 +104,7 @@ ActiveRecord::Schema.define(version: 20170219004321) do
     t.integer  "pickup_level"
     t.text     "poster_comment"
     t.integer  "pv_count",       default: 0
+    t.integer  "likes_count"
   end
 
 end

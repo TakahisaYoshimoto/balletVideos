@@ -1,6 +1,6 @@
 class YoutubeVideosController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
-  before_action :set_youtube, only: [:show, :edit, :update, :destroy]
+  before_action :set_youtube, only: [:show, :edit, :update, :destroy, :like]
 
   def new
     user_level_check(2)
@@ -61,6 +61,7 @@ class YoutubeVideosController < ApplicationController
     @comment = Comment.new
     @comments = Comment.where('youtube_video_id = ?', params[:id]).order('created_at desc')
     @replys = @comments.where('reply != ?', 0).reorder('created_at asc')
+    @likes = Like.where('youtube_video_id = ?', params[:id])
     impressionist(@youtube, nil, :unique => [:session_hash])
     each_count = 0
     ph_tag = ""
@@ -90,6 +91,16 @@ class YoutubeVideosController < ApplicationController
     #上で作った一致タグが多い順のID配列でwhereして並び替え
     @relatedVideos = YoutubeVideo.where(id: relatedVideos_count)
       .order_as_specified(id: relatedVideos_count)
+  end
+
+  def like
+    unless @youtube.like_user(current_user.id)
+      @like = Like.create(user_id: current_user.id, youtube_video_id: params[:id])
+    else
+      @like = current_user.likes.find_by(youtube_video_id: params[:id])
+      @like.destroy
+    end
+      @likes = Like.where(youtube_video_id: params[:id])
   end
 
   private

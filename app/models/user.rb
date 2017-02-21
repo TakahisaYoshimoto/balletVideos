@@ -7,4 +7,5 @@ class User < ApplicationRecord
   #validates :email, uniqueness: true
 
   has_many :users
+  has_many :likes, dependent: :destroy
 end
