@@ -61,10 +61,18 @@
 }
 #good_button_area {
   float: right;
+  margin-right: 49px;
+  position: relative;
+}
+#good_button_area a {
+  height: 100%;
+}
+#good_button_area:hover a {
+  text-decoration: none;
 }
 #good_button_heart, #good_button_hand {
   display: inline;
-  padding: 0 67px 0 0;
+  padding: 0 10px 0 0;
   margin: 0;
   font-size: 23px;
   text-align: right;
@@ -72,8 +80,19 @@
 #good_button_hand {
   color: gray;
 }
+#good_button_hand:hover {
+  color: #383838;
+}
 #good_button_heart {
   color: blue;
+}
+#good_button_heart:hover {
+  text-decoration: none;
+}
+#good_button_count {
+  position: absolute;
+  top: 12%;
+  left: 100%;
 }
 
 #y_video_show_pv_count {

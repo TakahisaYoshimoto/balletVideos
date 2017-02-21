@@ -35,6 +35,35 @@
   }
 }
 
+.y_index_links_pickup_area {
+  position: relative;
+  z-index: 1;
+}
+.y_index_links_pickup_tag_left {
+  position: absolute;
+  top:-15px;
+  left:-27px;
+  background-color: black;
+  height: 80px;
+  width: 80px;
+  border-radius:75px;
+  z-index: 2;
+}
+.y_index_links_pickup_tag_right {
+  position: absolute;
+  top:-15px;
+  right:-27px;
+  background-color: black;
+  height: 80px;
+  width: 80px;
+  border-radius:75px;
+  z-index: 2;
+}
+.y_index_links_pickup_tag_left p,.y_index_links_pickup_tag_right p {
+  color: white;
+  margin-top: 38%;
+  margin-left: 16%;
+}
 .y_video_top_body_sm {
   padding: 0 10px 20px 10px;
 }
@@ -44,8 +73,8 @@
 }
 .y_video_top_titlearea_lg {
   position: absolute;
-  top: 5px;
-  left: 5px;
+  top: 13px;
+  left: 65px;
 }
 .y_video_top_catchphrase_lg {
   position: absolute;

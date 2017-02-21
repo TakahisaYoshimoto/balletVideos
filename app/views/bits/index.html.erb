@@ -27,9 +27,12 @@
     </div>
 
     <%# 4 %>
-    <div class="col-xs-12 col-sm-8 row-eq-height">
+    <div class="y_index_links_pickup_area col-xs-12 col-sm-8 row-eq-height">
       <% unless @pic_youtubes[pic_view_num].nil? %>
         <% if @pic_youtubes[pic_view_num][:pickup_level] == 1 %>
+          <div class="y_index_links_pickup_tag_left">
+            <p>PICK UP</p>
+          </div>
           <%= render 'list_md4', youtube: @pic_youtubes[pic_view_num] %>
           <% pic_view_num = pic_view_num + 1 %>
         <% end %>
@@ -55,9 +58,12 @@
     </div>
 
     <%# 7 %>
-    <div class="col-xs-12 col-sm-8 row-eq-height">
+    <div class="y_index_links_pickup_area col-xs-12 col-sm-8 row-eq-height">
       <% unless @pic_youtubes[pic_view_num].nil? %>
         <% if @pic_youtubes[pic_view_num][:pickup_level] == 2 %>
+          <div class="y_index_links_pickup_tag_right">
+            <p>PICK UP</p>
+          </div>
           <%= render 'list_md7', youtube: @pic_youtubes[pic_view_num] %>
           <% pic_view_num = pic_view_num + 1 %>
         <% end %>
@@ -99,9 +105,12 @@
     </div>
 
     <%# 13 %>
-    <div class="col-xs-12 col-sm-8 row-eq-height">
+    <div class="y_index_links_pickup_area col-xs-12 col-sm-8 row-eq-height">
       <% unless @pic_youtubes[pic_view_num].nil? %>
         <% if @pic_youtubes[pic_view_num][:pickup_level] == 3 %>
+          <div class="y_index_links_pickup_tag_right">
+            <p>PICK UP</p>
+          </div>
           <%= render 'list_md4', youtube: @pic_youtubes[pic_view_num] %>
           <% pic_view_num = pic_view_num + 1 %>
         <% end %>
