@@ -9,7 +9,7 @@
   <div class="field form-group">
     <%= f.label :genre, 'ジャンル', class: 'control-label col-sm-2' %>
     <div class="col-sm-4">
-      <%= f.select :genre, ['注目キーワード', '演目', 'レッスン', 'その他'], { selected: '注目キーワード' }, class: 'form-control' %>
+      <%= f.select :genre, ['注目キーワード', '演目', 'レッスン', 'その他'], {include_blank: '選択してください' }, class: 'form-control' %>
     </div>
   </div>
 
@@ -17,6 +17,13 @@
     <%= f.label :tag_name, 'タグ', class: 'control-label col-sm-2' %>
     <div class="col-sm-4">
       <%= f.text_field :tag_name, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :hurigana, 'ふりがな', class: 'control-label col-sm-2' %>
+    <div class="col-sm-4">
+      <%= f.text_field :hurigana, class: 'form-control' %>
     </div>
   </div>
 

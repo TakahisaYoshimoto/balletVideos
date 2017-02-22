@@ -8,13 +8,13 @@ class BitsController < ApplicationController
       .limit(10)
       .offset(0)
       .includes(:youtube_video_tags)
-    @tags = TopTagList.all.select(:genre, :tag_name).order('genre asc, tag_name asc')
+    @tags = TopTagList.all.select(:genre, :tag_name).order('hurigana asc')
     @genres = TopTagList.select(:genre).order('genre asc').group(:genre)
     session[:search_params] = ""
   end
 
   def Search
-    @tags = TopTagList.all.select(:genre, :tag_name).order('genre asc, tag_name asc')
+    @tags = TopTagList.all.select(:genre, :tag_name).order('hurigana asc')
     @genres = TopTagList.select(:genre).order('genre asc').group(:genre)
 
     sp = params[:search_params].gsub("　"," ")#全角スペースを半角スペースに変換
@@ -91,7 +91,7 @@ class BitsController < ApplicationController
   end
 
   def attentionSearch
-    @tags = TopTagList.all.select(:genre, :tag_name).order('genre asc, tag_name asc')
+    @tags = TopTagList.all.select(:genre, :tag_name).order('hurigana asc')
     @genres = TopTagList.select(:genre).order('genre asc').group(:genre)
 
     tg = TopTagList.all.where('genre like ?', params[:search_params]).pluck(:tag_name)

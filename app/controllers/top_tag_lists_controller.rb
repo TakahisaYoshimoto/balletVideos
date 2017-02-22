@@ -2,7 +2,7 @@ class TopTagListsController < ApplicationController
   before_action :set_tag, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tags = TopTagList.all.order('genre asc, tag_name asc')
+    @tags = TopTagList.all.order('hurigana asc')
   end
 
   def new
@@ -13,7 +13,7 @@ class TopTagListsController < ApplicationController
   def create
     user_level_check(2)
     @tag = TopTagList.new(tag_params)
-    if @tag.save
+    if @tag.save      
       redirect_to top_tag_lists_path
     else
       render 'new'
@@ -45,7 +45,7 @@ class TopTagListsController < ApplicationController
     end
 
     def tag_params
-      params.require(:top_tag_list).permit(:genre, :tag_name)
+      params.require(:top_tag_list).permit(:genre, :tag_name, :hurigana)
     end
 
     def user_level_check(level)

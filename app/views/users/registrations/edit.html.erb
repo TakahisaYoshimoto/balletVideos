@@ -9,7 +9,7 @@
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <div>メールアドレスの変更申請があった為、メールを送りました、メールから変更手続き完了をしてください。: <%= resource.unconfirmed_email %></div>
   <% end %>
 
   <div class="field form-group">
