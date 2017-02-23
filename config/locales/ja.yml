@@ -35,3 +35,25 @@ ja:
         display_entries: '1-%{count}件を表示中 / 合計%{count}件'
       more_pages:
         display_entries: '%{first}-%{last}件を表示中 / 合計%{total}件'
+  activerecord:
+    models:
+      user: 'ユーザー'
+      youtube_video: 'ビデオ'
+      comment: 'コメント'
+      top_tag_list: 'トップページタグリスト'
+    attributes:
+      user:
+        email: 'メールアドレス'
+        username: 'ユーザー名'
+        password: 'パスワード'
+        password_confirmation: '確認用パスワード'
+        current_password: '現在のパスワード'
+      youtube_video:
+        title: 'タイトル'
+        category: 'カテゴリ'
+      comment:
+        text: 'テキスト'
+        reply: '返信'
+      top_tag_list:
+        tag_name: 'タグ名'
+        hurigana: 'ふりがな'

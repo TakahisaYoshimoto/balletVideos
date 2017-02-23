@@ -35,7 +35,9 @@
 #y_video_show_text,
 #y_video_newcomment_edit_area,
 #y_video_comment_list_area,
-#related_videos_list {
+#related_videos_list,
+#y_video_commentsarea_characnt,
+#y_video_replyarea_characnt {
   background: #F6F6F6;
 }
 @media screen and (max-width:768px) {
@@ -108,8 +110,14 @@
   margin: 10px 0;
   padding: 5px;
 }
+#y_video_commentsarea_characnt,
+#y_video_replyarea_characnt {
+  border: none;
+  text-align: right;
+}
 #comment_text_area, .reply_text_area {
   max-width: 100%;
+  min-height: 100px;
 }
 #comment_submit, #reply_submit {
   text-align: right;

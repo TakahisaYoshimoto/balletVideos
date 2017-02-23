@@ -48,11 +48,14 @@
           <%= form_for(@comment) do |f| %>
             <div class="form-group">
               <%= f.text_area :text,
-                maxlength: "500",
+                maxlength: "400",
                 id: 'comment_text_area',
+                onkeydown: 'if(event.keyCode == 13){javascript:transmission();}',
+                onkeyup: "document.getElementById('y_video_commentsarea_characnt').value=400 - this.value.length",
                 class: 'form-control' %>
             </div>
             <div id="comment_submit" class="actions　form-group">
+              <input type="text" id="y_video_commentsarea_characnt" disabled="disabled">
               <%= f.submit 'コメント投稿', class: 'btn btn-primary' %>
             </div>
             <%= f.hidden_field :youtube_video_id, value: @youtube.id %>
@@ -89,10 +92,13 @@
                     <div class="form-group">
                       <%= text_area_tag :text,
                         "",
-                        maxlength: "500",
+                        maxlength: "400",
+                        onkeydown: 'if(event.keyCode == 13){javascript:transmission();}',
+                        onkeyup: "document.getElementById('y_video_replyarea_characnt').value=400 - this.value.length",
                         class: 'reply_text_area form-control' %>
                     </div>
                     <div id="reply_submit" class="actions　form-group">
+                      <input type="text" id="y_video_replyarea_characnt" disabled="disabled">
                       <%= submit_tag '返信', class: 'btn btn-primary' %>
                     </div>
                     <%= hidden_field :reply_params, :youtube_video_id, value: @youtube.id%>
