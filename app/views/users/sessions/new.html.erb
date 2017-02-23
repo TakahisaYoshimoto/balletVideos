@@ -2,13 +2,17 @@
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field form-group">
-    <%= f.label :email, 'メールアドレス', class: 'control-label col-sm-6' %><br />
-    <%= f.email_field :email, class: 'form-control', autofocus: true %>
+    <div style="padding:0;max-width:400px;">
+      <%= f.label :email, 'メールアドレス', class: 'control-label col-sm-12' %><br />
+      <%= f.email_field :email, class: 'form-control', autofocus: true %>
+    </div>
   </div>
 
   <div class="field form-group">
-    <%= f.label :password, 'パスワード', class: 'control-label col-sm-6' %><br />
-    <%= f.password_field :password, class: 'form-control', autocomplete: "off" %>
+    <div style="padding:0;max-width:400px;">
+      <%= f.label :password, 'パスワード', class: 'control-label col-sm-12' %><br />
+      <%= f.password_field :password, class: 'form-control', autocomplete: "off" %>
+    </div>
   </div>
 
   <% if devise_mapping.rememberable? -%>

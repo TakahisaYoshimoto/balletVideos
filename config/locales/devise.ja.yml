@@ -53,8 +53,10 @@ ja:
       not_found: "は見つかりませんでした。"
       not_locked: "ロックされていません。"
       not_saved:
-        one: "エラーにより、この %{resource} を保存できません："
-        other: "%{count} 個のエラーにより、この %{resource} を保存できません："
+        # one: "エラーにより、この %{resource} を保存できません："
+        one: "%{resource}が登録できません。"
+        # other: "%{count} 個のエラーにより、この %{resource} を保存できません："
+        other: "%{count}個のエラーにより、%{resource}が登録できません。"
       taken: "は既に使用されています。"
       blank: "が入力されていません。"
       too_short: "は%{count}文字以上に設定して下さい。"

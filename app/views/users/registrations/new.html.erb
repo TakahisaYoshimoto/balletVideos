@@ -1,32 +1,43 @@
 <h2>ユーザー登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+  <span style="color:red;"><%= devise_error_messages! %></span>
 
-  <div class="field form-group">
-    <%= f.label :email, 'メールアドレス', class: 'control-label col-sm-2' %><br />
-    <%= f.email_field :email, class: 'form-control' , autofocus: true %>
+  <div class="field form-group col-sm-12" style="padding:0;">
+    <div style="padding:0;max-width:400px;">
+      <%= f.label :email, 'メールアドレス', class: 'control-label col-sm-12' %><br />
+      <%= f.email_field :email, class: 'form-control col-sm-6', autofocus: true %>
+    </div>
   </div>
 
   <div class="field form-group">
-    <%= f.label :username, 'ユーザーネーム', class: 'control-label col-sm-6' %><br />
-    <%= f.text_field :username, class: 'form-control' %>
+    <div style="padding:0;max-width:400px;">
+      <%= f.label :username, 'ユーザーネーム', class: 'control-label col-sm-12' %><br />
+      <%= f.text_field :username, class: 'form-control' %>
+    </div>
   </div>
 
   <div class="field form-group">
-    <%= f.label :password, 'パスワード', class: 'control-label col-sm-6' %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> 文字以上にしてください)</em>
-    <% end %><br />
-    <%= f.password_field :password, class: 'form-control', autocomplete: "off" %>
+    <div style="padding:0;max-width:400px;">
+      <%= f.label :password, 'パスワード', class: 'control-label col-sm-12' %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> 文字以上にしてください)</em>
+      <% end %><br />
+      <%= f.password_field :password, class: 'form-control', autocomplete: "off" %>
+    </div>
   </div>
 
   <div class="field form-group">
-    <%= f.label :password_confirmation, 'パスワードを確認の為もう一度入力して下さい', class: 'control-label col-sm-6' %><br />
-    <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: "off" %>
+    <div style="padding:0;max-width:400px;">
+      <%= f.label :password_confirmation, 'パスワードを確認の為もう一度入力して下さい', class: 'control-label col-sm-12' %><br />
+      <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: "off" %>
+    </div>
   </div>
 
-  <p>メール送信ボタンを押すと認証メールが送信されます、メールを開き認証ボタンを押してください。</p>
+  <p>
+「メール送信」ボタンを押すとご登録のメールアドレスに認証メールが送信されます。<br>
+承認処理を実施してください。
+  </p>
 
   <div class="actions form-group">
     <%= f.submit "メール送信", class: 'btn btn-primary' %>
