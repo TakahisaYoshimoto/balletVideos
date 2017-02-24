@@ -4,21 +4,21 @@
   <span style="color:red;"><%= devise_error_messages! %></span>
 
   <div class="field form-group col-sm-12" style="padding:0;">
-    <div style="padding:0;max-width:400px;">
+    <div style="padding:0;max-width:500px;">
       <%= f.label :email, 'メールアドレス', class: 'control-label col-sm-12' %><br />
       <%= f.email_field :email, class: 'form-control col-sm-6', autofocus: true %>
     </div>
   </div>
 
   <div class="field form-group">
-    <div style="padding:0;max-width:400px;">
+    <div style="padding:0;max-width:500px;">
       <%= f.label :username, 'ユーザーネーム', class: 'control-label col-sm-12' %><br />
       <%= f.text_field :username, class: 'form-control' %>
     </div>
   </div>
 
   <div class="field form-group">
-    <div style="padding:0;max-width:400px;">
+    <div style="padding:0;max-width:500px;">
       <%= f.label :password, 'パスワード', class: 'control-label col-sm-12' %>
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> 文字以上にしてください)</em>
@@ -28,7 +28,7 @@
   </div>
 
   <div class="field form-group">
-    <div style="padding:0;max-width:400px;">
+    <div style="padding:0;max-width:500px;">
       <%= f.label :password_confirmation, 'パスワードを確認の為もう一度入力して下さい', class: 'control-label col-sm-12' %><br />
       <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: "off" %>
     </div>

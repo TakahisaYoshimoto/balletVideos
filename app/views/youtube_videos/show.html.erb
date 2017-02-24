@@ -67,57 +67,61 @@
         </div>
       <% end %>
 
-      <% unless @comments.nil? %>
       <div id="y_video_comment_list_area">
-        <% @comments.each do |comment| %>
-          <% if comment.reply == 0 %>
-            <div class="y_video_comment_list_view">
-              <strong><%= comment.user.username %></strong>
-              <%= comment.created_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %><br>
-              <p><%= simple_format(comment.text) %></p>
+        <div id="y_video_show_poster_comment_area">
+          <strong>ビット運営</strong>
+          <%= simple_format(@youtube.poster_comment, class: 'y_video_show_poster_comment_text') %>
+        </div>
+        <% unless @comments.nil? %>
+          <% @comments.each do |comment| %>
+            <% if comment.reply == 0 %>
+              <div class="y_video_comment_list_view">
+                <strong><%= comment.user.username %></strong>
+                <%= comment.created_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %><br>
+                <p><%= simple_format(comment.text) %></p>
 
-              <% @replys.each do |reply| %>
-                <% if reply.reply == comment.id %>
-                  <div class="y_video_reply_list_view">
-                    <strong><%= reply.user.username %></strong>
-                    <%= reply.created_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %><br>
-                    <%= simple_format(reply.text) %>
+                <% @replys.each do |reply| %>
+                  <% if reply.reply == comment.id %>
+                    <div class="y_video_reply_list_view">
+                      <strong><%= reply.user.username %></strong>
+                      <%= reply.created_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %><br>
+                      <%= simple_format(reply.text) %>
+                    </div>
+                  <% end %>
+                <% end %>
+
+                <% unless current_user.nil? %>
+                  <div id="y_video_reply_edit_area<%= comment.id %>" class="y_video_reply_edit_area" style="display: none;">
+                    <%= form_tag('/comments/reply', method: :post) do %>
+                      <div class="form-group">
+                        <%= text_area_tag :text,
+                          "",
+                          maxlength: "400",
+                          onkeydown: 'if(event.keyCode == 13){javascript:transmission();}',
+                          onkeyup: "document.getElementById('y_video_replyarea_characnt').value=400 - this.value.length",
+                          class: 'reply_text_area form-control' %>
+                      </div>
+                      <div id="reply_submit" class="actions　form-group">
+                        <input type="text" id="y_video_replyarea_characnt" disabled="disabled">
+                        <%= submit_tag '返信', class: 'btn btn-primary' %>
+                      </div>
+                      <%= hidden_field :reply_params, :youtube_video_id, value: @youtube.id%>
+                      <%= hidden_field :reply_params, :comment_id, value: comment.id %>
+                    <% end %>
+                  </div>
+
+                  <div class="reply_view_button_area">
+                    <p id="reply_view_button<%= comment.id %>"
+                      class="reply_view_button"
+                      onClick="reply_display(<%= comment.id %>)">返信する
+                    </p>
                   </div>
                 <% end %>
-              <% end %>
-
-              <% unless current_user.nil? %>
-                <div id="y_video_reply_edit_area<%= comment.id %>" class="y_video_reply_edit_area" style="display: none;">
-                  <%= form_tag('/comments/reply', method: :post) do %>
-                    <div class="form-group">
-                      <%= text_area_tag :text,
-                        "",
-                        maxlength: "400",
-                        onkeydown: 'if(event.keyCode == 13){javascript:transmission();}',
-                        onkeyup: "document.getElementById('y_video_replyarea_characnt').value=400 - this.value.length",
-                        class: 'reply_text_area form-control' %>
-                    </div>
-                    <div id="reply_submit" class="actions　form-group">
-                      <input type="text" id="y_video_replyarea_characnt" disabled="disabled">
-                      <%= submit_tag '返信', class: 'btn btn-primary' %>
-                    </div>
-                    <%= hidden_field :reply_params, :youtube_video_id, value: @youtube.id%>
-                    <%= hidden_field :reply_params, :comment_id, value: comment.id %>
-                  <% end %>
-                </div>
-
-                <div class="reply_view_button_area">
-                  <p id="reply_view_button<%= comment.id %>"
-                    class="reply_view_button"
-                    onClick="reply_display(<%= comment.id %>)">返信する
-                  </p>
-                </div>
-              <% end %>
-            </div>
+              </div>
+            <% end %>
           <% end %>
         <% end %>
       </div>
-      <% end %>
     </div>
 
     <% unless current_user.nil? %>

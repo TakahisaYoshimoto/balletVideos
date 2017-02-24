@@ -4,7 +4,7 @@
   <span style="color:red;"><%= devise_error_messages! %></span>
 
   <div class="field form-group col-sm-12" style="padding:0;">
-    <div style="padding:0;max-width:400px;">
+    <div style="padding:0;max-width:500px;">
       <%= f.label :email, 'メールアドレス', class: 'control-label col-sm-12' %><br />
       <%= f.email_field :email, class: 'form-control col-sm-6', autofocus: true %>
     </div>
@@ -15,14 +15,14 @@
   <% end %>
 
   <div class="field form-group">
-    <div style="padding:0;max-width:400px;">
+    <div style="padding:0;max-width:500px;">
       <%= f.label :username, 'ユーザーネーム', class: 'control-label col-sm-12' %><br />
       <%= f.text_field :username, class: 'form-control' %>
     </div>
   </div>
 
   <div class="field form-group">
-    <div style="padding:0;max-width:400px;">
+    <div style="padding:0;max-width:500px;">
       <%= f.label :password, '新しいパスワード', class: 'control-label col-sm-12' %> <i>(パスワードを変更する場合入力して下さい。)</i><br />
       <%= f.password_field :password, class: 'form-control', autocomplete: "off" %>
       <% if @minimum_password_length %>
@@ -33,14 +33,14 @@
   </div>
 
   <div class="field form-group">
-    <div style="padding:0;max-width:400px;">
+    <div style="padding:0;max-width:500px;">
       <%= f.label :password_confirmation, '新しいパスワードを確認の為もう一度入力して下さい', class: 'control-label col-sm-12' %><br />
       <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: "off" %>
     </div>
   </div>
 
   <div class="field form-group">
-    <div style="padding:0;max-width:400px;">
+    <div style="padding:0;max-width:500px;">
       <%= f.label :current_password, '現在のパスワード', class: 'control-label col-sm-12' %>
       <i>(プロフィール情報を変更するには、現在のパスワードが必要です。)</i><br />
       <%= f.password_field :current_password, class: 'form-control', autocomplete: "off" %>

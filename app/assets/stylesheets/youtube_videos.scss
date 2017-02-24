@@ -124,16 +124,20 @@
 }
 #y_video_comment_list_area {
   margin-top: 10px;
-  padding: 5px;
+  padding: 15px;
+}
+#y_video_show_poster_comment_area {
+  border-bottom: 2px solid #DCDEE0;
+  margin-bottom: 10px;
 }
 .y_video_comment_list_view{
-  border-bottom: 1px solid #DCDEE0;
+  border-bottom: 2px solid #DCDEE0;
   margin-bottom: 10px;
   padding-bottom: 5px;
 }
 .y_video_reply_list_view {
   margin-left: 7%;
-  border-top: 1px dotted #DCDEE0;
+  border-top: 1px solid #DCDEE0;
 }
 .y_video_reply_list_view p {
   word-wrap:break-word;
@@ -143,14 +147,14 @@
 }
 .reply_view_button {
   text-align: right;
-  color: #B2B2B2;
+  color: #696969;
   margin-top: 10px;
   margin-bottom: 0;
   float: right;
 }
 .reply_view_button:hover {
   text-align: right;
-  color: #5C5C5C;
+  color: #292929;
   cursor: pointer;  
 }
 

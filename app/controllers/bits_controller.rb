@@ -1,11 +1,11 @@
 class BitsController < ApplicationController
   def index
-    @pic_youtubes = YoutubeVideo.where('pickup_level > ? AND pickup_level < ?', 0, 4)
+    @pic_youtubes = YoutubeVideo.where('pickup_level > ? AND pickup_level < ?', 0, 3)
       .order('pickup_level asc')
       .includes(:youtube_video_tags)
-    @youtubes = YoutubeVideo.where('pickup_level > ? OR pickup_level = ? OR pickup_level IS NULL', 3, 0)
+    @youtubes = YoutubeVideo.where('pickup_level > ? OR pickup_level = ? OR pickup_level IS NULL', 2, 0)
       .order('created_at desc')
-      .limit(10)
+      .limit(11)
       .offset(0)
       .includes(:youtube_video_tags)
     @tags = TopTagList.all.select(:genre, :tag_name).order('hurigana asc')

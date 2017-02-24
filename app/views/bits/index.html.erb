@@ -51,14 +51,15 @@
       <% end %>
     </div>
 
-    <div class="hidden-xs col-sm-4">
-      <div style="border: 1px dotted black; height:80%;">
-        こうこく
-      </div>
+    <div class="co-xs-12 col-sm-7 col-md-6 col-lg-5" style="margin:0 0 15px 0;">
+      <%= link_to image_tag('mu_ad_img1.jpg', width: '100%'), 'http://mu-ballet.com' %>
     </div>
 
     <%# 7 %>
-    <div class="y_index_links_pickup_area col-xs-12 col-sm-8 row-eq-height">
+<%
+=begin
+%>
+    <div class="y_index_links_pickup_area col-xs-12 col-sm-5 col-md-6 col-lg-7 row-eq-height">
       <% unless @pic_youtubes[pic_view_num].nil? %>
         <% if @pic_youtubes[pic_view_num][:pickup_level] == 2 %>
           <div class="y_index_links_pickup_tag_right">
@@ -67,6 +68,17 @@
           <%= render 'list_md7', youtube: @pic_youtubes[pic_view_num] %>
           <% pic_view_num = pic_view_num + 1 %>
         <% end %>
+      <% end %>
+    </div>
+<%
+=end
+%>
+
+    <%# 7 %>
+    <div class="col-xs-12 col-sm-5 col-md-6 col-lg-7 row-eq-height" style="height: 100%;">
+      <% unless @youtubes[view_num].nil? %>
+        <%= render 'list_sm123', youtube: @youtubes[view_num] %>
+        <% view_num = view_num + 1 %>
       <% end %>
     </div>
 
@@ -107,7 +119,7 @@
     <%# 13 %>
     <div class="y_index_links_pickup_area col-xs-12 col-sm-8 row-eq-height">
       <% unless @pic_youtubes[pic_view_num].nil? %>
-        <% if @pic_youtubes[pic_view_num][:pickup_level] == 3 %>
+        <% if @pic_youtubes[pic_view_num][:pickup_level] == 2 %>
           <div class="y_index_links_pickup_tag_right">
             <p>PICK UP</p>
           </div>
