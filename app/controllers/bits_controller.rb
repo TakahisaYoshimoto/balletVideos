@@ -12,6 +12,22 @@ class BitsController < ApplicationController
     session[:search_params] = ""
   end
 
+  def all
+    if params[:or] == "time"
+      @youtubes = YoutubeVideo.all
+        .order('created_at desc')
+        .page(params[:page])
+    else
+      @youtubes = YoutubeVideo.all
+        .order('pv_count desc')
+        .page(params[:page])
+    end
+      
+    @tags = TopTagList.all.select(:genre, :tag_name).order('hurigana asc')
+    session[:search_params] = ""  
+    render 'videolist'
+  end
+
   def Search
     @tags = TopTagList.all.select(:genre, :tag_name).order('hurigana asc')
 
