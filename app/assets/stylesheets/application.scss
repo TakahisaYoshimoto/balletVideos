@@ -64,6 +64,19 @@ body {
   background: #B1AFB6;
   position: relative;
 }
+#top_footer_search_link_area a,
+#footer a,
+.top_footer_title {
+  padding: 0;
+  margin: 0;
+  color: black;
+}
+.top_footer_title {
+  font-weight: bold;
+}
+#top_footer_search_link_area {
+  margin: 0 0 0 15px;
+}
 #footer_text {
   position: absolute;
   bottom: 0;

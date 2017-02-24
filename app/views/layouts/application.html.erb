@@ -63,6 +63,22 @@
     </div>
 
     <div id="footer">
+      <div class="container">
+        <%= link_to '動画を探す', { :controller => "/bits", action: :index, anchor: 'search_area'} , class: 'top_footer_title' %>
+        <div id="top_footer_search_link_area">
+          <%= link_to '演目から探す', { :controller => "/bits", action: :genreSearch, search_params: '演目', or: 'pv' } %><br>
+          <%= link_to 'レッスンから探す', { :controller => "/bits", action: :genreSearch, search_params: 'レッスン', or: 'pv' } %><br>
+          <%= link_to 'その他から探す', { :controller => "/bits", action: :genreSearch, search_params: "その他", or: 'pv' } %><br>
+        </div>
+        <% if user_signed_in? %>
+          <%= link_to ' プロフィール変更', edit_user_registration_path, class: 'top_footer_title' %><br>
+          <%= link_to ' ログアウト', destroy_user_session_path, method: :delete, class: 'top_footer_title' %><br>
+        <% else %>
+          <%= link_to '新規会員登録', new_user_registration_path, class: 'top_footer_title' %><br>
+          <%= link_to 'ログイン', new_user_session_path, class: 'top_footer_title' %><br>
+        <% end %>
+         <%= mail_to 'support@bit-ballet.com', 'お問い合わせ', subject: 'お問い合わせ', class: 'top_footer_title' %>
+      </div>
       <div id="footer_text">
         <p>@bit-ballet.com, 2016-2017, Inc. or its affiliates</p>
       </div>
