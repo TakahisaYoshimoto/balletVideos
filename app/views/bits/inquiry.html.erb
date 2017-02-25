@@ -1,0 +1,23 @@
+<%= form_tag({controller: '/bits', action: :send_support_mail,}) do %>
+  <div class="field form-group col-sm-12">
+    <%= label_tag :title, 'タイトル', class: 'control-label col-sm-2' %>
+    <div class="col-sm-4">
+      <%= text_field_tag :title, '', class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="field form-group col-sm-12">
+    <%= label_tag :text, 'メッセージ', class: 'control-label col-sm-2' %>
+    <div class="col-sm-4">
+      <%= text_area_tag :text, '', class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="actions　form-group col-sm-12">
+      <div class="col-sm-offset-2 col-sm-4">
+        <%= submit_tag 'メッセージを送る', class: 'btn btn-primary right_button' %>
+      </div>
+    </div>
+  </div>
+<% end %>

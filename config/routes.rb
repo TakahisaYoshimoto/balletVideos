@@ -8,6 +8,8 @@ Rails.application.routes.draw do
       get :nogenreSearch
       get :attentionSearch
       get :sign_up_mail
+      get :inquiry
+      post :send_support_mail
     end
   end
   resources :youtube_videos, only: [:new, :create, :edit, :update, :show, :destroy] do
