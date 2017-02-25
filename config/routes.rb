@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get :attentionSearch
       get :sign_up_mail
       get :inquiry
+      get :inquiry_after
       post :send_support_mail
     end
   end

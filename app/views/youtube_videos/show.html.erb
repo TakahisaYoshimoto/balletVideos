@@ -38,6 +38,23 @@
       <p id="y_video_show_pv_count">視聴回数<%= @youtube.pv_count %>回</p>
     </div>
 
+    <div class="ad_area col-xs-12 hidden-sm hidden-md hidden-lg" style="text-align:center;padding-bottom:15px;">
+      <!-- admax -->
+      <div class="admax-native" data-admax-id="4b5879fb019fb93a43400dec4515824d"></div>
+      <script type="text/javascript" charset="utf-8" src="//adm.shinobi.jp/st/na.js"></script>
+      <!-- admax -->
+    </div>
+    <div class="ad_area hidden-xs col-sm-12 hidden-md hidden-lg" style="text-align:center;padding-bottom:15px;">
+      <!-- admax -->
+      <script src="//adm.shinobi.jp/s/b7c559839141ee4f6bbb301f9bda7e0d"></script>
+      <!-- admax -->
+    </div>
+    <div class="ad_area hidden-xs hidden-sm col-md-12" style="text-align:center;padding-bottom:15px;">
+      <!-- admax -->
+      <script src="http://adm.shinobi.jp/s/de0a7cbba5f9ac2361cd2833ba7a1082"></script>
+      <!-- admax -->
+    </div>
+
     <div id="y_video_show_text">
       <%= simple_format(@youtube.text, class: :text) %>
     </div>
@@ -134,6 +151,9 @@
 </div>
 
 <div id="related_videos_list" class="col-sm-3">
+    <div class="co-xs-12" style="margin:0 0 15px 0;">
+      <%= link_to image_tag('mu_ad_img1.jpg', width: '100%'), 'http://mu-ballet.com' %>
+    </div>
   <p>関連動画</p>
   <% @relatedVideos.each do |rv| %>
     <div id="related_videos_link" class="row-eq-height">

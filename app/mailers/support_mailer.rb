@@ -12,6 +12,6 @@ class SupportMailer < ApplicationMailer
     @username = username
     @email = email
 
-    mail(to: "gatsuonrails@gmail.com", from: ENV['EMAIL_ADDRESS'], subject: title)
+    mail(to: ENV['SUPPORT_EMAIL_ADDRESS'], from: ENV['EMAIL_ADDRESS'], subject: title)
   end
 end

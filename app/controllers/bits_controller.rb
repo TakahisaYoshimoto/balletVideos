@@ -154,12 +154,15 @@ class BitsController < ApplicationController
   def inquiry
   end
 
+  def inquiry_after
+  end
+
   def send_support_mail
     @mail = SupportMailer.sendmail_support(params[:title],
       params[:text],
       current_user.username,
       current_user.email)
       .deliver
-    render text: '問い合わせを送りました、返信は登録されているメールアドレスにお送りします。'
+    redirect_to inquiry_after_bits_path
   end
 end
