@@ -1,4 +1,6 @@
 class BitsController < ApplicationController
+  before_action :authenticate_user!, only: [:inquiry, :send_support_mail]
+
   def index
     @pic_youtubes = YoutubeVideo.where('pickup_level > ? AND pickup_level < ?', 0, 3)
       .order('pickup_level asc')
@@ -153,7 +155,11 @@ class BitsController < ApplicationController
   end
 
   def send_support_mail
-    @mail = SupportMailer.sendmail_support(params[:title], params[:text]).deliver
-    render text: '問い合わせを送りました。'
+    @mail = SupportMailer.sendmail_support(params[:title],
+      params[:text],
+      current_user.username,
+      current_user.email)
+      .deliver
+    render text: '問い合わせを送りました、返信は登録されているメールアドレスにお送りします。'
   end
 end

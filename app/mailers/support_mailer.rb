@@ -6,9 +6,11 @@ class SupportMailer < ApplicationMailer
   #   en.support_mailer.sendmail_support.subject
   #
 
-  def sendmail_support(title, text)
+  def sendmail_support(title, text, username, email)
     @title = title
     @text = text
+    @username = username
+    @email = email
 
     mail(to: "gatsuonrails@gmail.com", from: ENV['EMAIL_ADDRESS'], subject: title)
   end

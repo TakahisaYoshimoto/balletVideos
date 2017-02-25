@@ -7,9 +7,9 @@
   </div>
 
   <div class="field form-group col-sm-12">
-    <%= label_tag :text, 'メッセージ', class: 'control-label col-sm-2' %>
+    <%= label_tag :text, 'メッセージ(800文字以内)', class: 'control-label col-sm-2' %>
     <div class="col-sm-4">
-      <%= text_area_tag :text, '', class: 'form-control' %>
+      <%= text_area_tag :text, '', class: 'form-control', style: 'height:250px;', maxlength: "800" %>
     </div>
   </div>
 
