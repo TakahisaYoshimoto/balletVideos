@@ -2,6 +2,7 @@ class TopTagListsController < ApplicationController
   before_action :set_tag, only: [:show, :edit, :update, :destroy]
 
   def index
+    user_level_check(2)
     @tags = TopTagList.all.order('hurigana asc')
   end
 
@@ -21,6 +22,7 @@ class TopTagListsController < ApplicationController
   end
 
   def edit
+    user_level_check(2)
     @tag = TopTagList.find(params[:id])
   end
 

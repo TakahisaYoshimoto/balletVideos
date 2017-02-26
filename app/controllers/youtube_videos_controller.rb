@@ -53,6 +53,7 @@ class YoutubeVideosController < ApplicationController
   end
 
   def destroy
+    user_level_check(2)
     @youtube.destroy
     redirect_to bits_path
   end
