@@ -17,6 +17,11 @@
     </div>
   </div>
 
+  <div class="genre">
+      <%= link_to controller: :bits, action: :like_videos, or: 'pv' do %>
+        <p><i class="glyphicon glyphicon-thumbs-up"></i><strong>グッドした動画</strong></p>
+      <% end %>
+  </div>
 
   <div class="genre">
     <strong><%= link_to '注目キーワード', { controller: :bits, action: :attentionSearch, search_params: '注目キーワード', or: 'pv' } %></strong>

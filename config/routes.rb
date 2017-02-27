@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :bits, only: [:index] do
     collection do
       get :all
+      get :like_videos
       get :Search
       get :genreSearch
       get :nogenreSearch

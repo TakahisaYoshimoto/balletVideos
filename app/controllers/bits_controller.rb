@@ -30,6 +30,29 @@ class BitsController < ApplicationController
     render 'videolist'
   end
 
+  def like_videos
+    unless user_signed_in?
+      redirect_to bits_path and return
+    end
+
+    if params[:or] == "pv"
+      @youtubes = YoutubeVideo.joins(:likes)
+        .where("likes.user_id = ?", current_user.id)
+        .page(params[:page])
+        .order(pv_count: :desc)
+        .order(created_at: :desc)
+    else
+      @youtubes = YoutubeVideo.joins(:likes)
+        .where("likes.user_id = ?", current_user.id)
+        .page(params[:page])
+        .order(created_at: :desc)
+    end
+    
+    @tags = TopTagList.all.select(:genre, :tag_name).order('hurigana asc')
+    session[:search_params] = ""
+    render 'videolist'
+  end
+
   def Search
     @tags = TopTagList.all.select(:genre, :tag_name).order('hurigana asc')
 
