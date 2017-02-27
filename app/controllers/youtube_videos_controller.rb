@@ -67,6 +67,8 @@ class YoutubeVideosController < ApplicationController
       history_exitence = ViewHistory.where('user_id = ? AND youtube_video_id = ?', current_user.id, params[:id]).exists?
       unless history_exitence
         ViewHistory.create(:user_id => current_user.id, :youtube_video_id => params[:id])
+      else
+        ViewHistory.where('user_id = ? AND youtube_video_id = ?', current_user.id, params[:id]).first.update(:updated_at => Time.now)
       end
     end
     impressionist(@youtube, nil, :unique => [:session_hash])

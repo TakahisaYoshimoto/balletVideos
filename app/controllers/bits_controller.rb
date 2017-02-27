@@ -4,29 +4,29 @@ class BitsController < ApplicationController
   def index
     @pic_youtubes = YoutubeVideo.where('pickup_level > ? AND pickup_level < ?', 0, 3)
       .order('pickup_level asc')
-      .includes(:youtube_video_tags)
     @youtubes = YoutubeVideo.where('pickup_level > ? OR pickup_level = ? OR pickup_level IS NULL', 2, 0)
       .order('created_at desc')
       .limit(11)
       .offset(0)
-      .includes(:youtube_video_tags)
     @tags = TopTagList.all.select(:genre, :tag_name).order('hurigana asc')
     session[:search_params] = ""
   end
 
   def all
-    if params[:or] == "time"
+    if params[:or] == "pv"
       @youtubes = YoutubeVideo.all
-        .order('created_at desc')
+        .order('pv_count desc')
         .page(params[:page])
     else
       @youtubes = YoutubeVideo.all
-        .order('pv_count desc')
+        .order('created_at desc')
         .page(params[:page])
     end
       
     @tags = TopTagList.all.select(:genre, :tag_name).order('hurigana asc')
-    session[:search_params] = ""  
+    session[:search_params] = ""
+    session[:genre] = ""
+    session[:category_params] = ""
     render 'videolist'
   end
 
@@ -50,6 +50,8 @@ class BitsController < ApplicationController
     
     @tags = TopTagList.all.select(:genre, :tag_name).order('hurigana asc')
     session[:search_params] = ""
+    session[:genre] = ""
+    session[:category_params] = ""
     render 'videolist'
   end
 
@@ -64,24 +66,31 @@ class BitsController < ApplicationController
         .page(params[:page])
         .order(pv_count: :desc)
         .order(created_at: :desc)
-    else
+    elsif params[:or] == "time"
       @youtubes = YoutubeVideo.joins(:view_histories)
         .where("view_histories.user_id = ?", current_user.id)
         .page(params[:page])
         .order(created_at: :desc)
+    else
+      @youtubes = YoutubeVideo.joins(:view_histories)
+        .where("view_histories.user_id = ?", current_user.id)
+        .page(params[:page])
+        .order('view_histories.updated_at desc') 
     end
 
     @tags = TopTagList.all.select(:genre, :tag_name).order('hurigana asc')
     session[:search_params] = ""
+    session[:genre] = ""
+    session[:category_params] = ""
     render 'videolist'
   end
 
   def Search
-    @tags = TopTagList.all.select(:genre, :tag_name).order('hurigana asc')
-
     if params[:search_params].blank?
       redirect_to all_bits_path and return
     end
+
+    @tags = TopTagList.all.select(:genre, :tag_name).order('hurigana asc')
 
     sp = params[:search_params].gsub("　"," ")#全角スペースを半角スペースに変換
     sp.chop! if sp[sp.length-1] == " "#最後の文字がスペースだったら削除
@@ -93,7 +102,7 @@ class BitsController < ApplicationController
     c.times{ ph_title += " AND title like ?" } if sp.length > 1
 
     tg = params[:search_params]
-    tg.gsub("　"," ")
+    tg = tg.gsub("　"," ")
     tg.chop! if tg[tg.length-1] == ","#最後の文字がスペースだったら削除
     tg = tg.gsub(" ",",")
     tg = tg.split(",")
@@ -105,7 +114,7 @@ class BitsController < ApplicationController
       .group(:youtube_video_id)
       .having('count(youtube_video_id) >= ?', tg.length)
 
-    unless params[:category_params].nil?
+    unless params[:category_params].blank?
       cp = params[:category_params]
       session[:category_params] = params[:category_params]
     else
@@ -127,18 +136,15 @@ class BitsController < ApplicationController
         .page(params[:page])
         .order(pv_count: :desc)
         .order(created_at: :desc)
-        .includes(:youtube_video_tags)
     elsif params[:or] == "time"
       @youtubes = YoutubeVideo.where("((#{ph_title}) OR (id IN (?))) AND (category like ?)", *sp, youtubetags, "%"+cp+"%")
         .page(params[:page])
         .order(created_at: :desc)
-        .includes(:youtube_video_tags)
     else
       @youtubes = YoutubeVideo.where("((#{ph_title}) OR (id IN (?))) AND (category like ?)", *sp, youtubetags, "%"+cp+"%")
         .page(params[:page])
         .order_as_specified(id: tag_keys)
         .order(created_at: :desc)
-        .includes(:youtube_video_tags)
     end
 
     #検索結果の動画についてるタグ一覧を取得、検索キーワードは除外
@@ -169,12 +175,10 @@ class BitsController < ApplicationController
         .page(params[:page])
         .order(pv_count: :desc)
         .order(created_at: :desc)
-        .includes(:youtube_video_tags)
     else
       @youtubes = YoutubeVideo.joins(:youtube_video_tags).where("#{ph_tag}", *tg)
         .page(params[:page])
         .order(created_at: :desc)
-        .includes(:youtube_video_tags)
     end
 
     session[:genre] = params[:search_params]
@@ -189,12 +193,10 @@ class BitsController < ApplicationController
         .page(params[:page])
         .order(pv_count: :desc)
         .order(created_at: :desc)
-        .includes(:youtube_video_tags)
     else
       @youtubes = YoutubeVideo.where("category like ?", params[:search_params])
         .page(params[:page])
         .order(created_at: :desc)
-        .includes(:youtube_video_tags)
     end
 
     session[:genre] = params[:search_params]

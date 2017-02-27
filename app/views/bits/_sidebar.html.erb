@@ -1,7 +1,7 @@
 <div id="bits_index_sidebar" class="col-sm-3">
   <div id="search_area" class="col-xs-12">
     <div class="form-group row">
-      <%= form_tag({controller: '/bits', action: :Search, id: @Search}, method: :get) do %>
+      <%= form_tag({controller: '/bits', action: :Search }, method: :get) do %>
         <div class="input-group form-group">
           <%= search_field_tag :search_params,
             session[:search_params],
@@ -24,7 +24,7 @@
   </div>
 
   <div class="genre">
-      <%= link_to controller: :bits, action: :view_histories, or: 'time' do %>
+      <%= link_to controller: :bits, action: :view_histories, or: 'history' do %>
         <p><strong>視聴履歴</strong></p>
       <% end %>
   </div>
@@ -36,7 +36,7 @@
   <% tags.each do |tag| %>
     <% if tag.genre == '注目キーワード' %>
       <div class="search_tag">
-        <%= link_to "#{tag.tag_name}", { controller: :bits, action: :Search, search_params: tag.tag_name, category_params: "", or: 'pv' } %><br>
+        <%= link_to "#{tag.tag_name}", { controller: :bits, action: :Search, search_params: tag.tag_name, or: 'pv' } %><br>
       </div>
     <% end %>
   <% end %>
