@@ -26,30 +26,18 @@
   <% end %>
 
   <div id="order_change">
-    <% if controller.action_name == 'genreSearch' %>
-      <% if /or=pv/ =~ request.fullpath %>
-        再生回数順|<%= link_to '新着順', { controller: :bits, action: :genreSearch, search_params: session[:genre], category_params: session[:category_params], or: 'time' } %>
-      <% else %>
-        <%= link_to '再生回数順', { controller: :bits, action: :genreSearch, search_params: session[:genre], category_params: session[:category_params], or: 'pv' } %>|新着順
-      <% end %>
-    <% elsif controller.action_name == 'Search' %>
-      <% if /or=pv/ =~ request.fullpath %>
-        再生回数順|<%= link_to '新着順', { controller: :bits, action: :Search, search_params: session[:genre], category_params: session[:category_params], or: 'time' } %>
-      <% else %>
-        <%= link_to '再生回数順', { controller: :bits, action: :Search, search_params: session[:genre], category_params: session[:category_params], or: 'pv' } %>|新着順
-      <% end %>
-    <% elsif controller.action_name == 'attentionSearch' %>
-       <% if /or=pv/ =~ request.fullpath %>
-        再生回数順|<%= link_to '新着順', { controller: :bits, action: :attentionSearch, search_params: session[:genre], category_params: session[:category_params], or: 'time' } %>
-      <% else %>
-        <%= link_to '再生回数順', { controller: :bits, action: :attentionSearch, search_params: session[:genre], category_params: session[:category_params], or: 'pv' } %>|新着順
-      <% end %>  
-    <% elsif controller.action_name == 'all' %>
-        <% if /or=pv/ =~ request.fullpath %>
-        再生回数順|<%= link_to '新着順', { controller: :bits, action: :all, or: 'time' } %>
-      <% else %>
-        <%= link_to '再生回数順', { controller: :bits, action: :all, or: 'pv' } %>|新着順
-      <% end %>    
+    <% if /or=pv/ =~ request.fullpath %>
+      再生回数順|<%= link_to '新着順', { controller: :bits,
+        action: controller.action_name,
+        search_params: session[:genre],
+        category_params: session[:category_params],
+        or: 'time' } %>
+    <% else %>
+      <%= link_to '再生回数順', { controller: :bits,
+        action: controller.action_name,
+        search_params: session[:genre],
+        category_params: session[:category_params],
+        or: 'pv' } %>|新着順
     <% end %>
   </div>
 <%
