@@ -8,7 +8,7 @@
 </div>
 
 <div id="y_video_show_body">
-  <div class="col-sm-9">
+  <div class="col-sm-8">
     <div id="y_video_show_titlearea">
       <h2><%= @youtube.title %></h2>
 
@@ -150,23 +150,24 @@
   </div>
 </div>
 
-<div id="related_videos_list" class="col-sm-3">
+<div id="related_videos_list" class="col-sm-4">
     <div class="co-xs-12" style="margin:0 0 15px 0;">
       <%= link_to image_tag('mu_ad_img1.jpg', width: '100%'), 'http://mu-ballet.com', target: '_blank' %>
     </div>
   <p>関連動画</p>
   <% @relatedVideos.each do |rv| %>
-    <div id="related_videos_link" class="row-eq-height">
+    <div class="related_videos_link row-eq-height">
       <% url = rv.url.gsub(/http.+v=/, "") %>
       <% url = url.gsub(/&.+./, "") %>
       <%= link_to(youtube_video_path(rv)) do %>
-        <div id="related_videos_link_img" class="col-sm-6">
+        <div class="related_videos_link_img col-sm-6" style="padding:0;">
           <%= image_tag('http://i.ytimg.com/vi/' + url + '/hqdefault.jpg',
                                   width: '100%',
                                   class: 'bits_show_link_img') %>
         </div>
-        <div id="related_videos_link_title" class="col-sm-6">
-          <%= rv.title %>
+        <div class="related_videos_link_title col-sm-6" style="padding:0;">
+          <p><%= rv.title %></p>
+          <p>視聴回数<%= rv.pv_count %>回</p>
         </div>
       <% end -%>
     </div>

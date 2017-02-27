@@ -165,12 +165,12 @@
   padding: 3px;
   margin-top: 10px;
 }
-#related_videos_link {
+.related_videos_link {
   margin-bottom: 5px;
 }
-#related_videos_link_img {
-  padding: 0;
+.related_videos_link_title p {
+  color: black;
 }
-#related_videos_link_title {
-  padding: 0;
+.related_videos_link:hover p {
+  color: blue;
 }
