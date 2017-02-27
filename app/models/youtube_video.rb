@@ -1,6 +1,7 @@
 class YoutubeVideo < ApplicationRecord
   has_many :youtube_video_tags, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :view_histories
   def like_user(user_id)
    likes.find_by(user_id: user_id)
   end

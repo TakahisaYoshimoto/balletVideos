@@ -63,6 +63,12 @@ class YoutubeVideosController < ApplicationController
     @comments = Comment.where('youtube_video_id = ?', params[:id]).order('created_at desc')
     @replys = @comments.where('reply != ?', 0).reorder('created_at asc')
     @likes = Like.where('youtube_video_id = ?', params[:id])
+    if user_signed_in?
+      history_exitence = ViewHistory.where('user_id = ? AND youtube_video_id = ?', current_user.id, params[:id]).exists?
+      unless history_exitence
+        ViewHistory.create(:user_id => current_user.id, :youtube_video_id => params[:id])
+      end
+    end
     impressionist(@youtube, nil, :unique => [:session_hash])
     each_count = 0
     ph_tag = ""

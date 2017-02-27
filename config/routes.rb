@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     collection do
       get :all
       get :like_videos
+      get :view_histories
       get :Search
       get :genreSearch
       get :nogenreSearch
