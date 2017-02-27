@@ -47,6 +47,10 @@
     </div>
   </div>
 
+  <div class="field form-group">
+    <label><%= f.check_box :acceptance, {}, 'true', 'false' %> 運営からのお知らせメールを受け取る。</label>
+  </div>
+
   <div class="actions form-group">
     <%= f.submit "更新", class: 'btn btn-primary' %>
   </div>
