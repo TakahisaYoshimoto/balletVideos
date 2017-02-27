@@ -33,6 +33,10 @@ class BitsController < ApplicationController
   def Search
     @tags = TopTagList.all.select(:genre, :tag_name).order('hurigana asc')
 
+    if params[:search_params].blank?
+      redirect_to all_bits_path and return
+    end
+
     sp = params[:search_params].gsub("　"," ")#全角スペースを半角スペースに変換
     sp.chop! if sp[sp.length-1] == " "#最後の文字がスペースだったら削除
     sp = sp.gsub(" ","%,%")#半角スペースをカンマに変換(プレスホルダーの第二引数以降に使用する変数spに代入)
