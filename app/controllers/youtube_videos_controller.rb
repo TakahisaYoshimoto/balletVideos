@@ -88,7 +88,7 @@ class YoutubeVideosController < ApplicationController
       .where("#{ph_tag}", *tags)
       .group(:id)
       .order('count_id desc')
-      .limit(10)
+      .limit(20)
       .offset(0)
       .count(:id).keys
     #関連動画一覧のID一覧配列から表示する動画のIDを削除

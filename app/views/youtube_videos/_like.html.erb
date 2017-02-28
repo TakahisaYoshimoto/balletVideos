@@ -11,7 +11,18 @@
     <% end %>
   <% end %>
 <% else %>
-  ログインするとグッドボタンを押せます、グッドボタンを押した動画は一覧で見ることができます。
-  <p id="good_button_hand"><i class="glyphicon glyphicon-thumbs-up"></i></p>
-  <p id="good_button_count" style="display:inline;"><%= likes.count %></p>
+  <a href="#good_button_hand" data-toggle="popover" title="ログインするとグッドできます" data-content="a">
+    <p id="good_button_hand"><i class="glyphicon glyphicon-thumbs-up"></i></p>
+    <p id="good_button_count" style="display:inline;"><%= likes.count %></p>
+  </a>
+  <script>
+    var content = ['<%= link_to 'ログイン', new_user_session_path %>'].join('');
+    $(function() {
+      $("[data-toggle=popover]").popover({
+        placement: 'bottom',
+        content: content,
+        html: true
+      });
+    })
+  </script>
 <% end %>
