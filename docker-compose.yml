@@ -1,0 +1,11 @@
+version: '2'
+services:
+  rails:
+    image: rails:5
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app
+      - ./vendor/bundle:/usr/local/bundle
+    ports:
+      - '3000:3000'
+    command: rails s -b 0.0.0.0
