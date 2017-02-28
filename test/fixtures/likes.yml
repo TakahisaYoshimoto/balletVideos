@@ -7,3 +7,11 @@ one:
 two:
   user_id: 1
   youtube_video_id: 1
+
+root_like1:
+  user: root
+  youtube_video_id: 1
+
+root_like2:
+  user: root
+  youtube_video_id: 2
