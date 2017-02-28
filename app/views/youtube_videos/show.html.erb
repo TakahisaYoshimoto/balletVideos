@@ -2,7 +2,7 @@
 <% url = url.gsub(/&.+./, "") %>
 
 <div class="embed-responsive embed-responsive-16by9">
-  <%= sanitize '<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/' + url + '?frameborder="0" allowfullscreen></iframe>',
+  <%= sanitize '<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/' + url + '?rel=0&frameborder="0" allowfullscreen></iframe>',
     tags: %w(iframe),
     attributes: %w(class src allowfullscreen frameborder) %>
 </div>
