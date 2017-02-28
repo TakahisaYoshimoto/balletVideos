@@ -11,16 +11,14 @@
     <% end %>
   <% end %>
 <% else %>
-  <a href="#good_button_hand" data-toggle="popover" title="ログインするとグッドできます" data-content="a">
+  <a href="#good_button_hand" data-toggle="popover" title="ログインするとグッドできます" data-content='<%= link_to 'ログイン', new_user_session_path %>'>
     <p id="good_button_hand"><i class="glyphicon glyphicon-thumbs-up"></i></p>
     <p id="good_button_count" style="display:inline;"><%= likes.count %></p>
   </a>
   <script>
-    var content = ['<%= link_to 'ログイン', new_user_session_path %>'].join('');
     $(function() {
       $("[data-toggle=popover]").popover({
         placement: 'bottom',
-        content: content,
         html: true
       });
     })
