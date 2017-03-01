@@ -22,6 +22,26 @@ $small: "only screen and (min-width:768px) and (max-width:992px)";
 $middle: "only screen and (min-width:992px) and (max-width:1200px)";
 $large:  "only screen and (min-width:1200px)";
 
+.btn-primary {
+/*  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;*/
+  color: #fff;
+  background-color: #51A7F9;
+  border-color: #51A7F9;
+}
+.btn-primary:focus,
+.btn-primary.focus {
+  color: #fff;
+  background-color: #0E83F3;
+  border-color: #0E83F3;
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color: #0E83F3;
+  border-color: #0E83F3;
+}
+
 html, body {
   height: 100%;
   width: 100%;
