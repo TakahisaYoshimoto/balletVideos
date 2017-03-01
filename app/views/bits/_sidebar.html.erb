@@ -17,17 +17,37 @@
     </div>
   </div>
 
-  <div class="genre">
-      <%= link_to controller: :bits, action: :like_videos, or: 'time' do %>
-        <p><i class="glyphicon glyphicon-thumbs-up"></i><strong>グッドした動画</strong></p>
-      <% end %>
-  </div>
-
-  <div class="genre">
-      <%= link_to controller: :bits, action: :view_histories, or: 'history' do %>
-        <p><strong>視聴履歴</strong></p>
-      <% end %>
-  </div>
+  <% if user_signed_in? %>
+    <div class="genre">
+        <%= link_to controller: :bits, action: :like_videos, or: 'time' do %>
+          <p><i class="glyphicon glyphicon-thumbs-up"></i><strong>グッドした動画</strong></p>
+        <% end %>
+    </div>
+    <div class="genre">
+        <%= link_to controller: :bits, action: :view_histories, or: 'history' do %>
+          <p><strong>視聴履歴</strong></p>
+        <% end %>
+    </div>
+  <% else %>
+    <div id="my_good_videos" class="genre" style="margin:5px 0;">
+      <a href="#my_good_videos" data-toggle="popover" title="ログインすると視聴した動画一覧を見る事ができます" data-content='<%= link_to 'ログイン', new_user_session_path %>'>
+        <p style="display:inline;"><i class="glyphicon glyphicon-thumbs-up"></i><strong>グッドした動画</strong></p>
+      </a>
+    </div>
+    <div id="my_history_videos" class="genre" style="margin:5px 0;">
+      <a href="#my_good_videos" data-toggle="popover" title="ログインすると視聴した動画一覧を見る事ができます" data-content='<%= link_to 'ログイン', new_user_session_path %>'>
+        <p style="display:inline;"><strong>視聴履歴</strong></p>
+      </a>
+    </div>
+    <script>
+      $(function() {
+        $("[data-toggle=popover]").popover({
+          placement: 'bottom',
+          html: true
+        });
+      })
+    </script>
+  <% end %>
 
 
   <div class="genre">
