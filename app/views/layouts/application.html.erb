@@ -27,7 +27,7 @@
           <%= link_to image_tag('bit_logo.png', id: 'site_logo', height: 50), bits_path %>
         </div>
         <div class="collapse navbar-collapse target">
-        <% unless current_user.nil? %>
+        <% if user_signed_in? %>
           <% if current_user.user_level > 1 %>
             <ul class="nav navbar-nav">
               <li><%= link_to 'youtube登録', new_youtube_video_path %></li>
@@ -35,6 +35,43 @@
             </ul>
           <% end %>
         <% end %>
+
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">注目キーワード<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <% @tags.each do |tag| %>
+                <% if tag.genre == '注目キーワード' %>
+                  <li><%= link_to "#{tag.tag_name}", { controller: :bits, action: :Search, search_params: tag.tag_name, or: 'pv' } %></li>
+                <% end %>
+              <% end %>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">演目<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <% @tags.each do |tag| %>
+                <% if tag.genre == '演目' %>
+                  <li><%= link_to "#{tag.tag_name}", { controller: :bits, action: :Search, search_params: tag.tag_name, category_params: tag.genre, or: 'pv' } %></li>
+                <% end %>
+              <% end %>
+            </ul>
+          </li>
+          <li>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">レッスン<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <% @tags.each do |tag| %>
+                <% if tag.genre == 'レッスン' %>
+                  <li><%= link_to "#{tag.tag_name}", { controller: :bits, action: :Search, search_params: tag.tag_name, category_params: tag.genre, or: 'pv' } %></li>
+                <% end %>
+              <% end %>
+            </ul>
+          </li>
+          <li>
+            <li><%= link_to 'その他', { controller: :bits, action: :genreSearch, search_params: "その他", or: 'pv' } %></li>
+          </li>
+        </ul>
+
 
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>

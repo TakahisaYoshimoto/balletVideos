@@ -8,7 +8,6 @@ class BitsController < ApplicationController
       .order('created_at desc')
       .limit(11)
       .offset(0)
-    @tags = TopTagList.all.select(:genre, :tag_name).order('hurigana asc')
     session[:search_params] = ""
   end
 
@@ -23,7 +22,6 @@ class BitsController < ApplicationController
         .page(params[:page])
     end
       
-    @tags = TopTagList.all.select(:genre, :tag_name).order('hurigana asc')
     session[:search_params] = ""
     session[:genre] = ""
     session[:category_params] = ""
@@ -48,7 +46,6 @@ class BitsController < ApplicationController
         .order(created_at: :desc)
     end
     
-    @tags = TopTagList.all.select(:genre, :tag_name).order('hurigana asc')
     session[:search_params] = ""
     session[:genre] = ""
     session[:category_params] = ""
@@ -78,7 +75,6 @@ class BitsController < ApplicationController
         .order('view_histories.updated_at desc') 
     end
 
-    @tags = TopTagList.all.select(:genre, :tag_name).order('hurigana asc')
     session[:search_params] = ""
     session[:genre] = ""
     session[:category_params] = ""
@@ -89,8 +85,6 @@ class BitsController < ApplicationController
     if params[:search_params].blank?
       redirect_to all_bits_path and return
     end
-
-    @tags = TopTagList.all.select(:genre, :tag_name).order('hurigana asc')
 
     sp = params[:search_params].gsub("　"," ")#全角スペースを半角スペースに変換
     sp.chop! if sp[sp.length-1] == " "#最後の文字がスペースだったら削除
@@ -163,8 +157,6 @@ class BitsController < ApplicationController
   end
 
   def attentionSearch
-    @tags = TopTagList.all.select(:genre, :tag_name).order('hurigana asc')
-
     tg = TopTagList.all.where('genre like ?', params[:search_params]).pluck(:tag_name)
     ph_tag = "youtube_video_tags.name like ?"
     c = tg.length-1
@@ -186,8 +178,6 @@ class BitsController < ApplicationController
   end
 
   def genreSearch
-    @tags = TopTagList.all.select(:genre, :tag_name).order('hurigana asc')
-
     if params[:or] == "pv"
       @youtubes = YoutubeVideo.where("category like ?", params[:search_params])
         .page(params[:page])
