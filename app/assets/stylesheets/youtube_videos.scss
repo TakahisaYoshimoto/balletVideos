@@ -80,6 +80,11 @@
   right: -171px;
   margin-right: 10px;
 }
+#good_button_count {
+  position: absolute;
+  top: 11%;
+  left: 13%;
+}
 @media screen and (max-width: 768px) {
   #video_show_button_area {
     position: relative;
@@ -93,10 +98,15 @@
   }
   #good_button_area {
     position: absolute;
-    width: 250px;
+    width: 30px;
     top: 40px;
-    right: -210px;
+    right: 30px;
     margin-right: 10px;
+  }
+  #good_button_count {
+    position: absolute;
+    top: 11%;
+    left: 160%;
   }
 }
 #good_button_area a {
@@ -123,14 +133,6 @@
 }
 #good_button_heart:hover {
   text-decoration: none;
-}
-#good_button_count_area {
-  /*position: relative;*/
-}
-#good_button_count {
-  position: absolute;
-  top: 11%;
-  left: 13%;
 }
 
 #y_video_show_pv_count {
