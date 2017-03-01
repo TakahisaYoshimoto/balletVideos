@@ -42,7 +42,7 @@
             <ul class="dropdown-menu" role="menu">
               <% @tags.each do |tag| %>
                 <% if tag.genre == '注目キーワード' %>
-                  <li><%= link_to "#{tag.tag_name}", { controller: :bits, action: :Search, search_params: tag.tag_name, or: 'pv' } %></li>
+                  <li><%= link_to "#{tag.tag_name}", { :controller => '/bits', action: :Search, search_params: tag.tag_name, or: 'pv' } %></li>
                 <% end %>
               <% end %>
             </ul>
@@ -52,7 +52,7 @@
             <ul class="dropdown-menu" role="menu">
               <% @tags.each do |tag| %>
                 <% if tag.genre == '演目' %>
-                  <li><%= link_to "#{tag.tag_name}", { controller: :bits, action: :Search, search_params: tag.tag_name, category_params: tag.genre, or: 'pv' } %></li>
+                  <li><%= link_to "#{tag.tag_name}", { :controller => '/bits', action: :Search, search_params: tag.tag_name, category_params: tag.genre, or: 'pv' } %></li>
                 <% end %>
               <% end %>
             </ul>
@@ -62,18 +62,19 @@
             <ul class="dropdown-menu" role="menu">
               <% @tags.each do |tag| %>
                 <% if tag.genre == 'レッスン' %>
-                  <li><%= link_to "#{tag.tag_name}", { controller: :bits, action: :Search, search_params: tag.tag_name, category_params: tag.genre, or: 'pv' } %></li>
+                  <li><%= link_to "#{tag.tag_name}", { :controller => '/bits', action: :Search, search_params: tag.tag_name, category_params: tag.genre, or: 'pv' } %></li>
                 <% end %>
               <% end %>
             </ul>
           </li>
           <li>
-            <li><%= link_to 'その他', { controller: :bits, action: :genreSearch, search_params: "その他", or: 'pv' } %></li>
+            <li><%= link_to 'その他', { :controller => '/bits', action: :genreSearch, search_params: "その他", or: 'pv' } %></li>
           </li>
         </ul>
 
 
           <ul class="nav navbar-nav navbar-right">
+            <li class="nav-divider"></li>
             <% if user_signed_in? %>
               <li>
                   <%= link_to ' プロフィール変更', edit_user_registration_path %>
