@@ -15,93 +15,103 @@
   </head>
 
   <body>
-  <div style="overflow:hidden;">
-    <nav class="navbar navbar-inverse">
-      <div class="container">
-        <div class="navbar-header">
-          <button class="navbar-toggle" data-toggle="collapse" data-target=".target">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <%= link_to image_tag('bit_logo.png', id: 'site_logo', class: 'hidden-xs hidden-sm', height: 50), bits_path %>
-          <%= link_to image_tag('bit_logo_phone.png', id: 'site_logo', class: 'hidden-md hidden-lg', height: 50), bits_path %>
-        </div>
-        <div class="collapse navbar-collapse target">
-        <% if user_signed_in? %>
-          <% if current_user.user_level > 1 %>
-            <ul class="nav navbar-nav">
-              <li><%= link_to 'youtube登録', new_youtube_video_path %></li>
-              <li><%= link_to '表示タグ編集', top_tag_lists_path %></li>
-            </ul>
+    <div style="overflow:hidden;min-height:100%;">
+      <nav class="navbar navbar-inverse">
+        <div class="container">
+          <div class="navbar-header">
+            <button class="navbar-toggle" data-toggle="collapse" data-target=".target">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <%= link_to image_tag('bit_logo.png', id: 'site_logo', class: 'hidden-xs hidden-sm', height: 50), bits_path %>
+            <%= link_to image_tag('bit_logo_phone.png', id: 'site_logo', class: 'hidden-md hidden-lg', height: 50), bits_path %>
+          </div>
+          <div class="collapse navbar-collapse target">
+          <% if user_signed_in? %>
+            <% if current_user.user_level > 1 %>
+              <ul class="nav navbar-nav">
+                <li><%= link_to 'youtube登録', new_youtube_video_path %></li>
+                <li><%= link_to '表示タグ編集', top_tag_lists_path %></li>
+              </ul>
+            <% end %>
           <% end %>
-        <% end %>
 
-        <ul class="nav navbar-nav">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">注目キーワード<span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <% @tags.each do |tag| %>
-                <% if tag.genre == '注目キーワード' %>
-                  <li><%= link_to "#{tag.tag_name}", { :controller => '/bits', action: :Search, search_params: tag.tag_name, or: 'pv' } %></li>
-                <% end %>
-              <% end %>
-            </ul>
-          </li>
-          <li>
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">演目<span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <% @tags.each do |tag| %>
-                <% if tag.genre == '演目' %>
-                  <li><%= link_to "#{tag.tag_name}", { :controller => '/bits', action: :Search, search_params: tag.tag_name, category_params: tag.genre, or: 'pv' } %></li>
-                <% end %>
-              <% end %>
-            </ul>
-          </li>
-          <li>
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">レッスン<span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <% @tags.each do |tag| %>
-                <% if tag.genre == 'レッスン' %>
-                  <li><%= link_to "#{tag.tag_name}", { :controller => '/bits', action: :Search, search_params: tag.tag_name, category_params: tag.genre, or: 'pv' } %></li>
-                <% end %>
-              <% end %>
-            </ul>
-          </li>
-          <li>
-            <li><%= link_to 'その他', { :controller => '/bits', action: :genreSearch, search_params: "その他", or: 'pv' } %></li>
-          </li>
-        </ul>
-
-
-          <ul class="nav navbar-nav navbar-right">
-            <li class="nav-divider"></li>
+          <ul class="nav navbar-nav">
             <% if user_signed_in? %>
-              <li>
-                  <%= link_to ' プロフィール変更', edit_user_registration_path %>
+              <li class="hidden-sm hidden-md hidden-lg">
+                <%= link_to :controller => '/bits', action: :like_videos, or: 'time' do %>
+                  <i class="glyphicon glyphicon-thumbs-up"></i>グッドした動画
+                <% end %>
               </li>
-              <li>
-                  <%= link_to ' ログアウト', destroy_user_session_path, method: :delete %>
-              </li>
-            <% else %>
-              <li>
-                  <%= link_to 'ユーザー登録', new_user_registration_path %>
-              </li>
-              <li>
-                  <%= link_to 'ログイン', new_user_session_path %>
+              <li class="hidden-sm hidden-md hidden-lg">
+                <%= link_to '視聴履歴', {:controller => '/bits', action: :view_histories, or: 'history'} %>
               </li>
             <% end %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">注目キーワード<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <% @tags.each do |tag| %>
+                  <% if tag.genre == '注目キーワード' %>
+                    <li><%= link_to "#{tag.tag_name}", { :controller => '/bits', action: :Search, search_params: tag.tag_name, or: 'pv' } %></li>
+                  <% end %>
+                <% end %>
+              </ul>
+            </li>
+            <li>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">演目<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <% @tags.each do |tag| %>
+                  <% if tag.genre == '演目' %>
+                    <li><%= link_to "#{tag.tag_name}", { :controller => '/bits', action: :Search, search_params: tag.tag_name, category_params: tag.genre, or: 'pv' } %></li>
+                  <% end %>
+                <% end %>
+              </ul>
+            </li>
+            <li>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">レッスン<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <% @tags.each do |tag| %>
+                  <% if tag.genre == 'レッスン' %>
+                    <li><%= link_to "#{tag.tag_name}", { :controller => '/bits', action: :Search, search_params: tag.tag_name, category_params: tag.genre, or: 'pv' } %></li>
+                  <% end %>
+                <% end %>
+              </ul>
+            </li>
+            <li>
+              <li><%= link_to 'その他', { :controller => '/bits', action: :genreSearch, search_params: "その他", or: 'pv' } %></li>
+            </li>
           </ul>
+
+
+            <ul class="nav navbar-nav navbar-right">
+              <li class="nav-divider"></li>
+              <% if user_signed_in? %>
+                <li>
+                    <%= link_to ' プロフィール変更', edit_user_registration_path %>
+                </li>
+                <li>
+                    <%= link_to ' ログアウト', destroy_user_session_path, method: :delete %>
+                </li>
+              <% else %>
+                <li>
+                    <%= link_to 'ユーザー登録', new_user_registration_path %>
+                </li>
+                <li>
+                    <%= link_to 'ログイン', new_user_session_path %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
         </div>
+      </nav>
+
+      <div id="contants" class="container">
+        <%= yield %>
       </div>
-    </nav>
 
-    <div id="contants" class="container">
-      <%= yield %>
     </div>
 
-    <div id="push">
-    </div>
 
     <div id="footer">
       <div class="container">
@@ -129,6 +139,5 @@
         </div>
       </div>
     </div>
-  </div>
   </body>
 </html>
