@@ -116,6 +116,7 @@
                           maxlength: "400",
                           onkeydown: 'if(event.keyCode == 13){javascript:transmission();}',
                           onkeyup: "document.getElementById('y_video_replyarea_characnt').value=400 - this.value.length",
+                          id: 'reply_edit_textarea'+comment.id.to_s,
                           class: 'reply_text_area form-control' %>
                       </div>
                       <div id="reply_submit" class="actions　form-group">
@@ -183,6 +184,7 @@
     if (display == 'none'){
       document.getElementById("y_video_reply_edit_area"+comment_id).style.display = 'block';
       document.getElementById("reply_view_button"+comment_id).innerHTML = 'キャンセル';
+      document.getElementById("reply_edit_textarea"+comment_id).focus();
     }else {
       document.getElementById("y_video_reply_edit_area"+comment_id).style.display = 'none';
       document.getElementById("reply_view_button"+comment_id).innerHTML = '返信する';
