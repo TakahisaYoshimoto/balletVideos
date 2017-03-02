@@ -1,8 +1,8 @@
-<div class="bits_index_sidebar hidden-sm hidden-md hidden-lg" style="padding:10px;">
-  <div id="search_area">
-    <div class="form-group row">
+<div class="hidden-sm hidden-md hidden-lg" style="padding:0 10px;">
+  <div id="results_search_area">
+    <div class="form-group row" style="margin:0;">
       <%= form_tag({controller: '/bits', action: :Search }, method: :get) do %>
-        <div class="input-group form-group">
+        <div class="input-group form-group" style="margin:0;">
           <%= search_field_tag :search_params,
             session[:search_params],
             class: 'form-control',
