@@ -25,10 +25,14 @@
           <a href="https://twitter.com/share" class="twitter-share-button" data-text=<%= @youtube.title %> data-size="large">Tweet</a>
           <script src="//platform.twitter.com/widgets.js"></script>
           <%# フェイスブックシェア %>
-          <% facebook_share_url = "https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Fec2-13-112-39-20.ap-northeast-1.compute.amazonaws.com%2Fyoutube_videos%2F" + @youtube.id.to_s + "&layout=button&size=large&mobile_iframe=true&width=75&height=28&appId" %>
+          <% facebook_share_url = ENV['SHARE_URL'].to_s + @youtube.id.to_s %>
+          <% facebook_share_url = facebook_share_url.gsub(':','%3A') %>
+          <% facebook_share_url = facebook_share_url.gsub('/','%2F') %>
+          <% facebook_share_url = "https://www.facebook.com/plugins/share_button.php?href=" + facebook_share_url + "&layout=button&size=large&mobile_iframe=true&width=75&height=28&appId" %>
           <iframe src=<%= facebook_share_url.to_s %> width="75" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
           <%# LINEシェアボタン %>
-          <div class="line-it-button" data-lang="ja" data-type="share-a" data-url="http://ec2-13-112-39-20.ap-northeast-1.compute.amazonaws.com/" style="display: none;"></div>
+          <% lineUrl = ENV['SHARE_URL'].to_s + @youtube.id.to_s %>
+          <div class="line-it-button" data-lang="ja" data-type="share-a" data-url=<%= lineUrl %> style="display: none;"></div>
           <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
         </div>
         <div id="good_button_area">
@@ -93,15 +97,22 @@
           <% @comments.each do |comment| %>
             <% if comment.reply == 0 %>
               <div class="y_video_comment_list_view">
-                <strong><%= comment.user.username %></strong>
+                <% unless comment.user.nil? %>
+                  <strong><%= comment.user.username %></strong>
+                <% else %>
+                  <strong>削除されたユーザー</strong>
+                <% end %>
                 <%= comment.created_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %><br>
                 <p><%= simple_format(comment.text) %></p>
 
                 <% @replys.each do |reply| %>
                   <% if reply.reply == comment.id %>
                     <div class="y_video_reply_list_view">
-                      <strong><%= reply.user.username %></strong>
-                      <%= reply.created_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %><br>
+                      <% unless reply.user.nil? %>
+                        <strong><%= reply.user.username %></strong>
+                      <% else %>
+                        <strong>削除されたユーザー</strong>
+                      <% end %>                      <%= reply.created_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %><br>
                       <%= simple_format(reply.text) %>
                     </div>
                   <% end %>
