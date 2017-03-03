@@ -1,0 +1,138 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+$xsmall:  "only screen and (max-width:768px)";
+$small: "only screen and (min-width:768px) and (max-width:992px)";
+$middle: "only screen and (min-width:992px) and (max-width:1200px)";
+$large:  "only screen and (min-width:1200px)";
+
+.btn-primary {
+/*  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;*/
+  color: #fff;
+  background-color: #51A7F9;
+  border-color: #51A7F9;
+}
+.btn-primary:focus,
+.btn-primary.focus {
+  color: #fff;
+  background-color: #0E83F3;
+  border-color: #0E83F3;
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color: #0E83F3;
+  border-color: #0E83F3;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+body {
+  /*background: #F1F1F1;*/
+  background: white;
+
+  font-family: "Hiragino Maru Gothic W4 JIS2004", "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+}
+
+#site_logo {
+  padding-top: 0;
+  margin-top: 0;
+}
+.navbar {
+  min-height: 50px;
+  margin-bottom: 0;
+}
+
+@media screen and (min-width:768px) {
+  .nav > li a {
+    margin-top: 15px;
+  }
+  .nav > li:not(:last-child) a {
+    border-right: 1px solid white;
+  }
+  #site_logo {
+    padding-top: 4px;
+    margin-top: 10px;
+  }
+  .navbar {
+    min-height: 75px;
+    margin-bottom: 15px;
+  }
+}
+
+.xs_top {
+  position: relative;
+  background-image: url(<%= asset_data_uri 'xs_top_img.jpg' %>);
+  /*background-image: url('xs_top_img.jpg');*/
+  background-repeat: no-repeat;
+  background-position: top center;
+  width: 100%;
+  height: 350px;
+}
+.xs_top_text {
+  position: absolute;
+  color: white;
+  font-size: 25px;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+}
+.xs_top_link {
+  position: absolute;
+  color: white;
+  font-size: 16px;
+  top: 80%;
+  width: 100%;
+  text-align: center;
+}
+
+#contants {
+}
+
+
+#footer {
+  width: 100%;
+  height: 250px;
+  background: #B1AFB6;
+  position: relative;
+}
+#top_footer_search_link_area a,
+#footer a,
+.top_footer_title {
+  padding: 0;
+  margin: 0;
+  color: black;
+}
+.top_footer_title {
+  font-weight: bold;
+}
+#top_footer_search_link_area {
+  margin: 0 0 0 15px;
+}
+#footer_text {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
