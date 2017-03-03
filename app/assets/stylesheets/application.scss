@@ -61,6 +61,7 @@ body {
 }
 .navbar {
   min-height: 50px;
+  margin-bottom: 0;
 }
 
 @media screen and (min-width:768px) {
@@ -76,7 +77,33 @@ body {
   }
   .navbar {
     min-height: 75px;
+    margin-bottom: 15px;
   }
+}
+
+.xs_top {
+  position: relative;
+  background-image: url('xs_top_img.jpg');
+  background-repeat: no-repeat;
+  background-position: top center;
+  width: 100%;
+  height: 350px;
+}
+.xs_top_text {
+  position: absolute;
+  color: white;
+  font-size: 25px;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+}
+.xs_top_link {
+  position: absolute;
+  color: white;
+  font-size: 16px;
+  top: 80%;
+  width: 100%;
+  text-align: center;
 }
 
 #contants {
