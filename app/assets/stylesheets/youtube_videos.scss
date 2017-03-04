@@ -8,6 +8,11 @@
   background: white;
   margin-bottom: 10px;
 }
+@media screen and (max-width:768px){
+  #y_video_show_videoarea {
+    /*margin-top: 15px;*/
+  }
+}
 .y_video_img_area {
   padding-left: 0;
 }
@@ -45,14 +50,12 @@
     padding: 0;
   }
 }
-.ad_area {
-  background: white;
-}
 #y_video_show_body .col-sm-9 {
   padding-left: 0;
 }
 #y_video_show_titlearea{
   margin-top: 10px;
+  padding: 5px;
 }
 #y_video_show_titlearea h2{
   margin: 0;
@@ -145,9 +148,15 @@
     font-size: 15px;
   }
 }
+.ad_area {
+  padding: 15px 0 0 0;
+  margin: 5px 0;
+}
 #y_video_show_text {
-  margin-top: 10px;
   padding: 5px;
+}
+#y_video_show_text p {
+  margin: 0;
 }
 #y_video_newcomment_edit_area {
   margin: 10px 0;
@@ -167,7 +176,7 @@
 }
 #y_video_comment_list_area {
   margin-top: 10px;
-  padding: 15px;
+  padding: 5px;
 }
 #y_video_show_poster_comment_area {
   border-bottom: 2px solid #DCDEE0;
@@ -214,11 +223,11 @@
     bottom: 0;
     left: 51%;
   }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
   .related_video_view_count {
     position: absolute;
     bottom: 0;
-    left: 42%;
+    left: 44%;
   }
 }
 .related_video_view_count p {
@@ -228,7 +237,9 @@
   padding: 0;
 }
 .related_videos_link_title p {
+  margin-left: 5px;
   color: black;
+  padding-bottom: 5px;
 }
 .related_videos_link:hover .related_videos_link_title p {
   color: blue;

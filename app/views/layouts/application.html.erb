@@ -119,7 +119,8 @@
     <div id="footer">
       <div id="top_footer_contents" class="container">
         <div id="top_footer_left_area">
-          <%= link_to '動画を探す', { :controller => "/bits", action: :index, anchor: 'search_area'} , class: 'top_footer_title' %>
+          <%= link_to '動画を探す', { :controller => "/bits", action: :index, anchor: 'search_area'}, class: 'top_footer_title hidden-xs' %>
+          <%= link_to '動画を探す', { :controller => "/bits", action: :index, anchor: 'results_search_area'}, class: 'top_footer_title hidden-sm hidden-md hidden-lg' %>
           <div id="top_footer_search_link_area">
             <%= link_to '演目から探す', { :controller => "/bits", action: :genreSearch, search_params: '演目', or: 'pv' } %><br>
             <%= link_to 'レッスンから探す', { :controller => "/bits", action: :genreSearch, search_params: 'レッスン', or: 'pv' } %><br>

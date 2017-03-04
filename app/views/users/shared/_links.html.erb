@@ -18,7 +18,7 @@
   <%= link_to "ユーザー登録メールの再送信", new_confirmation_path(resource_name) %><br />
   <p>こちらは承認作業を完了されていない方向けのリンクです。<br />
     ※承認メールを紛失された方<br />
-    ※認証前に申請メールアドレスを変更されたい方</p>
+    ※誤ってメールを消してしまった方</p>
 <% end -%>
 
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>

@@ -1,7 +1,7 @@
 <% url = @youtube.url.gsub(/http.+v=/, "") %>
 <% url = url.gsub(/&.+./, "") %>
 
-<div class="embed-responsive embed-responsive-16by9">
+<div id="y_video_show_videoarea" class="embed-responsive embed-responsive-16by9">
   <%= sanitize '<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/' + url + '?rel=0&iv_load_policy=3&frameborder="0" allowfullscreen></iframe>',
     tags: %w(iframe),
     attributes: %w(class src allowfullscreen frameborder) %>
@@ -42,21 +42,23 @@
       <p id="y_video_show_pv_count">視聴回数<%= @youtube.pv_count %>回</p>
     </div>
 
-    <div class="ad_area col-xs-12 hidden-sm hidden-md hidden-lg" style="text-align:center;padding-bottom:15px;">
-      <!-- admax -->
-      <div class="admax-native" data-admax-id="4b5879fb019fb93a43400dec4515824d"></div>
-      <script type="text/javascript" charset="utf-8" src="//adm.shinobi.jp/st/na.js"></script>
-      <!-- admax -->
-    </div>
-    <div class="ad_area hidden-xs col-sm-12 hidden-md hidden-lg" style="text-align:center;padding-bottom:15px;">
-      <!-- admax 468×60px-->
-      <script src="//adm.shinobi.jp/s/b7c559839141ee4f6bbb301f9bda7e0d"></script>
-      <!-- admax -->
-    </div>
-    <div class="ad_area hidden-xs hidden-sm col-md-12" style="text-align:center;padding-bottom:15px;">
-      <!-- admax 728×90px-->
-      <script src="//adm.shinobi.jp/s/e38b41210a0c851360b5c6366ce95f9e"></script>
-      <!-- admax -->
+    <div class="ad_area_out" style="overflow:hidden;">
+      <div class="ad_area col-xs-12 hidden-sm hidden-md hidden-lg" style="text-align:center;padding:10px 0 10px 0;">
+        <!-- admax -->
+        <div class="admax-native" data-admax-id="4b5879fb019fb93a43400dec4515824d"></div>
+        <script type="text/javascript" charset="utf-8" src="//adm.shinobi.jp/st/na.js"></script>
+        <!-- admax -->
+      </div>
+      <div class="ad_area hidden-xs col-sm-12 hidden-md hidden-lg" style="text-align:center;padding:10px 0 10px 0;">
+        <!-- admax 468×60px-->
+        <script src="//adm.shinobi.jp/s/b7c559839141ee4f6bbb301f9bda7e0d"></script>
+        <!-- admax -->
+      </div>
+      <div class="ad_area hidden-xs hidden-sm col-md-12" style="text-align:center;padding:10px 0 10px 0;">
+        <!-- admax 728×90px-->
+        <script src="//adm.shinobi.jp/s/e38b41210a0c851360b5c6366ce95f9e"></script>
+        <!-- admax -->
+      </div>
     </div>
 
     <div id="y_video_show_text">
@@ -172,12 +174,12 @@
       <% url = rv.url.gsub(/http.+v=/, "") %>
       <% url = url.gsub(/&.+./, "") %>
       <%= link_to(youtube_video_path(rv)) do %>
-        <div class="related_videos_link_img col-xs-5 col-sm-6" style="padding:0;">
+        <div class="related_videos_link_img col-xs-5 col-sm-5 col-md-6" style="padding:0;">
           <%= image_tag('http://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
                                   width: '100%',
                                   class: 'bits_show_link_img') %>
         </div>
-        <div class="related_videos_link_title col-xs-7 col-sm-6" style="padding:0;">
+        <div class="related_videos_link_title col-xs-7 col-sm-7 col-md-6" style="padding:0;">
           <p><%= rv.title %></p>
         </div>
         <div class="related_video_view_count">
