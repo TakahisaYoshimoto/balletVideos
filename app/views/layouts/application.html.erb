@@ -51,7 +51,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">注目キーワード<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><%= link_to '全ての注目動画', { controller: :bits, action: :attentionSearch, search_params: '注目キーワード', or: 'pv' } %></li>
+                <li><%= link_to '全ての注目動画', { :controller => '/bits', action: :attentionSearch, search_params: '注目キーワード', or: 'pv' } %></li>
                 <% @tags.each do |tag| %>
                   <% if tag.genre == '注目キーワード' %>
                     <li><%= link_to "#{tag.tag_name}", { :controller => '/bits', action: :Search, search_params: tag.tag_name, or: 'pv' } %></li>
@@ -62,7 +62,7 @@
             <li>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">演目<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><%= link_to '全ての演目', { controller: :bits, action: :genreSearch, search_params: '演目', or: 'pv' } %></li>
+                <li><%= link_to '全ての演目', { :controller => '/bits', action: :genreSearch, search_params: '演目', or: 'pv' } %></li>
                 <% @tags.each do |tag| %>
                   <% if tag.genre == '演目' %>
                     <li><%= link_to "#{tag.tag_name}", { :controller => '/bits', action: :Search, search_params: tag.tag_name, category_params: tag.genre, or: 'pv' } %></li>
@@ -73,7 +73,7 @@
             <li>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">レッスン<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <li><%= link_to '全てのレッスン', { controller: :bits, action: :genreSearch, search_params: 'レッスン', or: 'pv' } %></li>
+                <li><%= link_to '全てのレッスン', { :controller => '/bits', action: :genreSearch, search_params: 'レッスン', or: 'pv' } %></li>
                 <% @tags.each do |tag| %>
                   <% if tag.genre == 'レッスン' %>
                     <li><%= link_to "#{tag.tag_name}", { :controller => '/bits', action: :Search, search_params: tag.tag_name, category_params: tag.genre, or: 'pv' } %></li>
@@ -117,13 +117,16 @@
 
 
     <div id="footer">
-      <div class="container">
-        <%= link_to '動画を探す', { :controller => "/bits", action: :index, anchor: 'search_area'} , class: 'top_footer_title' %>
-        <div id="top_footer_search_link_area">
-          <%= link_to '演目から探す', { :controller => "/bits", action: :genreSearch, search_params: '演目', or: 'pv' } %><br>
-          <%= link_to 'レッスンから探す', { :controller => "/bits", action: :genreSearch, search_params: 'レッスン', or: 'pv' } %><br>
-          <%= link_to 'その他から探す', { :controller => "/bits", action: :genreSearch, search_params: "その他", or: 'pv' } %><br>
+      <div id="top_footer_contents" class="container">
+        <div id="top_footer_left_area">
+          <%= link_to '動画を探す', { :controller => "/bits", action: :index, anchor: 'search_area'} , class: 'top_footer_title' %>
+          <div id="top_footer_search_link_area">
+            <%= link_to '演目から探す', { :controller => "/bits", action: :genreSearch, search_params: '演目', or: 'pv' } %><br>
+            <%= link_to 'レッスンから探す', { :controller => "/bits", action: :genreSearch, search_params: 'レッスン', or: 'pv' } %><br>
+            <%= link_to 'その他から探す', { :controller => "/bits", action: :genreSearch, search_params: "その他", or: 'pv' } %><br>
+          </div>
         </div>
+        <div id="top_footer_right_area">
         <% if user_signed_in? %>
           <%= link_to ' プロフィール変更', edit_user_registration_path, class: 'top_footer_title' %><br>
           <%= link_to ' ログアウト', destroy_user_session_path, method: :delete, class: 'top_footer_title' %><br>
@@ -131,7 +134,8 @@
           <%= link_to 'ユーザー登録', new_user_registration_path, class: 'top_footer_title' %><br>
           <%= link_to 'ログイン', new_user_session_path, class: 'top_footer_title' %><br>
         <% end %>
-         <%= link_to 'お問い合わせ', inquiry_bits_path, class: 'top_footer_title' %>
+        <%= link_to 'お問い合わせ', inquiry_bits_path, class: 'top_footer_title' %>
+        </div>
       </div>
       <div id="footer_text">
         <div class="sm_footer hidden-xs col-sm-12">
