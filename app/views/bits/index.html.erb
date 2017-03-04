@@ -1,16 +1,15 @@
 </div>
 <% if controller.controller_name == 'bits' && controller.action_name == 'index' %>
 <style>
-  @media screen and (max-width:768px){
-    .navbar {
-      margin-bottom: 0;
-    }
+  .navbar {
+    margin-bottom: 0;
   }
 </style>
 <% end %>
-<div class="xs_top col-xs-12 hidden-sm hidden-md hidden-lg" style="margin-bottom:15px;">
-  <p class="xs_top_text">適当な文章をいれる</p>
-  <p class="xs_top_link">注目キーワードとか</p>
+<%#<div class="top_img col-xs-12 hidden-sm hidden-md hidden-lg" style="margin-bottom:15px;">%>
+<div class="top_img col-xs-12" style="margin-bottom:15px;">
+  <p class="top_img_text">適当な文章をいれる</p>
+  <p class="top_img_link">注目キーワードとか</p>
 </div>
 <div class="container">
 <%= render 'sidebar', tags: @tags %>
@@ -66,8 +65,11 @@
       <% end %>
     </div>
 
-    <div class="co-xs-12 col-sm-7 col-md-6 col-lg-5" style="margin:0 0 15px 0;">
+    <div class="hidden-xs col-sm-7 col-md-6 col-lg-5" style="margin:0 0 15px 0;">
       <%= link_to image_tag('mu_ad_img1.jpg', width: '100%'), 'http://mu-ballet.com', target: '_blank' %>
+    </div>
+    <div class="co-xs-12 hidden-sm hidden-md hidden-lg" style="margin:0 0 15px 0;">
+      <%= link_to image_tag('mu_ad_img2.jpg', width: '100%'), 'http://mu-ballet.com', target: '_blank' %>
     </div>
 
     <%# 7 %>

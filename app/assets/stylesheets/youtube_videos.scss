@@ -8,11 +8,6 @@
   background: white;
   margin-bottom: 10px;
 }
-@media screen and (max-width:768px){
-  #y_video_show_videoarea {
-    /*margin-top: 15px;*/
-  }
-}
 .y_video_img_area {
   padding-left: 0;
 }
@@ -40,7 +35,7 @@
 #y_video_show_text,
 #y_video_newcomment_edit_area,
 #y_video_comment_list_area,
-#related_videos_list,
+#related_videos_list_in,
 #y_video_commentsarea_characnt,
 #y_video_replyarea_characnt {
   background: #F6F6F6;
@@ -211,7 +206,7 @@
 }
 
 #related_videos_list {
-  padding: 3px;
+  padding: 5px;
   margin-top: 10px;
 }
 .related_videos_link {
