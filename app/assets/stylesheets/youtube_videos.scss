@@ -132,7 +132,19 @@
 #good_button_heart:hover {
   text-decoration: none;
 }
-
+#good_button_hand:before { 
+  display: block; 
+  content: ""; 
+  margin-top: -106px; 
+  height: 75px; 
+  visibility: hidden; 
+}
+@media screen and (max-width: 768px) {
+#good_button_hand:before { 
+  margin-top: -82px; 
+  height: 50px; 
+}
+}
 #y_video_show_pv_count {
   width: 100%;
   text-align: right;
