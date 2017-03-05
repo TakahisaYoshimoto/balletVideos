@@ -22,10 +22,10 @@
 ja:
   views:
     pagination:
-      first:    "最初"
-      last:     "最後"
-      previous: "前"
-      next:     "次"
+      first:    "<<"
+      last:     ">>"
+      previous: "<"
+      next:     ">"
       truncate: "&hellip;"
   helpers:
     page_entries_info:
