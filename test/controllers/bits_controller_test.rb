@@ -1,24 +1,21 @@
 require 'test_helper'
 
 class BitsControllerTest < ActionDispatch::IntegrationTest
-  test "should get index" do
-    get bits_index_url
+
+  test "index" do
+    get bits_path
     assert_response :success
+    assert_equal 11, assigns(:youtubes).count
   end
 
-  test "should get show" do
-    get bits_show_url
+  test "all" do
+    get all_bits_path
     assert_response :success
-  end
+    assert_equal 12, assigns(:youtubes).count
 
-  test "should get new" do
-    get bits_new_url
+    get all_bits_path, { page: 5 }
     assert_response :success
-  end
-
-  test "should get edit" do
-    get bits_edit_url
-    assert_response :success
+    assert_equal 2, assigns(:youtubes).count, '5ページ目は2件だけ'
   end
 
 end

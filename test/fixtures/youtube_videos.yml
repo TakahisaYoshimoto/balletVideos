@@ -1,13 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user_id: 1
-  title: MyString
-  url: MyText
-  text: MyText
-
-two:
-  user_id: 1
-  title: MyString
-  url: MyText
-  text: MyText
+<% 50.times do |i| %>
+youtube_video_<%= i %>:
+  title: <%= "title#{i}" %>
+  url: <%= i %>
+  text: <%= "text#{i}" %>
+<% end %>
