@@ -31,4 +31,18 @@ class BitsControllerTest < ActionDispatch::IntegrationTest
     assert_select '.y_video_img_area', 0
   end
 
+  test "allのページネーション" do
+    get all_bits_path
+    assert_select '.pagination > li', 7
+    assert_select '.pagination > li.active:first-child'
+
+    get all_bits_path, params: { page: 3 }
+    assert_select '.pagination > li', 9
+    assert_select '.pagination > li.active:nth-child(5)'
+
+    get all_bits_path, params: { page: 5 }
+    assert_select '.pagination > li', 7
+    assert_select '.pagination > li.active:last-child'
+  end
+
 end
