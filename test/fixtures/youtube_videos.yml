@@ -6,3 +6,15 @@ youtube_video_<%= i %>:
   url: <%= i %>
   text: <%= "text#{i}" %>
 <% end %>
+
+pickup_level1:
+  title: pickup_level1
+  url: pickup_level1
+  text: pickup_level1
+  pickup_level: 1
+
+pickup_level2:
+  title: pickup_level2
+  url: pickup_level2
+  text: pickup_level2
+  pickup_level: 2
