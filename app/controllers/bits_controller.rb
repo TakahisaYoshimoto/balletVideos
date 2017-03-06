@@ -47,7 +47,7 @@ class BitsController < ApplicationController
     end
     
     session[:search_params] = ""
-    session[:genre] = ""
+    session[:genre] = "グッドした動画"
     session[:category_params] = ""
     render 'videolist'
   end
@@ -76,7 +76,7 @@ class BitsController < ApplicationController
     end
 
     session[:search_params] = ""
-    session[:genre] = ""
+    session[:genre] = "視聴履歴"
     session[:category_params] = ""
     render 'videolist'
   end
@@ -109,8 +109,13 @@ class BitsController < ApplicationController
       .having('count(youtube_video_id) >= ?', tg.length)
 
     unless params[:category_params].blank?
-      cp = params[:category_params]
-      session[:category_params] = params[:category_params]
+      if params[:category_params] == '注目キーワード'
+        cp = ""
+        session[:category_params] = params[:category_params]
+      else
+        cp = params[:category_params]
+        session[:category_params] = params[:category_params]
+      end
     else
       cp = ""
       session[:category_params] = ""
@@ -190,6 +195,7 @@ class BitsController < ApplicationController
     end
 
     session[:genre] = params[:search_params]
+    session[:category_params] = ""
     render 'videolist'
   end
 

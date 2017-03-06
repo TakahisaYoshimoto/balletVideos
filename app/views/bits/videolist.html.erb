@@ -3,13 +3,16 @@
 <div id="y_index_links">
   <div class="col-sm-9">
 
+  <div style="text-align:center;">
+    <% unless session[:category_params].blank? %>
+      <h3><%= session[:category_params] %> > <%= session[:genre] %></h3>
+    <% else %>
+      <h3><%= session[:genre] %></h3>
+    <% end %>
+  </div>
+
   <% unless @relation_tags.nil? %>
     <div id="y_video_search_result_tagarea">
-      <% unless session[:category_params].blank? %>
-        <h3><%= session[:category_params] %> > <%= session[:genre] %></h3>
-      <% else %>
-        <h3><%= session[:genre] %></h3>
-      <% end %>
       <p>
         <% @relation_tags.each do |tag| %>
           <% unless session[:genre].blank? %>

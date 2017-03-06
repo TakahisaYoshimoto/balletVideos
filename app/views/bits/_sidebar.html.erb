@@ -76,7 +76,7 @@
   <% tags.each do |tag| %>
     <% if tag.genre == '注目キーワード' %>
       <div class="search_tag">
-        <%= link_to "#{tag.tag_name}", { controller: :bits, action: :Search, search_params: tag.tag_name, or: 'pv' } %><br>
+        <%= link_to "#{tag.tag_name}", { controller: :bits, action: :Search, search_params: tag.tag_name, category_params: '注目キーワード', or: 'pv' } %><br>
       </div>
     <% end %>
   <% end %>
