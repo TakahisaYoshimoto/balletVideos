@@ -11,6 +11,15 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <% if controller.controller_name == 'youtube_videos' && controller.action_name == 'show' %>
+      <meta property="og:title" content="<%= @youtube.title %>" />
+      <meta property="og:type" content="article" />
+      <meta property="og:description" content="<%= @youtube.text %>" />
+      <meta property="og:url" content="<%= request.url %>" />
+      <% url = @youtube.url.gsub(/http.+v=/, "") %>
+      <% url = url.gsub(/&.+./, "") %>
+      <meta property="og:image" content="<%= 'http://i.ytimg.com/vi/' + url + '/hqdefault.jpg' %>" />
+    <% end %>
     <%= favicon_link_tag 'favicon.ico' %>
   </head>
 
