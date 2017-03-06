@@ -179,6 +179,7 @@ class BitsController < ApplicationController
     end
 
     session[:genre] = params[:search_params]
+    session[:category_params] = ""
     render 'videolist'
   end
 
