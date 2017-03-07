@@ -1,23 +1,42 @@
+<% if controller.controller_name == 'youtube_videos' && controller.action_name == 'show' %>
+  <style>
+    body {
+      padding-top: 50px
+    }
+    @media screen and (min-width:768px) {
+      body {
+        padding-top: 75px
+      }
+    }
+  </style>
+<% end %>
+
 <% url = @youtube.url.gsub(/http.+v=/, "") %>
 <% url = url.gsub(/&.+./, "") %>
-
+</div>
+<div style="background:black;">
+<div class="container">
+<div class="container col-md-offset-1 col-md-10 col-lg-offset-0 col-lg-12" style="padding:0;">
 <div class="embed-responsive embed-responsive-16by9">
   <%= sanitize '<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/' + url + '?rel=0&iv_load_policy=3&frameborder="0" allowfullscreen></iframe>',
     tags: %w(iframe),
     attributes: %w(class src allowfullscreen frameborder) %>
 </div>
+</div>
+</div>
+</div>
+<div class="container">
 
 <div id="y_video_show_body">
   <div class="col-sm-8" style="padding:0;">
     <div id="y_video_show_titlearea">
       <h2><%= @youtube.title %></h2>
-
-      <p>
-        <strong>タグ:</strong>
-        <% @youtube.youtube_video_tags.each do |tag| %>
+      <strong>タグ:</strong>
+      <% @youtube.youtube_video_tags.each do |tag| %>
+        <div style="display: inline-block;margin-right:10px;">
           <%= link_to "##{tag.name}", { controller: :bits, action: :Search, search_params: tag.name } %>
-        <% end -%>
-      </p>
+        </div>
+      <% end -%>
 
       <div id="video_show_button_area">
         <div id="share_button_area">
