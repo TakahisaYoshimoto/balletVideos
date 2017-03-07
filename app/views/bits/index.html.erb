@@ -13,8 +13,9 @@
 <% end %>
 <%#<div class="top_img col-xs-12 hidden-sm hidden-md hidden-lg" style="margin-bottom:15px;">%>
 <div class="top_img col-xs-12" style="margin-bottom:15px;padding:0;">
-  <p class="top_img_text">適当な文章をいれる</p>
-  <div class="top_img_link_out"><p class="top_img_link">注目キーワードとか</p></div>
+  <p class="top_img_text_a">あなたのバレエ人生に特別を</p>
+  <p class="top_img_text_b">演目やキーワードから動画を簡単に探せます</p>
+  <div class="top_img_link_out"><%= link_to 'まずは演目から探してみる', { controller: :bits, action: :genreSearch, search_params: '演目', or: 'pv' }, class: 'top_img_link' %></div>
 </div>
 <div class="container">
 <%= render 'sidebar', tags: @tags %>
