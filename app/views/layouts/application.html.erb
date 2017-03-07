@@ -63,7 +63,7 @@
                 <li><%= link_to '全ての注目動画', { :controller => '/bits', action: :attentionSearch, search_params: '注目キーワード', or: 'pv' } %></li>
                 <% @tags.each do |tag| %>
                   <% if tag.genre == '注目キーワード' %>
-                    <li><%= link_to "#{tag.tag_name}", { :controller => '/bits', action: :Search, search_params: tag.tag_name, or: 'pv' } %></li>
+                    <li><%= link_to "#{tag.tag_name}", { :controller => '/bits', action: :Search, search_params: tag.tag_name, category_params: '注目キーワード', or: 'pv' } %></li>
                   <% end %>
                 <% end %>
               </ul>
