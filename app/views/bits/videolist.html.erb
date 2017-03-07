@@ -4,8 +4,10 @@
   <div class="col-sm-9">
 
   <div style="text-align:center;">
-    <% unless session[:category_params].blank? %>
+    <% if session[:category_params].present? && session[:genre].present? %>
       <h3><%= session[:category_params] %> > <%= session[:genre] %></h3>
+    <% elsif session[:category_params].present? && session[:genre].blank? %>
+      <h3><%= session[:category_params] %></h3>
     <% else %>
       <h3><%= session[:genre] %></h3>
     <% end %>
