@@ -7,6 +7,18 @@ describe YoutubeVideo do
     expect(FactoryGirl.build(:youtube_video)).to be_valid
   end
 
+  it 'has a valid factory level1' do
+    user = FactoryGirl.build(:user_level1)
+    expect(user).to be_valid
+    expect(user.user_level).to eq(1)
+  end
+
+  it 'has a valid factory level2' do
+    user = FactoryGirl.build(:user_level2)
+    expect(user).to be_valid
+    expect(user.user_level).to eq(2)
+  end
+
   describe '必須項目のテスト' do
 
     before(:each) do
