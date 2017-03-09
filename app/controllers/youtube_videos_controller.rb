@@ -3,13 +3,17 @@ class YoutubeVideosController < ApplicationController
   before_action :set_youtube, only: [:show, :edit, :update, :destroy, :like]
 
   def new
-    return if user_level_check(2)
+    if user_level_check(2)
+      redirect_to root_path and return
+    end
     @youtube = YoutubeVideo.new
     @youtube.youtube_video_tags.build
   end
 
   def create
-    return if user_level_check(2)
+    if user_level_check(2)
+      redirect_to root_path and return
+    end
     @youtube = YoutubeVideo.new(youtube_params)
     @youtube.user_id = current_user.id
 
@@ -30,12 +34,16 @@ class YoutubeVideosController < ApplicationController
   end
 
   def edit
-    return if user_level_check(2)
+    if user_level_check(2)
+      redirect_to root_path and return
+    end
     @youtube.youtube_video_tags.build
   end
 
   def update
-    return if user_level_check(2)
+    if user_level_check(2)
+      redirect_to root_path and return
+    end
     #同じピックアップレベルの他の動画があればピックアップレベルを0にする
     old_pickup_video = YoutubeVideo.where('pickup_level = ? AND id <> ?',
       params[:youtube_video][:pickup_level],
@@ -53,7 +61,9 @@ class YoutubeVideosController < ApplicationController
   end
 
   def destroy
-    return if user_level_check(2)
+    if user_level_check(2)
+      redirect_to root_path and return
+    end
     @youtube.destroy
     redirect_to bits_path
   end
