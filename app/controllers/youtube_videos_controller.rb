@@ -22,7 +22,6 @@ class YoutubeVideosController < ApplicationController
         opv.pickup_level = 0
         opv.save
       end
-      
       redirect_to @youtube
     else
       render 'new'
@@ -78,7 +77,7 @@ class YoutubeVideosController < ApplicationController
     @youtube.youtube_video_tags.each do |tag|
       tags.push(tag.name)
       if each_count > 0
-        ph_tag += " OR " 
+        ph_tag += " OR "
       end
       ph_tag += "youtube_video_tags.name like ?"
       each_count += 1
@@ -96,7 +95,7 @@ class YoutubeVideosController < ApplicationController
       if rvc == params[:id].to_i
         relatedVideos_count.delete(rvc)
       end
-    end 
+    end
     #上で作った一致タグが多い順のID配列でwhereして並び替え
     @relatedVideos = YoutubeVideo.where(id: relatedVideos_count)
       .order_as_specified(id: relatedVideos_count)
@@ -138,6 +137,6 @@ class YoutubeVideosController < ApplicationController
         end
       end
 
-      return false     
+      return false
     end
 end
