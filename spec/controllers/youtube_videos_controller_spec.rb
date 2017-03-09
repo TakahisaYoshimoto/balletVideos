@@ -98,13 +98,6 @@ RSpec.describe YoutubeVideosController, type: :controller do
       expect(response).to render_template :show
     end
 
-    it 'createはレコードがⅠ件増えてトップページヘリダイレクトされる' do
-      expect {
-        post :create, params: { youtube_video: youtube_video_params }
-      }.to change { YoutubeVideo.count }.by(1)
-      expect(response).to redirect_to root_path
-    end
-
   end
 
 end
