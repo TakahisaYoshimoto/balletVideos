@@ -4,6 +4,7 @@ FactoryGirl.define do
     email { "#{username}@example.com" }
     password 'password'
     password_confirmation 'password'
+    confirmed_at Date.today
 
     factory :user_level1 do
       user_level 1
