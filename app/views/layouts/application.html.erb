@@ -11,6 +11,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="あなたのバレエ人生に特別を、演目やキーワードから動画を簡単に探せます">
     <% if controller.controller_name == 'youtube_videos' && controller.action_name == 'show' %>
       <meta property="og:title" content="<%= @youtube.title %>" />
       <meta property="og:type" content="article" />
@@ -63,7 +64,7 @@
                 <li><%= link_to '全ての注目動画', { :controller => '/bits', action: :attentionSearch, search_params: '注目キーワード', or: 'pv' } %></li>
                 <% @tags.each do |tag| %>
                   <% if tag.genre == '注目キーワード' %>
-                    <li><%= link_to "#{tag.tag_name}", { :controller => '/bits', action: :Search, search_params: tag.tag_name, or: 'pv' } %></li>
+                    <li><%= link_to "#{tag.tag_name}", { :controller => '/bits', action: :Search, search_params: tag.tag_name, category_params: '注目キーワード', or: 'pv' } %></li>
                   <% end %>
                 <% end %>
               </ul>

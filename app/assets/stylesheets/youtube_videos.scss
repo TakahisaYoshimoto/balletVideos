@@ -68,7 +68,7 @@
 }
 #share_button_area {
   position: absolute;
-  top: 0;
+  top: 10px;
   left: 0;
 }
 #good_button_area {
@@ -91,7 +91,7 @@
   }
   #share_button_area {
     position: absolute;
-    top: 0;
+    top: 10px;
     left: 0;
   }
   #good_button_area {
@@ -113,7 +113,8 @@
 #good_button_area:hover a {
   text-decoration: none;
 }
-#good_button_heart, #good_button_hand {
+#good_button_heart,
+#good_button_hand {
   display: inline;
   padding: 0 10px 0 0;
   margin: 0;
@@ -131,19 +132,6 @@
 }
 #good_button_heart:hover {
   text-decoration: none;
-}
-#good_button_hand:before { 
-  display: block; 
-  content: ""; 
-  margin-top: -106px; 
-  height: 75px; 
-  visibility: hidden; 
-}
-@media screen and (max-width: 768px) {
-#good_button_hand:before { 
-  margin-top: -82px; 
-  height: 50px; 
-}
 }
 #y_video_show_pv_count {
   width: 100%;
