@@ -18,12 +18,17 @@ RSpec.describe YoutubeVideosController, type: :controller do
     end
 
     it 'createはログインページヘリダイレクトされる' do
-      post :create, youtube_video: youtube_video_params
+      post :create
       expect(response).to redirect_to new_user_session_path
     end
 
     it 'editはログインページヘリダイレクトされる' do
       get :edit, params: { id: youtube_video.id }
+      expect(response).to redirect_to new_user_session_path
+    end
+
+    it 'updateはログインページヘリダイレクトされる' do
+      put :update, params: { id: youtube_video.id }
       expect(response).to redirect_to new_user_session_path
     end
 
@@ -44,7 +49,7 @@ RSpec.describe YoutubeVideosController, type: :controller do
 
     it 'newはトップページへリダイレクトされる' do
       get :new
-      expect(response).to redirect_to bits_path
+      expect(response).to redirect_to root_path
     end
 
     it 'showは通常通り表示される' do
@@ -53,14 +58,25 @@ RSpec.describe YoutubeVideosController, type: :controller do
     end
 
     it 'createはトップページヘリダイレクトされる' do
-      post :create, youtube_video: youtube_video_params
+      post :create, params: { youtube_video: youtube_video_params }
       expect(response).to redirect_to root_path
     end
 
     it 'editはトップページヘリダイレクトされる' do
       get :edit, params: { id: youtube_video.id }
-      expect(response).to redirect_to bits_path
+      expect(response).to redirect_to root_path
     end
+
+    it 'updateはトップページヘリダイレクトされる' do
+      put :update, params: { id: youtube_video.id }
+      expect(response).to redirect_to root_path
+    end
+
+    it 'destroyはトップページヘリダイレクトされる' do
+      get :destroy, params: { id: youtube_video.id }
+      expect(response).to redirect_to root_path
+    end
+
 
   end
 
@@ -80,6 +96,13 @@ RSpec.describe YoutubeVideosController, type: :controller do
     it 'showは通常どおり表示される' do
       get :show, params: { id: youtube_video.id }
       expect(response).to render_template :show
+    end
+
+    it 'createはレコードがⅠ件増えてトップページヘリダイレクトされる' do
+      expect {
+        post :create, params: { youtube_video: youtube_video_params }
+      }.to change { YoutubeVideo.count }.by(1)
+      expect(response).to redirect_to root_path
     end
 
   end
