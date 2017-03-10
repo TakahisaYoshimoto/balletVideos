@@ -4,16 +4,16 @@
   <div class="col-sm-9">
 
   <div style="text-align:center;">
-    <% if session[:category_params].present? && session[:genre].present? %>
+    <% if @category_params.present? && @genre.present? %>
       <% unless controller.action_name == 'genreSearch' %>
-        <h3><%= session[:category_params] %> > <%= session[:genre] %></h3>
+        <h3><%= @category_params %> > <%= @genre %></h3>
       <% else %>
-        <h3><%= session[:category_params] %></h3>
+        <h3><%= @category_params %></h3>
       <% end %>
-    <% elsif session[:category_params].present? && session[:genre].blank? %>
-      <h3><%= session[:category_params] %></h3>
+    <% elsif @category_params.present? && @genre.blank? %>
+      <h3><%= @category_params %></h3>
     <% else %>
-      <h3><%= session[:genre] %></h3>
+      <h3><%= @genre %></h3>
     <% end %>
   </div>
 
@@ -21,17 +21,17 @@
     <div id="y_video_search_result_tagarea">
       <% @relation_tags.each do |tag| %>
         <div style="display: inline-block;margin-right:10px;">
-          <% if session[:genre].present? %>
+          <% if @genre.present? %>
             <% unless controller.action_name == 'genreSearch' %>
-              <% search = session[:genre] + " " + tag %>
+              <% search = @genre + " " + tag %>
             <% else %>
               <% search = tag %>
             <% end %>
           <% else %>
             <% search = tag %>
           <% end %>
-          <% unless session[:genre].include?(tag) %>
-            <%= link_to "##{tag}", { controller: :bits, action: :Search, search_params: search, category_params: session[:category_params], or: 'pv' } %>
+          <% unless @genre.include?(tag) %>
+            <%= link_to "##{tag}", { controller: :bits, action: :Search, search_params: search, category_params: @category_params, or: 'pv' } %>
           <% end %>
         </div>
       <% end %>
@@ -47,25 +47,25 @@
     <% if /or=pv/ =~ request.fullpath %>
       再生回数順|<%= link_to '新着順', { controller: :bits,
         action: controller.action_name,
-        search_params: session[:genre],
-        category_params: session[:category_params],
+        search_params: @genre,
+        category_params: @category_params,
         or: 'time' } %>
     <% elsif /or=time/ =~ request.fullpath %>
       <%= link_to '再生回数順', { controller: :bits,
         action: controller.action_name,
-        search_params: session[:genre],
-        category_params: session[:category_params],
+        search_params: @genre,
+        category_params: @category_params,
         or: 'pv' } %>|新着順
     <% else %>
       <%= link_to '再生回数順', { controller: :bits,
         action: controller.action_name,
-        search_params: session[:genre],
-        category_params: session[:category_params],
+        search_params: @genre,
+        category_params: @category_params,
         or: 'pv' } %>|
       <%= link_to '新着順', { controller: :bits,
         action: controller.action_name,
-        search_params: session[:genre],
-        category_params: session[:category_params],
+        search_params: @genre,
+        category_params: @category_params,
         or: 'time' } %>
     <% end %>
   </div>

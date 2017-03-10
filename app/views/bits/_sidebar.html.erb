@@ -4,7 +4,7 @@
       <%= form_tag({controller: '/bits', action: :Search }, method: :get) do %>
         <div class="input-group form-group" style="margin:0;">
           <%= search_field_tag :search_params,
-            session[:search_params],
+            @search_params,
             class: 'form-control',
             placeholder: 'キーワード' %>
           <span class="input-group-btn">
@@ -24,7 +24,7 @@
       <%= form_tag({controller: '/bits', action: :Search }, method: :get) do %>
         <div class="input-group form-group">
           <%= search_field_tag :search_params,
-            session[:search_params],
+            @search_params,
             class: 'form-control',
             placeholder: 'キーワード' %>
           <span class="input-group-btn">
