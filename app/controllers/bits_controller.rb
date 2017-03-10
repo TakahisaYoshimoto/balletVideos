@@ -197,7 +197,7 @@ class BitsController < ApplicationController
 
     @relation_tags = TopTagList.where('genre like ?', params[:search_params]).order('hurigana asc').pluck(:tag_name)
 
-    session[:genre] = ""
+    session[:genre] = params[:search_params]
     session[:category_params] = params[:search_params]
     render 'videolist'
   end

@@ -5,7 +5,11 @@
 
   <div style="text-align:center;">
     <% if session[:category_params].present? && session[:genre].present? %>
-      <h3><%= session[:category_params] %> > <%= session[:genre] %></h3>
+      <% unless controller.action_name == 'genreSearch' %>
+        <h3><%= session[:category_params] %> > <%= session[:genre] %></h3>
+      <% else %>
+        <h3><%= session[:category_params] %></h3>
+      <% end %>
     <% elsif session[:category_params].present? && session[:genre].blank? %>
       <h3><%= session[:category_params] %></h3>
     <% else %>
@@ -17,8 +21,12 @@
     <div id="y_video_search_result_tagarea">
       <% @relation_tags.each do |tag| %>
         <div style="display: inline-block;margin-right:10px;">
-          <% unless session[:genre].blank? %>
-            <% search = session[:genre] + " " + tag %>
+          <% if session[:genre].present? %>
+            <% unless controller.action_name == 'genreSearch' %>
+              <% search = session[:genre] + " " + tag %>
+            <% else %>
+              <% search = tag %>
+            <% end %>
           <% else %>
             <% search = tag %>
           <% end %>
