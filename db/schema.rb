@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20170227112340) do
     t.string   "session_hash"
     t.text     "message"
     t.text     "referrer"
-    t.text     "params"
+    t.string   "params"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["controller_name", "action_name", "ip_address"], name: "controlleraction_ip_index"
@@ -55,10 +55,10 @@ ActiveRecord::Schema.define(version: 20170227112340) do
   end
 
   create_table "top_tag_lists", force: :cascade do |t|
-    t.string   "genre",      default: "注目キーワード"
+    t.string   "genre"
     t.string   "tag_name"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "hurigana"
   end
 
