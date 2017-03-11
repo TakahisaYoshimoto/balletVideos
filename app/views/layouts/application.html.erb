@@ -71,7 +71,7 @@
             </li>
             <li>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">演目<span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
+              <ul class="dropdown-menu" role="menu" style="height: 400px; overflow-y: scroll;">
                 <li><%= link_to '全ての演目', { :controller => '/bits', action: :genreSearch, search_params: '演目', or: 'pv' } %></li>
                 <% @tags.each do |tag| %>
                   <% if tag.genre == '演目' %>
