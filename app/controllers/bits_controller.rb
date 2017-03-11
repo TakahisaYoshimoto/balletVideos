@@ -8,7 +8,7 @@ class BitsController < ApplicationController
       .order('created_at desc')
       .limit(11)
       .offset(0)
-    session[:search_params] = ""
+    @search_params = ""
   end
 
   def all
@@ -22,9 +22,9 @@ class BitsController < ApplicationController
         .page(params[:page])
     end
       
-    session[:search_params] = ""
-    session[:genre] = ""
-    session[:category_params] = ""
+    @search_params = ""
+    @genre = ""
+    @category_params = ""
     render 'videolist'
   end
 
@@ -46,9 +46,9 @@ class BitsController < ApplicationController
         .order(created_at: :desc)
     end
     
-    session[:search_params] = ""
-    session[:genre] = "グッドした動画"
-    session[:category_params] = ""
+    @search_params = ""
+    @genre = "グッドした動画"
+    @category_params = ""
     render 'videolist'
   end
 
@@ -75,9 +75,9 @@ class BitsController < ApplicationController
         .order('view_histories.updated_at desc') 
     end
 
-    session[:search_params] = ""
-    session[:genre] = "視聴履歴"
-    session[:category_params] = ""
+    @search_params = ""
+    @genre = "視聴履歴"
+    @category_params = ""
     render 'videolist'
   end
 
@@ -111,14 +111,14 @@ class BitsController < ApplicationController
     unless params[:category_params].blank?
       if params[:category_params] == '注目キーワード'
         cp = ""
-        session[:category_params] = params[:category_params]
+        @category_params = params[:category_params]
       else
         cp = params[:category_params]
-        session[:category_params] = params[:category_params]
+        @category_params = params[:category_params]
       end
     else
       cp = ""
-      session[:category_params] = ""
+      @category_params = ""
     end
 
     #動画を一致するタグが多い順にIDを配列で格納
@@ -156,8 +156,8 @@ class BitsController < ApplicationController
       end
     end 
 
-    session[:search_params] = params[:search_params]
-    session[:genre] = params[:search_params]
+    @search_params = params[:search_params]
+    @genre = params[:search_params]
     render 'videolist'
   end
 
@@ -178,8 +178,8 @@ class BitsController < ApplicationController
         .order(created_at: :desc)
     end
 
-    session[:genre] = params[:search_params]
-    session[:category_params] = ""
+    @genre = params[:search_params]
+    @category_params = ""
     render 'videolist'
   end
 
@@ -197,8 +197,8 @@ class BitsController < ApplicationController
 
     @relation_tags = TopTagList.where('genre like ?', params[:search_params]).order('hurigana asc').pluck(:tag_name)
 
-    session[:genre] = ""
-    session[:category_params] = params[:search_params]
+    @genre = params[:search_params]
+    @category_params = params[:search_params]
     render 'videolist'
   end
 
