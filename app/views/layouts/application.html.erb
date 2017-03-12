@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
-    <title><%= @youtube ? @youtube.title : 'Bit' %></title>
+    <title><%= @youtube ? @youtube.title : 'バレエ情報配信サービスBit（ビット）' %></title>
     <%= csrf_meta_tags %>
 
     <%#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -11,7 +11,8 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="あなたのバレエ人生に特別を、演目やキーワードから動画を簡単に探せます">
+    <meta name="description" content="Bit（ビット）は、クラシックバレエをメインとした情報配信サービスです。良質なバレエ動画の中からお気に入りの動画を探したり、動画にコメントを付けて楽しむサービスです。">
+    <meta name="keywords" content=“バレエ,クラシック,情報,動画,検索,まとめ,”>
     <% if controller.controller_name == 'youtube_videos' && controller.action_name == 'show' %>
       <meta property="og:title" content="<%= @youtube.title %>" />
       <meta property="og:type" content="article" />
