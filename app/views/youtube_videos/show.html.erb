@@ -31,6 +31,7 @@
   <div class="col-sm-8" style="padding:0;">
     <div id="y_video_show_titlearea">
       <h2><%= @youtube.title %></h2>
+      <h4><%= @youtube.catchphrase %></h4>
       <strong>タグ:</strong>
       <% @youtube.youtube_video_tags.each do |tag| %>
         <div style="display: inline-block;margin-right:10px;">
