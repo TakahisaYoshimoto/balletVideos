@@ -1,3 +1,7 @@
+# URLにアクセスするためのライブラリの読み込み
+require 'open-uri'
+# Nokogiriライブラリの読み込み
+require 'nokogiri'
 class YoutubeVideosController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :set_youtube, only: [:show, :edit, :update, :destroy, :like]
@@ -12,6 +16,17 @@ class YoutubeVideosController < ApplicationController
     redirect_to root_path and return if user_level_check(2)
     @youtube = YoutubeVideo.new(youtube_params)
     @youtube.user_id = current_user.id
+
+    url = params[:youtube_video][:url].to_s
+    video = Nokogiri::HTML.parse(url_set(url), nil, 'utf-8')
+    video_time = video.css('#watch7-content > meta[itemprop="duration"]').attr('content').value
+    video_time.gsub!('PT','')
+    video_time.gsub!('M',':')
+    video_time.gsub!('S','')
+    if video_time[-2, 1] == ":"
+      video_time.gsub!(':', ':0')
+    end
+    @youtube.video_time = video_time
 
     if @youtube.save
       #同じピックアップレベルの他の動画があればピックアップレベルを0にする
@@ -125,5 +140,14 @@ class YoutubeVideosController < ApplicationController
         :catchphrase,
         :poster_comment,
         youtube_video_tags_attributes: [:id, :name, :master_tag, :_destroy])
+    end
+
+    def url_set(url)
+      charset = nil
+      html = open(url) do |f|
+        charset = f.charset # 文字種別を取得
+        f.read # htmlを読み込んで変数htmlに渡す
+      end
+      return html
     end
 end

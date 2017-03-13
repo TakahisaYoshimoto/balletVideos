@@ -1,22 +1,25 @@
-  <%= link_to youtube_video_path(youtube), class: 'y_video_top_link_sm' do %>
-    <div class="y_video_top_body_sm row">
-      <div class="y_video_img_area col-sm-12" style="padding: 0;">
-        <% url = youtube.url.gsub(/http.+v=/, "") %>
-        <% url = url.gsub(/&.+./, "") %>
-        <%= image_tag('http://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
-          width: '100%',
-          class: 'bits_index_link_img') %>
-      </div>
-      <div class="y_video_top_textarea col-sm-12" style="padding: 0;">
-        <div class="y_video_top_titlearea_sm">
-          <h4 class="title"><%= youtube.title %></h4>
-        </div>
-        <div class="y_video_top_catchphrase_sm">
-          <h5 class="catchphrase"><%= youtube.catchphrase %></h5>
-        </div>
-        <div class="y_video_top_viewcount_sm">
-          <p>視聴回数 <%= youtube.pv_count %></p>
-        </div>
+<%= link_to youtube_video_path(youtube), class: 'y_video_top_link_sm' do %>
+  <div class="y_video_top_body_sm row">
+    <div class="y_video_img_area col-sm-12" style="padding: 0;position:relative;">
+      <% url = youtube.url.gsub(/http.+v=/, "") %>
+      <% url = url.gsub(/&.+./, "") %>
+      <%= image_tag('http://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
+        width: '100%',
+        class: 'bits_index_link_img') %>
+      <div class="y_video_img_video_time">
+        <%= youtube.video_time %>
       </div>
     </div>
-  <% end -%>
+    <div class="y_video_top_textarea col-sm-12" style="padding: 0;">
+      <div class="y_video_top_titlearea_sm">
+        <h4 class="title"><%= youtube.title %></h4>
+      </div>
+      <div class="y_video_top_catchphrase_sm">
+        <h5 class="catchphrase"><%= youtube.catchphrase %></h5>
+      </div>
+      <div class="y_video_top_viewcount_sm">
+        <p>視聴回数 <%= youtube.pv_count %></p>
+      </div>
+    </div>
+  </div>
+<% end -%>

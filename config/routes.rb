@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'video_time_scrape/index'
+
   devise_for :users, controllers: { registrations: 'registrations' }
   resources :bits, only: [:index] do
     collection do
