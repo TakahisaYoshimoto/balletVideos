@@ -126,17 +126,4 @@ class YoutubeVideosController < ApplicationController
         :poster_comment,
         youtube_video_tags_attributes: [:id, :name, :master_tag, :_destroy])
     end
-
-    def user_level_check(level)
-      if current_user.nil?
-        return true
-      end
-      unless current_user.nil?
-        if level > current_user.user_level
-          return true
-        end
-      end
-
-      return false
-    end
 end
