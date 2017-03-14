@@ -60,7 +60,9 @@
       </div>
       <p id="y_video_show_pv_count">視聴回数<%= @youtube.pv_count %>回</p>
     </div>
-
+<%
+=begin
+%>
     <div class="ad_area_out" style="overflow:hidden;">
       <div class="ad_area col-xs-12 hidden-sm hidden-md hidden-lg" style="text-align:center;padding:10px 0 10px 0;">
         <!-- admax -->
@@ -83,7 +85,9 @@
     <div id="y_video_show_text">
       <%= simple_format(@youtube.text, class: :text) %>
     </div>
-
+<%
+=end
+%>
     <div id="y_video_commentsarea">
       <% unless current_user.nil? %>
         <div id="y_video_newcomment_edit_area">
