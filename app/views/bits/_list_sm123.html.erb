@@ -3,7 +3,7 @@
     <div class="y_video_img_area col-sm-12" style="padding: 0;position:relative;">
       <% url = youtube.url.gsub(/http.+v=/, "") %>
       <% url = url.gsub(/&.+./, "") %>
-      <%= image_tag('http://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
+      <%= image_tag('https://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
         width: '100%',
         class: 'bits_index_link_img') %>
       <div class="y_video_img_video_time">
