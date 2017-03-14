@@ -115,14 +115,16 @@
       <% @youtubes.each do |youtube| %>
         <%= link_to  youtube_video_path(youtube), class: 'col-xs-12 col-sm-4 row-eq-height', style: 'margin-bottom:10px;' do %>
           <div class="y_video_img_area col-xs-12" style="padding: 0;">
-            <% url = youtube.url.gsub(/http.+v=/, "") %>
-            <% url = url.gsub(/&.+./, "") %>
-            <%= image_tag('https://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
-              width: '100%',
-              class: 'bits_index_link_img') %>
-          <div class="y_video_img_video_time">
-            <%= youtube.video_time %>
-          </div>
+            <div class="y_video_img">
+              <% url = youtube.url.gsub(/http.+v=/, "") %>
+              <% url = url.gsub(/&.+./, "") %>
+              <%= image_tag('https://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
+                width: '100%',
+                class: 'bits_index_link_img') %>
+              <div class="y_video_img_video_time">
+                <%= youtube.video_time %>
+              </div>
+            </div>
           </div>
           <div class="y_video_top_textarea col-xs-12" style="padding: 0;margin-top:0;">
             <div class="y_video_top_titlearea_sm">
