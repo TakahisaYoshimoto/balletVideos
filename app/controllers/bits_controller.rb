@@ -158,6 +158,8 @@ class BitsController < ApplicationController
 
     @search_params = params[:search_params]
     @genre = params[:search_params]
+    @genres = @genre.gsub(" ",",")#半角スペースをカンマに変換(プレスホルダーの第二引数以降に使用する変数spに代入)
+    @genres = @genres.split(",")#ひとつの文字列だったspをカンマで区切って配列にする
     render 'videolist'
   end
 

@@ -3,10 +3,14 @@
 <div id="y_index_links">
   <div class="col-sm-9">
 
-  <div style="text-align:center;">
+  <div id="y_videolist_breadcrumb" style="text-align:center;">
     <% if @category_params.present? && @genre.present? %>
       <% unless controller.action_name == 'genreSearch' %>
-        <h3><%= @category_params %> > <%= @genre %></h3>
+        <h3><%= link_to @category_params, { controller: :bits, action: :genreSearch, search_params: @category_params, or: 'pv' } %> > 
+        <% @genres.each do |g| %>
+          <%= link_to g, { controller: :bits, action: :Search, search_params: g, category_params: @category_params, or: 'pv' } %>
+        <% end %>
+        </h3>
       <% else %>
         <h3><%= @category_params %></h3>
       <% end %>
