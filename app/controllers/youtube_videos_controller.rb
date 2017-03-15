@@ -17,16 +17,20 @@ class YoutubeVideosController < ApplicationController
     @youtube = YoutubeVideo.new(youtube_params)
     @youtube.user_id = current_user.id
 
-    url = params[:youtube_video][:url].to_s
-    video = Nokogiri::HTML.parse(url_set(url), nil, 'utf-8')
-    video_time = video.css('#watch7-content > meta[itemprop="duration"]').attr('content').value
-    video_time.gsub!('PT','')
-    video_time.gsub!('M',':')
-    video_time.gsub!('S','')
-    if video_time[-2, 1] == ":"
-      video_time.gsub!(':', ':0')
+    begin
+      url = params[:youtube_video][:url].to_s
+      video = Nokogiri::HTML.parse(url_set(url), nil, 'utf-8')
+      video_time = video.css('#watch7-content > meta[itemprop="duration"]').attr('content').value
+      video_time.gsub!('PT','')
+      video_time.gsub!('M',':')
+      video_time.gsub!('S','')
+      if video_time[-2, 1] == ":"
+        video_time.gsub!(':', ':0')
+      end
+      @youtube.video_time = video_time
+    rescue
+      p 'urlエラー'
     end
-    @youtube.video_time = video_time
 
     if @youtube.save
       #同じピックアップレベルの他の動画があればピックアップレベルを0にする
