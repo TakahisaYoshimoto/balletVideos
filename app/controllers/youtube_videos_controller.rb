@@ -63,6 +63,24 @@ class YoutubeVideosController < ApplicationController
       opv.save
     end
 
+    if @youtube.video_time.blank?
+      begin
+        url = params[:youtube_video][:url].to_s
+        video = Nokogiri::HTML.parse(url_set(url), nil, 'utf-8')
+        video_time = video.css('#watch7-content > meta[itemprop="duration"]').attr('content').value
+        video_time.gsub!('PT','')
+        video_time.gsub!('M',':')
+        video_time.gsub!('S','')
+        if video_time[-2, 1] == ":"
+          video_time.gsub!(':', ':0')
+        end
+        @youtube.video_time = video_time
+      rescue
+        p 'urlエラー'
+      end
+      p 'a------------------------------------------------------'
+    end
+
     if @youtube.update(youtube_params)
       redirect_to @youtube
     else
