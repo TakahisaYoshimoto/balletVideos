@@ -55,10 +55,10 @@ ActiveRecord::Schema.define(version: 20170313181633) do
   end
 
   create_table "top_tag_lists", force: :cascade do |t|
-    t.string   "genre"
+    t.string   "genre",      default: "注目キーワード"
     t.string   "tag_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "hurigana"
   end
 
