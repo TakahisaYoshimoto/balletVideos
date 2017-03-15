@@ -218,6 +218,15 @@
 .related_videos_link {
   position: relative;
   margin-bottom: 5px;
+  width: 100%;
+  display: inline-block;
+}
+.y_video_show_img_video_time {
+  position: absolute;
+  bottom: 0;
+  right: 1%;
+  background: black;
+  color: white;
 }
 .related_video_view_count {
     position: absolute;
