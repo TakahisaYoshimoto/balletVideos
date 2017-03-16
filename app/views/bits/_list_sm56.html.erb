@@ -3,9 +3,12 @@
     <div class="y_video_img_area col-sm-12" style="padding: 0;">
       <% url = youtube.url.gsub(/http.+v=/, "") %>
       <% url = url.gsub(/&.+./, "") %>
-      <%= image_tag('http://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
+      <%= image_tag('https://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
         width: '100%',
         class: 'bits_index_link_img') %>
+      <div class="y_video_img_video_time">
+        <%= youtube.video_time %>
+      </div>
     </div>
     <div class="y_video_top_textarea col-sm-12" style="padding: 0;">
       <div class="y_video_top_titlearea_sm">
@@ -13,6 +16,9 @@
       </div>
       <div class="y_video_top_catchphrase_sm">
         <h5 class="catchphrase"><%= youtube.catchphrase %></h5>
+      </div>
+      <div class="y_video_top_viewcount_sm">
+        <p>視聴回数 <%= youtube.pv_count %></p>
       </div>
     </div>
   </div>

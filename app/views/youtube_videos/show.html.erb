@@ -31,6 +31,7 @@
   <div class="col-sm-8" style="padding:0;">
     <div id="y_video_show_titlearea">
       <h2><%= @youtube.title %></h2>
+      <h4><%= @youtube.catchphrase %></h4>
       <strong>タグ:</strong>
       <% @youtube.youtube_video_tags.each do |tag| %>
         <div style="display: inline-block;margin-right:10px;">
@@ -68,12 +69,12 @@
         <script type="text/javascript" charset="utf-8" src="//adm.shinobi.jp/st/na.js"></script>
         <!-- admax -->
       </div>
-      <div class="ad_area hidden-xs col-sm-12 hidden-md hidden-lg" style="text-align:center;padding:10px 0 10px 0;">
+      <div class="ad_area hidden-xs col-sm-12 col-md-12 hidden-lg" style="text-align:center;padding:10px 0 10px 0;">
         <!-- admax 468×60px-->
         <script src="//adm.shinobi.jp/s/b7c559839141ee4f6bbb301f9bda7e0d"></script>
         <!-- admax -->
       </div>
-      <div class="ad_area hidden-xs hidden-sm col-md-12" style="text-align:center;padding:10px 0 10px 0;">
+      <div class="ad_area visible-lg col-lg-12" style="text-align:center;padding:10px 0 10px 0;">
         <!-- admax 728×90px-->
         <script src="//adm.shinobi.jp/s/e38b41210a0c851360b5c6366ce95f9e"></script>
         <!-- admax -->
@@ -175,7 +176,7 @@
     </div>
 
     <% unless current_user.nil? %>
-      <% if @youtube.user_id == current_user.id && current_user.user_level > 1 %>
+      <% if current_user.user_level > 1 %>
         <%= link_to '編集する', edit_youtube_video_path(@youtube) %>
         <%= link_to '削除する', youtube_video_path(@youtube), method: :delete, data: { confirm: "削除してよろしいですか？" } %>
       <% end %>
@@ -198,9 +199,12 @@
         <% url = url.gsub(/&.+./, "") %>
         <%= link_to(youtube_video_path(rv)) do %>
           <div class="related_videos_link_img col-xs-5 col-sm-5 col-md-6" style="padding:0;">
-            <%= image_tag('http://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
+            <%= image_tag('https://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
                                     width: '100%',
                                     class: 'bits_show_link_img') %>
+            <div class="y_video_show_img_video_time">
+              <%= rv.video_time %>
+            </div>
           </div>
           <div class="related_videos_link_title col-xs-7 col-sm-7 col-md-6" style="padding:0;">
             <p><%= rv.title %></p>

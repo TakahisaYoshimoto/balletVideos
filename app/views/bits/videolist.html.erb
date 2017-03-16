@@ -3,10 +3,14 @@
 <div id="y_index_links">
   <div class="col-sm-9">
 
-  <div style="text-align:center;">
+  <div id="y_videolist_breadcrumb" style="text-align:center;">
     <% if @category_params.present? && @genre.present? %>
       <% unless controller.action_name == 'genreSearch' %>
-        <h3><%= @category_params %> > <%= @genre %></h3>
+        <h3><%= link_to @category_params, { controller: :bits, action: :genreSearch, search_params: @category_params, or: 'pv' } %> > 
+        <% @genres.each do |g| %>
+          <%= link_to g, { controller: :bits, action: :Search, search_params: g, category_params: @category_params, or: 'pv' } %>
+        <% end %>
+        </h3>
       <% else %>
         <h3><%= @category_params %></h3>
       <% end %>
@@ -111,11 +115,16 @@
       <% @youtubes.each do |youtube| %>
         <%= link_to  youtube_video_path(youtube), class: 'col-xs-12 col-sm-4 row-eq-height', style: 'margin-bottom:10px;' do %>
           <div class="y_video_img_area col-xs-12" style="padding: 0;">
-            <% url = youtube.url.gsub(/http.+v=/, "") %>
-            <% url = url.gsub(/&.+./, "") %>
-            <%= image_tag('http://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
-              width: '100%',
-              class: 'bits_index_link_img') %>
+            <div class="y_video_img">
+              <% url = youtube.url.gsub(/http.+v=/, "") %>
+              <% url = url.gsub(/&.+./, "") %>
+              <%= image_tag('https://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
+                width: '100%',
+                class: 'bits_index_link_img') %>
+              <div class="y_video_img_video_time">
+                <%= youtube.video_time %>
+              </div>
+            </div>
           </div>
           <div class="y_video_top_textarea col-xs-12" style="padding: 0;margin-top:0;">
             <div class="y_video_top_titlearea_sm">
@@ -123,6 +132,9 @@
             </div>
             <div class="y_video_top_catchphrase_sm">
               <h5 class="catchphrase"><%= youtube.catchphrase %></h5>
+            </div>
+            <div class="y_video_top_viewcount_sm">
+              <p>視聴回数 <%= youtube.pv_count %></p>
             </div>
           </div>
         <% end -%>

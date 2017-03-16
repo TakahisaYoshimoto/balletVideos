@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170227112340) do
+ActiveRecord::Schema.define(version: 20170313181633) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
@@ -55,10 +55,10 @@ ActiveRecord::Schema.define(version: 20170227112340) do
   end
 
   create_table "top_tag_lists", force: :cascade do |t|
-    t.string   "genre"
+    t.string   "genre",      default: "注目キーワード"
     t.string   "tag_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "hurigana"
   end
 
@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(version: 20170227112340) do
     t.text     "poster_comment"
     t.integer  "pv_count",       default: 0
     t.integer  "likes_count"
+    t.string   "video_time"
   end
 
 end
