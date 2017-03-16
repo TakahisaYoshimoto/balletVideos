@@ -26,7 +26,7 @@
       <meta property="og:type" content="website" />
       <meta property="og:description" content="Bit（ビット）は、クラシックバレエをメインとした情報配信サービスです。良質なバレエ動画の中からお気に入りの動画を探したり、動画にコメントを付けて楽しむサービスです。" />
       <meta property="og:url" content="<%= request.url %>" />
-      <meta property="og:image" content="<%= image_tag('bit_logo.png') %>" />
+      <meta property="og:image" content='<%= ENV['SITE_URL'] %><%= image_path('xs_top_img.jpg') %>' />
     <% end %>
     <%= favicon_link_tag 'favicon.ico' %>
   </head>
