@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20170313181633) do
     t.string   "session_hash"
     t.text     "message"
     t.text     "referrer"
-    t.string   "params"
+    t.text     "params"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["controller_name", "action_name", "ip_address"], name: "controlleraction_ip_index"
