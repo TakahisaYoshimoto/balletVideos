@@ -98,7 +98,7 @@ body {
 
 #footer {
   width: 100%;
-  height: 150px;
+  height: 200px;
   background: #E6E6E6;
   position: relative;
 }
@@ -113,7 +113,9 @@ body {
 }
 #top_footer_contents {
   overflow: hidden;
-  width: 450px;
+  min-width: 300px;
+  display: inline-block;
+  text-align: left;
 }
 
 #top_footer_search_link_area a,
@@ -127,8 +129,11 @@ body {
   font-weight: bold;
 }
 #footer_text {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+  display: block;
   text-align: center;
+}
+.sm_footer,
+.xs_footer {
+  text-align: center;
+  padding-top: 20px !important;
 }
