@@ -80,9 +80,11 @@
       </div>
     </div>
 
-    <div id="y_video_show_text">
-      <%= simple_format(@youtube.text, class: :text) %>
-    </div>
+    <% if @youtube.text.present? %>
+      <div id="y_video_show_text">
+        <%= simple_format(@youtube.text, class: :text) %>
+      </div>
+    <% end %>
 
     <div id="y_video_commentsarea">
       <% unless current_user.nil? %>
