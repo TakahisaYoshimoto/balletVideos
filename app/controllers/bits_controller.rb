@@ -220,4 +220,8 @@ class BitsController < ApplicationController
       .deliver
     redirect_to inquiry_after_bits_path
   end
+
+  def privacy_policy
+    @privacy = SiteConfiguration.find_by(item: 'privacy_policy')
+  end
 end

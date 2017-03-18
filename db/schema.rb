@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170313181633) do
+ActiveRecord::Schema.define(version: 20170318015744) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20170313181633) do
     t.string   "session_hash"
     t.text     "message"
     t.text     "referrer"
-    t.text     "params"
+    t.string   "params"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["controller_name", "action_name", "ip_address"], name: "controlleraction_ip_index"
@@ -52,6 +52,14 @@ ActiveRecord::Schema.define(version: 20170313181633) do
     t.integer  "youtube_video_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+  end
+
+  create_table "site_configurations", force: :cascade do |t|
+    t.string   "item"
+    t.string   "summary"
+    t.text     "contents"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "top_tag_lists", force: :cascade do |t|
