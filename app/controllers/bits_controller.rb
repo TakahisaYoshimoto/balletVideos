@@ -224,4 +224,8 @@ class BitsController < ApplicationController
   def privacy_policy
     @privacy = SiteConfiguration.find_by(item: 'privacy_policy')
   end
+
+  def operation_information
+    @operation = SiteConfiguration.find_by(item: 'operation_information')
+  end
 end

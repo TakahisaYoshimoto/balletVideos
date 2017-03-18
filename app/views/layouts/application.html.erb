@@ -145,16 +145,19 @@
             <%= link_to 'その他から探す', { :controller => "/bits", action: :genreSearch, search_params: "その他", or: 'pv' } %><br>
           </div>
         </div>
+        <div id="top_footer_center_area">
+          <% if user_signed_in? %>
+            <%= link_to ' プロフィール変更', edit_user_registration_path, class: 'top_footer_title' %><br>
+            <%= link_to ' ログアウト', destroy_user_session_path, method: :delete, class: 'top_footer_title' %><br>
+          <% else %>
+            <%= link_to 'ユーザー登録', new_user_registration_path, class: 'top_footer_title' %><br>
+            <%= link_to 'ログイン', new_user_session_path, class: 'top_footer_title' %><br>
+          <% end %>
+          <%= link_to 'お問い合わせ', inquiry_bits_path, class: 'top_footer_title' %><br>
+        </div>
         <div id="top_footer_right_area">
-        <% if user_signed_in? %>
-          <%= link_to ' プロフィール変更', edit_user_registration_path, class: 'top_footer_title' %><br>
-          <%= link_to ' ログアウト', destroy_user_session_path, method: :delete, class: 'top_footer_title' %><br>
-        <% else %>
-          <%= link_to 'ユーザー登録', new_user_registration_path, class: 'top_footer_title' %><br>
-          <%= link_to 'ログイン', new_user_session_path, class: 'top_footer_title' %><br>
-        <% end %>
-        <%= link_to 'お問い合わせ', inquiry_bits_path, class: 'top_footer_title' %><br>
-        <%= link_to 'プライバシーポリシー', privacy_policy_bits_path, class: 'top_footer_title' %>
+          <%= link_to 'プライバシーポリシー', privacy_policy_bits_path, class: 'top_footer_title' %><br>
+          <%= link_to '運営情報', operation_information_bits_path, class: 'top_footer_title' %>
         </div>
       </div>
       <div id="footer_text">
