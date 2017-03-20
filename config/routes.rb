@@ -13,6 +13,8 @@ Rails.application.routes.draw do
       get :inquiry
       get :inquiry_after
       post :send_support_mail
+      get :privacy_policy
+      get :operation_information
     end
   end
   resources :youtube_videos, only: [:new, :create, :edit, :update, :show, :destroy] do
@@ -26,5 +28,6 @@ Rails.application.routes.draw do
     end
   end
   resources :top_tag_lists, only: [:index, :new, :create, :edit, :update, :show, :destroy]
+  resources :site_configurations, only: [:index, :new, :create, :edit, :update, :show]
   root 'bits#index'
 end

@@ -78,7 +78,6 @@ class YoutubeVideosController < ApplicationController
       rescue
         p 'urlエラー'
       end
-      p 'a------------------------------------------------------'
     end
 
     if @youtube.update(youtube_params)

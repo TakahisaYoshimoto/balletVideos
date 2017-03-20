@@ -1,0 +1,28 @@
+<%= form_for(site_config, html: { class: 'form-horizontal' }) do |f| %>
+  <div class="field form-group">
+    <%= f.label :item, 'アイテム', class: 'control-label col-sm-2' %>
+    <div class="col-sm-4">
+      <%= f.text_field :item, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :summary, '概要', class: 'control-label col-sm-2' %>
+    <div class="col-sm-4">
+      <%= f.text_field :summary, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :contents, '内容', class: 'control-label col-sm-2' %>
+    <div class="col-sm-4">
+      <%= f.text_area :contents, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="actions　form-group">
+    <div class="col-sm-offset-2 col-sm-4">
+      <%= f.submit '保存', class: 'btn btn-primary right_button' %>
+    </div>
+  </div>
+<% end %>
