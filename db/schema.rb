@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170318015744) do
+ActiveRecord::Schema.define(version: 20170318013146) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20170318015744) do
     t.string   "session_hash"
     t.text     "message"
     t.text     "referrer"
-    t.string   "params"
+    t.text     "params"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["controller_name", "action_name", "ip_address"], name: "controlleraction_ip_index"
