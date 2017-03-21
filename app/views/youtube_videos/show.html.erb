@@ -212,8 +212,9 @@
               <%= rv.video_time %>
             </div>
           </div>
-          <div class="related_videos_link_title col-xs-7 col-sm-7 col-md-6" style="padding:0;">
-            <p><%= rv.title %></p>
+          <div class="related_videos_link_title_area col-xs-7 col-sm-7 col-md-6" style="padding:0;">
+            <p class="related_videos_link_title"><%= truncate(rv.title, length: 25) %></p>
+            <p class="related_videos_link_catchphrase"><%= truncate(rv.catchphrase, length: 25 ) %></p>
           </div>
           <div class="related_video_view_count">
             <p>視聴回数<%= rv.pv_count %>回</p>
