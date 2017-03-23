@@ -91,21 +91,22 @@ RSpec.describe BitsController, type: :controller do
 
   describe 'all' do
 
-    it '1ページ最大12件' do
-      FactoryGirl.create_list(:youtube_video, 12)
+    it '1ページ最大件数' do
+      per_page = YoutubeVideo.default_per_page
+      FactoryGirl.create_list(:youtube_video, per_page)
       get :all
-      expect(assigns(:youtubes).count).to eq(12)
+      expect(assigns(:youtubes).count).to eq(per_page)
 
       FactoryGirl.create_list(:youtube_video, 1)
       get :all
-      expect(assigns(:youtubes).count).to eq(12)
+      expect(assigns(:youtubes).count).to eq(per_page)
     end
 
-    it '最後のページの件数は12の余り' do
-      count = 15
-      FactoryGirl.create_list(:youtube_video, count)
+    it '2ページ以上あるとき' do
+      per_page = YoutubeVideo.default_per_page
+      FactoryGirl.create_list(:youtube_video, per_page + 1)
       get :all, params: { page: 2 }
-      expect(assigns(:youtubes).count).to eq(count % 12)
+      expect(assigns(:youtubes).count).to eq(1)
     end
 
     it 'ソート順の指定がないときは新着順' do
