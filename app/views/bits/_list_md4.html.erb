@@ -32,11 +32,11 @@
       <div class="y_video_top_poster_comment">
         <% time = (Time.now - youtube.created_at) / 3600 %>
         <% if time < 24 %>
-          <p class="y_video_top_poster_comment_label">ビット運営からの一言コメント  投稿 <%= (time).to_i %>時間前</p>
+          <p class="y_video_top_poster_comment_label">ビット運営からの一言 / 投稿 <%= (time).to_i %>時間前</p>
           <%= simple_format(youtube.poster_comment, class: 'y_video_top_poster_comment_text') %>
         <% else %>
           <% time = time / 24 %>
-          <p class="y_video_top_poster_comment_label">ビット運営からの一言コメント  投稿 <%= (time).to_i %>日前</p>
+          <p class="y_video_top_poster_comment_label">ビット運営からの一言 / 投稿 <%= (time).to_i %>日前</p>
           <%= simple_format(youtube.poster_comment, class: 'y_video_top_poster_comment_text') %>
         <% end %>
       </div>

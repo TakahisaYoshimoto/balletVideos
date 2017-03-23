@@ -365,3 +365,58 @@
   text-align: right;
   padding: 15px
 }
+
+.videolists_link {
+  padding: 0 !important;
+  position: relative;
+}
+.videolists_title {
+  margin: 0 0 0 5px;
+  color: black;
+  font-size: 12px;
+}
+.videolists_catchphrase {
+  margin: 0 0 15px 5px;
+  color: gray;
+  font-size: 11px;
+}
+@media screen and (max-width: 767px) {
+  .videolists_viewcount {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+}
+.videolists_viewcount p {
+  font-size: 12px;
+  color: gray;
+  margin: 0 0 0 5px;
+  padding: 0;
+}
+@media screen and (min-width: 768px) {
+  .videolists_link {
+    padding: 15px !important;
+  }
+  .videolists_title {
+    font-weight: bold;
+    font-size: 14px;
+    margin: 0;
+  }
+  .videolists_catchphrase {
+    margin: 0;
+    color: gray;
+    font-size: 12px;
+  }
+  .videolists_viewcount p {
+    font-size: 12px;
+    color: gray;
+    margin: 0;
+    padding: 0;
+  }
+  .videolists_title,
+  .videolists_catchphrase,
+  .videolists_viewcount p {
+    padding: 0 5px;
+    border-bottom: 1px solid #C9C9C9;
+  }
+}

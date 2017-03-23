@@ -62,22 +62,23 @@
       <p id="y_video_show_pv_count">視聴回数<%= @youtube.pv_count %>回</p>
     </div>
 
+    <div class="ad_area col-xs-12 hidden-sm hidden-md hidden-lg" style="text-align:center;padding:10px 0 0 0;overflow: visible;margin-left: -15px;display:inline-block;">
+      <!--  ad tags Size: 320x100 ZoneId:1141471-->
+      <script type="text/javascript" src="https://js.medi-8.net/t/141/471/a1141471.js"></script>
+    </div>
     <div class="ad_area_out" style="overflow:hidden;">
-      <div class="ad_area col-xs-12 hidden-sm hidden-md hidden-lg" style="text-align:center;padding:10px 0 10px 0;">
-        <!-- admax -->
-        <div class="admax-native" data-admax-id="4b5879fb019fb93a43400dec4515824d"></div>
-        <script type="text/javascript" charset="utf-8" src="//adm.shinobi.jp/st/na.js"></script>
-        <!-- admax -->
-      </div>
       <div class="ad_area hidden-xs col-sm-12 col-md-12 hidden-lg" style="text-align:center;padding:10px 0 10px 0;">
-        <!-- admax 468×60px-->
-        <script src="//adm.shinobi.jp/s/b7c559839141ee4f6bbb301f9bda7e0d"></script>
-        <!-- admax -->
+        <!--  ad tags Size: 468x60 ZoneId:1142016-->
+        <script type="text/javascript" src="https://js.medi-8.net/t/142/016/a1142016.js"></script>
       </div>
       <div class="ad_area visible-lg col-lg-12" style="text-align:center;padding:10px 0 10px 0;">
         <!-- medi8　728×90px -->
         <script type="text/javascript" src="https://js.medi-8.net/t/141/478/a1141478.js"></script>
       </div>
+    </div>
+
+    <%# コメントはスクリプトで追加される為、デフォルトでスペース確保してないので、下の要素とかぶらないように、空のdivをはさんでおく %>
+    <div class="blank" style="width:100%;height:1px;overflow:hidden;">
     </div>
 
     <% if @youtube.text.present? %>
@@ -211,8 +212,9 @@
               <%= rv.video_time %>
             </div>
           </div>
-          <div class="related_videos_link_title col-xs-7 col-sm-7 col-md-6" style="padding:0;">
-            <p><%= rv.title %></p>
+          <div class="related_videos_link_title_area col-xs-7 col-sm-7 col-md-6" style="padding:0;">
+            <p class="related_videos_link_title"><%= truncate(rv.title, length: 25) %></p>
+            <p class="related_videos_link_catchphrase"><%= truncate(rv.catchphrase, length: 25 ) %></p>
           </div>
           <div class="related_video_view_count">
             <p>視聴回数<%= rv.pv_count %>回</p>

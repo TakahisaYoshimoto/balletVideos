@@ -73,73 +73,32 @@
         or: 'time' } %>
     <% end %>
   </div>
-<%
-=begin
-%>
-    <div class="col-sm-12">
-      <% @youtubes.each do |youtube| %>
-        <%= link_to  youtube_video_path(youtube) do %>
-          <div class="y_video_body row">
-            <div class="y_video_img_area col-sm-4" style="padding: 0;">
-              <% url = youtube.url.gsub(/http.+v=/, "") %>
-              <%# url = url.gsub(/&list.+./, "") %>
-              <% url = url.gsub(/&.+./, "") %>
-              <%= image_tag('http://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
-                width: '100%',
-                class: 'bits_index_link_img') %>
-            </div>
-            <div class="y_vide_rightarea col-sm-8">
-              <div class="y_video_body_titlearea">
-                <h4 class="title"><%= youtube.title %></h4>
-              </div>
-              <div class="y_video_body_tagarea">
-                <p>
-                  <strong>タグ:</strong>
-                  <% youtube.youtube_video_tags.each do |tag| %>
-                    #<%= tag.name %>
-                  <% end %>
-                </p>
-              </div>
-              <div class="y_video_textarea">
-                <p><%= truncate(youtube.text, length: 100)%></p>
-              </div>
+
+  <div class="col-xs-12 row-eq-height" style="padding: 0;">
+    <% @youtubes.each do |youtube| %>
+      <%= link_to  youtube_video_path(youtube), class: 'videolists_link col-xs-12 col-sm-4 row-eq-height', style: 'margin-bottom:10px;' do %>
+        <div class="y_video_img_area col-xs-5 col-sm-12" style="padding: 0;">
+          <div class="y_video_img">
+            <% url = youtube.url.gsub(/http.+v=/, "") %>
+            <% url = url.gsub(/&.+./, "") %>
+            <%= image_tag('https://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
+              width: '100%',
+              class: 'bits_index_link_img') %>
+            <div class="y_video_img_video_time">
+              <%= youtube.video_time %>
             </div>
           </div>
-        <% end -%>
-      <% end %>
-    </div><%# y_index_link %>
-<%
-=end
-%>
-    <div class="col-sm-12 row-eq-height" style="padding: 0;">
-      <% @youtubes.each do |youtube| %>
-        <%= link_to  youtube_video_path(youtube), class: 'col-xs-12 col-sm-4 row-eq-height', style: 'margin-bottom:10px;' do %>
-          <div class="y_video_img_area col-xs-12" style="padding: 0;">
-            <div class="y_video_img">
-              <% url = youtube.url.gsub(/http.+v=/, "") %>
-              <% url = url.gsub(/&.+./, "") %>
-              <%= image_tag('https://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
-                width: '100%',
-                class: 'bits_index_link_img') %>
-              <div class="y_video_img_video_time">
-                <%= youtube.video_time %>
-              </div>
-            </div>
-          </div>
-          <div class="y_video_top_textarea col-xs-12" style="padding: 0;margin-top:0;">
-            <div class="y_video_top_titlearea_sm">
-              <h4 class="title"><%= youtube.title %></h4>
-            </div>
-            <div class="y_video_top_catchphrase_sm">
-              <h5 class="catchphrase"><%= youtube.catchphrase %></h5>
-            </div>
-            <div class="y_video_top_viewcount_sm">
+        </div>
+        <div class="y_video_top_textarea col-xs-7 col-sm-12" style="padding: 0;margin-top:0;">
+            <p class="videolists_title"><%= truncate(youtube.title, length: 25) %></p>
+            <p class="videolists_catchphrase"><%= truncate(youtube.catchphrase, length: 25) %></p>
+            <div class="videolists_viewcount">
               <p>視聴回数 <%= youtube.pv_count %></p>
             </div>
-          </div>
-        <% end -%>
-      <% end %>
-    </div><%# y_index_link %>
+        </div>
+      <% end -%>
+    <% end %>
+  </div><%# y_index_link %>
 
     <p class="pagenation_count"><%= page_entries_info @youtubes %></p>
 
