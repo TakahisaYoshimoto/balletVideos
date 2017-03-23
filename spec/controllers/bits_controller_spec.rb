@@ -134,4 +134,69 @@ RSpec.describe BitsController, type: :controller do
 
   end
 
+  describe 'search' do
+
+    describe 'タイトルを検索' do
+
+      it 'キーワードが空はallへリダイレクト' do
+        get :Search
+        expect(response).to redirect_to all_bits_path
+      end
+
+      it 'タイトルを部分一致で検索できる' do
+        FactoryGirl.create(:youtube_video, title: 'title')
+
+        get :Search, params: { search_params: 'title' }
+        expect(assigns(:youtubes).count).to eq(1)
+
+        get :Search, params: { search_params: 'tit' }
+        expect(assigns(:youtubes).count).to eq(1)
+
+        get :Search, params: { search_params: 'tl' }
+        expect(assigns(:youtubes).count).to eq(1)
+
+        get :Search, params: { search_params: 'tle' }
+        expect(assigns(:youtubes).count).to eq(1)
+      end
+
+      it 'タイトルを大文字小文字区別せずに検索できる' do
+        FactoryGirl.create(:youtube_video, title: 'title')
+
+        get :Search, params: { search_params: 'tit' }
+        expect(assigns(:youtubes).count).to eq(1)
+
+        get :Search, params: { search_params: 'TIT' }
+        expect(assigns(:youtubes).count).to eq(1)
+      end
+
+      it 'タイトルに引っかからない検索' do
+        FactoryGirl.create(:youtube_video, title: 'title')
+
+        get :Search, params: { search_params: 'titleeee' }
+        expect(assigns(:youtubes).count).to eq(0)
+
+        get :Search, params: { search_params: 'foo' }
+        expect(assigns(:youtubes).count).to eq(0)
+      end
+
+      it 'スペース区切りでAND検索' do
+        FactoryGirl.create(:youtube_video, title: 'これは動画のタイトルです')
+
+        get :Search, params: { search_params: '動画 タイトル' }
+        expect(assigns(:youtubes).count).to eq(1)
+
+        get :Search, params: { search_params: ' 動画 タイトル ' }
+        expect(assigns(:youtubes).count).to eq(1)
+
+        get :Search, params: { search_params: '　動画　タイトル　' }
+        expect(assigns(:youtubes).count).to eq(1), '全角スペース区切り'
+
+        get :Search, params: { search_params: '動画 あいうえお' }
+        expect(assigns(:youtubes).count).to eq(0)
+      end
+
+    end
+
+  end
+
 end
