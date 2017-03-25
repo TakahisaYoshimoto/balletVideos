@@ -90,8 +90,10 @@
           </div>
         </div>
         <div class="y_video_top_textarea col-xs-7 col-sm-12" style="padding: 0;margin-top:0;">
-            <p class="videolists_title"><%= truncate(youtube.title, length: 25) %></p>
-            <p class="videolists_catchphrase"><%= truncate(youtube.catchphrase, length: 25) %></p>
+            <p class="videolists_title hidden-md hidden-lg"><%= truncate(youtube.title, length: 25) %></p>
+            <p class="videolists_catchphrase hidden-md hidden-lg"><%= truncate(youtube.catchphrase, length: 25) %></p>
+            <p class="videolists_title hidden-xs hidden-sm"><%= truncate(youtube.title, length: 29) %></p>
+            <p class="videolists_catchphrase hidden-xs hidden-sm"><%= truncate(youtube.catchphrase, length: 29) %></p>
             <div class="videolists_viewcount">
               <p>視聴回数 <%= youtube.pv_count %></p>
             </div>
