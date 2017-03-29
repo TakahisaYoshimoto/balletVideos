@@ -75,8 +75,23 @@
   </div>
 
   <div class="col-xs-12 row-eq-height" style="padding: 0;">
-    <% @youtubes.each do |youtube| %>
-      <%= link_to  youtube_video_path(youtube), class: 'videolists_link col-xs-12 col-sm-4 row-eq-height', style: 'margin-bottom:10px;' do %>
+    <% @youtubes.each.with_index(1) do |youtube, i| %>
+      <% if i == 4 %>
+        <%# 広告エリア %>
+        <div class="col-xs-12 hidden-sm hidden-md hidden-lg" style="text-align:center;padding-bottom:15px;overflow: visible;margin-left: -15px;">
+          <!--  ad tags Size: 320x100 ZoneId:1146757-->
+          <script type="text/javascript" src="https://js.medi-8.net/t/146/757/a1146757.js"></script>
+        </div>
+        <div class="hidden-xs col-sm-12 col-md-12 hidden-lg" style="text-align:center;padding-bottom:15px;">
+          <!--  ad tags Size: 468x60 ZoneId:1142016-->
+          <script type="text/javascript" src="https://js.medi-8.net/t/142/016/a1142016.js"></script>
+        </div>
+        <div class="visible-lg col-lg-12" style="text-align:center;padding-bottom:15px;">
+          <!--  ad tags Size: 728x90 ZoneId:1146756-->
+          <script type="text/javascript" src="https://js.medi-8.net/t/146/756/a1146756.js"></script>
+        </div>
+      <% end %>
+      <%= link_to youtube_video_path(youtube), class: 'videolists_link col-xs-12 col-sm-4 row-eq-height', style: 'margin-bottom:10px;' do %>
         <div class="y_video_img_area col-xs-5 col-sm-12" style="padding: 0;">
           <div class="y_video_img">
             <% url = youtube.url.gsub(/http.+v=/, "") %>
@@ -90,13 +105,13 @@
           </div>
         </div>
         <div class="y_video_top_textarea col-xs-7 col-sm-12" style="padding: 0;margin-top:0;">
-            <p class="videolists_title hidden-md hidden-lg"><%= truncate(youtube.title, length: 25) %></p>
-            <p class="videolists_catchphrase hidden-md hidden-lg"><%= truncate(youtube.catchphrase, length: 25) %></p>
-            <p class="videolists_title hidden-xs hidden-sm"><%= truncate(youtube.title, length: 29) %></p>
-            <p class="videolists_catchphrase hidden-xs hidden-sm"><%= truncate(youtube.catchphrase, length: 29) %></p>
-            <div class="videolists_viewcount">
-              <p>視聴回数 <%= youtube.pv_count %></p>
-            </div>
+          <p class="videolists_title hidden-md hidden-lg"><%= truncate(youtube.title, length: 25) %></p>
+          <p class="videolists_catchphrase hidden-md hidden-lg"><%= truncate(youtube.catchphrase, length: 25) %></p>
+          <p class="videolists_title hidden-xs hidden-sm"><%= truncate(youtube.title, length: 29) %></p>
+          <p class="videolists_catchphrase hidden-xs hidden-sm"><%= truncate(youtube.catchphrase, length: 29) %></p>
+          <div class="videolists_viewcount">
+            <p>視聴回数 <%= youtube.pv_count %></p>
+          </div>
         </div>
       <% end -%>
     <% end %>

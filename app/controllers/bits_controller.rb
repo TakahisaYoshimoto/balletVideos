@@ -166,7 +166,7 @@ class BitsController < ApplicationController
   end
 
   def attentionSearch
-    tg = TopTagList.all.where('genre like ?', params[:search_params]).pluck(:tag_name)
+    tg = TopTagList.where('genre like ?', params[:search_params]).pluck(:tag_name)
     ph_tag = "youtube_video_tags.name like ?"
     c = tg.length-1
     c.times{ ph_tag += " OR youtube_video_tags.name like ?" } if tg.length > 1
