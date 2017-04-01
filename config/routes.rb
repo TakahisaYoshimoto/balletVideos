@@ -29,5 +29,7 @@ Rails.application.routes.draw do
   end
   resources :top_tag_lists, only: [:index, :new, :create, :edit, :update, :show, :destroy]
   resources :site_configurations, only: [:index, :new, :create, :edit, :update, :show]
+  get 'profile_pictures/upload'
+  post 'profile_pictures/upload_process'
   root 'bits#index'
 end

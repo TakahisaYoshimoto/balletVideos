@@ -1,5 +1,13 @@
 <h2>登録情報変更</h2>
 
+<% if Rails.env == 'production' %>
+  <%= image_tag "http://s3-ap-northeast-1.amazonaws.com/gatsunoko.loburd.com/images/#{current_user.id}lg.jpeg" %>
+<% else %>
+  <%= image_tag "/docs/#{ current_user.id }lg.jpeg" %>
+<% end -%>
+<br>
+<%= link_to 'プロフィール画像を設定する', profile_pictures_upload_path %>
+
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <span style="color:red;"><%= devise_error_messages! %></span>
 

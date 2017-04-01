@@ -15,4 +15,5 @@
 //= require bootstrap-sprockets
 // require turbolinks
 //= require nested_form_fields
+//= require cropper
 //= require_tree .
