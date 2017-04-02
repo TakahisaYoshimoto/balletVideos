@@ -21,8 +21,12 @@ class ProfilePicturesController < ApplicationController
     name = current_user.id.to_s + '_' + Time.now.strftime('%Y%m%d%H%M%S').to_s + params[:size].to_s
     if params[:size].to_s == 'lg'
       user = User.find(current_user.id)
-      user.picture = name.to_s + '.jpeg'
+      user.picture_lg = name.to_s + '.jpeg'
       user.save
+    else
+      user = User.find(current_user.id)
+      user.picture_min = name.to_s + '.jpeg'
+      user.save 
     end
     File.open("public/docs/#{name}.jpeg", 'wb') { |f| f.write(plain) }
   end
@@ -30,13 +34,11 @@ class ProfilePicturesController < ApplicationController
   def upload_production
     user = User.find(current_user.id)
     if params[:size].to_s == 'lg'
-      old_picture = user.picture_lg
       s3d = AWS::S3.new
-      s3d.buckets[ENV["AWS_S3_BUCKET"]].objects["images/"+old_picture].delete
+      s3d.buckets[ENV["AWS_S3_BUCKET"]].objects["images/"+user.picture_lg].delete
     else
-      old_picture = user.picture_min
       s3d = AWS::S3.new
-      s3d.buckets[ENV["AWS_S3_BUCKET"]].objects["images/"+old_picture].delete
+      s3d.buckets[ENV["AWS_S3_BUCKET"]].objects["images/"+user.picture_min].delete
     end
 
     s3 = AWS::S3.new
