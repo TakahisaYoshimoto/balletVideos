@@ -1,9 +1,9 @@
 <h2>登録情報変更</h2>
 
 <% if Rails.env == 'production' %>
-  <%= image_tag "https://s3-ap-northeast-1.amazonaws.com/gatsunoko.loburd.com/images/#{ @user.picture }" %>
+  <%= image_tag "https://s3-ap-northeast-1.amazonaws.com/gatsunoko.loburd.com/images/#{ @user.picture_lg }" %>
 <% else %>
-  <%= image_tag "/docs/#{ @user.picture }" %>
+  <%= image_tag "/docs/#{ @user.picture_lg }" %>
 <% end -%>
 
 <%= link_to 'プロフィール画像を設定する', profile_pictures_upload_path %>

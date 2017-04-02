@@ -31,10 +31,12 @@ class ProfilePicturesController < ApplicationController
     user = User.find(current_user.id)
     old_picture = user.picture
     if params[:size].to_s == 'lg'
-      old_picture = old_picture.gsub('min', 'lg')
+      s3d = AWS::S3.new
+      s3d.buckets[ENV["AWS_S3_BUCKET"]].objects["images/"+old_picture_lg].delete
+    else
+      s3d = AWS::S3.new
+      s3d.buckets[ENV["AWS_S3_BUCKET"]].objects["images/"+old_picture_min].delete
     end
-    s3d = AWS::S3.new
-    s3d.buckets[ENV["AWS_S3_BUCKET"]].objects["images/"+old_picture].delete
 
     s3 = AWS::S3.new
     bucket = s3.buckets[ENV["AWS_S3_BUCKET"]]
@@ -45,7 +47,11 @@ class ProfilePicturesController < ApplicationController
     name = current_user.id.to_s + '_' + Time.now.strftime('%Y%m%d%H%M%S').to_s + params[:size].to_s + '.jpeg'
     if params[:size].to_s == 'lg'
       user = User.find(current_user.id)
-      user.picture = name.to_s
+      user.picture_lg = name.to_s
+      user.save
+    else
+      user = User.find(current_user.id)
+      user.picture_min = name.to_s
       user.save
     end
 
