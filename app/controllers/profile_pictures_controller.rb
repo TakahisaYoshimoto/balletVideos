@@ -29,13 +29,14 @@ class ProfilePicturesController < ApplicationController
 
   def upload_production
     user = User.find(current_user.id)
-    old_picture = user.picture
     if params[:size].to_s == 'lg'
+      old_picture = user.picture_lg
       s3d = AWS::S3.new
-      s3d.buckets[ENV["AWS_S3_BUCKET"]].objects["images/"+old_picture_lg].delete
+      s3d.buckets[ENV["AWS_S3_BUCKET"]].objects["images/"+old_picture].delete
     else
+      old_picture = user.picture_min
       s3d = AWS::S3.new
-      s3d.buckets[ENV["AWS_S3_BUCKET"]].objects["images/"+old_picture_min].delete
+      s3d.buckets[ENV["AWS_S3_BUCKET"]].objects["images/"+old_picture].delete
     end
 
     s3 = AWS::S3.new
