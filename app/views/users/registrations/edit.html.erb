@@ -1,7 +1,7 @@
 <h2>登録情報変更</h2>
 
 <% if Rails.env == 'production' %>
-  <%= image_tag "http://s3-ap-northeast-1.amazonaws.com/gatsunoko.loburd.com/images/#{@user.picture}" %>
+  <%= image_tag "https://s3-ap-northeast-1.amazonaws.com/gatsunoko.loburd.com/images/#{ @user.picture }" %>
 <% else %>
   <%= image_tag "/docs/#{ @user.picture }" %>
 <% end -%>
