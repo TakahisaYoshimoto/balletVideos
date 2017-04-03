@@ -1,3 +1,21 @@
 // Place all the styles related to the profile_pictures controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#drawArea {
+  margin-top: 10px;
+  background-color: gray;
+  width: 100%;
+  height: 250px;
+}
+@media screen and (min-width: 768px) {
+  #drawArea {
+    height: 500px;
+  }
+}
+#picture_edit_btn_area {
+  margin: 10px 0;
+}
+#picture_edit_btn_area a {
+  margin-right: 10px;
+}

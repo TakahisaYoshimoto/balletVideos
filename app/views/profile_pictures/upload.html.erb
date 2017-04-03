@@ -1,11 +1,15 @@
-<div id="drawArea" style="width:100%;height:500px;">
-ここに画像が表示される
-</div>
 <div id="uploadArea">
   <input id="uploadFile" name="image" type="file" />
 </div>
 
-<a id="getData" class="btn btn-primary" onClick="image_up()">Get Data</a>
+<div id="drawArea">
+
+</div>
+
+<div id="picture_edit_btn_area">
+  <a id="getData" class="btn btn-primary" onClick="image_up()">画像切り抜き</a>
+  <%= link_to '戻る', edit_user_registration_path, class: 'btn btn-primary' %>
+</div>
 
 <% if Rails.env == 'production' %>
   <div id="croppedArea">
