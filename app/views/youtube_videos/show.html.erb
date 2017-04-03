@@ -145,11 +145,11 @@
                     <% if reply.reply == comment.id %>
                       <div class="y_video_reply_list_view">
                         <% unless reply.user.nil? %>
-                          <% if comment.user.picture_lg.present? %>
+                          <% if reply.user.picture_lg.present? %>
                             <% if Rails.env == 'production' %>
-                                <%= image_tag ENV['AWS_PICTURE_PATH']+"#{ comment.user.picture_min }" %>
+                                <%= image_tag ENV['AWS_PICTURE_PATH']+"#{ reply.user.picture_min }" %>
                             <% else %>
-                                <%= image_tag "/docs/#{ comment.user.picture_min }" %>
+                                <%= image_tag "/docs/#{ reply.user.picture_min }" %>
                             <% end -%>
                           <% else %>
                             <%= image_tag "no-picture-min.gif" %>
