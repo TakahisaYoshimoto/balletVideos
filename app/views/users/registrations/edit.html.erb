@@ -35,6 +35,25 @@
 
   <div class="field form-group">
     <div style="padding:0;max-width:500px;">
+      <%= f.label :profile, '自己紹介', class: 'control-label col-sm-12' %><br />
+      <%= f.text_area :profile, class: 'form-control', id: 'profile_text_area', placeholder: 'あなたのプロフィールについて自由に書くことができます。
+例）
+■所属
+〇〇バレエ教室
+
+■受賞歴
+2017年○○バレエコンクール　入賞
+
+■趣味
+ショッピング、読書
+
+・・・
+      ' %>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <div style="padding:0;max-width:500px;">
       <%= f.label :password, '新しいパスワード', class: 'control-label col-sm-12' %> <i>(パスワードを変更する場合入力して下さい。)</i><br />
       <%= f.password_field :password, class: 'form-control', autocomplete: "off" %>
       <% if @minimum_password_length %>

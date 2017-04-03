@@ -1,0 +1,8 @@
+#profile_text_area {
+  height: 250px;
+}
+@media screen and (min-width: 768px) {
+  #profile_text_area {
+    height: 350px;
+  }
+}
