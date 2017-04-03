@@ -13,7 +13,7 @@
 
 <% if Rails.env == 'production' %>
   <div id="croppedArea">
-    <%= image_tag "https://s3-ap-northeast-1.amazonaws.com/gatsunoko.loburd.com/images/#{ @user.picture_lg }" %>
+    <%= image_tag ENV['AWS_PICTURE_PATH']+"#{ @user.picture_lg }" %>
   </div>
 <% else %>
   <div id="croppedArea">
