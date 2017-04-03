@@ -1,11 +1,15 @@
 <h2>登録情報変更</h2>
 
 <div id="user_edit_profile_picture">
-  <% if Rails.env == 'production' %>
-    <%= image_tag ENV['AWS_PICTURE_PATH']+"#{ @user.picture_lg }" %>
+  <% if @user.picture_lg.present? %>
+    <% if Rails.env == 'production' %>
+      <%= image_tag ENV['AWS_PICTURE_PATH']+"#{ @user.picture_lg }" %>
+    <% else %>
+      <%= image_tag "/docs/#{ @user.picture_lg }" %>
+    <% end -%>
   <% else %>
-    <%= image_tag "/docs/#{ @user.picture_lg }" %>
-  <% end -%>
+    <%= image_tag "no-picture-lg.gif" %>
+  <% end %>
 </div>
 
 <div id="profile_picture_edit_btn" style="margin:10px 0;">

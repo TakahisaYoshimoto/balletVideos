@@ -125,6 +125,15 @@
               <% if comment.reply == 0 %>
                 <div class="y_video_comment_list_view">
                   <% unless comment.user.nil? %>
+                    <% if comment.user.picture_lg.present? %>
+                      <% if Rails.env == 'production' %>
+                          <%= image_tag ENV['AWS_PICTURE_PATH']+"#{ comment.user.picture_min }" %>
+                      <% else %>
+                          <%= image_tag "/docs/#{ comment.user.picture_min }" %>
+                      <% end -%>
+                    <% else %>
+                      <%= image_tag "no-picture-min.gif" %>
+                    <% end %>
                     <strong><%= comment.user.username %></strong>
                   <% else %>
                     <strong>削除されたユーザー</strong>
@@ -136,6 +145,15 @@
                     <% if reply.reply == comment.id %>
                       <div class="y_video_reply_list_view">
                         <% unless reply.user.nil? %>
+                          <% if comment.user.picture_lg.present? %>
+                            <% if Rails.env == 'production' %>
+                                <%= image_tag ENV['AWS_PICTURE_PATH']+"#{ comment.user.picture_min }" %>
+                            <% else %>
+                                <%= image_tag "/docs/#{ comment.user.picture_min }" %>
+                            <% end -%>
+                          <% else %>
+                            <%= image_tag "no-picture-min.gif" %>
+                          <% end %>
                           <strong><%= reply.user.username %></strong>
                         <% else %>
                           <strong>削除されたユーザー</strong>

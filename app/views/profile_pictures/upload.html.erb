@@ -11,15 +11,17 @@
   <%= link_to '戻る', edit_user_registration_path, class: 'btn btn-primary' %>
 </div>
 
-<% if Rails.env == 'production' %>
-  <div id="croppedArea">
-    <%= image_tag ENV['AWS_PICTURE_PATH']+"#{ @user.picture_lg }" %>
-  </div>
-<% else %>
-  <div id="croppedArea">
-    <%= image_tag "/docs/#{ @user.picture_lg }" %>
-  </div>
-<% end -%>
+<div id="croppedArea">
+  <% if @user.picture_lg.present? %>
+    <% if Rails.env == 'production' %>
+      <%= image_tag ENV['AWS_PICTURE_PATH']+"#{ @user.picture_lg }" %>
+    <% else %>
+      <%= image_tag "/docs/#{ @user.picture_lg }" %>
+    <% end -%>
+  <% else %>
+    <%= image_tag "no-picture-lg.gif" %>
+  <% end %>
+</div>
 
 <script>
   $("#uploadFile").change(function() {
