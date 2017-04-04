@@ -1,0 +1,15 @@
+<% if @user.picture_lg.present? %>
+  <% if Rails.env == 'production' %>
+    <%= image_tag ENV['AWS_PICTURE_PATH']+"#{ @user.picture_lg }" %>
+  <% else %>
+    <%= image_tag "/docs/#{ @user.picture_lg }" %>
+  <% end -%>
+<% else %>
+  <%= image_tag "no-picture-lg.gif" %>
+<% end %>
+<p style="font-weight:bold;"><%= @user.username %></p>
+<% if @user.profile.present? %>
+  <%= simple_format(@user.profile) %>
+<% else %>
+  <p>自己紹介が登録されていません。</p>
+<% end %>

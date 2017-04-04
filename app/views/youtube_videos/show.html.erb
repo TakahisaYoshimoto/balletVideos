@@ -127,12 +127,12 @@
                   <% unless comment.user.nil? %>
                     <% if comment.user.picture_lg.present? %>
                       <% if Rails.env == 'production' %>
-                          <%= image_tag ENV['AWS_PICTURE_PATH']+"#{ comment.user.picture_min }" %>
+                        <%= link_to image_tag(ENV['AWS_PICTURE_PATH']+"#{ comment.user.picture_min }"), profile_path(comment.user) %>
                       <% else %>
-                          <%= image_tag "/docs/#{ comment.user.picture_min }" %>
-                      <% end -%>
+                        <%= link_to image_tag("/docs/#{ comment.user.picture_min }"), profile_path(comment.user) %>
+                      <% end %>
                     <% else %>
-                      <%= image_tag "no-picture-min.gif" %>
+                      <%= link_to image_tag("no-picture-min.gif"), profile_path(comment.user) %>
                     <% end %>
                     <strong><%= comment.user.username %></strong>
                   <% else %>
@@ -147,12 +147,12 @@
                         <% unless reply.user.nil? %>
                           <% if reply.user.picture_lg.present? %>
                             <% if Rails.env == 'production' %>
-                                <%= image_tag ENV['AWS_PICTURE_PATH']+"#{ reply.user.picture_min }" %>
+                                <%= link_to image_tag(ENV['AWS_PICTURE_PATH']+"#{ reply.user.picture_min }"), profile_path(reply.user) %>
                             <% else %>
-                                <%= image_tag "/docs/#{ reply.user.picture_min }" %>
-                            <% end -%>
+                                <%= link_to image_tag("/docs/#{ reply.user.picture_min }"), profile_path(reply.user) %>
+                            <% end %>
                           <% else %>
-                            <%= image_tag "no-picture-min.gif" %>
+                            <%= link_to image_tag("no-picture-min.gif"), profile_path(reply.user) %>
                           <% end %>
                           <strong><%= reply.user.username %></strong>
                         <% else %>
