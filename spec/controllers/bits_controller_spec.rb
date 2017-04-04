@@ -136,14 +136,14 @@ RSpec.describe BitsController, type: :controller do
 
   describe 'search' do
 
+    it 'キーワードが空はallへリダイレクト' do
+      get :Search
+      expect(response).to redirect_to all_bits_path
+    end
+
     describe 'タイトルを検索' do
 
-      it 'キーワードが空はallへリダイレクト' do
-        get :Search
-        expect(response).to redirect_to all_bits_path
-      end
-
-      it 'タイトルを部分一致で検索できる' do
+      it '部分一致で検索できる' do
         FactoryGirl.create(:youtube_video, title: 'title')
 
         get :Search, params: { search_params: 'title' }
@@ -159,7 +159,7 @@ RSpec.describe BitsController, type: :controller do
         expect(assigns(:youtubes).count).to eq(1)
       end
 
-      it 'タイトルを大文字小文字区別せずに検索できる' do
+      it '大文字小文字区別せずに検索できる' do
         FactoryGirl.create(:youtube_video, title: 'title')
 
         get :Search, params: { search_params: 'tit' }
@@ -169,7 +169,7 @@ RSpec.describe BitsController, type: :controller do
         expect(assigns(:youtubes).count).to eq(1)
       end
 
-      it 'タイトルに引っかからない検索' do
+      it '引っかからない検索' do
         FactoryGirl.create(:youtube_video, title: 'title')
 
         get :Search, params: { search_params: 'titleeee' }
@@ -192,6 +192,51 @@ RSpec.describe BitsController, type: :controller do
         expect(assigns(:youtubes).count).to eq(1), '全角スペース区切り'
 
         get :Search, params: { search_params: '動画 あいうえお' }
+        expect(assigns(:youtubes).count).to eq(0)
+      end
+
+    end
+
+    describe 'タグを検索' do
+
+      it '完全一致で検索できる' do
+        video = FactoryGirl.create(:youtube_video)
+        video.youtube_video_tags.create(name: 'tag1')
+        video.youtube_video_tags.create(name: 'tag2')
+
+        get :Search, params: { search_params: 'tag' }
+        expect(assigns(:youtubes).count).to eq(0)
+
+        get :Search, params: { search_params: 'tag1' }
+        expect(assigns(:youtubes).count).to eq(1)
+      end
+
+      it '大文字小文字を区別せずに検索できる' do
+        video = FactoryGirl.create(:youtube_video)
+        video.youtube_video_tags.create(name: 'tag1')
+
+        get :Search, params: { search_params: 'tag1' }
+        expect(assigns(:youtubes).count).to eq(1)
+
+        get :Search, params: { search_params: 'TAG1' }
+        expect(assigns(:youtubes).count).to eq(1)
+      end
+
+      it 'スペース区切りでAND検索' do
+        video1 = FactoryGirl.create(:youtube_video)
+        video1.youtube_video_tags.create(name: 'tag1')
+        video1.youtube_video_tags.create(name: 'tag2')
+
+        video2 = FactoryGirl.create(:youtube_video)
+        video2.youtube_video_tags.create(name: 'tag1')
+
+        get :Search, params: { search_params: 'tag1' }
+        expect(assigns(:youtubes).count).to eq(2)
+
+        get :Search, params: { search_params: 'tag1 tag2' }
+        expect(assigns(:youtubes).count).to eq(1)
+
+        get :Search, params: { search_params: 'tag1 tag2 tag3' }
         expect(assigns(:youtubes).count).to eq(0)
       end
 
