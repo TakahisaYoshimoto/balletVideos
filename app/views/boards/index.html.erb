@@ -1,0 +1,6 @@
+<%= link_to '新規登録', new_board_path %>
+<% @boards.each do |board| %>
+  <div>
+    <%= link_to board.title, board_path(board) %>
+  </div>
+<% end %>

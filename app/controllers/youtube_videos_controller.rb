@@ -29,7 +29,7 @@ class YoutubeVideosController < ApplicationController
       end
       @youtube.video_time = video_time
     rescue
-      p 'urlエラー'
+      #p 'urlエラー'
     end
 
     if @youtube.save
@@ -76,7 +76,7 @@ class YoutubeVideosController < ApplicationController
         end
         @youtube.video_time = video_time
       rescue
-        p 'urlエラー'
+        #p 'urlエラー'
       end
     end
 

@@ -9,7 +9,6 @@ class CommentsController < ApplicationController
   end
 
   def reply
-    #raise.params.inspect
     unless current_user.nil?
       @comment = Comment.new
       @comment.user_id = current_user.id

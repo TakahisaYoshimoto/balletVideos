@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   resources :top_tag_lists, only: [:index, :new, :create, :edit, :update, :show, :destroy]
   resources :site_configurations, only: [:index, :new, :create, :edit, :update, :show]
   resources :profiles, only: [:show]
+  resources :boards, only: [:index, :new, :create, :edit, :update, :show, :destroy]
+  resources :board_comments, only: [:create]
   get 'profile_pictures/upload'
   post 'profile_pictures/upload_process'
   root 'bits#index'

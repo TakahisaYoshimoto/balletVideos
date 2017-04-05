@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :view_histories
   has_many :comments
+  has_many :boards
+  has_many :board_comments
 
   validates :profile, length: {maximum: 5000}
 end

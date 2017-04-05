@@ -1,0 +1,30 @@
+<%= form_for(board, html: { class: 'form-horizontal' }) do |f| %>
+  <% if board.errors.any? %>
+    <%= board.errors.count %>個のエラーがあります<br>
+    <% board.errors.full_messages.each do |msg| %>
+      <%= msg %><br>
+    <% end -%>
+  <% end -%>
+
+  <div class="field form-group">
+    <%= f.label :title, 'タイトル', class: 'control-label col-sm-2' %>
+    <div class="col-sm-4">
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :category, 'カテゴリ', class: 'control-label col-sm-2' %>
+    <div class="col-sm-4">
+      <%= f.select :category, ['演目', 'レッスン', 'その他'], { include_blank: '選択してください' }, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="actions　form-group">
+      <div class="col-sm-offset-2 col-sm-4">
+        <%= f.submit '確定', class: 'btn btn-primary right_button' %>
+      </div>
+    </div>
+  </div>
+<% end %>

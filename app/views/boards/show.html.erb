@@ -1,0 +1,31 @@
+<h3><%= @board.title %></h3>
+<p><%= @board.user.username %></p>
+<% @board_comments.each do |bc| %>
+  <p><%= bc.user.username %><%= bc.created_at %></p>
+  <p><%= bc.text %></p>
+<% end %>
+
+<% if user_signed_in? %>
+  <div id="board_newcomment_area">
+    <%#= form_tag(board_comments_path, method: :post) do %>
+    <%= form_for(@board_comment) do |f| %>
+      <div class="form-group">
+        <%= f.text_area :text,
+          maxlength: "400",
+          id: 'comment_text_area',
+          onkeydown: 'if(event.keyCode == 13){javascript:transmission();}',
+          onkeyup: "document.getElementById('commentsarea_characnt').value=800 - this.value.length",
+          class: 'form-control' %>
+      </div>
+      <%= f.hidden_field :board_id, value: @board.id %>
+      <div id="comment_submit" class="actions　form-group">
+        <input type="text" id="commentsarea_characnt" disabled="disabled">
+        <%= f.submit 'コメント投稿', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <div id="board_newcomment_area">
+    <p><%= link_to 'ログイン', new_user_session_path %>するとコメントの投稿ができます。</p>
+  </div>
+<% end %>
