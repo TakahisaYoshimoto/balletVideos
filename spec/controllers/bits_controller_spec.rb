@@ -242,6 +242,101 @@ RSpec.describe BitsController, type: :controller do
 
     end
 
+    describe '複合検索' do
+
+      it 'カテゴリーとタイトル' do
+        FactoryGirl.create(:youtube_video, title: 'title', category: 'category1')
+        FactoryGirl.create(:youtube_video, title: 'title', category: 'category2')
+        FactoryGirl.create(:youtube_video, title: 'other title', category: 'category2')
+
+        get :Search, params: { category_params: 'category1', search_params: 'title' }
+        expect(assigns(:youtubes).count).to eq(1)
+
+        get :Search, params: { category_params: 'category2', search_params: 'title' }
+        expect(assigns(:youtubes).count).to eq(2)
+
+        get :Search, params: { category_params: 'category2', search_params: 'title other' }
+        expect(assigns(:youtubes).count).to eq(1)
+      end
+
+      it 'カテゴリーとタグ' do
+        video1 = FactoryGirl.create(:youtube_video, category: 'category1')
+        video1.youtube_video_tags.create(name: 'tag1')
+        video1.youtube_video_tags.create(name: 'tag2')
+
+        video2 = FactoryGirl.create(:youtube_video, category: 'category1')
+        video2.youtube_video_tags.create(name: 'tag1')
+
+        video3 = FactoryGirl.create(:youtube_video, category: 'category2')
+        video3.youtube_video_tags.create(name: 'tag1')
+
+        get :Search, params: { category_params: 'category1', search_params: 'tag1' }
+        expect(assigns(:youtubes).count).to eq(2)
+
+        get :Search, params: { category_params: 'category1', search_params: 'tag1 tag2' }
+        expect(assigns(:youtubes).count).to eq(1)
+
+        get :Search, params: { category_params: 'category2', search_params: 'tag1' }
+        expect(assigns(:youtubes).count).to eq(1)
+
+        get :Search, params: { category_params: 'category2', search_params: 'tag1 tag2' }
+        expect(assigns(:youtubes).count).to eq(0)
+      end
+
+      it 'タイトルとタグ' do
+        video1 = FactoryGirl.create(:youtube_video, title: 'video title1')
+        video1.youtube_video_tags.create(name: 'tag1')
+        video1.youtube_video_tags.create(name: 'tag2')
+
+        video2 = FactoryGirl.create(:youtube_video, title: 'video title2')
+        video2.youtube_video_tags.create(name: 'tag1')
+        video2.youtube_video_tags.create(name: 'tag2')
+
+        video2 = FactoryGirl.create(:youtube_video, title: 'video title3')
+        video2.youtube_video_tags.create(name: 'tag2')
+
+        get :Search, params: { search_params: 'video' }
+        expect(assigns(:youtubes).count).to eq(3)
+
+        get :Search, params: { search_params: 'tag1' }
+        expect(assigns(:youtubes).count).to eq(2)
+
+        get :Search, params: { search_params: 'tag1 title1' }
+        expect(assigns(:youtubes).count).to eq(1)
+      end
+
+      it '全部' do
+        video1 = FactoryGirl.create(:youtube_video, title: 'video title1', category: 'category1')
+        video1.youtube_video_tags.create(name: 'tag1')
+        video1.youtube_video_tags.create(name: 'tag2')
+
+        video2 = FactoryGirl.create(:youtube_video, title: 'video title2', category: 'category1')
+        video2.youtube_video_tags.create(name: 'tag1')
+
+        video3 = FactoryGirl.create(:youtube_video, title: 'video title3', category: 'category1')
+        video3.youtube_video_tags.create(name: 'tag1')
+        video3.youtube_video_tags.create(name: 'tag2')
+        video3.youtube_video_tags.create(name: 'tag3')
+
+        video4 = FactoryGirl.create(:youtube_video, title: 'video title4', category: 'category2')
+        video4.youtube_video_tags.create(name: 'tag2')
+        video4.youtube_video_tags.create(name: 'tag3')
+
+        get :Search, params: { category_params: 'category1', search_params: 'video' }
+        expect(assigns(:youtubes).count).to eq(3)
+
+        get :Search, params: { category_params: 'category1', search_params: 'video tag2' }
+        expect(assigns(:youtubes).count).to eq(2)
+
+        get :Search, params: { category_params: 'category1', search_params: 'video tag2 tag3' }
+        expect(assigns(:youtubes).count).to eq(1)
+
+        get :Search, params: { category_params: 'category2', search_params: 'video' }
+        expect(assigns(:youtubes).count).to eq(1)
+      end
+
+    end
+
   end
 
 end
