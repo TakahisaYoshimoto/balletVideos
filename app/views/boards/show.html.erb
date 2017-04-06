@@ -1,4 +1,9 @@
 <h3><%= @board.title %></h3>
+<% @board.board_tags.each do |tag| %>
+  <div style="display: inline-block;margin-right:10px;">
+    <%= "##{tag.name}" %>
+  </div>
+<% end %>
 <p><%= @board.user.username %></p>
 <% @board_comments.each do |bc| %>
   <%= render 'profile_picture', i: bc %>

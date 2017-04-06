@@ -17,6 +17,7 @@ class BoardsController < ApplicationController
 
     @board = Board.new
     @board_comment = BoardComment.new
+    @board.board_tags.build
   end
 
   def create
@@ -54,7 +55,8 @@ class BoardsController < ApplicationController
     end
 
     def board_params
-      params.require(:board).permit(:title, :category)
+      params.require(:board).permit(:title, :category,
+        board_tags_attributes: [:id, :name, :_destroy])
     end
 
     def board_comment_params
