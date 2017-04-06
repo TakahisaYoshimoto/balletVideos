@@ -13,12 +13,19 @@
     </div>
   </div>
 
-  <div class="field form-group">
-    <%= f.label :category, 'カテゴリ', class: 'control-label col-sm-2' %>
-    <div class="col-sm-4">
-      <%= f.select :category, ['演目', 'レッスン', 'その他'], { include_blank: '選択してください' }, class: 'form-control' %>
+  <%= fields_for board_comment do |sf| %>
+    <div class="form-group">
+      <%= sf.text_area :text,
+        maxlength: "800",
+        id: 'comment_text_area',
+        onkeydown: 'if(event.keyCode == 13){javascript:transmission();}',
+        onkeyup: "document.getElementById('characnt').value=800 - this.value.length",
+        class: 'form-control' %>
     </div>
-  </div>
+    <input type="text" id="characnt" disabled="disabled">
+  <% end %>
+
+  <%= f.hidden_field :board_id, value: @board.id %>
 
   <div class="row">
     <div class="actions　form-group">

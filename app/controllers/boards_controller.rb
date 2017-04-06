@@ -16,6 +16,7 @@ class BoardsController < ApplicationController
     end
 
     @board = Board.new
+    @board_comment = BoardComment.new
   end
 
   def create
@@ -27,7 +28,14 @@ class BoardsController < ApplicationController
     @board.user_id = current_user.id
 
     if @board.save
-      redirect_to @board
+      @board_comment = BoardComment.new(board_comment_params)
+      @board_comment.user_id = current_user.id
+      @board_comment.board_id = @board.id
+      if @board_comment.save
+        redirect_to @board
+      else
+        render 'new'
+      end
     else
       render 'new'
     end
@@ -47,5 +55,9 @@ class BoardsController < ApplicationController
 
     def board_params
       params.require(:board).permit(:title, :category)
+    end
+
+    def board_comment_params
+      params.require(:board_comment).permit(:text)
     end
 end

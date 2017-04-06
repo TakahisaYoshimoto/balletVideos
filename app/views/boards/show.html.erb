@@ -7,11 +7,10 @@
 
 <% if user_signed_in? %>
   <div id="board_newcomment_area">
-    <%#= form_tag(board_comments_path, method: :post) do %>
     <%= form_for(@board_comment) do |f| %>
       <div class="form-group">
         <%= f.text_area :text,
-          maxlength: "400",
+          maxlength: "800",
           id: 'comment_text_area',
           onkeydown: 'if(event.keyCode == 13){javascript:transmission();}',
           onkeyup: "document.getElementById('commentsarea_characnt').value=800 - this.value.length",
