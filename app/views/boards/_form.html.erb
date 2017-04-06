@@ -6,32 +6,32 @@
     <% end -%>
   <% end -%>
 
-  <div class="field form-group">
-    <%= f.label :title, 'タイトル', class: 'control-label col-sm-2' %>
+  <div class="field form-group row">
     <div class="col-sm-4">
+      <%= f.label :title, 'タイトル', class: 'control-label' %>
       <%= f.text_field :title, class: 'form-control' %>
     </div>
   </div>
 
   <%= fields_for board_comment do |sf| %>
-    <div class="form-group">
-      <%= sf.text_area :text,
-        maxlength: "800",
-        id: 'comment_text_area',
-        onkeydown: 'if(event.keyCode == 13){javascript:transmission();}',
-        onkeyup: "document.getElementById('characnt').value=800 - this.value.length",
-        class: 'form-control' %>
+    <div class="form-group row">
+      <div class="col-sm-7">
+        <%= sf.text_area :text,
+          maxlength: "800",
+          id: 'comment_text_area',
+          onkeydown: 'if(event.keyCode == 13){javascript:transmission();}',
+          onkeyup: "document.getElementById('characnt').value=800 - this.value.length",
+          class: 'form-control' %>
+      </div>
     </div>
-    <input type="text" id="characnt" disabled="disabled">
   <% end %>
 
   <%= f.hidden_field :board_id, value: @board.id %>
 
   <div class="row">
-    <div class="actions　form-group">
-      <div class="col-sm-offset-2 col-sm-4">
-        <%= f.submit '確定', class: 'btn btn-primary right_button' %>
-      </div>
+    <div id="comment_submit" class="actions　form-group col-sm-7">
+      <input type="text" id="characnt" disabled="disabled">
+      <%= f.submit '確定', class: 'btn btn-primary right_button' %>
     </div>
   </div>
 <% end %>
