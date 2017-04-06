@@ -1,7 +1,8 @@
 <h3><%= @board.title %></h3>
 <p><%= @board.user.username %></p>
 <% @board_comments.each do |bc| %>
-  <p><%= bc.user.username %><%= bc.created_at %></p>
+  <%= render 'profile_picture', i: bc %>
+  <strong><%= bc.user.username %></strong><%= bc.created_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %>
   <p><%= bc.text %></p>
 <% end %>
 
