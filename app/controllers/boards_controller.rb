@@ -25,22 +25,24 @@ class BoardsController < ApplicationController
       redirect_to root_path
     end
 
-    @board = Board.new(board_params)
-    @board.user_id = current_user.id
-
-    if @board.save
-      @board_comment = BoardComment.new(board_comment_params)
-      @board_comment.user_id = current_user.id
-      @board_comment.board_id = @board.id
-      if @board_comment.save
-        redirect_to @board
+    ActiveRecord::Base.transaction do
+      @board = Board.new(board_params)
+      @board.user_id = current_user.id
+      if @board.save
+        @board_comment = BoardComment.new(board_comment_params)
+        @board_comment.user_id = current_user.id
+        @board_comment.board_id = @board.id
+        unless @board_comment.save
+          raise
+        end
       else
-        render 'board_comments/new'
+        @board_comment = BoardComment.new(board_comment_params)
+        raise
       end
-    else
-      @board_comment = BoardComment.new
-      render 'new'
     end
+      redirect_to @board
+    rescue => e
+      render 'new'
   end
 
   def edit

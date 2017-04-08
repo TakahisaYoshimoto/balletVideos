@@ -2,7 +2,7 @@
   <% if board.errors.any? %>
     <%= board.errors.count %>個のエラーがあります<br>
     <% board.errors.full_messages.each do |msg| %>
-      <%= msg %><br>
+      <span style="color:red;"><%= msg %></span><br>
     <% end -%>
   <% end -%>
 
@@ -30,6 +30,12 @@
   </div>
 
   <%= fields_for board_comment do |sf| %>
+    <% if board_comment.errors.any? %>
+      <%= board_comment.errors.count %>個のエラーがあります<br>
+      <% board_comment.errors.full_messages.each do |msg| %>
+        <span style="color:red;"><%= msg %></span><br>
+      <% end -%>
+    <% end -%>
     <div class="form-group row">
       <div class="col-sm-7">
         <%= sf.text_area :text,
