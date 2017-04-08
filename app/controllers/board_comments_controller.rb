@@ -5,7 +5,7 @@ class BoardCommentsController < ApplicationController
       @board_comment.user_id = current_user.id
       @board_comment.save
     end
-    redirect_to board_path(@board_comment.board_id)
+    redirect_to board_path(@board_comment.board_id) and return
   end
 
   private

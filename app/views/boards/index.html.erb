@@ -1,7 +1,13 @@
 <%= link_to '新規登録', new_board_path %>
-<% @boards.each do |board| %>
-  <div>
-    <%= render 'profile_picture', i: board %>
-    <%= link_to board.title, board_path(board) %>
-  </div>
-<% end %>
+<ul id="board_lists">
+  <% @boards.each do |board| %>
+    <li class="board_link">
+      <div class="board_link_picture_area">
+        <%= render 'profile_picture', i: board %>
+      </div>
+      <div class="board_link_text_area">
+        <%= link_to board.title, board_path(board), class: "board_link_text" %>
+      </div>
+    </li>
+  <% end %>
+</ul>

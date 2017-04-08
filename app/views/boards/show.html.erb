@@ -4,18 +4,21 @@
     <%= "##{tag.name}" %>
   </div>
 <% end %>
-<p><%= @board.user.username %></p>
+<ul id="board_comment_lists">
 <% @board_comments.each do |bc| %>
-  <%= render 'profile_picture', i: bc %>
-  <strong><%= bc.user.username %></strong><%= bc.created_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %>
-  <p><%= bc.text %></p>
+  <li class="board_comments">
+    <%= render 'profile_picture', i: bc %>
+    <strong><%= bc.user.username %></strong><%= bc.created_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %>
+    <p><%= bc.text %></p>
+  </li>
 <% end %>
+</ul>
 
 <% if user_signed_in? %>
   <div id="board_newcomment_area">
     <%= form_for(@board_comment) do |f| %>
       <div class="row">
-        <div class="form-group col-sm-7">
+        <div class="form-group col-sm-12">
           <%= f.text_area :text,
             maxlength: "800",
             id: 'comment_text_area',
@@ -26,7 +29,7 @@
       </div>
       <%= f.hidden_field :board_id, value: @board.id %>
       <div class="row">
-        <div id="board_comment_submit" class="actions　form-group col-sm-7">
+        <div id="board_comment_submit" class="actions　form-group col-sm-12">
           <input type="text" id="characnt" disabled="disabled">
           <%= f.submit 'コメント投稿', class: 'btn btn-primary' %>
         </div>
