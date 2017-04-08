@@ -7,7 +7,7 @@ class BoardsController < ApplicationController
 
   def show
     @board_comment = BoardComment.new
-    @board_comments = BoardComment.where(board_id: @board.id).order('created_at asc')
+    @board_comments = BoardComment.where(board_id: @board.id).order('created_at asc').includes(:user)
   end
 
   def new
@@ -35,9 +35,10 @@ class BoardsController < ApplicationController
       if @board_comment.save
         redirect_to @board
       else
-        render 'new'
+        render 'board_comments/new'
       end
     else
+      @board_comment = BoardComment.new
       render 'new'
     end
   end

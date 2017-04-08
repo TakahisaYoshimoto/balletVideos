@@ -1,0 +1,33 @@
+<% if user_signed_in? %>
+  <div id="board_newcomment_area">
+    <% if @board_comment.errors.any? %>
+      <%= @board_comment.errors.count %>個のエラーがあります<br>
+      <% @board_comment.errors.full_messages.each do |msg| %>
+        <span style="color:red;"><%= msg %></span><br>
+      <% end -%>
+    <% end -%>
+    <%= form_for(@board_comment) do |f| %>
+      <div class="row">
+        <div class="form-group col-sm-12">
+          <%= f.text_area :text,
+            maxlength: "800",
+            id: 'comment_text_area',
+            onkeydown: 'if(event.keyCode == 13){javascript:transmission();}',
+            onkeyup: "document.getElementById('characnt').value=800 - this.value.length",
+            class: 'form-control' %>
+        </div>
+      </div>
+      <%= f.hidden_field :board_id, value: @board.id %>
+      <div class="row">
+        <div id="board_comment_submit" class="actions　form-group col-sm-12">
+          <input type="text" id="characnt" disabled="disabled">
+          <%= f.submit 'コメント投稿', class: 'btn btn-primary' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <div id="board_newcomment_area">
+    <p><%= link_to 'ログイン', new_user_session_path %>するとコメントの投稿ができます。</p>
+  </div>
+<% end %>

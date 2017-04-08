@@ -57,3 +57,5 @@ ja:
       top_tag_list:
         tag_name: 'タグ名'
         hurigana: 'ふりがな'
+      board_comment:
+        text: 'コメント'
