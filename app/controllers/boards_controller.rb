@@ -2,7 +2,7 @@ class BoardsController < ApplicationController
   before_action :set_board, only: [:show, :edit]
 
   def index
-    @boards = Board.all.order('created_at desc').includes(:user)
+    @boards = Board.all.order('created_at desc').page(params[:page]).includes(:user)
   end
 
   def show

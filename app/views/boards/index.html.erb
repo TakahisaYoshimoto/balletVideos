@@ -11,3 +11,9 @@
     </li>
   <% end %>
 </ul>
+
+<p class="pagenation_count"><%= page_entries_info @boards %></p>
+
+<div class="pagenation_bar">
+  <%= paginate @boards %>
+</div>

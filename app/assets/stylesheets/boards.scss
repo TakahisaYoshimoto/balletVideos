@@ -10,7 +10,8 @@
   padding: 0;
 }
 .board_link,
-.board_comments  {
+.board_comments,
+.board_master_comments  {
   list-style: none;
   padding: 10px;
 }
@@ -43,8 +44,18 @@
 }
 
 /*show*/
-.board_comments p {
+.board_master_comments {
+  background: #F2F2F2;
+}
+.board_comments {
+  background: white;
+}
+.board_comments p,
+.board_master_comments p {
   padding-left: 53px;
+}
+.board_master_comments:not(:last-child) {
+  border-bottom: 1px solid white;
 }
 #characnt {
   background-color: rgba(0,0,0,0);

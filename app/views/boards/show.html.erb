@@ -6,7 +6,11 @@
 <% end %>
 <ul id="board_comment_lists">
 <% @board_comments.each do |bc| %>
+  <% if bc.user.id == bc.board.user_id %>
+  <li class="board_master_comments">
+  <% else%>
   <li class="board_comments">
+  <% end %>
     <%= render 'profile_picture', i: bc %>
     <strong><%= bc.user.username %></strong><%= bc.created_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %>
     <p><%= bc.text %></p>
