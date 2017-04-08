@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   resources :site_configurations, only: [:index, :new, :create, :edit, :update, :show]
   resources :profiles, only: [:show]
   resources :boards, only: [:index, :new, :create, :edit, :update, :show, :destroy]
-  resources :board_comments, only: [:create, :new]
+  resources :board_comments, only: [:create, :new, :destroy]
   get 'profile_pictures/upload'
   post 'profile_pictures/upload_process'
   root 'bits#index'

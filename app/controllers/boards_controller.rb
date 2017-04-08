@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-  before_action :set_board, only: [:show, :edit]
+  before_action :set_board, only: [:show, :edit, :destroy]
 
   def index
     @boards = Board.all.order('created_at desc').page(params[:page]).includes(:user)
@@ -48,8 +48,10 @@ class BoardsController < ApplicationController
   def edit
   end
 
-  def comment_create
-    
+  def destroy
+    redirect_to root_path and return if user_level_check(2)
+    @board.destroy
+    redirect_to boards_path
   end
 
   private

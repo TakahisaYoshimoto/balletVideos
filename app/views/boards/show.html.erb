@@ -14,6 +14,11 @@
     <%= render 'profile_picture', i: bc %>
     <strong><%= bc.user.username %></strong><%= bc.created_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %>
     <p><%= bc.text %></p>
+    <% if user_signed_in? %>
+      <% if current_user.user_level > 1 %>
+        <%= link_to '削除する', board_comment_path(bc), method: :delete, data: { confirm: "削除してよろしいですか？" } %>
+      <% end %>
+    <% end %>
   </li>
 <% end %>
 </ul>
@@ -40,6 +45,10 @@
       </div>
     <% end %>
   </div>
+
+  <% if current_user.user_level > 1 %>
+    <%= link_to '削除する', board_path(@board), method: :delete, data: { confirm: "削除してよろしいですか？" } %>
+  <% end %>
 <% else %>
   <div id="board_newcomment_area">
     <p><%= link_to 'ログイン', new_user_session_path %>するとコメントの投稿ができます。</p>

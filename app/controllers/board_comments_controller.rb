@@ -1,4 +1,6 @@
 class BoardCommentsController < ApplicationController
+  before_action :set_board_comment, only: [:destroy]
+
   def create
     if user_signed_in?
       @board_comment = BoardComment.new(board_comment_params)
@@ -13,7 +15,17 @@ class BoardCommentsController < ApplicationController
     #redirect_to board_path(@board_comment.board_id) and return
   end
 
+  def destroy
+    redirect_to root_path and return if user_level_check(2)
+    @board_comment.destroy
+    redirect_to board_path(@board_comment.board.id)
+  end
+
   private
+    def set_board_comment
+      @board_comment = BoardComment.find(params[:id])
+    end
+
     def board_comment_params
       params.require(:board_comment).permit(:text, :board_id)
     end
