@@ -6,20 +6,52 @@
 <% end %>
 <ul id="board_comment_lists">
 <% @board_comments.each do |bc| %>
-  <% if bc.user.id == bc.board.user_id %>
-  <li class="board_master_comments">
-  <% else%>
-  <li class="board_comments">
-  <% end %>
-    <%= render 'profile_picture', i: bc %>
-    <strong><%= bc.user.username %></strong><%= bc.created_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %>
-    <p><%= bc.text %></p>
+  <% if bc.display == true %>
+    <% if bc.user.id == bc.board.user_id %>
+    <li class="board_master_comments">
+    <% else%>
+    <li class="board_comments">
+    <% end %>
+      <%= render 'profile_picture', i: bc %>
+      <strong><%= bc.user.username %></strong><%= bc.created_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %>
+      <%= simple_format(bc.text) %>
+      <% if user_signed_in? %>
+        <% if current_user.user_level > 1 %>
+          <%= link_to '非表示にする', board_comment_path(bc), method: :delete, data: { confirm: "削除してよろしいですか？" } %>
+        <% end %>
+      <% end %>
+    </li>
+  <% else %>
     <% if user_signed_in? %>
       <% if current_user.user_level > 1 %>
-        <%= link_to '削除する', board_comment_path(bc), method: :delete, data: { confirm: "削除してよろしいですか？" } %>
+        <% if bc.user.id == bc.board.user_id %>
+        <li class="board_master_comments">
+        <% else%>
+        <li class="board_comments">
+        <% end %>
+          <%= render 'profile_picture', i: bc %>
+          <strong><%= bc.user.username %></strong><%= bc.created_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %>
+          <%= simple_format(bc.text) %>
+          <% if user_signed_in? %>
+            <% if current_user.user_level > 1 %>
+              <%= link_to '表示させる', display_board_comments_path(bc)%>
+            <% end %>
+          <% end %>
+        <span style="color:red;">削除したコメントです</span>
+        </li>
+      <% else %>
+        <li class="board_comments">
+          <%= image_tag("no-picture-min.gif") %>
+          <strong>非表示</strong>
+        </li>
       <% end %>
+    <% else %>
+      <li class="board_comments">
+        <%= image_tag("no-picture-min.gif") %>
+        <strong>非表示</strong>
+      </li>
     <% end %>
-  </li>
+  <% end %>
 <% end %>
 </ul>
 

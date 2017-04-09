@@ -17,7 +17,16 @@ class BoardCommentsController < ApplicationController
 
   def destroy
     redirect_to root_path and return if user_level_check(2)
-    @board_comment.destroy
+    @board_comment.display = false
+    @board_comment.save
+    redirect_to board_path(@board_comment.board.id)
+  end
+
+  def display
+    @board_comment = BoardComment.find(params[:format])
+    redirect_to root_path and return if user_level_check(2)
+    @board_comment.display = true
+    @board_comment.save
     redirect_to board_path(@board_comment.board.id)
   end
 
