@@ -23,8 +23,8 @@ class BoardCommentsController < ApplicationController
   end
 
   def display
-    @board_comment = BoardComment.find(params[:format])
     redirect_to root_path and return if user_level_check(2)
+    @board_comment = BoardComment.find(params[:format])
     @board_comment.display = true
     @board_comment.save
     redirect_to board_path(@board_comment.board.id)
