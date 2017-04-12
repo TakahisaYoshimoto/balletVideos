@@ -14,4 +14,5 @@ class User < ApplicationRecord
   has_many :board_comments
 
   validates :profile, length: {maximum: 5000}
+  validates :username, uniqueness: true
 end

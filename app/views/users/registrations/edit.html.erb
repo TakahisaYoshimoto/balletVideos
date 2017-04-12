@@ -40,19 +40,7 @@
   <div class="field form-group">
     <div style="padding:0;max-width:500px;">
       <%= f.label :profile, '自己紹介', class: 'control-label col-sm-12' %><br />
-      <%= f.text_area :profile, class: 'form-control', id: 'profile_text_area', placeholder: 'あなたのプロフィールについて自由に書くことができます。
-例）
-■所属
-〇〇バレエ教室
-
-■受賞歴
-2017年○○バレエコンクール　入賞
-
-■趣味
-ショッピング、読書
-
-・・・
-      ' %>
+      <%= f.text_area :profile, class: 'form-control', id: 'profile_text_area', placeholder: 'あなたのプロフィールについて自由に書くことができます。&#13;&#10;例）&#13;&#10;■所属&#13;&#10;〇〇バレエ教室&#13;&#10;&#13;&#10;■受賞歴&#13;&#10;2017年○○バレエコンクール　入賞&#13;&#10;&#13;&#10;■趣味&#13;&#10;ショッピング、読書&#13;&#10;&#13;&#10;・・・'.html_safe %>
     </div>
   </div>
 
