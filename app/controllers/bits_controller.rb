@@ -11,6 +11,20 @@ class BitsController < ApplicationController
       .limit(11)
       .offset(0)
     @search_params = ""
+
+    @boards = Board.all.order('created_at desc').limit(8).offset(0).includes(:user)
+  end
+
+  def videotop
+    @pic_youtubes = YoutubeVideo.where('pickup_level > ? AND pickup_level < ?', 0, 3)
+      .order('pickup_level asc')
+      .limit(2)
+      .offset(0)
+    @youtubes = YoutubeVideo.where('pickup_level > ? OR pickup_level = ? OR pickup_level IS NULL', 2, 0)
+      .order('created_at desc')
+      .limit(11)
+      .offset(0)
+    @search_params = ""
   end
 
   def all

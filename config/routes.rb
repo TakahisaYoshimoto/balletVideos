@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations' }
   resources :bits, only: [:index] do
     collection do
+      get :videotop
       get :all
       get :like_videos
       get :view_histories

@@ -1,0 +1,9 @@
+<% if i.user.picture_lg.present? %>
+  <% if Rails.env == 'production' %>
+      <%= image_tag(ENV['AWS_PICTURE_PATH']+"#{ i.user.picture_min }") %><strong><%= i.user.username %></strong>
+  <% else %>
+      <%= image_tag("/docs/#{ i.user.picture_min }") %><strong><%= i.user.username %></strong>
+  <% end %>
+<% else %>
+  <%= image_tag("no-picture-min.gif") %>
+<% end %>

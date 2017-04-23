@@ -6,3 +6,7 @@
     height: 350px;
   }
 }
+#profile_text_area::-webkit-input-placeholder::after {
+ display:block;
+ content:"Second line \a Third line";
+}
