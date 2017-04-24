@@ -67,7 +67,7 @@
 
           <ul class="nav navbar-nav">
             <li>
-              <%= link_to '動画', videotop_bits_path %>
+              <a data-toggle="collapse" data-target="#nav_video_collapse_area">動画</a>
             </li>
             <li>
               <%= link_to 'コミュニティ', boards_path %>
@@ -141,6 +141,32 @@
             </ul>
           </div>
         </div>
+
+        <div id="nav_video_collapse_area" class="collapse">
+        <div class="container">
+          <div class="genre">
+            <strong><%= link_to '注目キーワード', { controller: :bits, action: :attentionSearch, search_params: '注目キーワード', or: 'pv' } %></strong>
+          </div>
+          <% @tags.each do |tag| %>
+            <% if tag.genre == '注目キーワード' %>
+              <div class="search_tag" style="display:inline;">
+                <%= link_to "#{tag.tag_name}", { controller: :bits, action: :Search, search_params: tag.tag_name, category_params: '注目キーワード', or: 'pv' } %>
+              </div>
+            <% end %>
+          <% end %>
+
+          <div class="genre">
+            <strong><%= link_to '演目', { controller: :bits, action: :genreSearch, search_params: '演目', or: 'pv' } %></strong>
+          </div>
+          <% @tags.each do |tag| %>
+            <% if tag.genre == '演目' %>
+              <div class="search_tag" style="display:inline;">
+                <%= link_to "#{tag.tag_name}", { controller: :bits, action: :Search, search_params: tag.tag_name, category_params: tag.genre, or: 'pv' } %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        </div>
       </nav>
 
       <div id="contants" class="container">
@@ -148,7 +174,6 @@
       </div>
 
     </div>
-
 
     <div id="footer">
     <div class="container" style="text-align:center;">
