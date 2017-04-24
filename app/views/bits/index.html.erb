@@ -114,9 +114,15 @@
 =end
 %>
 
+  <div class="top_each_page_link_area col-xs-12">
+    <div class="top_each_page_link">
+      <%= link_to '動画ページへ', videotop_bits_path %>
+    </div>
   </div>
 
-  <div class="container col-xs-12" id="bit_index_boards_lists">
+  </div>
+
+  <div class="container col-xs-12" id="bit_index_boards_lists" style="padding:0;">
     <% @boards.each do |board| %>
       <%= link_to board_path(board) do %>
         <div class="bits_index_board col-sm-3">
@@ -137,5 +143,11 @@
         </div>
       <% end %>
     <% end %>
+  </div>
+
+  <div class="top_each_page_link_area col-xs-12">
+    <div class="top_each_page_link">
+      <%= link_to 'コミュニティページへ', boards_path %>
+    </div>
   </div>
 </div>
