@@ -31,7 +31,11 @@ Rails.application.routes.draw do
   resources :top_tag_lists, only: [:index, :new, :create, :edit, :update, :show, :destroy]
   resources :site_configurations, only: [:index, :new, :create, :edit, :update, :show]
   resources :profiles, only: [:show]
-  resources :boards, only: [:index, :new, :create, :edit, :update, :show, :destroy]
+  resources :boards, only: [:index, :new, :create, :edit, :update, :show, :destroy] do
+    collection do
+      get :Search
+    end
+  end
   resources :board_comments, only: [:create, :new, :destroy] do
     collection do
       get :display

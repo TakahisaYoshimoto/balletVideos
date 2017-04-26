@@ -5,6 +5,21 @@ class BoardsController < ApplicationController
     @boards = Board.all.order('created_at desc').page(params[:page]).includes(:user)
   end
 
+  def Search
+    sp = params[:search_params].gsub("　"," ")#全角スペースを半角スペースに変換
+    sp.chop! if sp[sp.length-1] == " "#最後の文字がスペースだったら削除
+    sp = sp.gsub(" ","%,%")#半角スペースをカンマに変換(プレスホルダーの第二引数以降に使用する変数spに代入)
+    sp = '%'+sp+'%'
+    sp = sp.split(",")#ひとつの文字列だったspをカンマで区切って配列にする
+    ph_title = "title like ?"
+    c = sp.length-1
+    c.times{ ph_title += " AND title like ?" } if sp.length > 1
+
+    @boards = Board.where("#{ph_title}", *sp)
+      .page(params[:page])
+      .order(created_at: :desc)
+  end
+
   def show
     @board_comment = BoardComment.new
     @board_comments = BoardComment.where(board_id: @board.id).order('created_at asc').includes(:user)
