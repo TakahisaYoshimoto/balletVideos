@@ -18,6 +18,8 @@ class BoardsController < ApplicationController
     @boards = Board.where("#{ph_title}", *sp)
       .page(params[:page])
       .order(created_at: :desc)
+
+    render 'index'
   end
 
   def show
