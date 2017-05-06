@@ -22,6 +22,26 @@ class BoardsController < ApplicationController
     render 'index'
   end
 
+  def my_post
+    unless user_signed_in?
+      redirect_to root_path
+    end
+
+    @boards = Board.where(user_id: current_user.id).page(params[:page]).includes(:user)
+
+    render '/boards/index'
+  end
+
+  def my_commented
+    unless user_signed_in?
+      redirect_to root_path
+    end
+
+    @boards = Board.joins(:board_comments).where('board_comments.user_id = ?', current_user.id).page(params[:page]).includes(:user)
+
+    render '/boards/index'
+  end
+
   def show
     @board_comment = BoardComment.new
     @board_comments = BoardComment.where(board_id: @board.id).order('created_at asc').includes(:user)

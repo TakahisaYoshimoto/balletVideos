@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   resources :boards, only: [:index, :new, :create, :edit, :update, :show, :destroy] do
     collection do
       get :Search
+      get :my_post
+      get :my_commented
     end
   end
   resources :board_comments, only: [:create, :new, :destroy] do
