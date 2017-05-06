@@ -24,7 +24,7 @@ class BoardsController < ApplicationController
 
   def my_post
     unless user_signed_in?
-      redirect_to root_path
+      redirect_to root_path and return
     end
 
     @boards = Board.where(user_id: current_user.id).page(params[:page]).includes(:user)
@@ -34,7 +34,7 @@ class BoardsController < ApplicationController
 
   def my_commented
     unless user_signed_in?
-      redirect_to root_path
+      redirect_to root_path and return
     end
 
     @boards = Board.joins(:board_comments).where('board_comments.user_id = ?', current_user.id).page(params[:page]).includes(:user)
