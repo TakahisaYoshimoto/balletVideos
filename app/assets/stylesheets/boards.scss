@@ -28,6 +28,43 @@
 }
 
 /*index*/
+.community_index_board_child {
+  border: 1px solid black;
+  margin-bottom: 15px;
+  padding: 10px;
+  height: 250px;
+  position: relative;
+}
+.community_index_board_child:not(:last-child) {
+  margin-right: 15px;
+}
+.community_index_profile_picture img {
+  border-radius: 5px;
+}
+.community_index_board_title,
+.community_index_board_tags {
+  text-align: left;
+  margin-top: 10px;
+}
+.community_index_board_comments_count {
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+}
+.community_index_board_time,
+.community_index_board_title p,
+.community_index_board_comments_count p {
+  margin: 0;
+  color: black;
+  font-size: 14px;
+}
+.community_index_board_tags p {
+  margin: 0;
+  color: gray;
+  font-size: 12px;
+}
+
+/*lists*/
 .board_link {
   overflow: hidden;
 }

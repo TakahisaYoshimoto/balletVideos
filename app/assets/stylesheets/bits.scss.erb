@@ -92,13 +92,38 @@
 }
 .bits_index_board_child {
   border: 1px solid black;
-  border-radius: 15px;
   margin-bottom: 15px;
   padding: 10px;
   height: 250px;
+  position: relative;
 }
 .bits_index_board_child:not(:last-child) {
   margin-right: 15px;
+}
+.bits_index_profile_picture img {
+  border-radius: 5px;
+}
+.bits_index_board_title,
+.bits_index_board_tags {
+  text-align: left;
+  margin-top: 10px;
+}
+.bits_index_board_comments_count {
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+}
+.bits_index_board_time,
+.bits_index_board_title p,
+.bits_index_board_comments_count p {
+  margin: 0;
+  color: black;
+  font-size: 14px;
+}
+.bits_index_board_tags p {
+  margin: 0;
+  color: gray;
+  font-size: 12px;
 }
 
 .top_each_page_link_area {

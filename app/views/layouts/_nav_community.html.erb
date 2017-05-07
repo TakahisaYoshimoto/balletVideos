@@ -4,7 +4,7 @@
       <div class="nav_community_collapse_frame_1_1">
         <div class="nav_community_collapse_area_tag_area">
           <div class="nav_community_collapse_area_tag">
-            <strong>スレッド</strong>
+            <strong><%= link_to 'スレッド', boards_path  %></strong>
           </div>
         </div>
         <div class="nav_community_collapse_area_child_area">
@@ -15,7 +15,7 @@
             <%= link_to '急上昇ランキング', new_board_path  %>
           </div>
           <div class="nav_community_collapse_area_child">
-            <%= link_to '新着', boards_path  %>
+            <%= link_to '新着', lists_boards_path  %>
           </div>
         </div>
       </div>

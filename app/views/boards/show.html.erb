@@ -13,7 +13,7 @@
     <% else%>
     <li class="board_comments">
     <% end %>
-      <%= render 'profile_picture', i: bc %>
+      <%= render 'profile_picture_lists', i: bc %>
       <strong><%= bc.user.username %></strong><%= bc.created_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %>
       <%= simple_format(bc.text) %>
       <% if user_signed_in? %>
@@ -31,7 +31,7 @@
         <% else%>
         <li class="board_comments">
         <% end %>
-          <%= render 'profile_picture', i: bc %>
+          <%= render 'profile_picture_lists', i: bc %>
           <strong><%= bc.user.username %></strong><%= bc.created_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %>
           <%= simple_format(bc.text) %>
           <%= link_to '表示させる', display_board_comments_path(bc)%>

@@ -1,37 +1,31 @@
-<div id="search_area" class="col-xs-12">
-  <div class="form-group row">
-    <%= form_tag({controller: '/boards', action: :Search }, method: :get) do %>
-      <div class="input-group form-group">
-        <%= search_field_tag :search_params,
-          @search_params,
-          class: 'form-control',
-          placeholder: '検索' %>
-        <span class="input-group-btn">
-        <button type="submit" class="btn btn-default">
-          <i class="glyphicon glyphicon-search"></i>
-        </button>
-        </span>
+<div class="container col-xs-12" id="community_index_boards_lists" style="padding:0;">
+  <% @boards.each do |board| %>
+    <%= link_to board_path(board) do %>
+      <div class="community_index_board col-sm-3">
+        <div class="community_index_board_child">
+          <div class="community_index_profile_picture">
+            <%= render 'profile_picture', i: board %>
+          </div>
+          <p class="community_index_board_time"><%= board.created_at.strftime('%Y年%m月%d日 %H時%M分') %></p>
+          <div class="community_index_board_title">
+            <p><%= board.title %></p>
+          </div>
+          <% board.board_tags.each do |tag| %>
+            <div class="community_index_board_tags" style="display: inline-block;margin-right:10px;">
+              <p><%= "##{tag.name}" %></p>
+            </div>
+          <% end %>
+          <div class="community_index_board_comments_count">
+            <p>コメント数 : <%= board.board_comments_count %></p>
+          </div>
+        </div>
       </div>
     <% end %>
-  </div>
+  <% end %>
 </div>
 
-<%= link_to '新規登録', new_board_path %>
-<ul id="board_lists">
-  <% @boards.each do |board| %>
-    <li class="board_link">
-      <div class="board_link_picture_area">
-        <%= render 'profile_picture', i: board %>
-      </div>
-      <div class="board_link_text_area">
-        <%= link_to board.title, board_path(board), class: "board_link_text" %>
-      </div>
-    </li>
-  <% end %>
-</ul>
-
-<p class="pagenation_count"><%= page_entries_info @boards %></p>
-
-<div class="pagenation_bar">
-  <%= paginate @boards %>
+<div class="top_each_page_link_area col-xs-12">
+  <div class="top_each_page_link">
+    <%= link_to 'コミュニティページへ', boards_path %>
+  </div>
 </div>

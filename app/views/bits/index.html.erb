@@ -87,32 +87,6 @@
         <% view_num = view_num + 1 %>
       <% end %>
     </div>
-<%
-=begin
-%>
-    <div class="hidden-xs col-sm-7 col-md-6 col-lg-5" style="margin:0 0 15px 0;">
-      <%= link_to image_tag('mu_ad_img1.jpg', width: '100%'), 'http://mu-ballet.com', target: '_blank' %>
-    </div>
-    <div class="visible-xs col-xs-12" style="margin:0 0 15px 0;">
-      <%= link_to image_tag('mu_ad_img2.jpg', width: '100%'), 'http://mu-ballet.com', target: '_blank' %>
-    </div>
-
-    <%# 広告エリア %>
-    <div class="col-xs-12 hidden-sm hidden-md hidden-lg" style="text-align:center;padding-bottom:15px;overflow: visible;margin-left: -15px;">
-      <!--  ad tags Size: 320x100 ZoneId:1141471-->
-      <script type="text/javascript" src="https://js.medi-8.net/t/141/471/a1141471.js"></script>
-    </div>
-    <div class="hidden-xs col-sm-12 col-md-12 hidden-lg" style="text-align:center;padding-bottom:15px;">
-      <!--  ad tags Size: 468x60 ZoneId:1142016-->
-      <script type="text/javascript" src="https://js.medi-8.net/t/142/016/a1142016.js"></script>
-    </div>
-    <div class="visible-lg col-lg-12" style="text-align:center;padding-bottom:15px;">
-      <!-- medi8　728×90px -->
-      <script type="text/javascript" src="https://js.medi-8.net/t/141/478/a1141478.js"></script>
-    </div>
-<%
-=end
-%>
 
   <div class="top_each_page_link_area col-xs-12">
     <div class="top_each_page_link">
@@ -130,15 +104,18 @@
             <div class="bits_index_profile_picture">
               <%= render 'profile_picture', i: board %>
             </div>
-            <%= board.created_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %>
+            <p class="bits_index_board_time"><%= board.created_at.strftime('%Y年%m月%d日 %H時%M分') %></p>
             <div class="bits_index_board_title">
-              <%= board.title %>
+              <p><%= board.title %></p>
             </div>
             <% board.board_tags.each do |tag| %>
-              <div style="display: inline-block;margin-right:10px;">
-                <%= "##{tag.name}" %>
+              <div class="bits_index_board_tags" style="display: inline-block;margin-right:10px;">
+                <p><%= "##{tag.name}" %></p>
               </div>
             <% end %>
+            <div class="bits_index_board_comments_count">
+              <p>コメント数 : <%= board.board_comments_count %></p>
+            </div>
           </div>
         </div>
       <% end %>

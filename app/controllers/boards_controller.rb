@@ -2,6 +2,10 @@ class BoardsController < ApplicationController
   before_action :set_board, only: [:show, :edit, :destroy]
 
   def index
+    @boards = Board.all.order('created_at desc').limit(8).offset(0).includes(:user)
+  end
+
+  def lists
     @boards = Board.all.order('created_at desc').page(params[:page]).includes(:user)
   end
 
@@ -19,7 +23,7 @@ class BoardsController < ApplicationController
       .page(params[:page])
       .order(created_at: :desc)
 
-    render 'index'
+    render '/boards/lists'
   end
 
   def my_post
@@ -29,7 +33,7 @@ class BoardsController < ApplicationController
 
     @boards = Board.where(user_id: current_user.id).page(params[:page]).includes(:user)
 
-    render '/boards/index'
+    render '/boards/lists'
   end
 
   def my_commented
@@ -39,7 +43,7 @@ class BoardsController < ApplicationController
 
     @boards = Board.joins(:board_comments).where('board_comments.user_id = ?', current_user.id).page(params[:page]).includes(:user)
 
-    render '/boards/index'
+    render '/boards/lists'
   end
 
   def show
