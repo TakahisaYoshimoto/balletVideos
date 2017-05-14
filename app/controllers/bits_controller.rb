@@ -2,10 +2,11 @@ class BitsController < ApplicationController
   before_action :authenticate_user!, only: [:inquiry, :send_support_mail]
 
   def index
-    @pic_youtubes = YoutubeVideo.where('pickup_level > ? AND pickup_level < ?', 0, 3)
+    i = rand(5)
+    @pic_youtubes = YoutubeVideo.where('pickup_level > ? AND pickup_level < ?', 0, 21)
       .order('pickup_level asc')
       .limit(2)
-      .offset(0)
+      .offset(i)
     @youtubes = YoutubeVideo.where('pickup_level > ? OR pickup_level = ? OR pickup_level IS NULL', 2, 0)
       .order('created_at desc')
       .limit(11)
@@ -16,10 +17,11 @@ class BitsController < ApplicationController
   end
 
   def videotop
-    @pic_youtubes = YoutubeVideo.where('pickup_level > ? AND pickup_level < ?', 0, 3)
+    i = rand(5)
+    @pic_youtubes = YoutubeVideo.where('pickup_level > ? AND pickup_level < ?', 0, 21)
       .order('pickup_level asc')
       .limit(2)
-      .offset(0)
+      .offset(i)
     @youtubes = YoutubeVideo.where('pickup_level > ? OR pickup_level = ? OR pickup_level IS NULL', 2, 0)
       .order('created_at desc')
       .limit(11)

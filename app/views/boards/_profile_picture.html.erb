@@ -1,11 +1,11 @@
 <% if i.user.picture_lg.present? %>
   <% if Rails.env == 'production' %>
-      <%= link_to image_tag(ENV['AWS_PICTURE_PATH']+"#{ i.user.picture_min }"), profile_path(i.user) %>
+      <%= image_tag(ENV['AWS_PICTURE_PATH']+"#{ i.user.picture_min }") %>
       <p style="display:inline;color:black"><strong><%= i.user.username %></strong>　さん</p>
   <% else %>
-      <%= link_to image_tag("/docs/#{ i.user.picture_min }"), profile_path(i.user) %>
+      <%= image_tag("/docs/#{ i.user.picture_min }") %>
       <p style="display:inline;color:black"><strong><%= i.user.username %></strong>　さん</p>
   <% end %>
 <% else %>
-  <%= link_to image_tag("no-picture-min.gif"), profile_path(i.user) %>
+  <%= image_tag("no-picture-min.gif") %>
 <% end %>

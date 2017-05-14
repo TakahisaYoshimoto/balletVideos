@@ -2,6 +2,11 @@ class BoardsController < ApplicationController
   before_action :set_board, only: [:show, :edit, :destroy]
 
   def index
+    @attention_boards = Board.all
+      .order('board_comments_count desc')
+      .limit(4)
+      .offset(0)
+      .includes(:user)
     @boards = Board.all.order('created_at desc').limit(8).offset(0).includes(:user)
   end
 

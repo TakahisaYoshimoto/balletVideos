@@ -1,21 +1,40 @@
 <div id="nav_community_collapse_area" class="panel-collapse collapse">
   <div class="container panel-body">
+    <div class="nav_community_collapse_frame_2">
+      <div class="nav_community_collapse_area_tag_area">
+        <div class="nav_community_collapse_area_tag">
+          <strong>人気タグ</strong>
+        </div>
+      </div>
+      <div class="nav_community_collapse_area_child_area">
+        <div class="nav_community_collapse_area_child">
+          <%= link_to 'スレッドを立てる', new_board_path  %>
+        </div>
+        <div class="nav_community_collapse_area_child">
+          <%= link_to '注目トーク', new_board_path  %>
+        </div>
+        <div class="nav_community_collapse_area_child">
+          <%= link_to '新着', boards_path  %>
+        </div>
+      </div>
+    </div>
+
     <div class="nav_community_collapse_frame_1">
       <div class="nav_community_collapse_frame_1_1">
         <div class="nav_community_collapse_area_tag_area">
           <div class="nav_community_collapse_area_tag">
-            <strong><%= link_to 'スレッド', boards_path  %></strong>
+            <strong><%= link_to 'トーク', boards_path  %></strong>
           </div>
         </div>
         <div class="nav_community_collapse_area_child_area">
           <div class="nav_community_collapse_area_child">
-            <%= link_to 'スレッドを立てる', new_board_path  %>
-          </div>
-          <div class="nav_community_collapse_area_child">
-            <%= link_to '急上昇ランキング', new_board_path  %>
-          </div>
-          <div class="nav_community_collapse_area_child">
             <%= link_to '新着', lists_boards_path  %>
+          </div>
+          <div class="nav_community_collapse_area_child">
+            <%= link_to '注目トーク', new_board_path  %>
+          </div>
+          <div class="nav_community_collapse_area_child">
+            <%= link_to 'トークルームを立てる', new_board_path  %>
           </div>
         </div>
       </div>
@@ -28,30 +47,11 @@
         </div>
         <div class="nav_community_collapse_area_child_area">
           <div class="nav_community_collapse_area_child">
-            <%= link_to '投稿したスレッド', my_post_boards_path  %>
+            <%= link_to 'マイトークルーム', my_post_boards_path  %>
           </div>
           <div class="nav_community_collapse_area_child">
-            <%= link_to 'コメントしたスレッド', my_commented_boards_path  %>
+            <%= link_to 'コメントしたトーク', my_commented_boards_path  %>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="nav_community_collapse_frame_2">
-      <div class="nav_community_collapse_area_tag_area">
-        <div class="nav_community_collapse_area_tag">
-          <strong>人気タグ</strong>
-        </div>
-      </div>
-      <div class="nav_community_collapse_area_child_area">
-        <div class="nav_community_collapse_area_child">
-          <%= link_to 'スレッドを立てる', new_board_path  %>
-        </div>
-        <div class="nav_community_collapse_area_child">
-          <%= link_to '急上昇ランキング', new_board_path  %>
-        </div>
-        <div class="nav_community_collapse_area_child">
-          <%= link_to '新着', boards_path  %>
         </div>
       </div>
     </div>
