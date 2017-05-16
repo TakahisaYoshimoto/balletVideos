@@ -24,7 +24,7 @@ class BitsController < ApplicationController
       .offset(i)
     @youtubes = YoutubeVideo.where('pickup_level > ? OR pickup_level = ? OR pickup_level IS NULL', 2, 0)
       .order('created_at desc')
-      .limit(11)
+      .limit(16)
       .offset(0)
     @search_params = ""
   end

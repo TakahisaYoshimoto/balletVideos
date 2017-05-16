@@ -1,7 +1,5 @@
-<%= render 'sidebar', tags: @tags %>
-
 <div id="y_index_links">
-  <div class="col-sm-9">
+  <div class="col-sm-12">
 
   <div id="y_videolist_breadcrumb" style="text-align:center;">
     <% if @category_params.present? && @genre.present? %>
@@ -76,7 +74,7 @@
 
   <div class="col-xs-12 row-eq-height" style="padding: 0;">
     <% @youtubes.each.with_index(1) do |youtube, i| %>
-      <% if i == 4 %>
+      <% if i == 5 %>
         <%# 広告エリア %>
         <div class="col-xs-12 hidden-sm hidden-md hidden-lg" style="text-align:center;padding-bottom:15px;overflow: visible;margin-left: -15px;">
           <!--  ad tags Size: 320x100 ZoneId:1146757-->
@@ -91,7 +89,7 @@
           <script type="text/javascript" src="https://js.medi-8.net/t/146/756/a1146756.js"></script>
         </div>
       <% end %>
-      <%= link_to youtube_video_path(youtube), class: 'videolists_link col-xs-12 col-sm-4 row-eq-height', style: 'margin-bottom:10px;' do %>
+      <%= link_to youtube_video_path(youtube), class: 'videolists_link col-xs-12 col-sm-3 row-eq-height', style: 'margin-bottom:10px;' do %>
         <div class="y_video_img_area col-xs-5 col-sm-12" style="padding: 0;">
           <div class="y_video_img">
             <% url = youtube.url.gsub(/http.+v=/, "") %>
