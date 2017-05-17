@@ -41,10 +41,14 @@
   <% end %>
 
   <div id="order_change">
-    <% if controller.action_name == 'view_histories' %>
-      <%= link_to_unless_current '視聴日時', { controller: :bits,
-        action: controller.action_name,
-        or: 'history' } %>|
+    <% if controller.action_name == 'view_histories' || controller.action_name == 'like_videos' %>
+      <% if /or=history/ =~ request.fullpath %>
+        視聴順|
+      <% else %>
+        <%= link_to_unless_current '視聴順', { controller: :bits,
+          action: controller.action_name,
+          or: 'history' } %>|
+      <% end %>
     <% end %>
     <% if /or=pv/ =~ request.fullpath %>
       再生回数順|<%= link_to '新着順', { controller: :bits,

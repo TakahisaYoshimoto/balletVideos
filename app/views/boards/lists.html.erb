@@ -1,4 +1,4 @@
-<div id="search_area" class="col-xs-12">
+<div id="community_search_area" class="col-xs-12">
   <div class="form-group row">
     <%= form_tag({controller: '/boards', action: :Search }, method: :get) do %>
       <div class="input-group form-group">
@@ -16,16 +16,18 @@
   </div>
 </div>
 
-<%= link_to '新規登録', new_board_path %>
 <ul id="board_lists">
   <% @boards.each do |board| %>
     <li class="board_link">
       <div class="board_link_picture_area">
         <%= render 'profile_picture_lists', i: board %>
       </div>
-      <div class="board_link_text_area">
-        <%= link_to board.title, board_path(board), class: "board_link_text" %>
-      </div>
+      <%= link_to board_path(board) do %>
+        <div class="board_link_text_area">
+          <p class="board_link_text"><%= board.title %></p>
+          <p class="board_link_comments_count">コメント数 : <%= board.board_comments_count %></p>
+        </div>
+      <% end -%>
     </li>
   <% end %>
 </ul>

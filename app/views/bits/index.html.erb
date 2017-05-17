@@ -60,19 +60,14 @@
     </div>
 
     <%# 6 %>
-    <div class="col-xs-6 col-sm-3 row-eq-height" style="height: 100%;">
-      <% unless @youtubes[view_num].nil? %>
-        <%= render 'list_sm123', youtube: @youtubes[view_num] %>
-        <% view_num = view_num + 1 %>
-      <% end %>
+    <div class="hidden-xs col-sm-6">
+      <%= link_to image_tag('mu_ad_img3.jpg', width: '100%'), 'http://mu-ballet.com', target: '_blank' %>
+    </div>
+    <div class="visible-xs col-xs-12" style="margin-bottom:10px;">
+      <%= link_to image_tag('mu_ad_img2.jpg', width: '100%'), 'http://mu-ballet.com', target: '_blank' %>
     </div>
     <%# 7 %>
-    <div class="col-xs-6 col-sm-3 row-eq-height" style="height: 100%;">
-      <% unless @youtubes[view_num].nil? %>
-        <%= render 'list_sm123', youtube: @youtubes[view_num] %>
-        <% view_num = view_num + 1 %>
-      <% end %>
-    </div>
+
     <%# 8 %>
     <div class="col-xs-6 col-sm-3 row-eq-height" style="height: 100%;">
       <% unless @youtubes[view_num].nil? %>

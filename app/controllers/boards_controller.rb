@@ -31,6 +31,24 @@ class BoardsController < ApplicationController
     render '/boards/lists'
   end
 
+  def attention
+    @boards = Board.all
+      .page(params[:page])
+      .order('board_comments_count desc')
+      .includes(:user)
+
+    render '/boards/lists'
+  end
+
+  def new_lists
+    @boards = Board.all
+      .page(params[:page])
+      .order('created_at desc')
+      .includes(:user)
+
+    render '/boards/lists'
+  end
+
   def my_post
     unless user_signed_in?
       redirect_to root_path and return

@@ -1,0 +1,134 @@
+// Place all the styles related to the boards controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//共通
+.boards_top_img {
+  position: relative;
+  background-image: url(<%= asset_data_uri 'community_top_img.jpg' %>);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  width: 100%;
+  height: 300px;
+}
+@media screen and (min-width: 768px){
+  .boards_top_img {
+    height: 400px;
+  }
+}
+@media screen and (min-width: 1200px){
+  .boards_top_img {
+    height: 500px;
+  }
+}
+
+#community_search_area {
+}
+#board_lists,
+#board_comment_lists {
+  border: 1px solid #F0F0F0;
+  border-radius: 5px;
+  padding: 0;
+}
+.board_link,
+.board_comments,
+.board_master_comments  {
+  list-style: none;
+  padding: 10px;
+}
+.board_link:not(:last-child),
+.board_comments:not(:last-child) {
+  border-bottom: 1px solid #F0F0F0;
+}
+.board_link img,
+.board_comments img,
+.board_master_comments img {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+}
+
+/*index*/
+.community_index_board_child {
+  border: 1px solid black;
+  margin-bottom: 15px;
+  padding: 10px;
+  height: 250px;
+  position: relative;
+}
+.community_index_board_child:not(:last-child) {
+  margin-right: 15px;
+}
+.community_index_profile_picture img {
+  border-radius: 5px;
+}
+.community_index_board_title,
+.community_index_board_tags {
+  text-align: left;
+  margin-top: 10px;
+}
+.community_index_board_comments_count {
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+}
+.community_index_board_time,
+.community_index_board_title p,
+.community_index_board_comments_count p {
+  margin: 0;
+  color: black;
+  font-size: 14px;
+}
+.community_index_board_tags p {
+  margin: 0;
+  color: gray;
+  font-size: 12px;
+}
+
+/*lists*/
+.board_link {
+  overflow: hidden;
+}
+.board_link_picture_area {
+  float: left;
+  width: 50px;
+}
+.board_link_text_area {
+  width: 100%;
+  padding: 0 15px 0 65px;
+}
+.board_link_text {
+  display: inline-block;
+  font-size: 18px;
+  color: black;
+}
+.board_link_comments_count {
+  display: inline-block;
+  width: 100%;
+  text-align: right;
+  margin: 0;
+}
+
+/*show*/
+.board_master_comments {
+  background: #F2F2F2;
+}
+.board_comments {
+  background: white;
+}
+.board_comments p,
+.board_master_comments p {
+  padding-left: 53px;
+}
+.board_master_comments:not(:last-child) {
+  border-bottom: 1px solid white;
+}
+#characnt {
+  background-color: rgba(0,0,0,0);
+  border: none;
+  text-align: right;
+}
+#board_comment_submit {
+  text-align: right;
+}

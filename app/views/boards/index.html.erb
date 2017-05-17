@@ -1,3 +1,20 @@
+</div>
+<% if controller.controller_name == 'boards' && controller.action_name == 'index' %>
+  <style>
+    body {
+      padding-top: 50px
+    }
+    @media screen and (min-width:768px) {
+      body {
+        padding-top: 75px
+      }
+    }
+  </style>
+<% end %>
+<div class="boards_top_img col-xs-12" style="margin-bottom:15px;padding:0;">
+</div>
+<div class="container">
+
 <div id="search_area" class="col-xs-12">
   <div class="form-group row">
     <%= form_tag({controller: '/boards', action: :Search }, method: :get) do %>
@@ -45,7 +62,7 @@
 
 <div class="top_each_page_link_area col-xs-12">
   <div class="top_each_page_link">
-    <%= link_to 'もっと見る', boards_path %>
+    <%= link_to 'もっと見る', attention_boards_path %>
   </div>
 </div>
 
@@ -79,6 +96,6 @@
 
 <div class="top_each_page_link_area col-xs-12">
   <div class="top_each_page_link">
-    <%= link_to 'コミュニティページへ', boards_path %>
+    <%= link_to 'もっと見る', new_lists_boards_path %>
   </div>
 </div>

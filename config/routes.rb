@@ -37,6 +37,8 @@ Rails.application.routes.draw do
       get :my_post
       get :my_commented
       get :lists
+      get :attention
+      get :new_lists
     end
   end
   resources :board_comments, only: [:create, :new, :destroy] do

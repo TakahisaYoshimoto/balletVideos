@@ -58,9 +58,10 @@ class BitsController < ApplicationController
         .order(pv_count: :desc)
         .order(created_at: :desc)
     else
-      @youtubes = YoutubeVideo.joins(:likes)
+      @youtubes = YoutubeVideo.joins(:likes).joins(:view_histories)
         .where("likes.user_id = ?", current_user.id)
         .page(params[:page])
+        .order('view_histories.updated_at desc') 
         .order(created_at: :desc)
     end
     
