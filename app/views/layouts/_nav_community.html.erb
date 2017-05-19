@@ -7,15 +7,12 @@
         </div>
       </div>
       <div class="nav_community_collapse_area_child_area">
-        <div class="nav_community_collapse_area_child">
-          <%= link_to 'スレッドを立てる', new_board_path  %>
-        </div>
-        <div class="nav_community_collapse_area_child">
-          <%= link_to '注目トーク', new_board_path  %>
-        </div>
-        <div class="nav_community_collapse_area_child">
-          <%= link_to '新着', boards_path  %>
-        </div>
+        <% @board_tags.each do |b_tag| %>
+          <div class="nav_community_collapse_area_child">
+            <%#= b_tag[0] %>
+            <%= link_to "##{b_tag[0]}", { :controller => '/boards', action: :Search, search_params: b_tag[0] } %>
+          </div>
+        <% end %>
       </div>
     </div>
 
@@ -31,7 +28,7 @@
             <%= link_to '新着', lists_boards_path  %>
           </div>
           <div class="nav_community_collapse_area_child">
-            <%= link_to '注目トーク', new_board_path  %>
+            <%= link_to '注目トーク', attention_boards_path  %>
           </div>
           <div class="nav_community_collapse_area_child">
             <%= link_to 'トークルームを立てる', new_board_path  %>

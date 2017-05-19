@@ -25,5 +25,6 @@ class ApplicationController < ActionController::Base
 
     def set_tags
       @tags = TopTagList.all.select(:id, :genre, :tag_name, :hurigana).order('hurigana asc')
+      @board_tags = BoardTag.group(:name).order('count_name desc').limit(5).offset(0).count(:name)
     end
 end
