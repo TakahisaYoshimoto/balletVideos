@@ -60,6 +60,7 @@
             <% if current_user.user_level > 1 %>
               <ul class="nav navbar-nav">
                 <li><%= link_to 'youtube登録', new_youtube_video_path %></li>
+                <li><%= link_to 'pickup動画', pickup_lists_youtube_videos_path %></li>
                 <li><%= link_to '表示タグ編集', top_tag_lists_path %></li>
               </ul>
             <% end %>

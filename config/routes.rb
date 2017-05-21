@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :youtube_videos, only: [:new, :create, :edit, :update, :show, :destroy] do
     collection do
       get :like
+      get :pickup_lists
     end
   end
   resources :comments, only: [:create] do

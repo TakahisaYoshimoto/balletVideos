@@ -93,6 +93,12 @@ class YoutubeVideosController < ApplicationController
     redirect_to bits_path
   end
 
+  def pickup_lists
+    redirect_to root_path and return if user_level_check(2)
+    @youtubes = YoutubeVideo.where('pickup_level > ?', 0)
+      .order('pickup_level asc')
+  end
+
   def show
     @comment = Comment.new
     @comments = Comment.where('youtube_video_id = ?', params[:id]).order('created_at desc')
