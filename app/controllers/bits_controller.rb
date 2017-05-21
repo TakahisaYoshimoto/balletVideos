@@ -2,7 +2,8 @@ class BitsController < ApplicationController
   before_action :authenticate_user!, only: [:inquiry, :send_support_mail]
 
   def index
-    i = rand(5)
+    rand_pic = YoutubeVideo.where('pickup_level > 0 AND pickup_level < 21').count
+    i = rand(rand_pic)
     @pic_youtubes = YoutubeVideo.where('pickup_level > ? AND pickup_level < ?', 0, 21)
       .order('pickup_level asc')
       .limit(2)
@@ -17,7 +18,8 @@ class BitsController < ApplicationController
   end
 
   def videotop
-    i = rand(5)
+    rand_pic = YoutubeVideo.where('pickup_level > 0 AND pickup_level < 21').count
+    i = rand(rand_pic - 1)
     @pic_youtubes = YoutubeVideo.where('pickup_level > ? AND pickup_level < ?', 0, 21)
       .order('pickup_level asc')
       .limit(2)
