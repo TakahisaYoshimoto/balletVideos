@@ -15,4 +15,6 @@ class User < ApplicationRecord
 
   validates :profile, length: {maximum: 5000}
   validates :username, uniqueness: true
+
+  paginates_per 30  # 1ページあたり30項目表示
 end

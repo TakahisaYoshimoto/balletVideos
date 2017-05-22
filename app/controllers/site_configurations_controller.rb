@@ -39,6 +39,11 @@ class SiteConfigurationsController < ApplicationController
     end
   end
 
+  def user_lists
+    redirect_to root_path and return if user_level_check(2)
+    @users = User.order('id asc').all.page(params[:page])
+  end
+
   private
     def set_site_config
       @site_config = SiteConfiguration.find(params[:id])

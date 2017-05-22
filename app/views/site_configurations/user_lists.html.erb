@@ -1,0 +1,9 @@
+<% @users.each do |user| %>
+  <p><%= user.id %> : <%= user.username %></p>
+<% end %>
+
+<p class="pagenation_count"><%= page_entries_info @users %></p>
+
+<div class="pagenation_bar">
+  <%= paginate @users %>
+</div>
