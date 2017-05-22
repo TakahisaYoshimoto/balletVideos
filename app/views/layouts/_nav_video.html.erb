@@ -1,5 +1,21 @@
 <div id="nav_video_collapse_area" class="panel-collapse collapse">
   <div class="container panel-body">
+    <div class="form-group row" style="margin:0 0 15px 0;">
+      <%= form_tag({controller: '/bits', action: :Search }, method: :get) do %>
+        <div class="input-group form-group" style="margin:0;">
+          <%= search_field_tag :search_params,
+            @search_params,
+            class: 'form-control',
+            placeholder: 'キーワード' %>
+          <span class="input-group-btn">
+          <button type="submit" class="btn btn-default">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+          </span>
+        </div>
+      <% end %>
+    </div>
+
     <div class="nav_video_collapse_frame_1">
       <div class="nav_video_collapse_area_tag_area">
         <div class="nav_video_collapse_area_tag">
