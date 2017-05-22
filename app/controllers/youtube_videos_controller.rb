@@ -141,6 +141,12 @@ class YoutubeVideosController < ApplicationController
     #上で作った一致タグが多い順のID配列でwhereして並び替え
     @relatedVideos = YoutubeVideo.where(id: relatedVideos_count)
       .order_as_specified(id: relatedVideos_count)
+
+    #関連動画が20個以下の時、関連動画のところに表示する動画を、PV数が多い順に取得
+    rvc = @relatedVideos.count
+    if rvc < 20
+      @popularVideos = YoutubeVideo.where.not(id: relatedVideos_count).where.not('id = ?', @youtube.id).order('pv_count desc').limit(20 - rvc).offset(0)
+    end
   end
 
   def like
