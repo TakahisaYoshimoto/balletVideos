@@ -8,6 +8,7 @@ class BoardsController < ApplicationController
       .offset(0)
       .includes(:user)
     @boards = Board.all.order('created_at desc').limit(8).offset(0).includes(:user)
+    @top_img_text = SiteConfiguration.find_by(item: 'board_top_img_text_a')
   end
 
   def lists

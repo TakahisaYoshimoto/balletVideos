@@ -1,8 +1,10 @@
 <h1>SiteConfigurations#index</h1>
 <% @site_configurations.each do |config| %>
-  <h3><%= config.item %></h3>
-  <h4><%= config.summary %></h4>
-  <%= link_to '編集する', edit_site_configuration_path(config) %>
+  <div style="border:1px solid blue;margin:5px;"
+    <p><%= config.summary %> : <%= config.item %></p>
+    <%= link_to '編集する', edit_site_configuration_path(config) %>
+  </div>
 <% end %>
+<br>
 <br>
 <%= link_to '登録する', new_site_configuration_path %>
