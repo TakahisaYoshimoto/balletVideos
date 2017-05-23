@@ -13,8 +13,8 @@
 <% end %>
 <%#<div class="top_img col-xs-12 hidden-sm hidden-md hidden-lg" style="margin-bottom:15px;">%>
 <div class="top_img col-xs-12" style="margin-bottom:15px;padding:0;">
-  <p class="top_img_text_a"><%= @top_img_text_a.contents if @top_img_text_a.contents.present? %></p>
-  <p class="top_img_text_b"><%= @top_img_text_b.contents if @top_img_text_b.contents.present? %></p>
+  <p class="top_img_text_a"><%= @top_img_text_a.contents if @top_img_text_a.present? %></p>
+  <p class="top_img_text_b"><%= @top_img_text_b.contents if @top_img_text_b.present? %></p>
   <div class="top_img_link_out"><%= link_to 'まずは演目から探してみる', { controller: :bits, action: :genreSearch, search_params: '演目', or: 'pv' }, class: 'top_img_link' %></div>
 </div>
 <div class="container">
