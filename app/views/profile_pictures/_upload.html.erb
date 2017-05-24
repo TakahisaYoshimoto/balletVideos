@@ -19,12 +19,17 @@
 
 <div id="picture_edit_btn_area">
   <!-- <a id="getData" class="btn btn-primary" onClick="image_up()">画像切り抜き</a> -->
-  <%= link_to '確定', edit_user_registration_path, class: 'btn btn-primary', :onClick => 'image_up()' %>
+  <button class="btn btn-primary" data-dismiss="modal" onclick="image_up()">確定！</button>
 </div>
 
 <script>
+  function up_open() {
+    var upinput = document.getElementById("uploadFile");
+    upinput.click();
+  }
+
   $("#uploadFile").change(function() {
-    var canvas = $("#image");
+    //var canvas = $("#image");
     //var ctx = canvas[0].getContext("2d");
 
     // 選択されたファイルを取得
@@ -77,9 +82,7 @@
       });
 
       var elem = document.getElementById("user_edit_profile_picture");
-      // elem.innerHTML =  '<img src="' + img_b64 + '" id="image">';
-      elem.innerHTML =  'aaaaaaaaaaaaaaaaaa';
-      console.log('Upload error');
+      elem.innerHTML =  '<img src="' + img_b64 + '">';
     });
 
     ImgB64Resize(url, 50, 50, function(img_b64) {

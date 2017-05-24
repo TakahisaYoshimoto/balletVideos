@@ -12,15 +12,13 @@
   <% end %>
 </div>
 
-<a data-toggle="modal" href="#myModal" class="btn btn-primary" style="margin:10px 0;">プロフィール画像を設定する</a>
+<a data-toggle="modal" href="#myModal" class="btn btn-primary" style="margin:10px 0;" onclick="up_open()">プロフィール画像を設定する</a>
 
 <div class="modal fade" id="myModal">
-  <div class="modal-dialog" style="width:100%;">
+  <div class="modal-dialog" style="width:90%;">
     <div class="modal-content">
-      <div class="modal-header">
-        <button class="close" data-dismiss="modal">&times;</button>
-      </div>
       <div class="modal-body">
+        <button class="close" data-dismiss="modal">&times;</button>
         <%= render '/profile_pictures/upload', user: @user %>
       </div>
     </div>
