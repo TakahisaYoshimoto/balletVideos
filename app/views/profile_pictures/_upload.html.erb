@@ -6,11 +6,11 @@
 
 </div>
 <div id="preview" style="width:250px;height:250px;overflow:hidden;margin-top:15px;">
-  <% if @user.picture_lg.present? %>
+  <% if user.picture_lg.present? %>
     <% if Rails.env == 'production' %>
-      <%= image_tag ENV['AWS_PICTURE_PATH']+"#{ @user.picture_lg }" %>
+      <%= image_tag ENV['AWS_PICTURE_PATH']+"#{ user.picture_lg }" %>
     <% else %>
-      <%= image_tag "/docs/#{ @user.picture_lg }" %>
+      <%= image_tag "/docs/#{ user.picture_lg }" %>
     <% end -%>
   <% else %>
     <%= image_tag "no-picture-lg.gif" %>
@@ -18,8 +18,8 @@
 </div>
 
 <div id="picture_edit_btn_area">
-  <a id="getData" class="btn btn-primary" onClick="image_up()">画像切り抜き</a>
-  <%= link_to '戻る', edit_user_registration_path, class: 'btn btn-primary' %>
+  <!-- <a id="getData" class="btn btn-primary" onClick="image_up()">画像切り抜き</a> -->
+  <%= link_to '確定', edit_user_registration_path, class: 'btn btn-primary', :onClick => 'image_up()' %>
 </div>
 
 <script>
@@ -75,6 +75,11 @@
           //console.log('Upload error');
         }
       });
+
+      var elem = document.getElementById("user_edit_profile_picture");
+      // elem.innerHTML =  '<img src="' + img_b64 + '" id="image">';
+      elem.innerHTML =  'aaaaaaaaaaaaaaaaaa';
+      console.log('Upload error');
     });
 
     ImgB64Resize(url, 50, 50, function(img_b64) {
