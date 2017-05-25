@@ -11,27 +11,32 @@
     }
   </style>
 <% end %>
-<div class="boards_top_img col-xs-12" style="margin-bottom:15px;padding:0;">
-</div>
-<div class="container">
+<div class="board_top_img col-xs-12" style="margin-bottom:15px;padding:0;">
+  <p class="board_top_img_text_a"><%= @top_img_text.contents if @top_img_text.present? %></p>
 
-<div id="search_area" class="col-xs-12">
-  <div class="form-group row">
-    <%= form_tag({controller: '/boards', action: :Search }, method: :get) do %>
-      <div class="input-group form-group">
-        <%= search_field_tag :search_params,
-          @search_params,
-          class: 'form-control',
-          placeholder: 'キーワード' %>
-        <span class="input-group-btn">
-        <button type="submit" class="btn btn-default">
-          <i class="glyphicon glyphicon-search"></i>
-        </button>
-        </span>
+  <div id="board_top_img_secondarea" class="col-xs-12">
+    <div class="board_top_img_link_out col-xs-12 col-sm-6"><%= link_to 'トークルームを作る', new_board_path, class: 'board_top_img_link' %></div>
+
+    <div id="board_top_img_search_area" class="col-xs-12 col-sm-6">
+      <div class="form-group row">
+        <%= form_tag({controller: '/boards', action: :Search }, method: :get) do %>
+          <div class="input-group form-group">
+            <%= search_field_tag :search_params,
+              @search_params,
+              class: 'form-control',
+              placeholder: 'キーワード' %>
+            <span class="input-group-btn">
+            <button type="submit" class="btn btn-default">
+              <i class="glyphicon glyphicon-search"></i>
+            </button>
+            </span>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>
+<div class="container">
 
 <div class="container col-xs-12" id="community_index_boards_lists" style="padding:0;">
   <p>注目のトーク</p>

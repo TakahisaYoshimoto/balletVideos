@@ -8,13 +8,15 @@ class BitsController < ApplicationController
       .order('pickup_level asc')
       .limit(2)
       .offset(i)
-    @youtubes = YoutubeVideo.where('pickup_level > ? OR pickup_level = ? OR pickup_level IS NULL', 2, 0)
+    @youtubes = YoutubeVideo.where('pickup_level > ? OR pickup_level = ? OR pickup_level IS NULL', 21, 0)
       .order('created_at desc')
       .limit(11)
       .offset(0)
     @search_params = ""
 
     @boards = Board.all.order('created_at desc').limit(8).offset(0).includes(:user)
+    @top_img_text_a = SiteConfiguration.find_by(item: 'top_img_text_a')
+    @top_img_text_b = SiteConfiguration.find_by(item: 'top_img_text_b')
   end
 
   def videotop
@@ -24,11 +26,14 @@ class BitsController < ApplicationController
       .order('pickup_level asc')
       .limit(2)
       .offset(i)
-    @youtubes = YoutubeVideo.where('pickup_level > ? OR pickup_level = ? OR pickup_level IS NULL', 2, 0)
+    @youtubes = YoutubeVideo.where('pickup_level > ? OR pickup_level = ? OR pickup_level IS NULL', 21, 0)
       .order('created_at desc')
       .limit(16)
       .offset(0)
     @search_params = ""
+
+    @top_img_text_a = SiteConfiguration.find_by(item: 'top_img_text_a')
+    @top_img_text_b = SiteConfiguration.find_by(item: 'top_img_text_b')
   end
 
   def all

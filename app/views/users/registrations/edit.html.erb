@@ -12,8 +12,17 @@
   <% end %>
 </div>
 
-<div id="profile_picture_edit_btn" style="margin:10px 0;">
-  <%= link_to 'プロフィール画像を設定する', profile_pictures_upload_path, class: 'btn btn-primary' %>
+<a data-toggle="modal" href="#myModal" class="btn btn-primary" style="margin:10px 0;" onclick="up_open()">プロフィール画像を設定する</a>
+
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog" style="width:90%;">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button class="close" data-dismiss="modal">&times;</button>
+        <%= render '/profile_pictures/upload', user: @user %>
+      </div>
+    </div>
+  </div>
 </div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
