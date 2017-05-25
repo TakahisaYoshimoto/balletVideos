@@ -6,10 +6,13 @@ class BoardCommentsController < ApplicationController
       @board_comment = BoardComment.new(board_comment_params)
       @board_comment.user_id = current_user.id
       if @board_comment.save
-        @mail = SupportMailer.sendmail_board_commented_after(@board_comment.board_id,
-          @board_comment.text,
-          @board_comment.user.username)
-          .deliver
+        #トークルーム製作者のnotice_emailがtrueだったらコメントしたよってメールする
+        if @board_comment.board.user.notice_email
+          @mail = SupportMailer.sendmail_board_commented_after(@board_comment.board_id,
+            @board_comment.text,
+            @board_comment.user.username)
+            .deliver
+        end
 
         redirect_to board_path(@board_comment.board_id) and return
       else

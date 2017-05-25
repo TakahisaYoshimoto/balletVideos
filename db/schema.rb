@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170506193100) do
+ActiveRecord::Schema.define(version: 20170525131455) do
 
   create_table "board_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "text",       limit: 65535
@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(version: 20170506193100) do
     t.string   "picture_min"
     t.text     "profile",                limit: 65535
     t.string   "picture_lg"
+    t.boolean  "notice_email",                         default: true, null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
