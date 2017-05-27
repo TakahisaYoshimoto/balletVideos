@@ -37,6 +37,9 @@ class BoardsController < ApplicationController
       .where("#{ph_title}", *sptg)
       .page(params[:page])
       .order(created_at: :desc)
+      .distinct
+
+    @search_params = params[:search_params]
 
     render '/boards/lists'
   end
