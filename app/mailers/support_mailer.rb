@@ -16,10 +16,6 @@ class SupportMailer < ApplicationMailer
   end
 
   def sendmail_board_commented_after(board_id, text, username)
-    p '-----------------------------------------------------------------'
-    p 'メールを送る'
-    p board_id
-    p '-----------------------------------------------------------------'
     @board = Board.find(board_id)
     @text = text
     @username = username
