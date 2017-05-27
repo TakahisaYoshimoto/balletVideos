@@ -22,7 +22,7 @@ class YoutubeVideo < ApplicationRecord
   #PV数保存の為のGemの関数
   is_impressionable :counter_cache => true, :column_name => :pv_count, unique: :all
 
-  paginates_per 21  # 1ページあたり21項目表示
+  paginates_per 20  # 1ページあたり20項目表示
 
   extend OrderAsSpecified #gem extend OrderAsSpecified で並び替えする為の記述
 end

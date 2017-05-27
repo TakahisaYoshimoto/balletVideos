@@ -22,22 +22,15 @@ class BoardsController < ApplicationController
     sp = sp.gsub(" ","%,%")#半角スペースをカンマに変換(プレスホルダーの第二引数以降に使用する変数spに代入)
     sp = '%'+sp+'%'
     sp = sp.split(",")#ひとつの文字列だったspをカンマで区切って配列にする
-    ph_title = "(title like ? OR board_tags.name like ?)"
-    sptg = Array.new
-    2.times{ sptg.push(sp[0]) }
-    c = sp.length-1
-    if sp.length > 1
-      c.times {|i|
-        ph_title += " AND (title like ? OR board_tags.name like ?)" 
-        2.times{ sptg.push(sp[i+1]) }
-      }
-    end
 
     @boards = Board.joins(:board_tags)
-      .where("#{ph_title}", *sptg)
       .page(params[:page])
       .order(created_at: :desc)
       .distinct
+
+    sp.each do |s|
+      @boards = @boards.board_search(s)
+    end
 
     @search_params = params[:search_params]
 

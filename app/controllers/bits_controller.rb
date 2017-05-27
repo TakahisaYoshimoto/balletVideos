@@ -118,18 +118,6 @@ class BitsController < ApplicationController
     sp = '%'+sp+'%'
     sp = sp.split(",")#ひとつの文字列だったspをカンマで区切って配列にする
 
-    p '-------------------------------------------------'
-    p YoutubeVideo.joins(:youtube_video_tags)
-        .tag_search("バイク")
-        .tag_search("ツーリング")
-        .tag_search("KLX250")
-        .distinct
-        .count
-    p '-------------------------------------------------'
-
-
-
-
     unless params[:category_params].blank?
       if params[:category_params] == '注目キーワード'
         cp = ""
