@@ -1,7 +1,7 @@
 <div id="user_edit_area" class="col-xs-12" style="padding:0;">
   <table>
     <tr>
-      <td id="user_edit_left_area" class="col-sm-6">
+      <td id="user_edit_left_area" class="col-xs-12 col-sm-6">
         <div id="user_edit_profile_picture">
           <% if @user.picture_lg.present? %>
             <% if Rails.env == 'production' %>
@@ -83,7 +83,7 @@
           </div>
       </td>
 
-      <td id="user_edit_right_area" class="col-sm-6">
+      <td id="user_edit_right_area" class="col-xs-12 col-sm-6">
         <div class="field form-group">
           <div style="padding:0;max-width:500px;">
             <%= f.label :profile, '自己紹介', class: 'control-label col-sm-6' %>

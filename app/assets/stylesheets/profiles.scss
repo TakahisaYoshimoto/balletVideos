@@ -4,7 +4,15 @@
 
 #prifile_area {
   border: 1px solid black;
+  width: 100%;
 }
+  @media screen and (max-width: 767px) {
+    #prifile_area td,
+    #prifile_area tr {
+      width: 100%;
+      display: inline-block;
+    }
+  }
 
 #prifile_left_area {
   background: black;

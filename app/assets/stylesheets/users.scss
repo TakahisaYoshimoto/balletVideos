@@ -23,6 +23,12 @@
     color: white;
     padding-left: 0;
   }
+@media screen and (max-width: 767px) {
+  #user_edit_area td {
+    width: 100%;
+    display: inline-block;
+  }
+}
 
 #user_edit_left_area {
   background: black;

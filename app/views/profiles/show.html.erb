@@ -1,7 +1,7 @@
-<div id="prifile_area" class="col-xs-12" style="padding:0;">
+<div id="prifile_area" style="padding:0;">
   <table>
     <tr>
-      <td id="prifile_left_area" class="col-xs-12 col-sm-6">
+      <td id="prifile_left_area">
         <div class="prifile_left_area_picture col-sm-5">
           <% if @user.picture_lg.present? %>
             <% if Rails.env == 'production' %>
@@ -19,10 +19,10 @@
 
         <% if user_signed_in? %>
           <% if current_user.id == @user.id %>
-            <div id="profile_email_area" class="col-xs-12">
+            <div id="profile_email_area">
               <p><%= @user.email %></p>
             </div>
-            <div id="prifile_check_area" class="col-xs-12">
+            <div id="prifile_check_area">
               <% if @user.acceptance %>
                 <p>運営からのお知らせメールを受け取ります。</p>
               <% else %>
@@ -38,7 +38,7 @@
         <% end %>
       </td>
 
-      <td id="prifile_right_area" class="col-xs-12 col-sm-6">
+      <td id="prifile_right_area">
         <% if @user.profile.present? %>
           <%= simple_format(@user.profile) %>
         <% else %>
