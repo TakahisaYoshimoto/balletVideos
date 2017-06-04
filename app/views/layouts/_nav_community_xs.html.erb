@@ -18,6 +18,17 @@
         <% end %>
       </div>
     </li>
+    <li class="dropdown-submenu visible-xs">
+      <a href="#" class="nav_submenu dropdown-toggle" data-toggle="dropdown" role="button">人気タグ<span class="caret"></span></a>
+      <ul class="nav_submenu_contents dropdown-menu" role="menu">
+          <% @board_tags.each do |b_tag| %>
+            <li>
+              <% tagname = truncate(b_tag[0], length: 10) %>
+              <%= link_to "##{tagname}", { :controller => '/boards', action: :Search, search_params: b_tag[0] } %>
+            </li>
+          <% end %>
+      </ul>
+    </li>
     <li><%= link_to '新着', lists_boards_path %></li>
     <li><%= link_to '注目トーク', attention_boards_path  %></li>
     <li><%= link_to 'トークルームを立てる', new_board_path  %></li>

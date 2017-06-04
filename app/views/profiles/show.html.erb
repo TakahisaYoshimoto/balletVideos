@@ -1,15 +1,54 @@
-<% if @user.picture_lg.present? %>
-  <% if Rails.env == 'production' %>
-    <%= image_tag ENV['AWS_PICTURE_PATH']+"#{ @user.picture_lg }" %>
-  <% else %>
-    <%= image_tag "/docs/#{ @user.picture_lg }" %>
-  <% end -%>
-<% else %>
-  <%= image_tag "no-picture-lg.gif" %>
-<% end %>
-<p style="font-weight:bold;"><%= @user.username %></p>
-<% if @user.profile.present? %>
-  <%= simple_format(@user.profile) %>
-<% else %>
-  <p>自己紹介が登録されていません。</p>
-<% end %>
+<div id="prifile_area" class="col-xs-12" style="padding:0;">
+  <table>
+    <tr>
+      <td id="prifile_left_area" class="col-xs-12 col-sm-6">
+        <div class="prifile_left_area_picture col-sm-5">
+          <% if @user.picture_lg.present? %>
+            <% if Rails.env == 'production' %>
+              <%= image_tag ENV['AWS_PICTURE_PATH']+"#{ @user.picture_lg }", width: '100%', id: 'prifile_left_area_picture' %>
+            <% else %>
+              <%= image_tag "/docs/#{ @user.picture_lg }", width: '100%', width: '100%', id: 'prifile_left_area_picture' %>
+            <% end -%>
+          <% else %>
+            <%= image_tag "no-picture-lg.gif", width: '100%', width: '100%', id: 'prifile_left_area_picture' %>
+          <% end %>
+        </div>
+        <div class="prifile_left_area_name col-sm-7">
+          <p style="font-weight:bold;"><%= @user.username %>さん</p>
+        </div>
+
+        <% if user_signed_in? %>
+          <% if current_user.id == @user.id %>
+            <div id="profile_email_area" class="col-xs-12">
+              <p><%= @user.email %></p>
+            </div>
+            <div id="prifile_check_area" class="col-xs-12">
+              <% if @user.acceptance %>
+                <p>運営からのお知らせメールを受け取ります。</p>
+              <% else %>
+                <p>運営からのお知らせメールを受け取りません。</p>
+              <% end %>
+              <% if @user.notice_email %>
+                <p>トーク、コメントへのアクション通知を受け取ります。</p>
+              <% else %>
+                <p>トーク、コメントへのアクション通知を受け取りません。</p>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </td>
+
+      <td id="prifile_right_area" class="col-xs-12 col-sm-6">
+        <% if @user.profile.present? %>
+          <%= simple_format(@user.profile) %>
+        <% else %>
+          <p>自己紹介が登録されていません。</p>
+        <% end %>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div id="prifile_area_edit_link_area" class="col-xs-12">
+  <%= link_to 'プロフィールを編集する', edit_user_registration_path, id: 'prifile_area_edit_link' %>
+</div>

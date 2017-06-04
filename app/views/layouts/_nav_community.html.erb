@@ -25,8 +25,8 @@
       <div class="nav_community_collapse_area_child_area">
         <% @board_tags.each do |b_tag| %>
           <div class="nav_community_collapse_area_child">
-            <%#= b_tag[0] %>
-            <%= link_to "##{b_tag[0]}", { :controller => '/boards', action: :Search, search_params: b_tag[0] } %>
+            <% tagname = truncate(b_tag[0], length: 10) %>
+            <%= link_to "##{tagname}", { :controller => '/boards', action: :Search, search_params: b_tag[0] } %>
           </div>
         <% end %>
       </div>
