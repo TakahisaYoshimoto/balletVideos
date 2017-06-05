@@ -128,6 +128,30 @@ class BitsController < ApplicationController
       }
     end
 
+    # p '--------------------------------------------------------------------'
+    # p YoutubeVideo.joins(:youtube_video_tags).where("title like ? OR youtube_video_tags.name like ?", 'バイク', "バイク").count
+    # p '--------------------------------------------------------------------'
+    # p YoutubeVideo.joins(:youtube_video_tags).where("title like ? OR youtube_video_tags.name like ?", 'ツーリング', "ツーリング").count
+    # p '--------------------------------------------------------------------'
+    # p YoutubeVideo.joins(:youtube_video_tags)
+    #     .where("(title like ? OR youtube_video_tags.name like ?) AND (title like ? OR youtube_video_tags.name like ?)", 'バイク', "バイク", 'ツーリング', "ツーリング")
+    #     .count
+    # p '--------------------------------------------------------------------'
+
+
+    p '--------------------------------------------------------------------'
+    p YoutubeVideo.joins(:youtube_video_tags).where("youtube_video_tags.name like ?", "バイク").count
+    p '--------------------------------------------------------------------'
+    p YoutubeVideo.joins(:youtube_video_tags).where("youtube_video_tags.name like ?", "ツーリング").count
+    p '--------------------------------------------------------------------'
+    p YoutubeVideo.joins(:youtube_video_tags)
+        .where("youtube_video_tags.name IN (?)", ['バイク', "ツーリング"])
+        .count
+    p '--------------------------------------------------------------------'
+    p YoutubeVideo.joins(:youtube_video_tags).where("youtube_video_tags.name like ?", "バイク") & YoutubeVideo.joins(:youtube_video_tags).where("youtube_video_tags.name like ?", "ツーリング")
+    p '--------------------------------------------------------------------'
+
+
     unless params[:category_params].blank?
       if params[:category_params] == '注目キーワード'
         cp = ""
