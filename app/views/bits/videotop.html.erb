@@ -18,6 +18,7 @@
   <div class="top_img_link_out"><%= link_to 'まずは演目から探してみる', { controller: :bits, action: :genreSearch, search_params: '演目', or: 'pv' }, class: 'top_img_link' %></div>
 </div>
 <div class="container">
+  <p class="pick_video_text col-xs-12">ピックアップ動画</p>
   <div id="y_index_links">
     <div class="y_index_video_lists col-xs-12 row-eq-height" style="padding:0;">
 
@@ -29,12 +30,12 @@
           <%= render 'list_md4', youtube: youtube %>
         </div>
       <% end %>
+      <p class="new_video_text col-xs-12">新着動画</p>
 
       <% @youtubes.each_with_index do |youtube, i| %>
         <div class="col-xs-12 col-sm-3 row-eq-height" style="height: 100%;">
           <%= render 'list_sm123', youtube: youtube %>
         </div>
-
         <% if i == 7 || i == 15 %>
           <%# 広告エリア %>
           <div class="col-xs-12 hidden-sm hidden-md hidden-lg" style="text-align:center;padding-bottom:15px;overflow: visible;margin-left: -15px;">
