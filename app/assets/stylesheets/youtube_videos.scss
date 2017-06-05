@@ -208,7 +208,7 @@
 .reply_view_button:hover {
   text-align: right;
   color: #292929;
-  cursor: pointer;  
+  cursor: pointer;
 }
 
 #related_videos_list {
@@ -228,18 +228,30 @@
   background: black;
   color: white;
 }
+
+.y_video_img_video_time {
+  font-size:13px;
+  padding:2px 4px;
+}
+  @media screen and (max-width: 767px) {
+    .y_video_img_video_time {
+      font-size:11px;
+      padding:1px 2px;
+    }
+  }
+
 .related_video_view_count {
     position: absolute;
     bottom: 0;
     left: 51%;
   }
-@media screen and (max-width: 992px) {
-  .related_video_view_count {
-    position: absolute;
-    bottom: 0;
-    left: 44%;
+  @media screen and (max-width: 992px) {
+    .related_video_view_count {
+      position: absolute;
+      bottom: 0;
+      left: 44%;
+    }
   }
-}
 .related_video_view_count p {
   font-size: 12px;
   color: gray;

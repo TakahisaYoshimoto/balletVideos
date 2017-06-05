@@ -18,9 +18,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-$xsmall:  "only screen and (max-width:768px)";
-$small: "only screen and (min-width:768px) and (max-width:992px)";
-$middle: "only screen and (min-width:992px) and (max-width:1200px)";
+$xsmall:  "only screen and (max-width:767px)";
+$small: "only screen and (min-width:768px) and (max-width:991px)";
+$middle: "only screen and (min-width:992px) and (max-width:1199px)";
 $large:  "only screen and (min-width:1200px)";
 
 .btn-primary {
@@ -52,6 +52,17 @@ html, body {
   width: 100%;
   margin: 0;
 }
+
+h1 {
+  font-size:30px;
+}
+
+@media screen and (max-width:767px) {
+  h1 {
+    font-size:20px;
+  }
+}
+
 body {
   /*background: #F1F1F1;*/
   background: white;
@@ -160,7 +171,7 @@ body {
     margin-top: 2px;
   }
   .nav > li:nth-last-child(n+1):nth-last-child(-n+2) a {
-    margin-top: 15px;
+    margin-top: 14px;
   }
 
   #site_logo {
