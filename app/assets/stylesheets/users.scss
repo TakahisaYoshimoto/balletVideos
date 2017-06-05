@@ -1,5 +1,6 @@
 #profile_text_area {
   height: 250px;
+  width: 100%;
 }
 @media screen and (min-width: 768px) {
   #profile_text_area {
@@ -10,3 +11,49 @@
  display:block;
  content:"Second line \a Third line";
 }
+
+/* users/edit */
+
+#user_edit_area {
+  border: 1px solid black;
+}
+  #user_edit_area label,
+  #user_edit_area i,
+  #user_edit_area em {
+    color: white;
+    padding-left: 0;
+  }
+@media screen and (max-width: 767px) {
+  #user_edit_area td {
+    width: 100%;
+    display: inline-block;
+  }
+}
+
+#user_edit_left_area {
+  background: black;
+}
+  #user_edit_profile_picture {
+    display: inline-block;
+  }
+  #user_edit_picture {
+    border-radius: 100%;
+  }
+
+#user_edit_right_area {
+  background: white;
+}
+  #user_edit_cancel {
+    display: inline-block;
+  }
+  #user_edit_submit_area {
+    display: inline-block;
+  }
+  #user_edit_submit_area input {
+    margin-top: 20px;
+    border: 1px solid black;
+    padding: 30px;
+    color: black;
+    display: inline-block;
+    background: white;
+  }

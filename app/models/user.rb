@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :boards
   has_many :board_comments
 
-  validates :profile, length: {maximum: 5000}
+  validates :profile, length: {maximum: 1000}
   validates :username, uniqueness: true
 
   paginates_per 30  # 1ページあたり30項目表示

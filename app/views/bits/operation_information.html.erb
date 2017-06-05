@@ -1,6 +1,6 @@
-<h2>運営情報</h2>
+<h1>運営情報</h1>
 
-<%= simple_format(@operation.contents) %>
+<%= simple_format(@operation.contents) if @operation.present? %>
 
 <% if user_signed_in? %>
   <% if current_user.user_level > 1 %>

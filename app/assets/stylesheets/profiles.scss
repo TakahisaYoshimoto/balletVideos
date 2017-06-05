@@ -1,3 +1,40 @@
 // Place all the styles related to the profiles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#prifile_area {
+  border: 1px solid black;
+  width: 100%;
+}
+  @media screen and (max-width: 767px) {
+    #prifile_area td,
+    #prifile_area tr {
+      width: 100%;
+      display: inline-block;
+    }
+  }
+
+#prifile_left_area {
+  background: black;
+}
+  #prifile_left_area p {
+    color: white;
+  }
+  #prifile_left_area_picture {
+    border-radius: 100%;
+  }
+
+#prifile_right_area {
+  background: white;
+}
+
+  #prifile_area_edit_link_area {
+    text-align: right;
+  }
+  #prifile_area_edit_link {
+    margin-top: 20px;
+    border: 1px solid black;
+    padding: 30px;
+    color: black;
+    display: inline-block;
+  }

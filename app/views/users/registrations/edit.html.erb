@@ -1,107 +1,109 @@
-<h2>登録情報変更</h2>
+<div id="user_edit_area" class="col-xs-12" style="padding:0;">
+  <table>
+    <tr>
+      <td id="user_edit_left_area" class="col-xs-12 col-sm-6">
+        <div id="user_edit_profile_picture">
+          <% if @user.picture_lg.present? %>
+            <% if Rails.env == 'production' %>
+              <%= image_tag ENV['AWS_PICTURE_PATH']+"#{ @user.picture_lg }", id: 'user_edit_picture' %>
+            <% else %>
+              <%= image_tag "/docs/#{ @user.picture_lg }", id: 'user_edit_picture' %>
+            <% end -%>
+          <% else %>
+            <%= image_tag "no-picture-lg.gif", id: 'user_edit_picture' %>
+          <% end %>
+        </div>
 
-<div id="user_edit_profile_picture">
-  <% if @user.picture_lg.present? %>
-    <% if Rails.env == 'production' %>
-      <%= image_tag ENV['AWS_PICTURE_PATH']+"#{ @user.picture_lg }" %>
-    <% else %>
-      <%= image_tag "/docs/#{ @user.picture_lg }" %>
-    <% end -%>
-  <% else %>
-    <%= image_tag "no-picture-lg.gif" %>
+        <a data-toggle="modal" href="#myModal" id="user_edit_picture_link" style="margin:10px 0;" onclick="up_open()">プロフィール画像を設定する</a>
+
+        <div class="modal fade" id="myModal">
+          <div class="modal-dialog" style="width:90%;">
+            <div class="modal-content">
+              <div class="modal-body">
+                <button class="close" data-dismiss="modal">&times;</button>
+                <%= render '/profile_pictures/upload', user: @user %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <span style="color:red;"><%= devise_error_messages! %></span>
+
+          <div class="field form-group">
+            <div style="padding:0;max-width:500px;">
+              <%= f.label :username, 'ユーザーネーム', class: 'control-label col-sm-12' %><br />
+              <%= f.text_field :username, class: 'form-control' %>
+            </div>
+          </div>
+
+          <div class="field form-group col-sm-12" style="padding:0;">
+            <div style="padding:0;max-width:500px;">
+              <%= f.label :email, 'メールアドレス', class: 'control-label col-sm-12' %><br />
+              <%= f.email_field :email, class: 'form-control col-sm-6', autofocus: true %>
+            </div>
+          </div>
+
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>メールアドレスの変更申請があった為、承認メールを送りました、メールから変更手続き完了をしてください。: <%= resource.unconfirmed_email %></div>
+          <% end %>
+
+          <div class="field form-group">
+            <div style="padding:0;max-width:500px;">
+              <%= f.label :password, '新しいパスワード', class: 'control-label col-sm-12' %> <i>(パスワードを変更する場合入力して下さい。)</i><br />
+              <%= f.password_field :password, class: 'form-control', autocomplete: "off" %>
+              <% if @minimum_password_length %>
+                <br />
+                <em><%= @minimum_password_length %> 文字以上にしてください。</em>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="field form-group">
+            <div style="padding:0;max-width:500px;">
+              <%= f.label :password_confirmation, '新しいパスワードを確認の為もう一度入力して下さい', class: 'control-label col-sm-12' %><br />
+              <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: "off" %>
+            </div>
+          </div>
+
+          <div class="field form-group">
+            <div style="padding:0;max-width:500px;">
+              <%= f.label :current_password, '現在のパスワード', class: 'control-label col-sm-12' %>
+              <i>(プロフィール情報を変更するには、現在のパスワードが必要です。)</i><br />
+              <%= f.password_field :current_password, class: 'form-control', autocomplete: "off" %>
+            </div>
+          </div>
+
+          <div class="field form-group">
+            <label><%= f.check_box :acceptance, {}, 'true', 'false' %> 運営からのお知らせメールを受け取る。</label>
+          </div>
+
+          <div class="field form-group">
+            <label><%= f.check_box :notice_email, {}, 'true', 'false' %> 通知メールを受信する。</label>
+          </div>
+      </td>
+
+      <td id="user_edit_right_area" class="col-xs-12 col-sm-6">
+        <div class="field form-group">
+          <div style="padding:0;max-width:500px;">
+            <%= f.label :profile, '自己紹介', class: 'control-label col-sm-6' %>
+            <input type="text" id="characnt" disabled="disabled" class="col-sm-6"><br />
+            <%= f.text_area :profile, class: 'form-control',
+              id: 'profile_text_area',
+              placeholder: 'あなたのプロフィールについて自由に書くことができます。',
+              onkeydown: 'if(event.keyCode == 13){javascript:transmission();}',
+              onkeyup: "document.getElementById('characnt').value=1000 - this.value.length",
+              maxlength: "1000" %>
+          </div>
+        </div>
+
+        <%= link_to "キャンセル", :back, id: 'user_edit_cancel' %>
+
+        <div class="actions form-group" id="user_edit_submit_area">
+          <%= f.submit "更新" %>
+        </div>
+      </td>
+    </tr>
+  </table>
   <% end %>
 </div>
-
-<a data-toggle="modal" href="#myModal" class="btn btn-primary" style="margin:10px 0;" onclick="up_open()">プロフィール画像を設定する</a>
-
-<div class="modal fade" id="myModal">
-  <div class="modal-dialog" style="width:90%;">
-    <div class="modal-content">
-      <div class="modal-body">
-        <button class="close" data-dismiss="modal">&times;</button>
-        <%= render '/profile_pictures/upload', user: @user %>
-      </div>
-    </div>
-  </div>
-</div>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <span style="color:red;"><%= devise_error_messages! %></span>
-
-  <div class="field form-group col-sm-12" style="padding:0;">
-    <div style="padding:0;max-width:500px;">
-      <%= f.label :email, 'メールアドレス', class: 'control-label col-sm-12' %><br />
-      <%= f.email_field :email, class: 'form-control col-sm-6', autofocus: true %>
-    </div>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>メールアドレスの変更申請があった為、承認メールを送りました、メールから変更手続き完了をしてください。: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field form-group">
-    <div style="padding:0;max-width:500px;">
-      <%= f.label :username, 'ユーザーネーム', class: 'control-label col-sm-12' %><br />
-      <%= f.text_field :username, class: 'form-control' %>
-    </div>
-  </div>
-
-  <div class="field form-group">
-    <div style="padding:0;max-width:500px;">
-      <%= f.label :profile, '自己紹介', class: 'control-label col-sm-12' %><br />
-      <%= f.text_area :profile, class: 'form-control', id: 'profile_text_area', placeholder: 'あなたのプロフィールについて自由に書くことができます。' %>
-    </div>
-  </div>
-
-  <div class="field form-group">
-    <div style="padding:0;max-width:500px;">
-      <%= f.label :password, '新しいパスワード', class: 'control-label col-sm-12' %> <i>(パスワードを変更する場合入力して下さい。)</i><br />
-      <%= f.password_field :password, class: 'form-control', autocomplete: "off" %>
-      <% if @minimum_password_length %>
-        <br />
-        <em><%= @minimum_password_length %> 文字以上にしてください。</em>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="field form-group">
-    <div style="padding:0;max-width:500px;">
-      <%= f.label :password_confirmation, '新しいパスワードを確認の為もう一度入力して下さい', class: 'control-label col-sm-12' %><br />
-      <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: "off" %>
-    </div>
-  </div>
-
-  <div class="field form-group">
-    <div style="padding:0;max-width:500px;">
-      <%= f.label :current_password, '現在のパスワード', class: 'control-label col-sm-12' %>
-      <i>(プロフィール情報を変更するには、現在のパスワードが必要です。)</i><br />
-      <%= f.password_field :current_password, class: 'form-control', autocomplete: "off" %>
-    </div>
-  </div>
-
-  <div class="field form-group">
-    <label><%= f.check_box :acceptance, {}, 'true', 'false' %> 運営からのお知らせメールを受け取る。</label>
-  </div>
-
-  <div class="field form-group">
-    <label><%= f.check_box :notice_email, {}, 'true', 'false' %> 通知メールを受信する。</label>
-  </div>
-
-  <div class="actions form-group">
-    <%= f.submit "更新", class: 'btn btn-primary' %>
-  </div>
-<% end %>
-
-<%
-=begin
-%>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%
-=end
-%>
-
-<%= link_to "戻る", :back %>

@@ -117,16 +117,6 @@ class BitsController < ApplicationController
     sp = sp.gsub(" ","%,%")#半角スペースをカンマに変換(プレスホルダーの第二引数以降に使用する変数spに代入)
     sp = '%'+sp+'%'
     sp = sp.split(",")#ひとつの文字列だったspをカンマで区切って配列にする
-    ph_title = "(title like ? OR youtube_video_tags.name like ?)"
-    sptg = Array.new
-    2.times{ sptg.push(sp[0]) }
-    c = sp.length-1
-    if sp.length > 1
-      c.times{|i|
-        ph_title += " AND (title like ? OR youtube_video_tags.name like ?)"
-        2.times{ sptg.push(sp[i+1]) }
-      }
-    end
 
     # p '--------------------------------------------------------------------'
     # p YoutubeVideo.joins(:youtube_video_tags).where("title like ? OR youtube_video_tags.name like ?", 'バイク', "バイク").count
@@ -165,9 +155,12 @@ class BitsController < ApplicationController
       @category_params = ""
     end
 
+    ph_title = "title like ?"
+    c = sp.length-1
+    c.times{ ph_title += " AND title like ?" } if sp.length > 1
     #動画を一致するタグが多い順にIDを配列で格納
     tag_keys = YoutubeVideo.joins(:youtube_video_tags)
-      .where("#{ph_title}", *sptg)
+      .where("#{ph_title}", *sp)
       .group(:id)
       .order('count_id desc')
       .limit(10)
@@ -176,24 +169,36 @@ class BitsController < ApplicationController
 
     if params[:or] == "pv"
       @youtubes = YoutubeVideo.joins(:youtube_video_tags)
-        .where("(#{ph_title}) AND (category like ?)", *sptg, "%"+cp+"%")
+        .where("category like ?", "%"+cp+"%")
         .page(params[:page])
         .order(pv_count: :desc)
         .order(created_at: :desc)
         .distinct
+
+      sp.each do |s|
+        @youtubes = @youtubes.tag_search(s)
+      end
     elsif params[:or] == "time"
       @youtubes = YoutubeVideo.joins(:youtube_video_tags)
-        .where("(#{ph_title}) AND (category like ?)", *sptg, "%"+cp+"%")
+        .where("category like ?", "%"+cp+"%")
         .page(params[:page])
         .order(created_at: :desc)
         .distinct
+
+      sp.each do |s|
+        @youtubes = @youtubes.tag_search(s)
+      end
     else
       @youtubes = YoutubeVideo.joins(:youtube_video_tags)
-        .where("(#{ph_title}) AND (category like ?)", *sptg, "%"+cp+"%")
+        .where("category like ?", "%"+cp+"%")
         .page(params[:page])
         .order_as_specified(id: tag_keys)
         .order(created_at: :desc)
         .distinct
+
+      sp.each do |s|
+        @youtubes = @youtubes.tag_search(s)
+      end
     end
 
     #検索結果の動画についてるタグ一覧を取得、検索キーワードは除外

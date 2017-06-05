@@ -2,6 +2,11 @@ class YoutubeVideo < ApplicationRecord
   has_many :youtube_video_tags, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :view_histories
+
+  scope :tag_search, ->(name) {
+    where(id: YoutubeVideoTag.where("title like ? OR youtube_video_tags.name like ?", name, name).select(:youtube_video_id))
+  }
+
   def like_user(user_id)
    likes.find_by(user_id: user_id)
   end
@@ -17,7 +22,7 @@ class YoutubeVideo < ApplicationRecord
   #PV数保存の為のGemの関数
   is_impressionable :counter_cache => true, :column_name => :pv_count, unique: :all
 
-  paginates_per 21  # 1ページあたり21項目表示
+  paginates_per 20  # 1ページあたり20項目表示
 
   extend OrderAsSpecified #gem extend OrderAsSpecified で並び替えする為の記述
 end
