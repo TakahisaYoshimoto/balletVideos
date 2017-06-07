@@ -77,7 +77,7 @@ class BoardsController < ApplicationController
 
   def show
     @board_comment = BoardComment.new
-    @board_comments = BoardComment.where(board_id: @board.id).order('created_at asc').includes(:user)
+    @board_comments = BoardComment.where(board_id: @board.id).order('created_at asc').page(params[:page]).includes(:user)
   end
 
   def new
