@@ -49,9 +49,73 @@
   width: 90%;
   text-align: center;
 }
+@media screen and (max-width: 767px){
+  #board_top_img_search_area {
+    width: 60%;
+    text-align: center;
+  }
+}
+
 #board_top_img_search_area input {
   background: rgba(0,0,0,0);
+  height:51px;
+  border: 4px solid white;
+  color:#FFF;
+  font-weight:bold;
+  font-size:18px;
 }
+  @media screen and (max-width: 767px){
+    #board_top_img_search_area input {
+      background: rgba(0,0,0,0);
+      height:38px;
+      border: 4px solid white;
+      color:#FFF;
+      font-size:14px;
+      width:200px;
+    }
+  }
+
+input.talk_search::-webkit-input-placeholder {
+    color: #FFF;
+}
+input.talk_search:-ms-input-placeholder {
+    color: #FFF;
+}
+input.talk_search::-ms-input-placeholder {
+    color: #FFF;
+}
+input.talk_search::-moz-placeholder {
+    color: #FFF;
+}
+
+button.talk_btn {
+  background:transparent;
+  color:#FFF;
+  border:transparent;
+  font-size: 24px;
+  margin-top:6px;
+  transition: .3s;
+}
+@media screen and (max-width: 767px){
+  button.talk_btn {
+    background:transparent;
+    color:#FFF;
+    border:transparent;
+    font-size: 24px;
+    margin-top:0px;
+  }
+}
+
+button.talk_btn:hover {
+  background:transparent;
+  color:pink;
+  border:transparent;
+	-webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+}
+
 @media screen and (min-width: 768px){
   .board_top_img {
     height: 400px;
@@ -69,12 +133,11 @@
   .board_top_img_link {
     font-size: 24px;
     padding: 5px 40px 5px 40px;
-    border: 6px solid white;
+    border: 4px solid white;
   }
   #board_top_img_search_area {
     width: 50%;
     max-width: 400px;
-    text-align: left;
   }
 }
 @media screen and (min-width: 1200px){
