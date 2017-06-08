@@ -100,7 +100,7 @@
       </div>
       <% @boards.each do |board| %>
         <%= link_to board_path(board) do %>
-          <div class="bits_index_board col-sm-3">
+          <div class="bits_index_board col-md-3 col-sm-4">
             <div class="bits_index_board_child">
               <div class="bits_index_profile_picture">
                 <%= render 'profile_picture', i: board %>
@@ -115,7 +115,7 @@
                   <p><%= "##{tag.name}" %></p>
                 </div>
               <% end %>
-            </div>
+              </div>
               <div class="bits_index_board_comments_count">
                 <p>コメント数 : <%= board.board_comments_count %></p>
               </div>
