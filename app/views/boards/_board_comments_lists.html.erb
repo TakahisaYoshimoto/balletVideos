@@ -1,0 +1,48 @@
+<% board_comments.each do |bc| %>
+  <%# board_commentのdisplayがtrueだったら表示 %>
+  <% if bc.display == true %>
+    <% if bc.user.id == bc.board.user_id %>
+    <li class="board_master_comments">
+    <% else%>
+    <li class="board_comments">
+    <% end %>
+      <%= render 'profile_picture_lists', i: bc %>
+      <strong><%= bc.user.username %></strong><%= bc.created_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %>
+      <%= simple_format(bc.text) %>
+      <% if user_signed_in? %>
+        <% if current_user.user_level > 1 %>
+          <%= link_to '非表示にする', board_comment_path(bc), method: :delete, data: { confirm: "削除してよろしいですか？" } %>
+        <% end %>
+      <% end %>
+    </li>
+  <% else %>
+    <%# board_commentのdisplayがfalseでも管理者権限のユーザーでログインしてたら表示 %>
+    <% if user_signed_in? %>
+      <% if current_user.user_level > 1 %>
+        <% if bc.user.id == bc.board.user_id %>
+        <li class="board_master_comments">
+        <% else%>
+        <li class="board_comments">
+        <% end %>
+          <%= render 'profile_picture_lists', i: bc %>
+          <strong><%= bc.user.username %></strong><%= bc.created_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %>
+          <%= simple_format(bc.text) %>
+          <%= link_to '表示させる', display_board_comments_path(bc)%>
+        <span style="color:red;">削除したコメントです</span>
+        </li>
+      <% else %>
+        <%# ログインしてても管理者じゃない場合、非表示 %>
+        <li class="board_comments">
+          <%= image_tag("no-picture-min.gif") %>
+          <strong>非表示</strong>
+        </li>
+      <% end %>
+    <% else %>
+      <%# ログインしてない場合非表示 %>
+      <li class="board_comments">
+        <%= image_tag("no-picture-min.gif") %>
+        <strong>非表示</strong>
+      </li>
+    <% end %>
+  <% end %>
+<% end %>
