@@ -1,0 +1,2 @@
+$('#board_comment_lists').append("<%= escape_javascript(render 'board_comments_lists', board_comments: @board_comments) %>");
+$("#board_comments_more_link").replaceWith("<%= escape_javascript(link_to_next_page(@board_comments, 'もっと見る', remote: true, id: 'board_comments_more_link')) %>");
