@@ -1,0 +1,67 @@
+{
+  "IcoMoonType": "selection",
+  "icons": [
+    {
+      "icon": {
+        "paths": [
+          "M1022.062 374.25c-13.938-151.5-145.468-248.688-274.718-248.688-129.282-0-235.344 104.782-235.344 234.032v0c0-129.25-106.062-234.032-235.312-234.032-129.282 0-260.812 97.188-274.75 248.688-1.312 14.406-1.938 28.218-1.938 41.438-1.25 304.656 338.312 309.782 494.094 471.094 6.282 6.5 5.218 5.938 5.218 5.938 3.218 3.626 7.812 5.718 12.688 5.718s9.5-2.094 12.718-5.75c0 0-1.094 0.594 5.218-5.906 155.752-161.344 495.314-166.438 494.064-471.094 0-13.22-0.624-27.032-1.938-41.438z"
+        ],
+        "attrs": [
+          {}
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "i_icon_10029_icon_100291"
+        ]
+      },
+      "attrs": [
+        {}
+      ],
+      "properties": {
+        "order": 27,
+        "id": 11,
+        "name": "maked_talk",
+        "prevSize": 32,
+        "code": 59648
+      },
+      "setIdx": 0,
+      "setId": 3,
+      "iconIdx": 0
+    }
+  ],
+  "height": 1024,
+  "metadata": {
+    "name": "icomoon"
+  },
+  "preferences": {
+    "showGlyphs": true,
+    "showQuickUse": true,
+    "showQuickUse2": true,
+    "showSVGs": true,
+    "fontPref": {
+      "prefix": "icon-",
+      "metadata": {
+        "fontFamily": "icomoon"
+      },
+      "metrics": {
+        "emSize": 1024,
+        "baseline": 6.25,
+        "whitespace": 50
+      },
+      "embed": false
+    },
+    "imagePref": {
+      "prefix": "icon-",
+      "png": true,
+      "useClassSelector": true,
+      "color": 0,
+      "bgColor": 16777215,
+      "classSelector": ".icon"
+    },
+    "historySize": 50,
+    "showCodes": true,
+    "gridSize": 16
+  }
+}

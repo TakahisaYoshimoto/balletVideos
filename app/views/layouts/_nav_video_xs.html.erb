@@ -4,7 +4,7 @@
     <li>
       <div class="form-group row" style="margin:0 15px;">
         <%= form_tag({controller: '/bits', action: :Search }, method: :get) do %>
-          <div class="input-group form-group" style="margin:0;">
+          <div class="input-group form-group" style="max-width:300px;margin:10px auto;">
             <%= search_field_tag :search_params,
               @search_params,
               class: 'form-control',
@@ -18,16 +18,7 @@
         <% end %>
       </div>
     </li>
-    <% if user_signed_in? %>
-      <li class="visible-xs">
-        <%= link_to :controller => '/bits', action: :like_videos, or: 'time' do %>
-          <i class="glyphicon glyphicon-thumbs-up"></i>グッドした動画
-        <% end %>
-      </li>
-      <li class="visible-xs">
-        <%= link_to '視聴履歴', {:controller => '/bits', action: :view_histories, or: 'history'} %>
-      </li>
-    <% end %>
+    <li><%= link_to '動画トップ', videotop_bits_path %></li>
     <li class="dropdown-submenu visible-xs">
       <a href="#" class="nav_submenu dropdown-toggle" data-toggle="dropdown" role="button">注目キーワード<span class="caret"></span></a>
       <ul class="nav_submenu_contents dropdown-menu" role="menu">
@@ -64,5 +55,15 @@
     <li class="dropdown-submenu visible-xs">
       <%= link_to 'その他', { :controller => '/bits', action: :genreSearch, search_params: "その他", or: 'pv' } %>
     </li>
+    <% if user_signed_in? %>
+      <li class="visible-xs">
+        <%= link_to :controller => '/bits', action: :like_videos, or: 'time' do %>
+          <i class="glyphicon glyphicon-thumbs-up"></i>グッドした動画
+        <% end %>
+      </li>
+      <li class="visible-xs">
+        <%= link_to '視聴履歴', {:controller => '/bits', action: :view_histories, or: 'history'} %>
+      </li>
+    <% end %>
   </ul>
 </li>

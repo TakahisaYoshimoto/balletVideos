@@ -1,0 +1,67 @@
+{
+  "IcoMoonType": "selection",
+  "icons": [
+    {
+      "icon": {
+        "paths": [
+          "M511.99 7.538c-282.78 0-511.99 168.836-511.99 426.666 0 159.036 98.738 296.16 279.426 403.246l297.818 179.012 3.354-165.614c264.632-14.738 443.402-170.758 443.402-416.644 0-257.83-229.228-426.666-512.010-426.666zM576.35 774.638l-70.62 3.932-1.434 70.732-0.692 33.856-185.27-111.372c-160.582-95.16-242.012-208.748-242.012-337.582 0-230.012 219.166-350.344 435.668-350.344s435.688 120.334 435.688 350.344c0 200.218-138.82 327.482-371.328 340.434z"
+        ],
+        "attrs": [
+          {}
+        ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
+        "grid": 0,
+        "tags": [
+          "i_icon_12527_icon_125271"
+        ]
+      },
+      "attrs": [
+        {}
+      ],
+      "properties": {
+        "order": 17,
+        "id": 1,
+        "name": "talk",
+        "prevSize": 32,
+        "code": 59648
+      },
+      "setIdx": 0,
+      "setId": 3,
+      "iconIdx": 0
+    }
+  ],
+  "height": 1024,
+  "metadata": {
+    "name": "icomoon"
+  },
+  "preferences": {
+    "showGlyphs": true,
+    "showQuickUse": true,
+    "showQuickUse2": true,
+    "showSVGs": true,
+    "fontPref": {
+      "prefix": "icon-",
+      "metadata": {
+        "fontFamily": "icomoon"
+      },
+      "metrics": {
+        "emSize": 1024,
+        "baseline": 6.25,
+        "whitespace": 50
+      },
+      "embed": false
+    },
+    "imagePref": {
+      "prefix": "icon-",
+      "png": true,
+      "useClassSelector": true,
+      "color": 0,
+      "bgColor": 16777215,
+      "classSelector": ".icon"
+    },
+    "historySize": 50,
+    "showCodes": true,
+    "gridSize": 16
+  }
+}
