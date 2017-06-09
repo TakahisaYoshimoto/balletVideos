@@ -93,21 +93,41 @@
 }
 
 .bits_index_board_child {
-  border: 1px solid black;
+  border: 1.0px solid gray;
   margin-bottom: 15px;
-  padding: 10px 10px 15px 15px;
+  padding: 18px 18px 23px 23px;
   height: 250px;
   position: relative;
 }
+  @media screen and (max-width:767px) {
+    .bits_index_board_child {
+      border: 1.0px solid gray;
+      margin-bottom: 15px;
+      padding: 18px 18px 23px 23px;
+      height: 200px;
+      position: relative;
+    }
+  }
+
 .bits_index_board_child:not(:last-child) {
   margin-right: 15px;
 }
+
 .bits_index_profile_picture img {
-  border-radius: 5px;
+  // border-radius: 5px;
   border-radius: 100%;
   margin-bottom: 8px;
+  margin-right:5px;
+  max-width: 50px;
+  height: auto;
 }
-
+  @media screen and (max-width:767px) {
+    .bits_index_profile_picture img {
+      max-width: 45px;
+      height: auto;
+    }
+  }
+  
 .bits_index_board_title,
 .bits_index_board_tags {
   text-align: left;
@@ -130,6 +150,12 @@
   color: black;
   font-size: 14px;
 }
+  @media screen and (max-width:767px) {
+    .bits_index_board_comments_count p {
+      font-size: 12px;
+    }
+  }
+
 
 .bits_index_board_time {
   font-size:11px;
@@ -140,12 +166,25 @@
   margin-top:20px;
   text-align:center;
 }
+  @media screen and (max-width:991px) {
+    .bits_index_board_tags_area {
+      margin-top:0px;
+      text-align:center;
+    }
+  }
 
 .bits_index_board_tags p {
   margin: 3px auto;
   color: gray;
   font-size: 12px;
 }
+  @media screen and (max-width:991px) {
+    .bits_index_board_tags p {
+      margin: 0px auto;
+      color: gray;
+      font-size: 12px;
+    }
+  }
 
 .top_each_page_link_area {
   text-align: right;
@@ -610,3 +649,25 @@
     border-bottom: 1px solid #C9C9C9;
   }
 }
+
+.user_name_talk {
+  font-size:12px;
+  margin-left:10px;
+}
+  @media screen and (max-width: 767px) {
+    .user_name_talk {
+      font-size:12px;
+      margin-left:8px;
+    }
+  }
+
+.icon_no_img {
+  font-size:12px;
+  margin-left:10px;
+}
+  @media screen and (max-width: 767px) {
+    .uicon_no_img {
+      font-size:12px;
+      margin-left:8px;
+    }
+  }

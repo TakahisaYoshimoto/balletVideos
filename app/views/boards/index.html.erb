@@ -17,20 +17,21 @@
   <div id="board_top_img_secondarea" class="col-xs-12">
     <div class="board_top_img_link_out col-xs-12 col-sm-6"><%= link_to 'トークルームを作る', new_board_path, class: 'board_top_img_link' %></div>
 
-    <div id="board_top_img_search_area" class="col-xs-12 col-sm-6">
-      <div class="form-group row">
+
+    <div id="board_top_img_search_area" class="col-xs-12">
+      <div class="form-group row  col-xs-11">
         <%= form_tag({controller: '/boards', action: :Search }, method: :get) do %>
-          <div class="input-group form-group board_top_img_search col-xs-12">
-            <%= search_field_tag :search_params,
-              @search_params,
-              class: 'form-control talk_search',
-              placeholder: 'キーワード' %>
-            <span class="input-group-btn">
+        <div class="input-group form-group board_top_img_search">
+          <%= search_field_tag :search_params,
+            @search_params,
+            class: 'form-control talk_search',
+            placeholder: 'キーワード' %>
+          <span class="input-group-btn">
             <button type="submit" class="btn btn-default talk_btn">
               <i class="glyphicon glyphicon-search"></i>
             </button>
-            </span>
-          </div>
+          </span>
+        </div>
         <% end %>
       </div>
     </div>
@@ -41,7 +42,7 @@
   <p>注目のトーク</p>
   <% @attention_boards.each do |board| %>
     <%= link_to board_path(board) do %>
-      <div class="community_index_board col-sm-3">
+      <div class="community_index_board col-md-3 col-sm-4">
         <div class="community_index_board_child">
           <div class="community_index_profile_picture">
             <%= render 'profile_picture', i: board %>
@@ -50,11 +51,13 @@
           <div class="community_index_board_title">
             <p><%= truncate(board.title, length: 25) %></p>
           </div>
+          <div class="community_index_board_tags_area">
           <% board.board_tags.each do |tag| %>
-            <div class="community_index_board_tags" style="display: inline-block;margin-right:10px;">
+            <div class="community_index_board_tags" style="display: inline-block;">
               <p><%= "##{tag.name}" %></p>
             </div>
           <% end %>
+          </div>
           <div class="community_index_board_comments_count">
             <p>コメント数 : <%= board.board_comments_count %></p>
           </div>
@@ -75,7 +78,7 @@
   <p>新着トーク</p>
   <% @boards.each do |board| %>
     <%= link_to board_path(board) do %>
-      <div class="community_index_board col-sm-3">
+      <div class="community_index_board col-md-3 col-sm-4">
         <div class="community_index_board_child">
           <div class="community_index_profile_picture">
             <%= render 'profile_picture', i: board %>
@@ -84,11 +87,13 @@
           <div class="community_index_board_title">
             <p><%= truncate(board.title, length: 25) %></p>
           </div>
+          <div class="community_index_board_tags_area">
           <% board.board_tags.each do |tag| %>
-            <div class="community_index_board_tags" style="display: inline-block;margin-right:10px;">
+            <div class="community_index_board_tags" style="display: inline-block;">
               <p><%= "##{tag.name}" %></p>
             </div>
           <% end %>
+          </div>
           <div class="community_index_board_comments_count">
             <p>コメント数 : <%= board.board_comments_count %></p>
           </div>

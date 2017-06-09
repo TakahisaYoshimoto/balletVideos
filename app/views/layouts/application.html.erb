@@ -137,38 +137,69 @@
     <div class="container" style="text-align:center;">
       <div id="top_footer_contents">
         <div id="top_footer_left_area">
-          <%= link_to '動画を探す', { :controller => "/bits", action: :index, anchor: 'search_area'}, class: 'top_footer_title hidden-xs' %>
-          <%= link_to '動画を探す', { :controller => "/bits", action: :index, anchor: 'results_search_area'}, class: 'top_footer_title hidden-sm hidden-md hidden-lg' %>
+          <%= link_to '動画 -Video', { :controller => "/bits", action: :index, anchor: 'search_area'}, class: 'top_footer_title hidden-xs' %>
+          <%= link_to '動画 -Video', { :controller => "/bits", action: :index, anchor: 'results_search_area'}, class: 'top_footer_title hidden-sm hidden-md hidden-lg' %>
           <div id="top_footer_search_link_area">
             <%= link_to '演目から探す', { :controller => "/bits", action: :genreSearch, search_params: '演目', or: 'pv' } %><br>
             <%= link_to 'レッスンから探す', { :controller => "/bits", action: :genreSearch, search_params: 'レッスン', or: 'pv' } %><br>
             <%= link_to 'その他から探す', { :controller => "/bits", action: :genreSearch, search_params: "その他", or: 'pv' } %><br>
           </div>
         </div>
-        <div id="top_footer_center_area">
+
+<!--吉本追記_0608-->
+        <div id="top_footer_second_area">
+          <%= link_to 'トーク -Talk', { :controller => "/bits", action: :index, anchor: 'search_area'}, class: 'top_footer_title hidden-xs' %>
+          <%= link_to 'トーク -Talk', { :controller => "/bits", action: :index, anchor: 'results_search_area'}, class: 'top_footer_title hidden-sm hidden-md hidden-lg' %>
+          <div id="top_footer_search_link_area">
+            <%= link_to '新着', { :controller => "/bits", action: :genreSearch, search_params: '演目', or: 'pv' } %><br>
+            <%= link_to '注目', { :controller => "/bits", action: :genreSearch, search_params: 'レッスン', or: 'pv' } %><br>
+            <%= link_to 'トークを投稿する', { :controller => "/bits", action: :genreSearch, search_params: "その他", or: 'pv' } %><br>
+          </div>
+        </div>
+
+        <div id="top_footer_third_area">
+          <%= link_to 'Bitについて', { :controller => "/bits", action: :index, anchor: 'search_area'}, class: 'top_footer_title hidden-xs' %>
+          <%= link_to 'Bitについて', { :controller => "/bits", action: :index, anchor: 'results_search_area'}, class: 'top_footer_title hidden-sm hidden-md hidden-lg' %>
+          <div id="top_footer_search_link_area">
+            <%= link_to '利用規約', { :controller => "/bits", action: :genreSearch, search_params: '演目', or: 'pv' } %><br>
+            <%= link_to 'プライバシーポリシー', privacy_policy_bits_path, class: 'top_footer_title' %><br>
+            <%= link_to '運営情報', operation_information_bits_path, class: 'top_footer_title' %><br>
+            <%= link_to 'お問い合わせ', inquiry_bits_path, class: 'top_footer_title' %><br>
+            <%= link_to ' マイページ', edit_user_registration_path, class: 'top_footer_title hidden-sm hidden-md hidden-lg' %><br>
+            <%= link_to ' ログアウト', destroy_user_session_path, method: :delete, class: 'top_footer_title hidden-sm hidden-md hidden-lg' %><br>
+
+          </div>
+        </div>
+<!-- 終了-->
+        <div class="hidden-xs"id="top_footer_center_area">
           <% if user_signed_in? %>
-            <%= link_to ' プロフィール変更', edit_user_registration_path, class: 'top_footer_title' %><br>
+            <%= link_to ' マイページ', edit_user_registration_path, class: 'top_footer_title' %><br>
             <%= link_to ' ログアウト', destroy_user_session_path, method: :delete, class: 'top_footer_title' %><br>
           <% else %>
             <%= link_to 'ユーザー登録', new_user_registration_path, class: 'top_footer_title' %><br>
             <%= link_to 'ログイン', new_user_session_path, class: 'top_footer_title' %><br>
           <% end %>
-          <%= link_to 'お問い合わせ', inquiry_bits_path, class: 'top_footer_title' %><br>
         </div>
-        <div id="top_footer_right_area">
-          <%= link_to 'プライバシーポリシー', privacy_policy_bits_path, class: 'top_footer_title' %><br>
-          <%= link_to '運営情報', operation_information_bits_path, class: 'top_footer_title' %>
+
+        <!--吉本追記_0608-->
+        <div id="top_footer_sns_area">
+          <%= link_to 'SNS', { :controller => "/bits", action: :index, anchor: 'search_area'}, class: 'top_footer_title hidden-xs' %>
+          <%= link_to 'SNS', { :controller => "/bits", action: :index, anchor: 'results_search_area'}, class: 'top_footer_title hidden-sm hidden-md hidden-lg' %>
+          <div id="top_footer_search_link_area">
+            <%= link_to '公式Facebook', { :controller => "/bits", action: :genreSearch, search_params: '演目', or: 'pv' } %>
+          </div>
+        </div>
+        <!--終了-->
+
+        <div id="footer_text">
+          <div class="sm_footer hidden-xs col-sm-12">
+            <p>Copyright &copy; 2016-2017 Ballet Internet Technology All Rights Reserved.</p>
+          </div>
+          <div class="xs_footer col-xs-12 hidden-sm hidden-md hidden-lg">
+            <p>Copyright &copy; 2016-2017<br> Ballet Internet Technology All Rights Reserved.</p>
+          </div>
         </div>
       </div>
-      <div id="footer_text">
-        <div class="sm_footer hidden-xs col-sm-12">
-          <p>Copyright &copy; 2016-2017 Ballet Internet Technology All Rights Reserved.</p>
-        </div>
-        <div class="xs_footer col-xs-12 hidden-sm hidden-md hidden-lg">
-          <p>Copyright &copy; 2016-2017<br> Ballet Internet Technology All Rights Reserved.</p>
-        </div>
-      </div>
-    </div>
     </div>
   </body>
 </html>
