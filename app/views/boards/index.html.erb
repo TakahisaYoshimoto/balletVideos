@@ -19,20 +19,22 @@
 
 
     <div id="board_top_img_search_area" class="col-xs-12">
-      <div class="form-group row  col-xs-11">
-        <%= form_tag({controller: '/boards', action: :Search }, method: :get) do %>
-        <div class="input-group form-group board_top_img_search">
-          <%= search_field_tag :search_params,
-            @search_params,
-            class: 'form-control talk_search',
-            placeholder: 'キーワード' %>
-          <span class="input-group-btn">
-            <button type="submit" class="btn btn-default talk_btn">
-              <i class="glyphicon glyphicon-search"></i>
-            </button>
-          </span>
+      <div id="board_top_img_search_area_child">
+        <div class="form-group">
+          <%= form_tag({controller: '/boards', action: :Search }, method: :get) do %>
+          <div class="input-group form-group board_top_img_search">
+            <%= search_field_tag :search_params,
+              @search_params,
+              class: 'form-control talk_search',
+              placeholder: 'キーワード' %>
+            <span class="input-group-btn">
+              <button type="submit" class="btn btn-default talk_btn">
+                <i class="glyphicon glyphicon-search"></i>
+              </button>
+            </span>
+          </div>
+          <% end %>
         </div>
-        <% end %>
       </div>
     </div>
   </div>
