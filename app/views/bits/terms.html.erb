@@ -1,0 +1,9 @@
+<h1>プライバシーポリシー</h1>
+
+<%= simple_format(@terms.contents) if @terms.present? %>
+
+<% if user_signed_in? %>
+  <% if current_user.user_level > 1 %>
+    <%= link_to '編集する', edit_site_configuration_path(@terms) if @terms.present? %>
+  <% end %>
+<% end %>

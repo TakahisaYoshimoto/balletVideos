@@ -4,6 +4,6 @@
 
 <% if user_signed_in? %>
   <% if current_user.user_level > 1 %>
-    <%= link_to '編集する', edit_site_configuration_path(@privacy) %>
+    <%= link_to '編集する', edit_site_configuration_path(@privacy) if @privacy.present? %>
   <% end %>
 <% end %>

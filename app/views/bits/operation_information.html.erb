@@ -4,6 +4,6 @@
 
 <% if user_signed_in? %>
   <% if current_user.user_level > 1 %>
-    <%= link_to '編集する', edit_site_configuration_path(@operation) %>
+    <%= link_to '編集する', edit_site_configuration_path(@operation) if @operation.present? %>
   <% end %>
 <% end %>

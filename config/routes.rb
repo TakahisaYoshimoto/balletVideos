@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       post :send_support_mail
       get :privacy_policy
       get :operation_information
+      get :terms
     end
   end
   resources :youtube_videos, only: [:new, :create, :edit, :update, :show, :destroy] do
