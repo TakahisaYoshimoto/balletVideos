@@ -39,7 +39,7 @@
 </div>
 <div class="container">
 <div class="container col-xs-12" id="community_index_boards_lists" style="padding:0;">
-  <p>注目のトーク</p>
+  <p class="pick_talk_text col-xs-12">注目のトーク</p>
   <% @attention_boards.each do |board| %>
     <%= link_to board_path(board) do %>
       <div class="community_index_board col-md-3 col-sm-4">
@@ -67,15 +67,14 @@
   <% end %>
 </div>
 
-<div class="top_each_page_link_area col-xs-12">
-  <div class="top_each_page_link">
-    <%= link_to 'もっと見る', attention_boards_path %>
-  </div>
+<%# 広告エリア %>
+<div class="col-xs-12">
+  <p>ここに広告が入ります！
+    </p>
 </div>
 
-
 <div class="container col-xs-12" id="community_index_boards_lists" style="padding:0;">
-  <p>新着トーク</p>
+  <p class="new_talk_text col-xs-12">新着トーク</p>
   <% @boards.each do |board| %>
     <%= link_to board_path(board) do %>
       <div class="community_index_board col-md-3 col-sm-4">
@@ -110,7 +109,7 @@
 </div>
 
 <%# 広告エリア %>
-<div class="col-xs-12 hidden-sm hidden-mg hidden-lg">
+<div class="col-xs-12">
   <p>ここに広告が入ります！
     </p>
 </div>
