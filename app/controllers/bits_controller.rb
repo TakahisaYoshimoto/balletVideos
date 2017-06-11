@@ -281,4 +281,8 @@ class BitsController < ApplicationController
   def operation_information
     @operation = SiteConfiguration.find_by(item: 'operation_information')
   end
+
+  def terms
+    @terms = SiteConfiguration.find_by(item: 'site_terms')
+  end
 end
