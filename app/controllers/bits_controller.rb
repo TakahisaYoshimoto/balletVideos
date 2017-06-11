@@ -55,7 +55,7 @@ class BitsController < ApplicationController
 
   def like_videos
     unless user_signed_in?
-      redirect_to bits_path and return
+      redirect_to new_user_session_path and return
     end
 
     if params[:or] == "pv"
@@ -80,7 +80,7 @@ class BitsController < ApplicationController
 
   def view_histories
     unless user_signed_in?
-      redirect_to bits_path and return
+      redirect_to new_user_session_path and return
     end
 
     if params[:or] == "pv"
@@ -117,30 +117,6 @@ class BitsController < ApplicationController
     sp = sp.gsub(" ","%,%")#半角スペースをカンマに変換(プレスホルダーの第二引数以降に使用する変数spに代入)
     sp = '%'+sp+'%'
     sp = sp.split(",")#ひとつの文字列だったspをカンマで区切って配列にする
-
-    # p '--------------------------------------------------------------------'
-    # p YoutubeVideo.joins(:youtube_video_tags).where("title like ? OR youtube_video_tags.name like ?", 'バイク', "バイク").count
-    # p '--------------------------------------------------------------------'
-    # p YoutubeVideo.joins(:youtube_video_tags).where("title like ? OR youtube_video_tags.name like ?", 'ツーリング', "ツーリング").count
-    # p '--------------------------------------------------------------------'
-    # p YoutubeVideo.joins(:youtube_video_tags)
-    #     .where("(title like ? OR youtube_video_tags.name like ?) AND (title like ? OR youtube_video_tags.name like ?)", 'バイク', "バイク", 'ツーリング', "ツーリング")
-    #     .count
-    # p '--------------------------------------------------------------------'
-
-
-    p '--------------------------------------------------------------------'
-    p YoutubeVideo.joins(:youtube_video_tags).where("youtube_video_tags.name like ?", "バイク").count
-    p '--------------------------------------------------------------------'
-    p YoutubeVideo.joins(:youtube_video_tags).where("youtube_video_tags.name like ?", "ツーリング").count
-    p '--------------------------------------------------------------------'
-    p YoutubeVideo.joins(:youtube_video_tags)
-        .where("youtube_video_tags.name IN (?)", ['バイク', "ツーリング"])
-        .count
-    p '--------------------------------------------------------------------'
-    p YoutubeVideo.joins(:youtube_video_tags).where("youtube_video_tags.name like ?", "バイク") & YoutubeVideo.joins(:youtube_video_tags).where("youtube_video_tags.name like ?", "ツーリング")
-    p '--------------------------------------------------------------------'
-
 
     unless params[:category_params].blank?
       if params[:category_params] == '注目キーワード'

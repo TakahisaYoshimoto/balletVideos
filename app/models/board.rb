@@ -13,6 +13,4 @@ class Board < ApplicationRecord
   accepts_nested_attributes_for :board_tags,
                                 allow_destroy: true,
                                 reject_if: proc { |attributes| attributes['name'].blank? }
-
-  paginates_per 10  # 1ページあたり10項目表示
 end
