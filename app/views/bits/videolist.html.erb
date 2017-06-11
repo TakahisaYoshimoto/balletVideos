@@ -1,4 +1,6 @@
-<%= render '/bits/mypage_header' %>
+<% if controller.action_name == 'view_histories' || controller.action_name == 'like_videos' %>
+  <%= render '/bits/mypage_header' %>
+<% end %>
 
 <div id="y_index_links">
   <div class="col-sm-12">
