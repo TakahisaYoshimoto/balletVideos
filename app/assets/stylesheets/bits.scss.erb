@@ -92,6 +92,33 @@
   }
 }
 
+.pick_video_text{
+  margin-top:30px;
+  margin-bottom:30px;
+  font-size:18px;
+}
+  @media screen and (max-width:767px) {
+    .pick_video_text {
+      margin-top:20px;
+      margin-bottom:20px;
+      font-size:16px;
+    }
+  }
+
+.new_video_text{
+  margin-top:30px;
+  margin-bottom:30px;
+  font-size:18px;
+}
+  @media screen and (max-width:767px) {
+    .new_video_text {
+      margin-top:20px;
+      margin-bottom:20px;
+      font-size:16px;
+    }
+  }
+
+
 .bits_index_board_child {
   border: 1.0px solid gray;
   margin-bottom: 15px;
@@ -103,7 +130,7 @@
     .bits_index_board_child {
       border: 1.0px solid gray;
       margin-bottom: 15px;
-      padding: 18px 18px 23px 23px;
+      padding: 15px 15px 20px 20px;
       height: 200px;
       position: relative;
     }
@@ -127,7 +154,7 @@
       height: auto;
     }
   }
-  
+
 .bits_index_board_title,
 .bits_index_board_tags {
   text-align: left;
@@ -261,28 +288,34 @@
     }
   }
 
-.video_text {
+ .search_words p {
+   text-align:left;
+ }
+
+
+
+.video-text {
   font-size:20px;
-  padding-top:430px;
+  padding-top:20px;
   padding-bottom:30px;
   padding-left:10px;
 }
   @media screen and (max-width:767px) {
-    .video_text {
+    .video-text {
       font-size:18px;
-      padding-top:330px;
+      padding-top:20px;
       padding-bottom:20px;
     }
   }
 
-.talk_text {
+.talk-text {
   font-size:20px;
-  padding-top:30px;
+  padding-top:25px;
   padding-bottom:30px;
   padding-left:10px;
 }
   @media screen and (max-width:767px) {
-    .talk_text {
+    .talk-text {
       font-size:18px;
       padding-bottom:20px;
     }
@@ -304,8 +337,8 @@
 }
   @media screen and (max-width:768px) {
     .y_index_links_pickup_tag_left {
-      height: 55px;
-      width: 55px;
+      height: 50px;
+      width: 50px;
       border-radius:75px;
       z-index: 2;
     }
@@ -464,8 +497,6 @@
   padding: 10px 15px 15px 15px;
 }
 
-//ちょっと試しに
-
 #y_index_all_view_buttonarea_inside {
 	display: inline-block;
 }
@@ -502,13 +533,6 @@
   text-align: right;
   margin: 15px 0;
 }
-
-
-
-
-
-
-
 
 // #y_index_all_view_buttonarea_inside {
 //   text-align: center;
@@ -583,12 +607,35 @@
 #y_videolist_breadcrumb * {
   color: black;
 }
+
+#y_videolist_breadcrumb h3{
+  font-size:20px;
+}
+@media screen and (max-width: 767px) {
+  #y_videolist_breadcrumb h3 {
+    font-size:18px;
+  }
+}
+
+#y_video_search_result_tagarea {
+  margin-top:20px;
+  padding-top:15px;
+  padding-bottom:15px;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
 #y_video_search_result_tagarea h3 {
  text-align: center;
 }
 #y_video_search_result_tagarea p {
  padding: 0 15px;
 }
+
+#y_video_search_result_tagarea a {
+ color:black;
+}
+
 #order_change {
   width: 100%;
   text-align: right;
@@ -652,7 +699,7 @@
 
 .user_name_talk {
   font-size:12px;
-  margin-left:10px;
+  margin-left:5px;
 }
   @media screen and (max-width: 767px) {
     .user_name_talk {

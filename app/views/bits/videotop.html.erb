@@ -18,7 +18,7 @@
   <div class="top_img_link_out"><%= link_to 'まずは演目から探してみる', { controller: :bits, action: :genreSearch, search_params: '演目', or: 'pv' }, class: 'top_img_link' %></div>
 </div>
 <div class="container">
-  <p class="pick_video_text col-xs-12">ピックアップ動画</p>
+  <p class="pick_video_text col-xs-12"><span class="icon icon-video" style="margin-right:10px"></span>ピックアップ動画</p>
   <div id="y_index_links">
     <div class="y_index_video_lists col-xs-12 row-eq-height" style="padding:0;">
 
@@ -30,27 +30,34 @@
           <%= render 'list_md4', youtube: youtube %>
         </div>
       <% end %>
-      <p class="new_video_text col-xs-12">新着動画</p>
+
+      <%# 広告エリア %>
+      <div class="col-xs-12">
+        <p>ここに広告が入ります！
+          </p>
+      </div>
+
+      <p class="new_video_text col-xs-12"><span class="icon icon-video" style="margin-right:10px"></span>新着動画</p>
 
       <% @youtubes.each_with_index do |youtube, i| %>
         <div class="col-xs-12 col-sm-3 row-eq-height" style="height: 100%;">
           <%= render 'list_sm123', youtube: youtube %>
         </div>
-        <% if i == 7 || i == 15 %>
+        <!-- <% if i == 7 || i == 15 %> -->
           <%# 広告エリア %>
-          <div class="col-xs-12 hidden-sm hidden-md hidden-lg" style="text-align:center;padding-bottom:15px;overflow: visible;margin-left: -15px;">
+          <!-- <div class="col-xs-12 hidden-sm hidden-md hidden-lg" style="text-align:center;padding-bottom:15px;overflow: visible;margin-left: -15px;"> -->
             <!--  ad tags Size: 320x100 ZoneId:1141471-->
-            <script type="text/javascript" src="https://js.medi-8.net/t/141/471/a1141471.js"></script>
+            <!-- <script type="text/javascript" src="https://js.medi-8.net/t/141/471/a1141471.js"></script>
           </div>
-          <div class="hidden-xs col-sm-12 col-md-12 hidden-lg" style="text-align:center;padding-bottom:15px;">
+          <div class="hidden-xs col-sm-12 col-md-12 hidden-lg" style="text-align:center;padding-bottom:15px;"> -->
             <!--  ad tags Size: 468x60 ZoneId:1142016-->
-            <script type="text/javascript" src="https://js.medi-8.net/t/142/016/a1142016.js"></script>
+            <!-- <script type="text/javascript" src="https://js.medi-8.net/t/142/016/a1142016.js"></script>
           </div>
-          <div class="visible-lg col-lg-12" style="text-align:center;padding-bottom:15px;">
+          <div class="visible-lg col-lg-12" style="text-align:center;padding-bottom:15px;"> -->
             <!-- medi8　728×90px -->
-            <script type="text/javascript" src="https://js.medi-8.net/t/141/478/a1141478.js"></script>
+            <!-- <script type="text/javascript" src="https://js.medi-8.net/t/141/478/a1141478.js"></script>
           </div>
-        <% end %>
+        <% end %> -->
       <% end %>
     </div>
   </div>
@@ -59,5 +66,11 @@
     <div id="y_index_all_view_buttonarea_inside">
       <%= link_to '→　もっと見る', { controller: :bits, action: :all, or: 'time' }, id: 'y_index_all_view_button' %>
     </div>
+  </div>
+
+  <%# 広告エリア %>
+  <div class="ad_area">
+    <p>ここに広告が入ります！
+      </p>
   </div>
 </div>

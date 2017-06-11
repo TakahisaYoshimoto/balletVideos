@@ -2,7 +2,7 @@
   <div class="container panel-body">
     <div class="form-group row" style="margin:0 0 15px 0;">
       <%= form_tag({controller: '/bits', action: :Search }, method: :get) do %>
-        <div class="input-group form-group" style="margin:0;">
+        <div class="input-group form-group" style="max-width:400px;">
           <%= search_field_tag :search_params,
             @search_params,
             class: 'form-control',
