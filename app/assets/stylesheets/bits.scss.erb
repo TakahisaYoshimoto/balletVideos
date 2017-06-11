@@ -289,6 +289,12 @@
     }
   }
 
+ .search_words p {
+   text-align:left;
+ }
+
+
+
 .video_text {
   font-size:20px;
   padding-top:430px;
@@ -492,8 +498,6 @@
   padding: 10px 15px 15px 15px;
 }
 
-//ちょっと試しに
-
 #y_index_all_view_buttonarea_inside {
 	display: inline-block;
 }
@@ -530,13 +534,6 @@
   text-align: right;
   margin: 15px 0;
 }
-
-
-
-
-
-
-
 
 // #y_index_all_view_buttonarea_inside {
 //   text-align: center;
@@ -611,12 +608,35 @@
 #y_videolist_breadcrumb * {
   color: black;
 }
+
+#y_videolist_breadcrumb h3{
+  font-size:20px;
+}
+@media screen and (max-width: 767px) {
+  #y_videolist_breadcrumb h3 {
+    font-size:18px;
+  }
+}
+
+#y_video_search_result_tagarea {
+  margin-top:20px;
+  padding-top:15px;
+  padding-bottom:15px;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
 #y_video_search_result_tagarea h3 {
  text-align: center;
 }
 #y_video_search_result_tagarea p {
  padding: 0 15px;
 }
+
+#y_video_search_result_tagarea a {
+ color:black;
+}
+
 #order_change {
   width: 100%;
   text-align: right;
@@ -680,7 +700,7 @@
 
 .user_name_talk {
   font-size:12px;
-  margin-left:10px;
+  margin-left:5px;
 }
   @media screen and (max-width: 767px) {
     .user_name_talk {

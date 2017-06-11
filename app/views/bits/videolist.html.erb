@@ -1,19 +1,19 @@
 <div id="y_index_links">
   <div class="col-sm-12">
 
-  <div id="y_videolist_breadcrumb" style="text-align:center;">
+  <div id="y_videolist_breadcrumb">
     <% if @category_params.present? && @genre.present? %>
       <% unless controller.action_name == 'genreSearch' %>
-        <h3><%= link_to @category_params, { controller: :bits, action: :genreSearch, search_params: @category_params, or: 'pv' } %> >
+        <h3 class="search_words"><%= link_to @category_params, { controller: :bits, action: :genreSearch, search_params: @category_params, or: 'pv' } %> >
         <% @genres.each do |g| %>
           <%= link_to g, { controller: :bits, action: :Search, search_params: g, category_params: @category_params, or: 'pv' } %>
         <% end %>
         </h3>
       <% else %>
-        <h3><%= @category_params %></h3>
+        <h3 class="search_words"><%= @category_params %></h3>
       <% end %>
     <% elsif @category_params.present? && @genre.blank? %>
-      <h3><%= @category_params %></h3>
+      <h3 class="search_words"><%= @category_params %></h3>
     <% else %>
       <h3><%= @genre %></h3>
     <% end %>
@@ -33,7 +33,7 @@
             <% search = tag %>
           <% end %>
           <% unless @genre.include?(tag) %>
-            <%= link_to "##{tag}", { controller: :bits, action: :Search, search_params: search, category_params: @category_params, or: 'pv' } %>
+            <%= link_to "#{tag}", { controller: :bits, action: :Search, search_params: search, category_params: @category_params, or: 'pv' } %>
           <% end %>
         </div>
       <% end %>
@@ -109,9 +109,6 @@
           <script type="text/javascript" src="https://js.medi-8.net/t/146/756/a1146756.js"></script>
         </div>
       <% end %>
-
-
-
 
       <%= link_to youtube_video_path(youtube), class: 'videolists_link col-xs-12 col-sm-3 row-eq-height', style: 'margin-bottom:10px;' do %>
         <div class="y_video_img_area col-xs-5 col-sm-12" style="padding: 0;">

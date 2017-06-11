@@ -8,7 +8,6 @@
     <%#= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Bit（ビット）は、クラシックバレエにおける動画や交流を楽しめるサービスです。コンクールや発表会に向けて参考となる情報がたくさん掲載されています。" />
@@ -137,8 +136,11 @@
     <div class="container" style="text-align:center;">
       <div id="top_footer_contents">
         <div id="top_footer_left_area">
-          <%= link_to '動画 -Video', { :controller => "/bits", action: :index, anchor: 'search_area'}, class: 'top_footer_title hidden-xs' %>
-          <%= link_to '動画 -Video', { :controller => "/bits", action: :index, anchor: 'results_search_area'}, class: 'top_footer_title hidden-sm hidden-md hidden-lg' %>
+          <!-- <%= link_to '動画 -Video', { :controller => "/bits", action: :index, anchor: 'search_area'}, class: 'top_footer_title hidden-xs' %>
+          <%= link_to '動画 -Video', { :controller => "/bits", action: :index, anchor: 'results_search_area'}, class: 'top_footer_title hidden-sm hidden-md hidden-lg' %> -->
+
+          <%= link_to '動画 -Video', videotop_bits_path,  class: 'top_footer_title' %>
+
           <div id="top_footer_search_link_area">
             <%= link_to '演目から探す', { :controller => "/bits", action: :genreSearch, search_params: '演目', or: 'pv' } %><br>
             <%= link_to 'レッスンから探す', { :controller => "/bits", action: :genreSearch, search_params: 'レッスン', or: 'pv' } %><br>
@@ -148,18 +150,24 @@
 
 <!--吉本追記_0608-->
         <div id="top_footer_second_area">
-          <%= link_to 'トーク -Talk', { :controller => "/bits", action: :index, anchor: 'search_area'}, class: 'top_footer_title hidden-xs' %>
-          <%= link_to 'トーク -Talk', { :controller => "/bits", action: :index, anchor: 'results_search_area'}, class: 'top_footer_title hidden-sm hidden-md hidden-lg' %>
+          <!-- <%= link_to 'トーク -Talk', { :controller => "/bits", action: :index, anchor: 'search_area'}, class: 'top_footer_title hidden-xs' %>
+          <%= link_to 'トーク -Talk', { :controller => "/bits", action: :index, anchor: 'results_search_area'}, class: 'top_footer_title hidden-sm hidden-md hidden-lg' %> -->
+
+          <%= link_to 'トーク -Talk', boards_path, class: 'top_footer_title' %>
+
           <div id="top_footer_search_link_area">
-            <%= link_to '新着', { :controller => "/bits", action: :genreSearch, search_params: '演目', or: 'pv' } %><br>
-            <%= link_to '注目', { :controller => "/bits", action: :genreSearch, search_params: 'レッスン', or: 'pv' } %><br>
-            <%= link_to 'トークを投稿する', { :controller => "/bits", action: :genreSearch, search_params: "その他", or: 'pv' } %><br>
+            <%= link_to '新着から見る', lists_boards_path %><br>
+            <%= link_to '急上昇から見る', attention_boards_path %><br>
+            <%= link_to 'トークルームを作る', new_board_path %><br>
           </div>
         </div>
 
         <div id="top_footer_third_area">
-          <%= link_to 'Bitについて', { :controller => "/bits", action: :index, anchor: 'search_area'}, class: 'top_footer_title hidden-xs' %>
-          <%= link_to 'Bitについて', { :controller => "/bits", action: :index, anchor: 'results_search_area'}, class: 'top_footer_title hidden-sm hidden-md hidden-lg' %>
+          <!-- <%= link_to 'Bitについて', { :controller => "/bits", action: :index, anchor: 'search_area'}, class: 'top_footer_title hidden-xs' %>
+          <%= link_to 'Bitについて', { :controller => "/bits", action: :index, anchor: 'results_search_area'}, class: 'top_footer_title hidden-sm hidden-md hidden-lg' %> -->
+
+          <p class="top_footer_title" style="color:#FFF;margin-bottom:0px">Bitについて</p>
+
           <div id="top_footer_search_link_area">
             <%= link_to '利用規約', { :controller => "/bits", action: :genreSearch, search_params: '演目', or: 'pv' } %><br>
             <%= link_to 'プライバシーポリシー', privacy_policy_bits_path, class: 'top_footer_title' %><br>
