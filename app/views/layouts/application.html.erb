@@ -73,10 +73,10 @@
           <% end %>
 
           <ul class="nav navbar-nav">
-            <li class="hidden-xs">
+            <li class="hidden-xs category_title">
               <a data-toggle="collapse" data-parent="#accordion" data-target="#nav_video_collapse_area">動画<br>Video</a>
             </li>
-            <li class="hidden-xs">
+            <li class="hidden-xs category_title">
               <a data-toggle="collapse" data-parent="#accordion" data-target="#nav_community_collapse_area">トーク<br>Talk</a>
             </li>
             <%= render '/layouts/nav_video_xs', tags: @tags %>
@@ -98,17 +98,17 @@
               <li class="nav-divider"></li>
               <% if user_signed_in? %>
                 <li>
-                    <%= link_to ' マイページ', profile_path(current_user.id) %>
+                  <span class="icon icon-mypage" style="font-size:20px;margin-right:10px;color:#FFF"></span><%= link_to ' マイページ', profile_path(current_user.id) %>
                 </li>
                 <li>
-                    <%= link_to ' ログアウト', destroy_user_session_path, method: :delete %>
+                    <span class="icon icon-login" style="font-size:20px;margin-right:10px;color:#FFF"></span><%= link_to ' ログアウト', destroy_user_session_path, method: :delete %>
                 </li>
               <% else %>
                 <li>
-                    <%= link_to 'ユーザー登録', new_user_registration_path %>
+                    <span class="icon icon-talk" style="margin-right:10px"><%= link_to 'ユーザー登録', new_user_registration_path %>
                 </li>
                 <li>
-                    <%= link_to 'ログイン', new_user_session_path %>
+                    <span class="icon icon-talk" style="margin-right:10px"><%= link_to 'ログイン', new_user_session_path %>
                 </li>
               <% end %>
             </ul>
@@ -136,9 +136,6 @@
     <div class="container" style="text-align:center;">
       <div id="top_footer_contents">
         <div id="top_footer_left_area">
-          <!-- <%= link_to '動画 -Video', { :controller => "/bits", action: :index, anchor: 'search_area'}, class: 'top_footer_title hidden-xs' %>
-          <%= link_to '動画 -Video', { :controller => "/bits", action: :index, anchor: 'results_search_area'}, class: 'top_footer_title hidden-sm hidden-md hidden-lg' %> -->
-
           <%= link_to '動画 -Video', videotop_bits_path,  class: 'top_footer_title' %>
 
           <div id="top_footer_search_link_area">
@@ -150,9 +147,6 @@
 
 <!--吉本追記_0608-->
         <div id="top_footer_second_area">
-          <!-- <%= link_to 'トーク -Talk', { :controller => "/bits", action: :index, anchor: 'search_area'}, class: 'top_footer_title hidden-xs' %>
-          <%= link_to 'トーク -Talk', { :controller => "/bits", action: :index, anchor: 'results_search_area'}, class: 'top_footer_title hidden-sm hidden-md hidden-lg' %> -->
-
           <%= link_to 'トーク -Talk', boards_path, class: 'top_footer_title' %>
 
           <div id="top_footer_search_link_area">

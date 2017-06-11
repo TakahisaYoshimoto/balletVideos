@@ -18,9 +18,9 @@
   <div class="top_img_link_out"><%= link_to 'まずは演目から探してみる', { controller: :bits, action: :genreSearch, search_params: '演目', or: 'pv' }, class: 'top_img_link' %></div>
 </div>
 <div class="container">
-  <div class="video_text">
-    <p><span class="icon icon-video" style="font-size:30px;"></span>動画</p>
-  </div>
+  <p class="video-text col-xs-12">
+    <span class="icon icon-video" style="margin-right:10px"></span>動画
+  </p>
 
   <div id="y_index_links">
     <div class="y_index_video_lists col-xs-12 row-eq-height" style="padding:0;">
@@ -99,10 +99,11 @@
         </p>
     </div>
 
-    <div class="container col-xs-12" id="bit_index_boards_lists" style="padding:0;">
-      <div class="talk_text">
-        <p>トーク</p>
-      </div>
+    <p class="talk-text col-xs-12">
+      <span class="icon icon-video" style="margin-right:10px"></span>トーク
+    </p>
+
+    <div class="container col-xs-12" id="bit_index_boards_lists" style="padding:0;">      
       <% @boards.each do |board| %>
         <%= link_to board_path(board) do %>
           <div class="bits_index_board col-md-3 col-sm-4">

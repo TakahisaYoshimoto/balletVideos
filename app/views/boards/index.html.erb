@@ -40,78 +40,79 @@
   </div>
 </div>
 <div class="container">
-<div class="container col-xs-12" id="community_index_boards_lists" style="padding:0;">
-  <p class="pick_talk_text col-xs-12">注目のトーク</p>
-  <% @attention_boards.each do |board| %>
-    <%= link_to board_path(board) do %>
-      <div class="community_index_board col-md-3 col-sm-4">
-        <div class="community_index_board_child">
-          <div class="community_index_profile_picture">
-            <%= render 'profile_picture', i: board %>
-          </div>
-          <p class="community_index_board_time"><%= board.created_at.strftime('%Y年%m月%d日 %H時%M分') %></p>
-          <div class="community_index_board_title">
-            <p><%= truncate(board.title, length: 25) %></p>
-          </div>
-          <div class="community_index_board_tags_area">
-          <% board.board_tags.each do |tag| %>
-            <div class="community_index_board_tags" style="display: inline-block;">
-              <p><%= "##{tag.name}" %></p>
+  <p class="pick_talk_text col-xs-12"><span class="icon icon-pick_talk" style="margin-right:10px"></span>注目のトーク</p>
+  <div class="container col-xs-12" id="community_index_boards_lists" style="padding:0;">
+    <% @attention_boards.each do |board| %>
+      <%= link_to board_path(board) do %>
+        <div class="community_index_board col-md-3 col-sm-4">
+          <div class="community_index_board_child">
+            <div class="community_index_profile_picture">
+              <%= render 'profile_picture', i: board %>
             </div>
-          <% end %>
-          </div>
-          <div class="community_index_board_comments_count">
-            <p>コメント数 : <%= board.board_comments_count %></p>
+            <p class="community_index_board_time"><%= board.created_at.strftime('%Y年%m月%d日 %H時%M分') %></p>
+            <div class="community_index_board_title">
+              <p><%= truncate(board.title, length: 25) %></p>
+            </div>
+            <div class="community_index_board_tags_area">
+            <% board.board_tags.each do |tag| %>
+              <div class="community_index_board_tags" style="display: inline-block;">
+                <p><%= "##{tag.name}" %></p>
+              </div>
+            <% end %>
+            </div>
+            <div class="community_index_board_comments_count">
+              <p>コメント数 : <%= board.board_comments_count %></p>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
-
-<%# 広告エリア %>
-<div class="col-xs-12">
-  <p>ここに広告が入ります！
-    </p>
-</div>
-
-<div class="container col-xs-12" id="community_index_boards_lists" style="padding:0;">
-  <p class="new_talk_text col-xs-12">新着トーク</p>
-  <% @boards.each do |board| %>
-    <%= link_to board_path(board) do %>
-      <div class="community_index_board col-md-3 col-sm-4">
-        <div class="community_index_board_child">
-          <div class="community_index_profile_picture">
-            <%= render 'profile_picture', i: board %>
-          </div>
-          <p class="community_index_board_time"><%= board.created_at.strftime('%Y年%m月%d日 %H時%M分') %></p>
-          <div class="community_index_board_title">
-            <p><%= truncate(board.title, length: 25) %></p>
-          </div>
-          <div class="community_index_board_tags_area">
-          <% board.board_tags.each do |tag| %>
-            <div class="community_index_board_tags" style="display: inline-block;">
-              <p><%= "##{tag.name}" %></p>
-            </div>
-          <% end %>
-          </div>
-          <div class="community_index_board_comments_count">
-            <p>コメント数 : <%= board.board_comments_count %></p>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  <% end %>
-</div>
-
-<div class="top_each_page_link_area col-xs-12">
-  <div class="top_each_page_link">
-    <%= link_to 'もっと見る', new_lists_boards_path %>
   </div>
-</div>
 
-<%# 広告エリア %>
-<div class="col-xs-12">
-  <p>ここに広告が入ります！
-    </p>
+  <%# 広告エリア %>
+  <div class="col-xs-12">
+    <p>ここに広告が入ります！
+      </p>
+  </div>
+
+  <div class="container col-xs-12" id="community_index_boards_lists" style="padding:0;">
+    <p class="new_talk_text col-xs-12"><span class="icon icon-new_talk" style="margin-right:10px"></span>新着トーク</p>
+    <% @boards.each do |board| %>
+      <%= link_to board_path(board) do %>
+        <div class="community_index_board col-md-3 col-sm-4">
+          <div class="community_index_board_child">
+            <div class="community_index_profile_picture">
+              <%= render 'profile_picture', i: board %>
+            </div>
+            <p class="community_index_board_time"><%= board.created_at.strftime('%Y年%m月%d日 %H時%M分') %></p>
+            <div class="community_index_board_title">
+              <p><%= truncate(board.title, length: 25) %></p>
+            </div>
+            <div class="community_index_board_tags_area">
+            <% board.board_tags.each do |tag| %>
+              <div class="community_index_board_tags" style="display: inline-block;">
+                <p><%= "##{tag.name}" %></p>
+              </div>
+            <% end %>
+            </div>
+            <div class="community_index_board_comments_count">
+              <p>コメント数 : <%= board.board_comments_count %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="top_each_page_link_area col-xs-12">
+    <div class="top_each_page_link">
+      <%= link_to 'もっと見る', new_lists_boards_path %>
+    </div>
+  </div>
+
+  <%# 広告エリア %>
+  <div class="col-xs-12">
+    <p>ここに広告が入ります！
+      </p>
+  </div>
 </div>
