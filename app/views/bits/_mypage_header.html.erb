@@ -1,8 +1,85 @@
-ご登録情報
-活動履歴
+<% if user_signed_in? %>
+  <%# 左右100％の為いったんcontainerの中央寄せを解除の為に、まずdivを閉じる %>
+  </div>
+  <style>
+    body {
+      padding-top: 50px
+    }
+    @media screen and (min-width:768px) {
+      body {
+        padding-top: 75px
+      }
+    }
+  </style>
 
-視聴履歴
-お気に入り
-コメント
-気になる
-マイトークルーム
+  <% if controller.controller_name == 'profiles' && controller.action_name == 'show' %><%# プロフィールページの場合 %>
+    <div id="mypage_header_top" class="col-xs-12 row">
+      <div id="mypage_header_infomation" class="col-xs-6">
+        <p>ご登録情報</p>
+      </div>
+      <div id="mypage_header_activity_history" class="col-xs-6">
+        <%= link_to '活動履歴', { :controller => '/bits', action: :view_histories, or: 'history' } %>
+      </div>
+    </div>
+
+    <div class="container"><%# 左右100%エリア終わりの為、中央寄せ再開の為、container設置 %>
+  <% else %><%# プロフィールページでは無い場合 %>
+    <div id="mypage_header_top" class="col-xs-12 row">
+      <div id="mypage_header_infomation" class="col-xs-6">
+        <%= link_to ' ご登録情報', profile_path(current_user.id) %>
+      </div>
+      <div id="mypage_header_activity_history" class="col-xs-6">
+        <p>活動履歴</p>
+      </div>
+    </div>
+
+    <div class="container"><%# 左右100%エリア終わりの為、中央寄せ再開の為、container設置 %>
+
+    <%# sm以上のマイページヘッダー %>
+    <div id="mypage_header_bottom" class="hidden-xs col-sm-12 row">
+      <div id="mypage_header_view_history" class="col-sm-offset-0 col-md-offset-1 col-sm-2">
+        <%= link_to '視聴履歴', { :controller => '/bits', action: :view_histories, or: 'history' } %>
+      </div>
+      <div id="mypage_header_myfavorite" class="col-sm-2">
+        <%= link_to 'お気に入り', { :controller => '/bits', action: :like_videos, or: 'history' } %>
+      </div>
+      <div id="mypage_header_comments" class="col-sm-2">
+        <%= link_to 'コメント', my_commented_boards_path  %>
+      </div>
+      <div id="mypage_header_board_like" class="col-sm-2">
+        <%= link_to '気になる', my_commented_boards_path  %>
+      </div>
+      <div id="mypage_header_mytolkroom" class="col-sm-3 col-md-2">
+        <%= link_to 'マイトークルーム', my_post_boards_path  %>
+      </div>
+    </div>
+
+
+    <%# xsの時のマイページヘッダー %>
+    <%# ドロップダウンメニューにいれるタイトルを条件分岐で決める %>
+    <% if controller.action_name == 'my_post' %>
+      <% dropdown_title = 'マイトークルーム' %>
+    <% elsif controller.action_name == 'my_commented' %>
+      <% dropdown_title = 'コメントした動画' %>
+    <% elsif controller.action_name == 'view_histories' %>
+      <% dropdown_title = '視聴履歴' %>
+    <% elsif controller.action_name == 'like_videos' %>
+      <% dropdown_title = 'お気に入り' %>
+    <% else %>
+      <% dropdown_title = '気になる' %>
+    <% end %>
+
+    <div class="visible-xs">
+      <div class="btn-group">
+        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><%= dropdown_title %><span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><%= link_to '視聴履歴', { :controller => '/bits', action: :view_histories, or: 'history' } %></li>
+          <li><%= link_to 'お気に入り', { :controller => '/bits', action: :like_videos, or: 'history' } %></li>
+          <li><%= link_to 'コメント', my_commented_boards_path  %></li>
+          <li><%= link_to '気になる', my_commented_boards_path  %></li>
+          <li><%= link_to 'マイトークルーム', my_post_boards_path  %></li>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+<% end %>

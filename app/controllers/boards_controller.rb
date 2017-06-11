@@ -12,8 +12,9 @@ class BoardsController < ApplicationController
     @top_img_text = SiteConfiguration.find_by(item: 'board_top_img_text_a')
   end
 
-  def lists
+  def new_lists
     @boards = Board.all.order('created_at desc').page(params[:page]).includes(:user)
+    render '/boards/new_lists'
   end
 
   def Search
@@ -41,15 +42,6 @@ class BoardsController < ApplicationController
     @boards = Board.all
       .page(params[:page])
       .order('board_comments_count desc')
-      .includes(:user)
-
-    render '/boards/lists'
-  end
-
-  def new_lists
-    @boards = Board.all
-      .page(params[:page])
-      .order('created_at desc')
       .includes(:user)
 
     render '/boards/lists'
