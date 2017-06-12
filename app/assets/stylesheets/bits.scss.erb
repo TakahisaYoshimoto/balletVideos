@@ -292,34 +292,45 @@
    text-align:left;
  }
 
-
+.video-title {
+  margin-bottom:35px;
+  margin-top:20px;
+}
+  @media screen and (max-width:768px) {
+    .video-title {
+      margin-bottom:25px;
+      margin-top:15px;
+    }
+  }
 
 .video-text {
   font-size:20px;
-  padding-top:20px;
-  padding-bottom:30px;
-  padding-left:10px;
+  margin:0 0 5px 0;
 }
-  @media screen and (max-width:767px) {
-    .video-text {
-      font-size:18px;
-      padding-top:20px;
-      padding-bottom:20px;
-    }
-  }
+
+.icon-main {
+  font-size:24px;
+  margin-right:10px;
+}
+
+.talk-title {
+ margin-bottom:35px;
+ margin-top:20px;
+}
+ @media screen and (max-width:768px) {
+   .talk-title {
+     margin-bottom:25px;
+     margin-top:15px;
+   }
+ }
 
 .talk-text {
-  font-size:20px;
-  padding-top:25px;
-  padding-bottom:30px;
-  padding-left:10px;
+ font-size:20px;
+ margin:0 0 5px 0;
 }
-  @media screen and (max-width:767px) {
-    .talk-text {
-      font-size:18px;
-      padding-bottom:20px;
-    }
-  }
+
+
+
 
 .y_index_links_pickup_area {
   position: relative;
@@ -335,7 +346,7 @@
   border-radius:75px;
   z-index: 2;
 }
-  @media screen and (max-width:768px) {
+  @media screen and (max-width:767px) {
     .y_index_links_pickup_tag_left {
       height: 50px;
       width: 50px;
@@ -751,14 +762,38 @@
   }
 
 #mypage_header_bottom {
-  margin: 10px;
+  margin: 20px 0;
   text-align: center;
   display: block;
+  padding-left:0;
+  padding-right:0;
 }
-  #mypage_header_view_history,
-  #mypage_header_myfavorite,
-  #mypage_header_comments,
-  #mypage_header_board_like,
-  #mypage_header_mytolkroom {
-    border: 1px solid black;
-  }
+
+#mypage_header_view_history,
+#mypage_header_myfavorite,
+#mypage_header_comments,
+#mypage_header_board_like,
+#mypage_header_mytolkroom {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  height:30px;
+}
+
+#mypage_header_mytolkroom {
+  border-right: 1px solid black;
+}
+
+#mypage_header_bottom a {
+  padding-right:10px;
+  color:#000;
+}
+
+.icon-first {
+  padding-right:5px;
+}
+
+.icon-mp {
+  font-size:18px;
+  margin-top:20px;
+}

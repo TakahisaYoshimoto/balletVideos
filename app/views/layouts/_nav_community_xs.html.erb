@@ -2,9 +2,9 @@
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">トーク<span class="caret"></span></a>
   <ul class="dropdown-menu multi-level" role="menu">
     <li>
-      <div class="form-group row" style="margin:0 15px;">
+      <div class="form-group row">
         <%= form_tag({controller: '/boards', action: :Search }, method: :get) do %>
-          <div class="input-group form-group" style="max-width:300px;margin:10px auto;">
+          <div class="input-group form-group form-group_xs">
             <%= search_field_tag :search_params,
               @search_params,
               class: 'form-control',
@@ -34,7 +34,7 @@
     <li><%= link_to '新着', new_lists_boards_path %></li>
     <li><%= link_to '注目トーク', attention_boards_path  %></li>
     <li><%= link_to 'トークルームを立てる', new_board_path  %></li>
-    
+
     <% if user_signed_in? %>
       <li class="visible-xs"><%= link_to 'マイトークルーム', my_post_boards_path %></li>
       <li class="visible-xs"><%= link_to 'コメントしたトーク', my_commented_boards_path %></li>

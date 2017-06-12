@@ -40,7 +40,15 @@
   </div>
 </div>
 <div class="container">
-  <p class="pick_talk_text col-xs-12"><span class="icon icon-pick_talk" style="margin-right:10px"></span>注目のトーク</p>
+  <div class="col-xs-12 talk-title">
+    <table>
+      <td>
+        <span class="icon icon-main icon-pick_talk"></span>
+      </td>
+        <td><p class="talk-text">注目のトーク</p>
+        </td>
+    </table>
+  </div>
   <div class="container col-xs-12" id="community_index_boards_lists" style="padding:0;">
     <% @attention_boards.each do |board| %>
       <%= link_to board_path(board) do %>
@@ -74,9 +82,18 @@
     <p>ここに広告が入ります！
       </p>
   </div>
+  <div class="col-xs-12 talk-title">
+    <table>
+      <td>
+        <span class="icon icon-main icon-new_talk"></span>
+      </td>
+        <td><p class="talk-text">新着トーク</p>
+        </td>
+    </table>
+  </div>
 
   <div class="container col-xs-12" id="community_index_boards_lists" style="padding:0;">
-    <p class="new_talk_text col-xs-12"><span class="icon icon-new_talk" style="margin-right:10px"></span>新着トーク</p>
+
     <% @boards.each do |board| %>
       <%= link_to board_path(board) do %>
         <div class="community_index_board col-md-3 col-sm-4">
