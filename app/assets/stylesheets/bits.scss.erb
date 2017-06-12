@@ -644,10 +644,18 @@
 }
 
 #y_video_search_result_tagarea a {
- color:black;
- display:inline-block;
- width:215px;
+   color:black;
+   display:inline-block;
+   width:215px;
+   padding-bottom:5px;
+   vertical-align: top;
 }
+  @media screen and (max-width: 767px) {
+    #y_video_search_result_tagarea a {
+      font-size:12px;
+      width:140px;
+    }
+  }
 
 #order_change {
   width: 100%;
