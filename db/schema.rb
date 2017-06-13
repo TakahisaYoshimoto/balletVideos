@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170525131455) do
+ActiveRecord::Schema.define(version: 20170613014949) do
 
   create_table "board_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "text",       limit: 65535
@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(version: 20170525131455) do
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
     t.boolean  "display",                  default: true
+  end
+
+  create_table "board_likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.string   "board_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "board_tags", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -31,9 +38,11 @@ ActiveRecord::Schema.define(version: 20170525131455) do
   create_table "boards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
     t.integer  "user_id"
+    t.string   "category"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.integer  "board_comments_count", default: 0
+    t.integer  "likes_count"
   end
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

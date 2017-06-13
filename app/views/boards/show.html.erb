@@ -4,6 +4,11 @@
     <%= "##{tag.name}" %>
   </div>
 <% end %>
+
+<div id="board_like_button_area">
+  <%= render 'like', board: @board, likes: @likes %>
+</div>
+
 <ul id="board_comment_lists">
   <%= render 'board_comments_lists', board_comments: @board_comments %>
 </ul>

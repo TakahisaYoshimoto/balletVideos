@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-  before_action :set_board, only: [:show, :edit, :destroy]
+  before_action :set_board, only: [:show, :edit, :destroy, :like]
 
   def index
     @attention_boards = Board.all
@@ -70,6 +70,17 @@ class BoardsController < ApplicationController
   def show
     @board_comment = BoardComment.new
     @board_comments = BoardComment.where(board_id: @board.id).order('created_at asc').page(params[:page]).includes(:user)
+    @likes = BoardLike.where('board_id = ?', params[:id])
+  end
+
+  def like
+    unless @board.like_user(current_user.id)
+      @like = BoardLike.create(user_id: current_user.id, board_id: params[:id])
+    else
+      @like = current_user.board_likes.find_by(board_id: params[:id])
+      @like.destroy
+    end
+      @likes = BoardLike.where(board_id: params[:id])
   end
 
   def new
