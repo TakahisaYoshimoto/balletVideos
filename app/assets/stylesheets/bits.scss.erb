@@ -120,7 +120,7 @@
 
 
 .bits_index_board_child {
-  border: 1.0px solid gray;
+  border: 3px solid gray;
   margin-bottom: 15px;
   padding: 18px 18px 23px 23px;
   height: 250px;
@@ -132,7 +132,6 @@
       margin-bottom: 15px;
       padding: 15px 15px 20px 20px;
       height: 200px;
-      position: relative;
     }
   }
 
@@ -140,11 +139,14 @@
   margin-right: 15px;
 }
 
+.bits_index_profile_picture {
+  position:relative;
+}
+
 .bits_index_profile_picture img {
-  // border-radius: 5px;
   border-radius: 100%;
   margin-bottom: 8px;
-  margin-right:5px;
+  margin-right:15px;
   max-width: 50px;
   height: auto;
 }
@@ -155,50 +157,58 @@
     }
   }
 
-.bits_index_board_title,
-.bits_index_board_tags {
-  text-align: left;
-  margin-top: 1px;
+.bits_index_profile_picture p {
+  position:absolute;
+  bottom:0;
 }
 
 .bits_index_board_title {
-    margin-bottom: 10px;
+  text-align: left;
+  margin-top: 5px;
 }
 
-.bits_index_board_comments_count {
+.bits_index_board_title {
+  padding-left:10px;
+  margin-bottom: 10px;
+}
+
+.bits_index_board_comments {
   position: absolute;
-  bottom: 3px;
+  bottom: 5px;
   right: 10px;
 }
-.bits_index_board_time,
-.bits_index_board_title p,
-.bits_index_board_comments_count p {
+
+.bits_index_board_title p {
   margin: 0 auto;
   color: black;
   font-size: 14px;
 }
   @media screen and (max-width:767px) {
-    .bits_index_board_comments_count p {
+    .bits_index_board_comments p {
       font-size: 12px;
     }
   }
 
+.bits_index_board_comments_count {
+  margin-bottom: 3px;
+  color: black;
+  font-size: 14px;
+  float:right;
+}
 
 .bits_index_board_time {
-  font-size:11px;
+  color: black;
+  font-size:10px;
   margin-bottom:2px;
+  padding-left:2px;
 }
 
 .bits_index_board_tags_area {
-  margin-top:20px;
+  position: absolute;
+  top: 150px;
+  left: 30px;
   text-align:center;
 }
-  @media screen and (max-width:991px) {
-    .bits_index_board_tags_area {
-      margin-top:0px;
-      text-align:center;
-    }
-  }
 
 .bits_index_board_tags p {
   margin: 3px auto;
@@ -296,7 +306,7 @@
   margin-bottom:35px;
   margin-top:20px;
 }
-  @media screen and (max-width:768px) {
+  @media screen and (max-width:767px) {
     .video-title {
       margin-bottom:25px;
       margin-top:15px;
@@ -304,33 +314,56 @@
   }
 
 .video-text {
-  font-size:20px;
+  font-size:28px;
   margin:0 0 5px 0;
+}
+@media screen and (max-width:767px) {
+  .video-text {
+    font-size:20px;
+    margin:0 0 3px 0;
+  }
 }
 
 .icon-main {
-  font-size:24px;
+  font-size:40px;
   margin-right:10px;
 }
+  @media screen and (max-width:767px) {
+    .icon-main {
+      font-size:30px;
+      margin-right:10px;
+    }
+  }
 
 .talk-title {
  margin-bottom:35px;
  margin-top:20px;
 }
- @media screen and (max-width:768px) {
+ @media screen and (max-width:767px) {
    .talk-title {
      margin-bottom:25px;
      margin-top:15px;
    }
  }
 
+ .video-title table {
+   margin:0 auto;
+ }
+
 .talk-text {
- font-size:20px;
+ font-size:28px;
  margin:0 0 5px 0;
 }
+  @media screen and (max-width:767px) {
+    .talk-text {
+      font-size:20px;
+      margin:0 0 3px 0;
+    }
+  }
 
-
-
+  .talk-title table {
+    margin:0 auto;
+  }
 
 .y_index_links_pickup_area {
   position: relative;
@@ -544,44 +577,6 @@
   text-align: right;
   margin: 15px 0;
 }
-
-// #y_index_all_view_buttonarea_inside {
-//   text-align: center;
-//   margin: 20px 0 30px;
-// }
-// #y_index_all_view_buttonarea_inside:hover {
-//   text-align: center;
-//   margin: 20px 0 30px;
-// }
-// #y_index_all_view_button {
-//   font-size: 15px;
-//   color: #51A7F9;
-//   padding: 10px;
-//   border: 4px solid #51A7F9;
-// }
-// #y_index_all_view_button:hover {
-//   font-size: 15px;
-//   color: #0E83F3;
-//   padding: 10px;
-//   text-decoration: none;
-//   border: 4px solid #0E83F3;
-// }
-// @media screen and (min-width:768px) {
-//   #y_index_all_view_button {
-//     font-size: 20px;
-//     color: #51A7F9;
-//     padding: 16px 20px;
-//     border: 4px solid #51A7F9;
-//   }
-//   #y_index_all_view_button:hover {
-//     font-size: 20px;
-//     color: #0E83F3;
-//     padding: 16px 20px;
-//     text-decoration: none;
-//     border: 4px solid #0E83F3;
-//   }
-// }
-
 
 .y_video_body {
   background: white;

@@ -19,14 +19,17 @@
 </div>
 <div class="container">
   <div class="col-xs-12 video-title">
-    <table>
-      <td>
-        <span class="icon icon-main icon-video"></span>
-      </td>
-        <td><p class="video-text">動画</p>
+      <table>
+        <td>
+          <span class="icon icon-main icon-video">
+          </span>
+        </td>
+        <td>
+          <p class="video-text">動画
+          </p>
         </td>
       </table>
-    </div>
+  </div>
 
   <div id="y_index_links">
     <div class="y_index_video_lists col-xs-12 row-eq-height" style="padding:0;">
@@ -110,7 +113,7 @@
         <td>
           <span class="icon icon-main icon-talk"></span>
         </td>
-          <td><p class="talk-text">動画</p>
+          <td><p class="talk-text">トーク</p>
           </td>
         </table>
       </div>
@@ -123,9 +126,8 @@
               <div class="bits_index_profile_picture">
                 <%= render 'profile_picture', i: board %>
               </div>
-              <p class="bits_index_board_time"><%= board.created_at.strftime('%Y年%m月%d日 %H時%M分') %></p>
               <div class="bits_index_board_title">
-                <p>🖤<%= truncate(board.title, length: 25) %></p>
+                <p>🖤 <%= truncate(board.title, length: 25) %></p>
               </div>
               <div class="bits_index_board_tags_area">
               <% board.board_tags.each do |tag| %>
@@ -134,8 +136,15 @@
                 </div>
               <% end %>
               </div>
-              <div class="bits_index_board_comments_count">
-                <p>コメント数 : <%= board.board_comments_count %></p>
+              <div class="bits_index_board_comments">
+                  <p class="bits_index_board_comments_count">
+                    コメント数 : <%= board.board_comments_count %>
+                    <br>
+
+                  </p>
+                  <p class="bits_index_board_time">
+                    <%= board.created_at.strftime('%Y/%m/%d/ %H:%M') %>
+                  </p>
               </div>
             </div>
           </div>
