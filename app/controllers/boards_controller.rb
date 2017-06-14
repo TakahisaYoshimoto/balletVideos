@@ -4,11 +4,11 @@ class BoardsController < ApplicationController
   def index
     @attention_boards = Board.all
       .order('board_comments_count desc')
-      .limit(4)
+      .limit(6)
       .offset(0)
       .includes(:user)
       .includes(:board_tags)
-    @boards = Board.all.order('created_at desc').limit(8).offset(0).includes(:user).includes(:board_tags)
+    @boards = Board.all.order('created_at desc').limit(9).offset(0).includes(:user).includes(:board_tags)
     @top_img_text = SiteConfiguration.find_by(item: 'board_top_img_text_a')
   end
 
