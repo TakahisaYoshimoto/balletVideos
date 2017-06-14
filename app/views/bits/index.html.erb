@@ -18,9 +18,18 @@
   <div class="top_img_link_out"><%= link_to 'まずは演目から探してみる', { controller: :bits, action: :genreSearch, search_params: '演目', or: 'pv' }, class: 'top_img_link' %></div>
 </div>
 <div class="container">
-  <p class="video-text col-xs-12">
-    <span class="icon icon-video" style="margin-right:10px"></span>動画
-  </p>
+  <div class="col-xs-12 video-title">
+      <table>
+        <td>
+          <span class="icon icon-main icon-video">
+          </span>
+        </td>
+        <td>
+          <p class="video-text">動画
+          </p>
+        </td>
+      </table>
+  </div>
 
   <div id="y_index_links">
     <div class="y_index_video_lists col-xs-12 row-eq-height" style="padding:0;">
@@ -99,11 +108,17 @@
         </p>
     </div>
 
-    <p class="talk-text col-xs-12">
-      <span class="icon icon-video" style="margin-right:10px"></span>トーク
-    </p>
+    <div class="col-xs-12 talk-title">
+      <table>
+        <td>
+          <span class="icon icon-main icon-talk"></span>
+        </td>
+          <td><p class="talk-text">トーク</p>
+          </td>
+        </table>
+      </div>
 
-    <div class="container col-xs-12" id="bit_index_boards_lists" style="padding:0;">      
+    <div class="container col-xs-12" id="bit_index_boards_lists" style="padding:0;">
       <% @boards.each do |board| %>
         <%= link_to board_path(board) do %>
           <div class="bits_index_board col-md-3 col-sm-4">
@@ -111,9 +126,8 @@
               <div class="bits_index_profile_picture">
                 <%= render 'profile_picture', i: board %>
               </div>
-              <p class="bits_index_board_time"><%= board.created_at.strftime('%Y年%m月%d日 %H時%M分') %></p>
               <div class="bits_index_board_title">
-                <p>🖤<%= truncate(board.title, length: 25) %></p>
+                <p>🖤 <%= truncate(board.title, length: 25) %></p>
               </div>
               <div class="bits_index_board_tags_area">
               <% board.board_tags.each do |tag| %>
@@ -122,8 +136,15 @@
                 </div>
               <% end %>
               </div>
-              <div class="bits_index_board_comments_count">
-                <p>コメント数 : <%= board.board_comments_count %></p>
+              <div class="bits_index_board_comments">
+                  <p class="bits_index_board_comments_count">
+                    コメント数 : <%= board.board_comments_count %>
+                    <br>
+
+                  </p>
+                  <p class="bits_index_board_time">
+                    <%= board.created_at.strftime('%Y/%m/%d/ %H:%M') %>
+                  </p>
               </div>
             </div>
           </div>

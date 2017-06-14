@@ -15,10 +15,12 @@
   <% if controller.controller_name == 'profiles' && controller.action_name == 'show' %><%# プロフィールページの場合 %>
     <div id="mypage_header_top" class="col-xs-12 row">
       <div id="mypage_header_infomation" class="col-xs-6">
-        <p>ご登録情報</p>
+        <p><span class="icon mp-nav-icon icon-information" style="color:#000;font-size:28px"></span>
+          <br>ご登録情報</p>
       </div>
       <div id="mypage_header_activity_history" class="col-xs-6">
-        <%= link_to '活動履歴', { :controller => '/bits', action: :view_histories, or: 'history' } %>
+                <span class="icon mp-nav-icon icon-history" style="color:#FFF;font-size:28px"></span><br>
+                <%= link_to '活動履歴', { :controller => '/bits', action: :view_histories, or: 'history' } %>
       </div>
     </div>
 
@@ -26,34 +28,75 @@
   <% else %><%# プロフィールページでは無い場合 %>
     <div id="mypage_header_top" class="col-xs-12 row">
       <div id="mypage_header_infomation" class="col-xs-6">
+        <span class="icon mp-nav-icon icon-information" style="color:#FFF;font-size:28px"></span><br>
         <%= link_to ' ご登録情報', profile_path(current_user.id) %>
       </div>
       <div id="mypage_header_activity_history" class="col-xs-6">
-        <p>活動履歴</p>
+        <p><span class="icon mp-nav-icon icon-history" style="color:#000;font-size:28px"></span><br>活動履歴</p>
       </div>
     </div>
 
-    <div class="container"><%# 左右100%エリア終わりの為、中央寄せ再開の為、container設置 %>
+    <div class="container container_mypage"><%# 左右100%エリア終わりの為、中央寄せ再開の為、container設置 %>
 
     <%# sm以上のマイページヘッダー %>
     <div id="mypage_header_bottom" class="hidden-xs col-sm-12 row">
-      <div id="mypage_header_view_history" class="col-sm-offset-0 col-md-offset-1 col-sm-2">
-        <%= link_to '視聴履歴', { :controller => '/bits', action: :view_histories, or: 'history' } %>
+      <div id="mypage_header_view_history" class=" col-sm-2">
+        <table>
+          <td>
+            <%= link_to '視聴履歴', { :controller => '/bits', action: :view_histories, or: 'history' } %>
+          </td>
+          <td>
+            <span class="icon icon-mp icon-history_video">
+            </span>
+          </td>
+        </table>
       </div>
+
       <div id="mypage_header_myfavorite" class="col-sm-2">
-        <%= link_to 'お気に入り', { :controller => '/bits', action: :like_videos, or: 'history' } %>
+        <table>
+          <td>
+            <%= link_to 'お気に入り', { :controller => '/bits', action: :like_videos, or: 'history' } %>
+          </td>
+          <td>
+            <span class="icon icon-mp icon-checked_video"></span>
+          </td>
+        </table>
       </div>
+
       <div id="mypage_header_comments" class="col-sm-2">
-        <%= link_to 'コメント', my_commented_boards_path  %>
+        <table>
+          <td>
+            <%= link_to 'コメント', my_commented_boards_path  %>
+          </td>
+          <td>
+            <span class="icon icon-mp icon-first icon-history_video"></span>
+            <span class="icon icon-mp icon-talk"></span>
+          </td>
+        </table>
       </div>
+
       <div id="mypage_header_board_like" class="col-sm-2">
-        <%= link_to '気になる', my_commented_boards_path  %>
+        <table>
+          <td>
+            <%= link_to '気になる', my_commented_boards_path  %>
+          </td>
+          <td>
+            <span class="icon icon-mp icon-talk"></span>
+          </td>
+        </table>
       </div>
-      <div id="mypage_header_mytolkroom" class="col-sm-3 col-md-2">
-        <%= link_to 'マイトークルーム', my_post_boards_path  %>
+
+      <div id="mypage_header_mytolkroom" class="col-sm-4 col-md-4">
+        <table>
+          <td>
+            <%= link_to 'マイトークルーム', my_post_boards_path  %>
+          </td>
+          <td>
+            <span class="icon icon-mp icon-talk"></span>
+          </td>
+        </table>
       </div>
     </div>
-
 
     <%# xsの時のマイページヘッダー %>
     <%# ドロップダウンメニューにいれるタイトルを条件分岐で決める %>

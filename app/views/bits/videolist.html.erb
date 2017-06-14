@@ -8,18 +8,30 @@
   <div id="y_videolist_breadcrumb">
     <% if @category_params.present? && @genre.present? %>
       <% unless controller.action_name == 'genreSearch' %>
-        <h3 class="search_words"><span class="icon icon-search" style="margin-right:10px"></span><%= link_to @category_params, { controller: :bits, action: :genreSearch, search_params: @category_params, or: 'pv' } %> >
-        <% @genres.each do |g| %>
-          <span class="icon icon-search" style="margin-right:10px"></span><%= link_to g, { controller: :bits, action: :Search, search_params: g, category_params: @category_params, or: 'pv' } %>
-        <% end %>
+        <h3 class="search_words">
+          <span class="icon icon-search" style="margin-right:10px">
+          </span>
+          <%= link_to @category_params, { controller: :bits, action: :genreSearch, search_params: @category_params, or: 'pv' } %> >
+          <% @genres.each do |g| %>
+            <%= link_to g, { controller: :bits, action: :Search, search_params: g, category_params: @category_params, or: 'pv' } %>
+          <% end %>
         </h3>
       <% else %>
-        <h3 class="search_words"><span class="icon icon-search" style="margin-right:10px"></span><%= @category_params %></h3>
+        <h3 class="search_words">
+          <span class="icon icon-search" style="margin-right:10px">
+          </span>
+          <%= @category_params %>
+        </h3>
       <% end %>
     <% elsif @category_params.present? && @genre.blank? %>
-      <h3 class="search_words"><span class="icon icon-search" style="margin-right:10px"></span><%= @category_params %></h3>
+      <h3 class="search_words">
+        <!-- <span class="icon icon-search" style="margin-right:10px"> -->
+        </span><%= @category_params %>
+      </h3>
     <% else %>
-      <h3><span class="icon icon-search" style="margin-right:10px"></span><%= @genre %></h3>
+      <h3>
+        <%= @genre %>
+      </h3>
     <% end %>
   </div>
 

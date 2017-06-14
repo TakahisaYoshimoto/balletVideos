@@ -53,6 +53,25 @@ html, body {
   margin: 0;
 }
 
+@media (min-width: 768px) {
+  .container {
+      width: 700px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+      width: 900px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+      width: 1050px;
+  }
+}
+
+
 h1 {
   font-size:30px;
 }
@@ -102,6 +121,11 @@ body {
   display:inline-block;
   padding-left:0;
 }
+  @media screen and (max-width: 767px) {
+    .navbar-right li {
+      padding-left:20px;
+    }
+  }
 
 .navbar-nav li a:hover {
   color:#9d9d9d !Important;
@@ -109,6 +133,11 @@ body {
 
 .navbar-nav li .dropdown-menu {
   background:#000;
+}
+
+.nav-menu-icon {
+  font-size:20px;
+  padding-right:10px;
 }
 
 #accordion {
@@ -208,6 +237,11 @@ body {
   .navbar {
     min-height: 75px;
   }
+}
+
+.form-group_xs{
+  max-width:300px;
+  margin-left:40px;
 }
 
 #footer {
@@ -314,4 +348,8 @@ body {
   font-size:11px;
   text-align: center;
   margin-top: 40px !important;
+}
+
+.icon-footer {
+  color:#FFF;
 }
