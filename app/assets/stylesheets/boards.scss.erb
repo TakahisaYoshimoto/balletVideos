@@ -170,27 +170,22 @@ button.talk_btn:hover {
   }
 }
 
+/*検索結果とかのページ*/
 #community_search_area {
 }
-#board_lists,
-#board_comment_lists {
+#board_lists {
   border: 1px solid #F0F0F0;
   border-radius: 5px;
   padding: 0;
 }
-.board_link,
-.board_comments,
-.board_master_comments  {
+.board_link　{
   list-style: none;
   padding: 10px;
 }
-.board_link:not(:last-child),
-.board_comments:not(:last-child) {
+.board_link:not(:last-child) {
   border-bottom: 1px solid #F0F0F0;
 }
-.board_link img,
-.board_comments img,
-.board_master_comments img {
+.board_link img　{
   width: 50px;
   height: 50px;
   border-radius: 5px;
@@ -305,10 +300,6 @@ button.talk_btn:hover {
   }
 
 
-
-
-
-
 /*lists*/
 .board_link {
   overflow: hidden;
@@ -334,18 +325,116 @@ button.talk_btn:hover {
 }
 
 /*show*/
+#board_title_comment_area {
+  border: 1px solid black;
+  position: relative;
+  margin-bottom: 100px;
+}
+#board_show_title {
+  background: black;
+}
+#board_show_title h3 {
+  color: white;
+  padding: 15px;
+  margin: 0;
+}
+#board_show_top_pic {
+  display: inline-block;
+  width: 15%;
+  text-align: center;
+  padding: 15px;
+}
+#board_show_top_text {
+  display: inline-block;
+  width: 80%;
+  padding: 15px;
+  margin-bottom: 50px;
+}
+@media screen and(max-width: 768px) {
+  #board_show_top_pic {
+    width: 100%;
+  }
+  #board_show_top_text {
+    width: 100%;
+  }
+}
+#board_like_button_area {
+  position: absolute;
+  bottom: -50px;
+  text-align: center;
+}
+#board_like_button_area_child {
+  border-radius: 100%;
+  border: 2px solid black;
+  background: white;
+  padding: 2px;
+  display: inline-block;
+}
+#board_like_area {
+  border-radius: 100%;
+  border: 2px solid black;
+  background: black;
+  padding: 15px;
+  display: inline-block;
+  text-align: center;
+}
+#board_like_cancel_area {
+  border-radius: 100%;
+  border: 2px solid pink;
+  background: pink;
+  padding: 15px;
+  display: inline-block;
+  text-align: center;
+}
+#board_like_button {
+  color: white;
+}
+#board_like_cancel_button {
+  color: black;
+}
+#board_like_count {
+  color: white;
+}
+#board_like_cancel_area > #board_like_count {
+  color: black;
+}
+#board_newcomment_area {
+  margin-bottom: 50px;
+}
+.board_comments,
 .board_master_comments {
+  list-style: none;
+  margin-bottom: 15px;
+}
+.board_comments_pic_area {
+  display: inline-block;
+  width: 15%;
+  text-align: center;
+}
+.board_comments_text_area {
+  border: 1px solid black;
+  padding: 15px;
+  display: inline-block;
+  width: 80%;
+}
+@media screen and(max-width: 768px) {
+  .board_comments_pic_area {
+    display: block;
+    width: 100%;
+  }
+  .board_comments_text_area {
+    display: block;
+    width: 100%;
+  }
+}
+.board_master_comments > .board_comments_text_area {
   background: #F2F2F2;
 }
 .board_comments {
   background: white;
 }
-.board_comments p,
-.board_master_comments p {
-  padding-left: 53px;
-}
-.board_master_comments:not(:last-child) {
-  border-bottom: 1px solid white;
+#board_newcomment_area_pic {
+  text-align: center;
 }
 #characnt {
   background-color: rgba(0,0,0,0);
@@ -354,4 +443,31 @@ button.talk_btn:hover {
 }
 #board_comment_submit {
   text-align: right;
+}
+
+#board_show_comments_count_area_out {
+  position: relative;
+  text-align: center;
+  border-bottom: 1px solid #F2F2F2;
+  margin-bottom: 50px;
+}
+#board_show_comments_count_area {
+  border-radius: 100%;
+  border: 2px solid black;
+  background: white;
+  padding: 2px;
+  display: inline-block;
+  position: absolute;
+  bottom: -50px;
+}
+#board_show_comments_count_area_child {
+  border-radius: 100%;
+  border: 2px solid black;
+  background: black;
+  padding: 15px;
+  display: inline-block;
+  text-align: center;
+}
+#board_show_comments_count_area_child p {
+  color: white;
 }

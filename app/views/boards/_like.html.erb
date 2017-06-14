@@ -1,19 +1,26 @@
+<div id="board_like_button_area_child">
 <% if user_signed_in? %>
   <% unless board.like_user(current_user.id) %>
     <%= link_to action: :like, remote: true, id: params[:id] do %>
-      <p id="good_button_hand"><i class="glyphicon glyphicon-thumbs-up"></i></p>
-      <p id="good_button_count" style="display:inline-block;"><%= likes.count %></p>
+      <div id="board_like_area">
+        <p id="board_like_button">気になる</p>
+        <p id="board_like_count"><%= likes.count %></p>
+      </div>
     <% end %>
   <% else %>
     <%= link_to action: :like, remote: true, id: params[:id] do %>
-      <p id="good_button_heart"><i class="glyphicon glyphicon-thumbs-up"></i></p>
-      <p id="good_button_count" style="display:inline-block;"><%= likes.count %></p>
+      <div id="board_like_cancel_area">
+        <p id="board_like_cancel_button">気になる</p>
+        <p id="board_like_count"><%= likes.count %></p>
+      </div>
     <% end %>
   <% end %>
 <% else %>
   <a href="#y_video_show_titlearea" data-toggle="popover" title="ログインするとグッドできます" data-content='<%= link_to 'ログイン', new_user_session_path %>'>
-    <p id="good_button_hand"><i class="glyphicon glyphicon-thumbs-up"></i></p>
-    <p id="good_button_count" style="display:inline;"><%= likes.count %></p>
+    <div id="board_like_area">
+      <p id="board_like_button">気になる</p>
+      <p id="board_like_count"><%= likes.count %></p>
+    </div>
   </a>
   <script>
     $(function() {
@@ -24,3 +31,4 @@
     })
   </script>
 <% end %>
+</div>

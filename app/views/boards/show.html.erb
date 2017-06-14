@@ -1,25 +1,45 @@
-<h3><%= @board.title %></h3>
-<% @board.board_tags.each do |tag| %>
-  <div style="display: inline-block;margin-right:10px;">
-    <%= "##{tag.name}" %>
+<div id="board_title_comment_area">
+  <div id="board_show_title">
+    <h3><%= @board.title %></h3>
   </div>
-<% end %>
 
-<div id="board_like_button_area">
-  <%= render 'like', board: @board, likes: @likes %>
+  <div id="board_show_top_pic">
+    <%= render 'profile_picture_lists', i: @master_comment %>
+    <p><strong><%= @master_comment.user.username %></strong>さん</p>
+  </div>
+  <div id="board_show_top_text">
+    <%= @master_comment.created_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %>
+    <%= simple_format(@master_comment.text) %>
+
+    <% @board.board_tags.each do |tag| %>
+      <div style="display: inline-block;margin-right:10px;">
+        <%= "##{tag.name}" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div id="board_like_button_area" class="col-xs-12">
+    <%= render 'like', board: @board, likes: @likes %>
+  </div>
 </div>
-
-<ul id="board_comment_lists">
-  <%= render 'board_comments_lists', board_comments: @board_comments %>
-</ul>
-
-<%= link_to_next_page @board_comments, 'もっと見る', remote: true, id: 'board_comments_more_link' %>
 
 <% if user_signed_in? %>
   <div id="board_newcomment_area">
     <%= form_for(@board_comment) do |f| %>
       <div class="row">
-        <div class="form-group col-sm-12">
+        <div id="board_newcomment_area_pic" class="col-sm-2">
+          <% if @user.picture_lg.present? %>
+            <% if Rails.env == 'production' %>
+                <%= link_to image_tag(ENV['AWS_PICTURE_PATH']+"#{ @user.picture_min }"), profile_path(@user) %>
+            <% else %>
+                <%= link_to image_tag("/docs/#{ @user.picture_min }"), profile_path(@user) %>
+            <% end %>
+          <% else %>
+            <%= link_to image_tag("no-picture-min.gif"), profile_path(@user) %>
+          <% end %>
+          <p><strong><%= @user.username %></strong>さん</p>
+        </div>
+        <div class="form-group col-sm-10">
           <%= f.text_area :text,
             maxlength: "800",
             id: 'comment_text_area',
@@ -37,12 +57,29 @@
       </div>
     <% end %>
   </div>
-
-  <% if current_user.user_level > 1 %>
-    <%= link_to '削除する', board_path(@board), method: :delete, data: { confirm: "削除してよろしいですか？" } %>
-  <% end %>
 <% else %>
   <div id="board_newcomment_area">
     <p><%= link_to 'ログイン', new_user_session_path %>するとコメントの投稿ができます。</p>
   </div>
+<% end %>
+
+<div id="board_show_comments_count_area_out" class="col-xs-12">
+  <div id="board_show_comments_count_area">
+    <div id="board_show_comments_count_area_child">
+      <p>コメント</p>
+      <p><%= @board.board_comments_count %></p>
+    </div> 
+  </div>
+</div>
+
+<ul id="board_comment_lists">
+  <%= render 'board_comments_lists', board_comments: @board_comments %>
+</ul>
+
+<%= link_to_next_page @board_comments, 'もっと見る', remote: true, id: 'board_comments_more_link' %>
+
+<% if user_signed_in? %>
+  <% if current_user.user_level > 1 %>
+    <%= link_to '削除する', board_path(@board), method: :delete, data: { confirm: "削除してよろしいですか？" } %>
+  <% end %>
 <% end %>

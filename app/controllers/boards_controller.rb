@@ -69,8 +69,12 @@ class BoardsController < ApplicationController
 
   def show
     @board_comment = BoardComment.new
-    @board_comments = BoardComment.where(board_id: @board.id).order('created_at asc').page(params[:page]).includes(:user)
+    @master_comment = BoardComment.where(board_id: @board.id).order('created_at asc').first
+    @board_comments = BoardComment.where(board_id: @board.id).order('created_at desc').page(params[:page]).includes(:user)
     @likes = BoardLike.where('board_id = ?', params[:id])
+    if user_signed_in?
+      @user = User.find(current_user.id)
+    end
   end
 
   def like
