@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_many :users
   has_many :likes, dependent: :destroy
+  has_many :board_likes, dependent: :destroy
   has_many :view_histories
   has_many :comments
   has_many :boards

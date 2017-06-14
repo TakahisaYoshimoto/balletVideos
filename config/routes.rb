@@ -44,6 +44,7 @@ Rails.application.routes.draw do
       get :my_commented
       get :new_lists
       get :attention
+      get :like
     end
   end
   resources :board_comments, only: [:create, :new, :destroy] do
