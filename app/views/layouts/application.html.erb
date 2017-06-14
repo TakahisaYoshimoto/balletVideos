@@ -101,14 +101,14 @@
                   <span class="icon icon-mypage" style="font-size:20px;margin-right:10px;color:#FFF"></span><%= link_to ' マイページ', profile_path(current_user.id) %>
                 </li>
                 <li>
-                    <span class="icon icon-login" style="font-size:20px;margin-right:10px;color:#FFF"></span><%= link_to ' ログアウト', destroy_user_session_path, method: :delete %>
+                  <span class="icon icon-login" style="font-size:20px;margin-right:10px;color:#FFF"></span><%= link_to ' ログアウト', destroy_user_session_path, method: :delete %>
                 </li>
               <% else %>
                 <li>
-                    <span class="icon icon-header icon-talk"><%= link_to 'ユーザー登録', new_user_registration_path %>
+                  <span class="icon icon-mypage" style="font-size:20px;margin-right:10px;color:#FFF"><%= link_to 'ユーザー登録', new_user_registration_path %>
                 </li>
                 <li>
-                    <span class="icon icon-header icon-talk"><%= link_to 'ログイン', new_user_session_path %>
+                  <span class="icon icon-login" style="font-size:20px;margin-right:10px;color:#FFF"><%= link_to 'ログイン', new_user_session_path %>
                 </li>
               <% end %>
             </ul>
