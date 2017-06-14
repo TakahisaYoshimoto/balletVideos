@@ -224,75 +224,166 @@ button.talk_btn:hover {
 
 
 /*index*/
-.community_index_board_child {
-  border: 1px solid gray;
-  margin-bottom: 15px;
-  padding: 18px 18px 23px 23px;
-  height: 250px;
-  position: relative;
+
+
+
+
+
+.community_index_board_comments_count {
+  margin-bottom: 3px;
+  color: black;
+  font-size: 14px;
+  float:right;
 }
-@media screen and (max-width:767px) {
+
+.community_index_board_time {
+  color: black;
+  font-size:10px;
+  margin-bottom:2px;
+  padding-left:2px;
+}
+
+// .community_index_board_tags_area {
+//   margin-top:20px;
+//   text-align:center;
+// }
+//   @media screen and (max-width:991px) {
+//     .community_index_board_tags_area {
+//       margin-top:0px;
+//       text-align:center;
+//     }
+//   }
+//
+// .community_index_board_tags p {
+//   margin: 3px auto;
+//   color: gray;
+//   font-size: 12px;
+// }
+//   @media screen and (max-width:991px) {
+//     .community_index_board_tags p {
+//       margin: 0px auto;
+//       color: gray;
+//       font-size: 12px;
+//     }
+//   }
+
+  .community_index_board_tags_area {
+    position: absolute;
+    top: 150px;
+    left: 30px;
+    text-align:center;
+  }
+
+  .community_index_board_tags p {
+    margin: 3px auto;
+    color: gray;
+    font-size: 12px;
+  }
+    @media screen and (max-width:991px) {
+      .community_index_board_tags p {
+        margin: 0px auto;
+        color: gray;
+        font-size: 12px;
+      }
+    }
+
+
+
+
+
+
   .community_index_board_child {
-    border: 1.0px solid gray;
+    border: 3px solid gray;
     margin-bottom: 15px;
     padding: 18px 18px 23px 23px;
-    height: 200px;
+    height: 250px;
     position: relative;
   }
-}
-
-
-
+    @media screen and (max-width:767px) {
+      .community_index_board_child {
+        border: 1.0px solid gray;
+        margin-bottom: 15px;
+        padding: 15px 15px 20px 20px;
+        height: 200px;
+      }
+    }
 
 .community_index_board_child:not(:last-child) {
   margin-right: 15px;
 }
+
+.community_index_profile_picture {
+  position:relative;
+}
+
 .community_index_profile_picture img {
-  border-radius: 5px;
   border-radius: 100%;
   margin-bottom: 8px;
+  margin-right:15px;
+  max-width: 70px;
+  height: 63px;
 }
-.community_index_board_title,
-.community_index_board_tags {
-  text-align: left;
-  margin-top: 1px;
-}
-
-.community_index_board_title {
-    margin-bottom: 10px;
-}
-
-.community_index_board_comments_count {
-  position: absolute;
-  bottom: 3px;
-  right: 10px;
-}
-.community_index_board_time,
-.community_index_board_title p,
-.community_index_board_comments_count p {
-  margin: 0;
-  color: black;
-  font-size: 14px;
-}
-
-.community_index_board_time {
-  font-size:11px;
-  margin-bottom:2px;
-}
-
-.community_index_board_tags_area {
-  margin-top:20px;
-  text-align:center;
-}
-  @media screen and (max-width:991px) {
-    .community_index_board_tags_area {
-      margin-top:0px;
-      text-align:center;
+  @media screen and (max-width:767px) {
+    .community_index_profile_picture img {
+      max-width: 45px;
+      height: auto;
     }
   }
 
+.community_index_profile_picture p {
+  position:absolute;
+  bottom:0;
+}
+
+.community_index_board_title {
+  text-align: left;
+  margin-bottom: 5px;
+  padding-left:10px;
+  margin-bottom: 10px;
+}
+
+.community_index_board_comments {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+}
+
+  //吉本
+
+.community_index_board_title p {
+  margin: 0 auto;
+  color: black;
+  font-size: 14px;
+}
+  @media screen and (max-width:767px) {
+    .community_index_board_comments p {
+      font-size: 12px;
+    }
+  }
+
+.community_index_board_comments_count {
+  margin-bottom: 3px;
+  color: black;
+  font-size: 14px;
+  float:right;
+}
+
+.community_index_board_time {
+  color: black;
+  font-size:10px;
+  margin-bottom:2px;
+  padding-left:2px;
+}
+
+.community_index_board_tags_area {
+  position: absolute;
+  top: 140px;
+  left: 30px;
+  text-align:center;
+}
+
 .community_index_board_tags p {
-  margin: 3px auto;
+  margin: 0px auto;
   color: gray;
   font-size: 12px;
 }
@@ -303,11 +394,6 @@ button.talk_btn:hover {
       font-size: 12px;
     }
   }
-
-
-
-
-
 
 /*lists*/
 .board_link {
@@ -354,4 +440,15 @@ button.talk_btn:hover {
 }
 #board_comment_submit {
   text-align: right;
+}
+
+
+@media only screen and ( max-width: 767px ) {
+  .pagination_bar li.first,
+  .pagination_bar li.last {
+    /* screen readers only */
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
 }

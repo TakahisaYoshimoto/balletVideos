@@ -50,16 +50,15 @@
     </table>
   </div>
   <div class="container col-xs-12" id="community_index_boards_lists" style="padding:0;">
-    <% @attention_boards.each do |board| %>
+    <% @attention_boards.each.with_index(1) do |board, i| %>
       <%= link_to board_path(board) do %>
-        <div class="community_index_board col-md-3 col-sm-4">
+        <div class="community_index_board col-md-4 col-sm-6">
           <div class="community_index_board_child">
             <div class="community_index_profile_picture">
               <%= render 'profile_picture', i: board %>
             </div>
-            <p class="community_index_board_time"><%= board.created_at.strftime('%Y年%m月%d日 %H時%M分') %></p>
             <div class="community_index_board_title">
-              <p><%= truncate(board.title, length: 25) %></p>
+              <p>🖤 <%= truncate(board.title, length: 25) %></p>
             </div>
             <div class="community_index_board_tags_area">
             <% board.board_tags.each do |tag| %>
@@ -68,8 +67,15 @@
               </div>
             <% end %>
             </div>
-            <div class="community_index_board_comments_count">
-              <p>コメント数 : <%= board.board_comments_count %></p>
+            <div class="community_index_board_comments">
+                <p class="community_index_board_comments_count">
+                  コメント数 : <%= board.board_comments_count %>
+                  <br>
+
+                </p>
+                <p class="community_index_board_time">
+                  <%= board.created_at.strftime('%Y/%m/%d/ %H:%M') %>
+                </p>
             </div>
           </div>
         </div>
@@ -78,10 +84,19 @@
   </div>
 
   <%# 広告エリア %>
-  <div class="col-xs-12">
-    <p>ここに広告が入ります！
-      </p>
+  <div class="col-xs-12 hidden-sm hidden-md hidden-lg" style="text-align:center;padding-bottom:15px;overflow: visible;margin-left: -15px;">
+    <!--  ad tags Size: 320x100 ZoneId:1146757-->
+    <script type="text/javascript" src="https://js.medi-8.net/t/146/757/a1146757.js"></script>
   </div>
+  <div class="hidden-xs col-sm-12 col-md-12 hidden-lg" style="text-align:center;padding-bottom:15px;">
+    <!--  ad tags Size: 468x60 ZoneId:1142016-->
+    <script type="text/javascript" src="https://js.medi-8.net/t/142/016/a1142016.js"></script>
+  </div>
+  <div class="visible-lg col-lg-12" style="text-align:center;padding-bottom:15px;">
+    <!--  ad tags Size: 728x90 ZoneId:1146756-->
+    <script type="text/javascript" src="https://js.medi-8.net/t/146/756/a1146756.js"></script>
+  </div>
+
   <div class="col-xs-12 talk-title">
     <table>
       <td>
@@ -96,14 +111,13 @@
 
     <% @boards.each do |board| %>
       <%= link_to board_path(board) do %>
-        <div class="community_index_board col-md-3 col-sm-4">
+        <div class="community_index_board col-md-4 col-sm-6">
           <div class="community_index_board_child">
             <div class="community_index_profile_picture">
               <%= render 'profile_picture', i: board %>
             </div>
-            <p class="community_index_board_time"><%= board.created_at.strftime('%Y年%m月%d日 %H時%M分') %></p>
             <div class="community_index_board_title">
-              <p><%= truncate(board.title, length: 25) %></p>
+              <p>🖤 <%= truncate(board.title, length: 25) %></p>
             </div>
             <div class="community_index_board_tags_area">
             <% board.board_tags.each do |tag| %>
@@ -112,8 +126,15 @@
               </div>
             <% end %>
             </div>
-            <div class="community_index_board_comments_count">
-              <p>コメント数 : <%= board.board_comments_count %></p>
+            <div class="community_index_board_comments">
+                <p class="bits_index_board_comments_count">
+                  コメント数 : <%= board.board_comments_count %>
+                  <br>
+
+                </p>
+                <p class="community_index_board_time">
+                  <%= board.created_at.strftime('%Y/%m/%d/ %H:%M') %>
+                </p>
             </div>
           </div>
         </div>
@@ -128,8 +149,16 @@
   </div>
 
   <%# 広告エリア %>
-  <div class="col-xs-12">
-    <p>ここに広告が入ります！
-      </p>
+  <div class="col-xs-12 hidden-sm hidden-md hidden-lg" style="text-align:center;padding-bottom:15px;overflow: visible;margin-left: -15px;">
+    <!--  ad tags Size: 320x100 ZoneId:1146757-->
+    <script type="text/javascript" src="https://js.medi-8.net/t/146/757/a1146757.js"></script>
+  </div>
+  <div class="hidden-xs col-sm-12 col-md-12 hidden-lg" style="text-align:center;padding-bottom:15px;">
+    <!--  ad tags Size: 468x60 ZoneId:1142016-->
+    <script type="text/javascript" src="https://js.medi-8.net/t/142/016/a1142016.js"></script>
+  </div>
+  <div class="visible-lg col-lg-12" style="text-align:center;padding-bottom:15px;">
+    <!--  ad tags Size: 728x90 ZoneId:1146756-->
+    <script type="text/javascript" src="https://js.medi-8.net/t/146/756/a1146756.js"></script>
   </div>
 </div>
