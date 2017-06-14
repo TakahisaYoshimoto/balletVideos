@@ -441,3 +441,14 @@ button.talk_btn:hover {
 #board_comment_submit {
   text-align: right;
 }
+
+
+@media only screen and ( max-width: 767px ) {
+  .pagination_bar li.first,
+  .pagination_bar li.last {
+    /* screen readers only */
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+}
