@@ -51,7 +51,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <%= link_to image_tag('bit_logo.png', id: 'site_logo', class: 'hidden-xs hidden-sm', height: 50), bits_path %>
+            <%= link_to image_tag('bit_logo.png', id: 'site_logo', class: 'hidden-xs hidden-sm', height: 45), bits_path %>
             <%= link_to image_tag('bit_logo_phone.png', id: 'site_logo_s', class: 'hidden-md hidden-lg', height: 30), bits_path %>
           </div>
           <div class="collapse navbar-collapse target">
@@ -98,17 +98,25 @@
               <li class="nav-divider"></li>
               <% if user_signed_in? %>
                 <li>
-                  <span class="icon icon-mypage" style="font-size:20px;margin-right:10px;color:#FFF"></span><%= link_to ' マイページ', profile_path(current_user.id) %>
+                  <span class="icon icon-mypage"  style="font-size:24px;margin-right:0;color:#FFF">
+                  </span>
+                  <%= link_to ' マイページ', profile_path(current_user.id) %>
                 </li>
                 <li>
-                  <span class="icon icon-login" style="font-size:20px;margin-right:10px;color:#FFF"></span><%= link_to ' ログアウト', destroy_user_session_path, method: :delete %>
+                  <span class="icon icon-login"  style="font-size:24px;margin-right:0;color:#FFF">
+                  </span>
+                  <%= link_to ' ログアウト', destroy_user_session_path, method: :delete %>
                 </li>
               <% else %>
                 <li>
-                  <span class="icon icon-mypage" style="font-size:20px;margin-right:10px;color:#FFF"><%= link_to 'ユーザー登録', new_user_registration_path %>
+                  <span class="icon icon-mypage"  style="font-size:24px;margin-right:0;color:#FFF">
+                  </span>
+                    <%= link_to 'ユーザー登録', new_user_registration_path %>
                 </li>
                 <li>
-                  <span class="icon icon-login" style="font-size:20px;margin-right:10px;color:#FFF"><%= link_to 'ログイン', new_user_session_path %>
+                  <span class="icon icon-login" style="font-size:24px;margin-right:0;color:#FFF">
+                  </span>
+                  <%= link_to 'ログイン', new_user_session_path %>
                 </li>
               <% end %>
             </ul>
