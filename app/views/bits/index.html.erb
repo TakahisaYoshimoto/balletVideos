@@ -18,9 +18,18 @@
   <div class="top_img_link_out"><%= link_to 'まずは演目から探してみる', { controller: :bits, action: :genreSearch, search_params: '演目', or: 'pv' }, class: 'top_img_link' %></div>
 </div>
 <div class="container">
-  <p class="video-text col-xs-12">
-    <span class="icon icon-video" style="margin-right:10px"></span>動画
-  </p>
+  <div class="col-xs-12 video-title">
+      <table>
+        <td>
+          <span class="icon icon-main icon-video">
+          </span>
+        </td>
+        <td>
+          <p class="video-text">動画
+          </p>
+        </td>
+      </table>
+  </div>
 
   <div id="y_index_links">
     <div class="y_index_video_lists col-xs-12 row-eq-height" style="padding:0;">
@@ -94,26 +103,39 @@
     </div>
 
     <%# 広告エリア %>
-    <div class="col-xs-12">
-      <p>ここに広告が入ります！
-        </p>
+    <div class="col-xs-12 hidden-sm hidden-md hidden-lg" style="text-align:center;padding-bottom:15px;overflow: visible;margin-left: -15px;">
+      <!--  ad tags Size: 320x100 ZoneId:1146757-->
+      <script type="text/javascript" src="https://js.medi-8.net/t/146/757/a1146757.js"></script>
+    </div>
+    <div class="hidden-xs col-sm-12 col-md-12 hidden-lg" style="text-align:center;padding-bottom:15px;">
+      <!--  ad tags Size: 468x60 ZoneId:1142016-->
+      <script type="text/javascript" src="https://js.medi-8.net/t/142/016/a1142016.js"></script>
+    </div>
+    <div class="visible-lg col-lg-12" style="text-align:center;padding-bottom:15px;">
+      <!--  ad tags Size: 728x90 ZoneId:1146756-->
+      <script type="text/javascript" src="https://js.medi-8.net/t/146/756/a1146756.js"></script>
     </div>
 
-    <p class="talk-text col-xs-12">
-      <span class="icon icon-video" style="margin-right:10px"></span>トーク
-    </p>
+    <div class="col-xs-12 talk-title">
+      <table>
+        <td>
+          <span class="icon icon-main icon-talk"></span>
+        </td>
+          <td><p class="talk-text">トーク</p>
+          </td>
+        </table>
+      </div>
 
-    <div class="container col-xs-12" id="bit_index_boards_lists" style="padding:0;">      
-      <% @boards.each do |board| %>
+    <div class="container col-xs-12" id="bit_index_boards_lists" style="padding:0;">
+      <% @boards.each.with_index(1) do |board, i| %>
         <%= link_to board_path(board) do %>
-          <div class="bits_index_board col-md-3 col-sm-4">
+          <div class="bits_index_board col-md-4 col-sm-6">
             <div class="bits_index_board_child">
               <div class="bits_index_profile_picture">
                 <%= render 'profile_picture', i: board %>
               </div>
-              <p class="bits_index_board_time"><%= board.created_at.strftime('%Y年%m月%d日 %H時%M分') %></p>
               <div class="bits_index_board_title">
-                <p>🖤<%= truncate(board.title, length: 25) %></p>
+                <p>🖤 <%= truncate(board.title, length: 25) %></p>
               </div>
               <div class="bits_index_board_tags_area">
               <% board.board_tags.each do |tag| %>
@@ -122,8 +144,15 @@
                 </div>
               <% end %>
               </div>
-              <div class="bits_index_board_comments_count">
-                <p>コメント数 : <%= board.board_comments_count %></p>
+              <div class="bits_index_board_comments">
+                  <p class="bits_index_board_comments_count">
+                    コメント数 : <%= board.board_comments_count %>
+                    <br>
+
+                  </p>
+                  <p class="bits_index_board_time">
+                    <%= board.created_at.strftime('%Y/%m/%d/ %H:%M') %>
+                  </p>
               </div>
             </div>
           </div>
@@ -137,9 +166,17 @@
       </div>
     </div>
   </div>
-    <%# 広告エリア %>
-  <div class="col-xs-12">
-    <p>ここに広告が入ります！
-      </p>
+  <%# 広告エリア %>
+  <div class="col-xs-12 hidden-sm hidden-md hidden-lg" style="text-align:center;padding-bottom:15px;overflow: visible;margin-left: -15px;">
+    <!--  ad tags Size: 320x100 ZoneId:1146757-->
+    <script type="text/javascript" src="https://js.medi-8.net/t/146/757/a1146757.js"></script>
+  </div>
+  <div class="hidden-xs col-sm-12 col-md-12 hidden-lg" style="text-align:center;padding-bottom:15px;">
+    <!--  ad tags Size: 468x60 ZoneId:1142016-->
+    <script type="text/javascript" src="https://js.medi-8.net/t/142/016/a1142016.js"></script>
+  </div>
+  <div class="visible-lg col-lg-12" style="text-align:center;padding-bottom:15px;">
+    <!--  ad tags Size: 728x90 ZoneId:1146756-->
+    <script type="text/javascript" src="https://js.medi-8.net/t/146/756/a1146756.js"></script>
   </div>
 </div>

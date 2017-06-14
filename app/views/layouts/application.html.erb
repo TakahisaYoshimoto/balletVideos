@@ -101,14 +101,14 @@
                   <span class="icon icon-mypage" style="font-size:20px;margin-right:10px;color:#FFF"></span><%= link_to ' マイページ', profile_path(current_user.id) %>
                 </li>
                 <li>
-                    <span class="icon icon-login" style="font-size:20px;margin-right:10px;color:#FFF"></span><%= link_to ' ログアウト', destroy_user_session_path, method: :delete %>
+                  <span class="icon icon-login" style="font-size:20px;margin-right:10px;color:#FFF"></span><%= link_to ' ログアウト', destroy_user_session_path, method: :delete %>
                 </li>
               <% else %>
                 <li>
-                    <span class="icon icon-talk" style="margin-right:10px"><%= link_to 'ユーザー登録', new_user_registration_path %>
+                  <span class="icon icon-mypage" style="font-size:20px;margin-right:10px;color:#FFF"><%= link_to 'ユーザー登録', new_user_registration_path %>
                 </li>
                 <li>
-                    <span class="icon icon-talk" style="margin-right:10px"><%= link_to 'ログイン', new_user_session_path %>
+                  <span class="icon icon-login" style="font-size:20px;margin-right:10px;color:#FFF"><%= link_to 'ログイン', new_user_session_path %>
                 </li>
               <% end %>
             </ul>
@@ -136,6 +136,7 @@
     <div class="container" style="text-align:center;">
       <div id="top_footer_contents">
         <div id="top_footer_left_area">
+          <span class="icon icon-footer icon-video"></span>
           <%= link_to '動画 -Video', videotop_bits_path,  class: 'top_footer_title' %>
 
           <div id="top_footer_search_link_area">
@@ -145,8 +146,8 @@
           </div>
         </div>
 
-<%# 吉本追記_0608 %>
         <div id="top_footer_second_area">
+          <span class="icon icon-footer icon-talk"></span>
           <%= link_to 'トーク -Talk', boards_path, class: 'top_footer_title' %>
 
           <div id="top_footer_search_link_area">

@@ -49,6 +49,7 @@ gem 'dotenv-rails'
 gem 'nokogiri'
 gem 'cropper-rails'
 gem 'aws-sdk', '1.61'
+gem 'bootstrap-kaminari-views'
 
 
 group :development, :test do
