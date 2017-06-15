@@ -1,27 +1,32 @@
-<div id="board_like_button_area_child">
 <% if user_signed_in? %>
   <% unless board.like_user(current_user.id) %>
     <%= link_to action: :like, remote: true, id: params[:id] do %>
+      <div id="board_like_button_area_child">
+        <div id="board_like_area">
+          <p id="board_like_button">気になる</p>
+          <p id="board_like_count"><%= likes.count %></p>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div id="board_like_button_area_cancel_child">
+      <%= link_to action: :like, remote: true, id: params[:id] do %>
+        <div id="board_like_cancel_area">
+          <p id="board_like_cancel_button">気になる</p>
+          <p id="board_like_count"><%= likes.count %></p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <div id="board_like_button_area_child">
+    <a href="#y_video_show_titlearea" data-toggle="popover" title="ログインするとグッドできます" data-content='<%= link_to 'ログイン', new_user_session_path %>'>
       <div id="board_like_area">
         <p id="board_like_button">気になる</p>
         <p id="board_like_count"><%= likes.count %></p>
       </div>
-    <% end %>
-  <% else %>
-    <%= link_to action: :like, remote: true, id: params[:id] do %>
-      <div id="board_like_cancel_area">
-        <p id="board_like_cancel_button">気になる</p>
-        <p id="board_like_count"><%= likes.count %></p>
-      </div>
-    <% end %>
-  <% end %>
-<% else %>
-  <a href="#y_video_show_titlearea" data-toggle="popover" title="ログインするとグッドできます" data-content='<%= link_to 'ログイン', new_user_session_path %>'>
-    <div id="board_like_area">
-      <p id="board_like_button">気になる</p>
-      <p id="board_like_count"><%= likes.count %></p>
-    </div>
-  </a>
+    </a>
+  </div>
   <script>
     $(function() {
       $("[data-toggle=popover]").popover({
@@ -31,4 +36,3 @@
     })
   </script>
 <% end %>
-</div>
