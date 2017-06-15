@@ -806,6 +806,9 @@
   padding-left:0px;
 }
 
+.container_mypage td {
+  padding:4px;
+}
 
 #mypage_header_activity_history_child {
   padding-left:0px;
@@ -857,6 +860,7 @@ padding-bottom:5px;
 }
 
 #mypage_header_bottom {
+  display:inline-block;
   margin: 20px 0;
   text-align: center;
   display: block;
@@ -865,23 +869,61 @@ padding-bottom:5px;
 }
 
 #mypage_header_view_history,
+#mypage_header_board_like, {
+  display:inline-block;
+  width:140px;
+  padding-left:0px;
+  padding-right:0px;
+  margin-left:0;
+  margin-right:0;
+
+}
+#mypage_header_myfavorite {
+  display:inline-block;
+  width:170px;
+}
+
+
+#mypage_header_comments{
+  display:inline-block;
+  width:170px;
+}
+
+
+#mypage_header_mytolkroom
+ {
+  display:inline-block;
+  width:200px;
+}
+
+#mypage_header_view_history a,
+#mypage_header_myfavorite a,
+#mypage_header_comments a,
+#mypage_header_board_like a,
+#mypage_header_mytolkroom a {
+  font-size:18px;
+}
+
+
+#mypage_header_view_history,
 #mypage_header_myfavorite,
 #mypage_header_comments,
 #mypage_header_board_like,
 #mypage_header_mytolkroom {
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
-  border-left: 1px solid black;
-  height:30px;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  height:36px;
 }
 
-#mypage_header_mytolkroom {
-  border-right: 1px solid black;
-}
 
 #mypage_header_bottom a {
-  padding-right:10px;
+  padding-right:5px;
   color:#000;
+  height: 30px;
+  line-height: 30px;
+  width:100%;
 }
 
 // #mypage_header_infomation_child, #mypage_header_activity_child {
@@ -897,14 +939,12 @@ padding-bottom:5px;
   padding:0;
   padding-left:25px;
 }
-@media screen and (max-width: 767px) {
-  .mp-nav-icon {
-    padding:0;
-    padding-left:13px;
+  @media screen and (max-width: 767px) {
+    .mp-nav-icon {
+      padding:0;
+      padding-left:13px;
+    }
   }
-}
-
-
 
 .icon-first {
   padding-right:5px;
@@ -913,4 +953,8 @@ padding-bottom:5px;
 .icon-mp {
   font-size:18px;
   margin-top:20px;
+}
+
+.mypage_btn {
+  padding-left:15px;
 }
