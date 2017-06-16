@@ -111,7 +111,7 @@
 
     <div class="visible-xs visible-sm">
       <div class="btn-group mypage_btn">
-        <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><%= dropdown_title %><span class="caret"></span></button>
+        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown"><%= dropdown_title %><span class="caret"></span></button>
         <ul class="dropdown-menu">
           <li><%= link_to '視聴履歴', { :controller => '/bits', action: :view_histories, or: 'history' } %></li>
           <li><%= link_to 'お気に入り', { :controller => '/bits', action: :like_videos, or: 'history' } %></li>
