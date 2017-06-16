@@ -5,10 +5,11 @@
 
   <div id="board_show_top_pic">
     <%= render 'profile_picture_lists', i: @master_comment %>
-    <p><strong><%= @master_comment.user.username %></strong>さん</p>
+    <p style="margin-top:10px;margin-bottom:5px;"><%= @master_comment.user.username %> さん</p>
+    <p><%= @master_comment.created_at.strftime('%Y/%m/%d %H:%M') %></p>
   </div>
   <div id="board_show_top_text">
-    <%= @master_comment.created_at.strftime('%Y/%m/%d %H:%M') %>
+
     <%= simple_format(@master_comment.text) %>
 
     <% @board.board_tags.each do |tag| %>
@@ -50,7 +51,7 @@
       </div>
       <%= f.hidden_field :board_id, value: @board.id %>
       <div class="row">
-        <div id="board_comment_submit" class="actions　form-group col-sm-12">
+        <div id="board_comment_submit" class="actions form-group col-sm-12">
           <input type="text" id="characnt" disabled="disabled">
           <%= f.submit 'コメント投稿', class: 'btn btn-primary' %>
         </div>
@@ -63,7 +64,21 @@
   </div>
 <% end %>
 
-<div id="board_show_comments_count_area_out" class="col-xs-12">
+<%# 広告エリア %>
+<div class="col-xs-12 hidden-sm hidden-md hidden-lg" style="text-align:center;padding-bottom:20px;overflow: visible;margin-left:-15px;margin-bottom:15px;">
+  <!--  ad tags Size: 320x100 ZoneId:1175812-->
+  <script type="text/javascript" src="https://js.medi-8.net/t/175/812/a1175812.js"></script>
+</div>
+<div class="hidden-xs col-sm-12 col-md-12 hidden-lg" style="text-align:center;margin-bottom:50px;">
+  <!--  ad tags Size: 468x60 ZoneId:1175798-->
+  <script type="text/javascript" src="https://js.medi-8.net/t/175/798/a1175798.js"></script>
+</div>
+<div class="visible-lg col-lg-12" style="text-align:center;margin-bottom:50px;">
+  <!--  ad tags Size: 728x90 ZoneId:1175748-->
+  <script type="text/javascript" src="https://js.medi-8.net/t/175/748/a1175748.js"></script>
+</div>
+
+<div id="board_show_comments_count_area_out" class="col-xs-12" style="margin-top:40px;">
   <div id="board_show_comments_count_area">
     <div id="board_show_comments_count_area_child">
       <p>コメント</p>

@@ -36,34 +36,32 @@
   }
 
 
-    #prifile_check_area p {
-      font-size:12px;
-    }
+#prifile_check_area p {
+  font-size:12px;
+}
 
 #prifile_right_area {
   background: white;
   border: 1px solid black;
 }
 
-  #prifile_area_edit_link_area {
-    text-align: right;
-    padding-right:0;
-  }
-  #prifile_area_edit_link {
-    margin-top: 20px;
-    border: 1px solid black;
-    padding: 20px 30px;
-    color: black;
-    display: inline-block;
-  }
-
+#prifile_area_edit_link_area {
+  text-align: right;
+  padding-right:0;
+}
+#prifile_area_edit_link {
+  margin-top: 20px;
+  border: 1px solid black;
+  padding: 20px 30px;
+  color: black;
+  display: inline-block;
+}
 
   @media screen and (min-width:768px) {
     #profile_email_area p {
       padding-top:20px;
     }
   }
-
 
   @media screen and (min-width:768px) {
     .mypage-user-name {
