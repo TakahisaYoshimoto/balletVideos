@@ -12,7 +12,8 @@
     }
   </style>
 
-  <% if controller.controller_name == 'profiles' && controller.action_name == 'show' %><%# プロフィールページの場合 %>
+  <% if (controller.controller_name == 'profiles' && controller.action_name == 'show') ||
+        (controller.controller_name == 'registrations' && controller.action_name == 'edit') %><%# プロフィールページの場合 %>
     <div id="mypage_header_top" class="col-xs-12 row">
       <div id="mypage_header_infomation" class="col-xs-6">
         <div id="mypage_header_infomation_child" class=" col-xs-6 col-xs-offset-6">
