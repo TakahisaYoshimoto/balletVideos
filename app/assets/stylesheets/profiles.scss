@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #prifile_area {
-  border: 1px solid black;
+  // border: 1px solid black;
   width: 100%;
 }
   @media screen and (max-width: 767px) {
@@ -16,25 +16,65 @@
 
 #prifile_left_area {
   background: black;
+  border: 1px solid black;
 }
-  #prifile_left_area p {
-    color: white;
+#prifile_left_area p {
+  color: white;
+}
+#prifile_left_area_picture {
+  border-radius: 100%;
+  margin-top:10px;
+}
+  @media screen and (max-width:767px) {
+    #prifile_left_area_picture {
+      width: 150px;
+      height:150px;
+      border-radius: 100%;
+      margin-top:25px;
+      margin-bottom:25px;
+    }
   }
-  #prifile_left_area_picture {
-    border-radius: 100%;
-  }
+
+
+#prifile_check_area p {
+  font-size:12px;
+}
 
 #prifile_right_area {
   background: white;
+  border: 1px solid black;
 }
 
-  #prifile_area_edit_link_area {
-    text-align: right;
+#prifile_area_edit_link_area {
+  text-align: right;
+  padding-right:0;
+}
+#prifile_area_edit_link {
+  margin-top: 20px;
+  border: 1px solid black;
+  padding: 20px 30px;
+  color: black;
+  display: inline-block;
+}
+
+  @media screen and (min-width:768px) {
+    #profile_email_area p {
+      padding-top:20px;
+    }
   }
-  #prifile_area_edit_link {
-    margin-top: 20px;
-    border: 1px solid black;
-    padding: 30px;
-    color: black;
-    display: inline-block;
+
+  @media screen and (min-width:768px) {
+    .mypage-user-name {
+      margin-top:40px;
+    }
   }
+
+
+.prifile_area_xs {
+  background: black;
+}
+
+.prifile_area_xs p {
+  color: white;
+  padding-left:0px;
+}
