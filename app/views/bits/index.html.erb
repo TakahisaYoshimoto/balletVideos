@@ -141,6 +141,9 @@
     <div class="container col-xs-12" id="bit_index_boards_lists" style="padding:0;">
       <% @boards.each.with_index(1) do |board, i| %>
         <%= link_to board_path(board) do %>
+          <% if i > 8 %>
+            <div class="sm-display-none">
+          <% end %>
           <div class="bits_index_board col-xs-12 col-sm-6 col-md-4">
             <div class="bits_index_board_child">
               <div class="bits_index_profile_picture">
@@ -167,6 +170,9 @@
               </div>
             </div>
           </div>
+          <% if i > 8 %>
+            </div>>
+          <% end %>
         <% end %>
       <% end %>
     </div>
