@@ -2,16 +2,16 @@
   <%# board_commentのdisplayがtrueだったら表示 %>
   <% if bc.display == true %>
     <% if bc.user.id == bc.board.user_id %>
-      <li class="board_master_comments">
+      <div class="board_master_comments col-xs-12">
     <% else%>
-      <li class="board_comments">
+      <div class="board_comments col-xs-12">
     <% end %>
-      <div class="board_comments_pic_area">
+      <div class="board_comments_pic_area col-sm-2 col-xs-3">
         <%= render 'profile_picture_lists', i: bc %>
-        <p><strong><%= bc.user.username %></strong>さん</p>
+        <p style="color:gray;"><%= bc.user.username %>さん</p>
       </div>
-      <div class="board_comments_text_area">
-        <%= bc.created_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %>
+      <div class="board_comments_text_area col-sm-10 col-xs-9">
+        <%= bc.created_at.strftime('%Y/%m/%d/ %H:%M') %>
         <%= simple_format(bc.text) %>
         <% if user_signed_in? %>
           <% if current_user.user_level > 1 %>
@@ -19,40 +19,41 @@
           <% end %>
         <% end %>
       </div>
-    </li>
+    </div>
   <% else %>
     <%# board_commentのdisplayがfalseでも管理者権限のユーザーでログインしてたら表示 %>
     <% if user_signed_in? %>
       <% if current_user.user_level > 1 %>
         <% if bc.user.id == bc.board.user_id %>
-          <li class="board_master_comments">
+          <div class="board_master_comments col-xs-12">
         <% else%>
-          <li class="board_comments">
+          <div class="board_comments col-xs-12">
         <% end %>
-        <div class="board_comments_pic_area">
+        <div class="board_comments_pic_area col-sm-2 col-xs-3">
           <%= render 'profile_picture_lists', i: bc %>
-          <p><strong><%= bc.user.username %></strong>さん</p>
+          <p style="color:gray;"><%= bc.user.username %>さん</p>
         </div>
-        <div class="board_comments_text_area">
-          <%= bc.created_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %>
+        <div class="board_comments_text_area col-sm-10 col-xs-9">
+          <%= bc.created_at.strftime('%Y/%m/%d/ %H:%M') %>
           <%= simple_format(bc.text) %>
           <%= link_to '表示させる', display_board_comments_path(bc)%>
           <span style="color:red;">非表示にしたしたコメントです</span>
         </div>
-        </li>
+      </div>
       <% else %>
         <%# ログインしてても管理者じゃない場合、非表示 %>
-        <li class="board_comments">
+        <div class="board_comments">
           <%= image_tag("no-picture-min.gif") %>
           <strong>非表示</strong>
-        </li>
+        </div>
       <% end %>
     <% else %>
       <%# ログインしてない場合非表示 %>
-      <li class="board_comments">
+      <div class="board_comments">
         <%= image_tag("no-picture-min.gif") %>
         <strong>非表示</strong>
-      </li>
+      </div>
     <% end %>
   <% end %>
 <% end %>
+</div>

@@ -423,7 +423,7 @@ button.talk_btn:hover {
   display: inline-block;
   width: 15%;
   text-align: center;
-  padding: 15px;
+  padding: 15px 15px 5px 15px;
 }
 
 #board_show_top_pic img {
@@ -438,7 +438,7 @@ button.talk_btn:hover {
 #board_show_top_text {
   display: inline-block;
   width: 80%;
-  padding: 15px;
+  padding: 0 15px 15px 15px;
   margin-bottom: 50px;
 }
 @media screen and(max-width: 768px) {
@@ -533,9 +533,72 @@ button.talk_btn:hover {
 .board_comments {
   background: white;
 }
+
 #board_newcomment_area_pic {
   text-align: center;
 }
+
+#board_newcomment_area_pic p {
+  padding-top:5px;
+}
+  @media screen and(max-width: 767px) {
+    #board_newcomment_area_pic p {
+      font-size:11px;
+    }
+  }
+
+#board_newcomment_area_pic img{
+  border-radius: 100%;
+  width:75px;
+}
+  @media screen and(max-width: 767px) {
+    #board_newcomment_area_pic img{
+      border-radius: 100%;
+      width:60px;
+      margin-top:10px;
+    }
+  }
+
+
+.board_comments_pic_area {
+  padding-left:0 !important;
+  padding-right:5 !important;
+}
+
+.board_comments_pic_area p {
+  padding:5px 0;
+}
+  @media screen and(max-width: 767px) {
+    .board_comments_pic_area p{
+      font-size:9px;
+    }
+  }
+
+.board_comments_pic_area img {
+  border-radius: 100%;
+  width:70px;
+}
+  @media screen and(max-width: 767px) {
+    .board_comments_pic_area img{
+      border-radius: 100%;
+      width:50px;
+      margin-top:10px;
+    }
+  }
+
+.delete-boards-comment a{
+  margin-left:200px;
+}
+  @media screen and(max-width: 767px) {
+    .delete-boards-comment a{
+      margin-left:130px;
+    }
+  }
+
+.board_master_comments {
+  margin-top:10px;
+}
+
 #characnt {
   background-color: rgba(0,0,0,0);
   border: none;
