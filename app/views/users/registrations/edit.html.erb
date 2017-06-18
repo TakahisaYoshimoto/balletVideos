@@ -2,7 +2,7 @@
   <table>
     <tr>
       <td id="user_edit_left_area" class="col-xs-12 col-sm-6">
-        <div id="user_edit_profile_picture">
+        <div id="user_edit_profile_picture" class="col-xs-12">
           <% if @user.picture_lg.present? %>
             <% if Rails.env == 'production' %>
               <%= image_tag ENV['AWS_PICTURE_PATH']+"#{ @user.picture_lg }", id: 'user_edit_picture' %>
@@ -14,7 +14,7 @@
           <% end %>
         </div>
 
-        <a data-toggle="modal" href="#myModal" id="user_edit_picture_link" style="margin:10px 0;" onclick="up_open()">プロフィール画像を設定する</a>
+        <a data-toggle="modal" href="#myModal" id="user_edit_picture_link" class="col-xs-12" style="margin:10px 0; " onclick="up_open()">プロフィール画像を設定する</a>
 
         <div class="modal fade" id="myModal">
           <div class="modal-dialog" style="width:90%;">
@@ -45,47 +45,52 @@
           </div>
 
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-            <div>メールアドレスの変更申請があった為、承認メールを送りました、メールから変更手続き完了をしてください。: <%= resource.unconfirmed_email %></div>
+            <div>メールアドレスの変更申請があった為、承認メールを送りました、メールから変更手続き完了をしてください: <%= resource.unconfirmed_email %></div>
           <% end %>
 
           <div class="field form-group">
             <div style="padding:0;max-width:500px;">
-              <%= f.label :password, '新しいパスワード', class: 'control-label col-sm-12' %> <i>(パスワードを変更する場合入力して下さい。)</i><br />
+              <%= f.label :current_password, '現在のパスワード', class: 'control-label col-sm-12' %>
+              <br/>
+              <i>※プロフィール変更には現在のパスワードが必要です</i><br/>
+              <%= f.password_field :current_password, class: 'form-control', autocomplete: "off" %>
+            </div>
+          </div>
+
+          <div class="field form-group">
+            <div class="input-passwords">
+              <%= f.label :password, '新しいパスワード', class: 'control-label col-sm-12' %>
+              <br/>
+              <i>※パスワードを変更する場合は入力して下さい</i>
+              <br/>
+              <em>※<%= @minimum_password_length %> 文字以上にしてください</em>
               <%= f.password_field :password, class: 'form-control', autocomplete: "off" %>
               <% if @minimum_password_length %>
                 <br />
-                <em><%= @minimum_password_length %> 文字以上にしてください。</em>
+
               <% end %>
             </div>
           </div>
 
           <div class="field form-group">
             <div style="padding:0;max-width:500px;">
-              <%= f.label :password_confirmation, '新しいパスワードを確認の為もう一度入力して下さい', class: 'control-label col-sm-12' %><br />
+              <%= f.label :password_confirmation, '新しいパスワードをもう一度入力して下さい', class: 'control-label col-sm-12' %><br />
               <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: "off" %>
             </div>
           </div>
 
           <div class="field form-group">
-            <div style="padding:0;max-width:500px;">
-              <%= f.label :current_password, '現在のパスワード', class: 'control-label col-sm-12' %>
-              <i>(プロフィール情報を変更するには、現在のパスワードが必要です。)</i><br />
-              <%= f.password_field :current_password, class: 'form-control', autocomplete: "off" %>
-            </div>
+            <label><%= f.check_box :acceptance, {}, 'true', 'false' %> 運営からのお知らせメールを受け取る</label>
           </div>
 
           <div class="field form-group">
-            <label><%= f.check_box :acceptance, {}, 'true', 'false' %> 運営からのお知らせメールを受け取る。</label>
-          </div>
-
-          <div class="field form-group">
-            <label><%= f.check_box :notice_email, {}, 'true', 'false' %> 通知メールを受信する。</label>
+            <label><%= f.check_box :notice_email, {}, 'true', 'false' %> 通知メールを受信する</label>
           </div>
       </td>
 
       <td id="user_edit_right_area" class="col-xs-12 col-sm-6">
         <div class="field form-group">
-          <div style="padding:0;max-width:500px;">
+          <div class="self-introduction">
             <%= f.label :profile, '自己紹介', class: 'control-label col-sm-6' %>
             <input type="text" id="characnt" disabled="disabled" class="col-sm-6"><br />
             <%= f.text_area :profile, class: 'form-control',
