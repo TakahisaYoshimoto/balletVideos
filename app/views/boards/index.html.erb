@@ -58,12 +58,12 @@
               <%= render 'profile_picture', i: board %>
             </div>
             <div class="community_index_board_title">
-              <p>🖤 <%= truncate(board.title, length: 25) %></p>
+              <p>🖤 <%= truncate(board.title, length: 35) %></p>
             </div>
             <div class="community_index_board_tags_area">
             <% board.board_tags.each do |tag| %>
               <div class="community_index_board_tags" style="display:inline-block;">
-                <p><%= "##{tag.name}" %></p>
+                <p><%= truncate("##{tag.name}",length:12) %></p>
               </div>
             <% end %>
             </div>
@@ -117,12 +117,12 @@
               <%= render 'profile_picture', i: board %>
             </div>
             <div class="community_index_board_title">
-              <p>🖤 <%= truncate(board.title, length: 25) %></p>
+              <p>🖤 <%= truncate(board.title, length: 35) %></p>
             </div>
             <div class="community_index_board_tags_area">
             <% board.board_tags.each do |tag| %>
               <div class="community_index_board_tags" style="display: inline-block;">
-                <p><%= "##{tag.name}" %></p>
+                <p><%= truncate("##{tag.name}",length:12) %></p>
               </div>
             <% end %>
             </div>
