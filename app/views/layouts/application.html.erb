@@ -10,8 +10,8 @@
     <%= javascript_include_tag 'application' %>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Bit（ビット）は、クラシックバレエにおける動画や交流を楽しめるサービスです。コンクールや発表会に向けて参考となる情報がたくさん掲載されています。" />
-    <meta name="keywords" content="バレエ,動画,コンクール,発表会,レッスン,交流" />
+    <meta name="description" content="Bit（ビット）は、クラシックバレエにおける動画や交流を楽しめるサービスです。トーク機能では、質問や返信することができます。コンクールや発表会に向けて参考となる情報がたくさん掲載されています。" />
+    <meta name="keywords" content="バレエ,動画,質問,情報,コンクール,発表会,レッスン,交流" />
     <% if controller.controller_name == 'youtube_videos' && controller.action_name == 'show' %>
       <meta property="og:title" content="<%= @youtube.title %>" />
       <meta property="og:type" content="article" />
@@ -139,7 +139,6 @@
             <%= render '/layouts/nav_community', tags: @tags %>
           </div>
         </div>
-
       </nav>
 
       <div id="contants" class="container">
@@ -174,11 +173,7 @@
         </div>
 
         <div id="top_footer_third_area">
-          <!-- <%= link_to 'Bitについて', { :controller => "/bits", action: :index, anchor: 'search_area'}, class: 'top_footer_title hidden-xs' %>
-          <%= link_to 'Bitについて', { :controller => "/bits", action: :index, anchor: 'results_search_area'}, class: 'top_footer_title hidden-sm hidden-md hidden-lg' %> -->
-
           <p class="top_footer_title" style="color:#FFF;margin-bottom:0px">Bitについて</p>
-
           <div id="top_footer_search_link_area">
             <%= link_to '利用規約', terms_bits_path %><br>
             <%= link_to 'プライバシーポリシー', privacy_policy_bits_path, class: 'top_footer_title' %><br>
