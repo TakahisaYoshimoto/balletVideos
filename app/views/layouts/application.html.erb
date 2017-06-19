@@ -98,25 +98,33 @@
               <li class="nav-divider"></li>
               <% if user_signed_in? %>
                 <li>
-                  <span class="icon icon-mypage"  style="font-size:24px;margin-right:0;color:#FFF">
-                  </span>
-                  <%= link_to ' マイページ', profile_path(current_user.id) %>
+                  <%= link_to(profile_path(current_user.id)) do %>
+                    <span class="icon icon-mypage"  style="font-size:24px;margin-right:0;color:#FFF">
+                    </span>
+                    マイページ
+                  <% end %>
                 </li>
                 <li>
-                  <span class="icon icon-login"  style="font-size:24px;margin-right:0;color:#FFF">
-                  </span>
-                  <%= link_to ' ログアウト', destroy_user_session_path, method: :delete %>
+                  <%= link_to(destroy_user_session_path, method: :delete) do %>
+                    <span class="icon icon-login"  style="font-size:24px;margin-right:0;color:#FFF">
+                    </span>
+                    ログアウト
+                  <% end %>
                 </li>
               <% else %>
                 <li>
-                  <span class="icon icon-mypage"  style="font-size:24px;margin-right:0;color:#FFF">
-                  </span>
-                    <%= link_to 'ユーザー登録', new_user_registration_path %>
+                  <%= link_to(new_user_registration_path) do %>
+                    <span class="icon icon-mypage"  style="font-size:24px;margin-right:0;color:#FFF">
+                    </span>
+                    ユーザー登録
+                  <% end %>
                 </li>
                 <li>
-                  <span class="icon icon-login" style="font-size:24px;margin-right:0;color:#FFF">
-                  </span>
-                  <%= link_to 'ログイン', new_user_session_path %>
+                  <%= link_to(new_user_session_path) do %>
+                    <span class="icon icon-login" style="font-size:24px;margin-right:0;color:#FFF">
+                    </span>
+                    ログイン
+                  <% end %>
                 </li>
               <% end %>
             </ul>
