@@ -17,12 +17,28 @@
 #user_edit_area {
   border: 1px solid black;
 }
+
+#user_edit_area label,
+#user_edit_area i,
+#user_edit_area em {
+  color: white;
+  padding-left: 0;
+}
+@media screen and (max-width: 991px) {
   #user_edit_area label,
   #user_edit_area i,
   #user_edit_area em {
-    color: white;
-    padding-left: 0;
+    font-size:13px;
   }
+}
+@media screen and (max-width: 767px) {
+  #user_edit_area label,
+  #user_edit_area i,
+  #user_edit_area em {
+    font-size:12px;
+  }
+}
+
 @media screen and (max-width: 767px) {
   #user_edit_area td {
     width: 100%;
@@ -30,15 +46,38 @@
   }
 }
 
+.input-passwords {
+  padding:0;
+  max-width:500px;
+  margin-top:30px;
+  padding-top:15px;
+  border-top: 1px solid white;
+}
+
 #user_edit_left_area {
   background: black;
 }
+#user_edit_profile_picture {
+  display: inline-block;
+}
+@media screen and (max-width:767px) {
   #user_edit_profile_picture {
-    display: inline-block;
+    text-align:center;
   }
-  #user_edit_picture {
-    border-radius: 100%;
+}
+
+@media screen and (max-width:767px) {
+  #user_edit_picture_link {
+    text-align:center;
+    padding-top:15px;
   }
+}
+
+#user_edit_picture {
+  border-radius: 100%;
+  width:35%;
+  margin-top:20px;
+}
 
 #user_edit_right_area {
   background: white;
@@ -51,9 +90,33 @@
   }
   #user_edit_submit_area input {
     margin-top: 20px;
+    margin-left:20px;
     border: 1px solid black;
-    padding: 30px;
+    padding: 15px 20px 15px 20px;
     color: black;
     display: inline-block;
     background: white;
   }
+
+
+.self-introduction {
+  padding:0;
+  max-width:450px
+}
+  @media screen and (max-width: 991px) {
+    .self-introduction {
+      padding:0;
+      max-width:300px
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .self-introduction {
+      padding:0;
+      max-width:500px
+    }
+  }
+
+.self-introduction label {
+  color: gray !important;
+  padding: 20px 10px 10px 10px;
+}

@@ -13,7 +13,7 @@ class BoardsController < ApplicationController
   end
 
   def new_lists
-    @boards = Board.all.order('created_at desc').page(params[:page]).per(21).includes(:user)
+    @boards = Board.all.order('created_at desc').page(params[:page]).per(24).includes(:user)
     render '/boards/new_lists'
   end
 

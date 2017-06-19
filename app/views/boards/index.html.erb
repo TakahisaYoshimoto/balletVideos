@@ -52,18 +52,18 @@
   <div class="container col-xs-12" id="community_index_boards_lists" style="padding:0;">
     <% @attention_boards.each.with_index(1) do |board, i| %>
       <%= link_to board_path(board) do %>
-        <div class="community_index_board col-xs-12 col-sm-6 col-md-4">
+        <div class="community_index_board col-xs-12 col-sm-6 original-col-md-4">
           <div class="community_index_board_child">
             <div class="community_index_profile_picture">
               <%= render 'profile_picture', i: board %>
             </div>
             <div class="community_index_board_title">
-              <p>🖤 <%= truncate(board.title, length: 25) %></p>
+              <p>🖤 <%= truncate(board.title, length: 35) %></p>
             </div>
             <div class="community_index_board_tags_area">
             <% board.board_tags.each do |tag| %>
-              <div class="community_index_board_tags" style="display: inline-block;">
-                <p><%= "##{tag.name}" %></p>
+              <div class="community_index_board_tags" style="display:inline-block;">
+                <p><%= truncate("##{tag.name}",length:12) %></p>
               </div>
             <% end %>
             </div>
@@ -114,18 +114,18 @@
         <div class="sm-display-none">
       <% end %>
       <%= link_to board_path(board) do %>
-        <div class="community_index_board col-xs-12 col-sm-6 col-md-4">
+        <div class="community_index_board col-xs-12 col-sm-6 original-col-md-4">
           <div class="community_index_board_child">
             <div class="community_index_profile_picture">
               <%= render 'profile_picture', i: board %>
             </div>
             <div class="community_index_board_title">
-              <p>🖤 <%= truncate(board.title, length: 25) %></p>
+              <p>🖤 <%= truncate(board.title, length: 35) %></p>
             </div>
             <div class="community_index_board_tags_area">
             <% board.board_tags.each do |tag| %>
               <div class="community_index_board_tags" style="display: inline-block;">
-                <p><%= "##{tag.name}" %></p>
+                <p><%= truncate("##{tag.name}",length:12) %></p>
               </div>
             <% end %>
             </div>

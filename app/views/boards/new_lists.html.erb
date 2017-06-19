@@ -7,7 +7,7 @@
       <!--  ad tags Size: 320x100 ZoneId:1175808-->
       <script type="text/javascript" src="https://js.medi-8.net/t/175/808/a1175808.js"></script>
     </div>
-    <div class="hidden-xs col-sm-12 col-md-12 hidden-lg" style="text-align:center;padding-bottom:15px;">
+    <div class="hidden-xs hidden-sm col-md-12 hidden-lg" style="text-align:center;padding-bottom:15px;">
       <!--  ad tags Size: 468x60 ZoneId:1175772-->
       <script type="text/javascript" src="https://js.medi-8.net/t/175/772/a1175772.js"></script>
     </div>
@@ -16,6 +16,13 @@
       <script type="text/javascript" src="https://js.medi-8.net/t/175/738/a1175738.js"></script>
     </div>
   <% end %>
+  <% if i == 9 %>
+    <%# 広告エリア %>
+  <div class="hidden-xs col-sm-12 hidden-md hidden-lg" style="text-align:center;padding-bottom:15px;">
+    <!--  ad tags Size: 468x60 ZoneId:1175772-->
+    <script type="text/javascript" src="https://js.medi-8.net/t/175/772/a1175772.js"></script>
+  </div>
+  <% end %>
 
   <% if i == 16 %>
     <%# 広告エリア %>
@@ -23,7 +30,7 @@
       <!--  ad tags Size: 320x100 ZoneId:1175809-->
       <script type="text/javascript" src="https://js.medi-8.net/t/175/809/a1175809.js"></script>
     </div>
-    <div class="hidden-xs col-sm-12 col-md-12 hidden-lg" style="text-align:center;padding-bottom:15px;">
+    <div class="hidden-xs hidden-sm col-md-12 hidden-lg" style="text-align:center;padding-bottom:15px;">
       <!--  ad tags Size: 468x60 ZoneId:1175774-->
       <script type="text/javascript" src="https://js.medi-8.net/t/175/774/a1175774.js"></script>
     </div>
@@ -33,6 +40,16 @@
     </div>
   <% end %>
 
+  <% if i == 17 %>
+    <%# 広告エリア %>
+  <div class="hidden-xs col-sm-12 hidden-md hidden-lg" style="text-align:center;padding-bottom:15px;">
+    <!--  ad tags Size: 468x60 ZoneId:1175774-->
+    <script type="text/javascript" src="https://js.medi-8.net/t/175/774/a1175774.js"></script>
+  </div>
+  <% end %>
+
+
+
     <%= link_to board_path(board) do %>
       <div class="community_index_board col-md-4 col-sm-6">
         <div class="community_index_board_child">
@@ -40,12 +57,12 @@
             <%= render 'profile_picture', i: board %>
           </div>
           <div class="community_index_board_title">
-            <p><%= truncate(board.title, length: 25) %></p>
+            <p><%= truncate(board.title, length: 35) %></p>
           </div>
           <div class="community_index_board_tags_area">
           <% board.board_tags.each do |tag| %>
             <div class="community_index_board_tags" style="display: inline-block;">
-              <p><%= "##{tag.name}" %></p>
+              <p><%= truncate("##{tag.name}",length:12) %></p>
             </div>
           <% end %>
           </div>

@@ -46,7 +46,7 @@ class BitsController < ApplicationController
         .order('created_at desc')
         .page(params[:page])
     end
-      
+
     @search_params = ""
     @genre = ""
     @category_params = ""
@@ -68,10 +68,10 @@ class BitsController < ApplicationController
       @youtubes = YoutubeVideo.joins(:likes).joins(:view_histories)
         .where("likes.user_id = ?", current_user.id)
         .page(params[:page])
-        .order('view_histories.updated_at desc') 
+        .order('view_histories.updated_at desc')
         .order(created_at: :desc)
     end
-    
+
     @search_params = ""
     @genre = "グッドした動画"
     @category_params = ""
@@ -98,7 +98,7 @@ class BitsController < ApplicationController
       @youtubes = YoutubeVideo.joins(:view_histories)
         .where("view_histories.user_id = ?", current_user.id)
         .page(params[:page])
-        .order('view_histories.updated_at desc') 
+        .order('view_histories.updated_at desc')
     end
 
     @search_params = ""
@@ -185,7 +185,7 @@ class BitsController < ApplicationController
           @relation_tags.push(tag.name)
         end
       end
-    end 
+    end
 
     @search_params = params[:search_params]
     @genre = params[:search_params]

@@ -5,7 +5,7 @@
 
   <div id="board_show_top_pic">
     <%= render 'profile_picture_lists', i: @master_comment %>
-    <p style="margin-top:10px;margin-bottom:5px;"><%= @master_comment.user.username %> さん</p>
+    <p style="margin-top:10px;margin-bottom:5px;color:gray;"><%= @master_comment.user.username %>さん</p>
     <p><%= @master_comment.created_at.strftime('%Y/%m/%d %H:%M') %></p>
   </div>
   <div id="board_show_top_text">
@@ -28,7 +28,7 @@
   <div id="board_newcomment_area">
     <%= form_for(@board_comment) do |f| %>
       <div class="row">
-        <div id="board_newcomment_area_pic" class="col-sm-2">
+        <div id="board_newcomment_area_pic" class="col-sm-2 col-xs-3">
           <% if @user.picture_lg.present? %>
             <% if Rails.env == 'production' %>
                 <%= link_to image_tag(ENV['AWS_PICTURE_PATH']+"#{ @user.picture_min }"), profile_path(@user) %>
@@ -38,9 +38,9 @@
           <% else %>
             <%= link_to image_tag("no-picture-min.gif"), profile_path(@user) %>
           <% end %>
-          <p><strong><%= @user.username %></strong>さん</p>
+          <p style="color:gray;"><%= @user.username %>さん</p>
         </div>
-        <div class="form-group col-sm-10">
+        <div class="form-group col-sm-10 col-xs-9">
           <%= f.text_area :text,
             maxlength: "800",
             id: 'comment_text_area',
@@ -49,6 +49,7 @@
             class: 'form-control' %>
         </div>
       </div>
+
       <%= f.hidden_field :board_id, value: @board.id %>
       <div class="row">
         <div id="board_comment_submit" class="actions form-group col-sm-12">
@@ -65,7 +66,8 @@
 <% end %>
 
 <%# 広告エリア %>
-<div class="col-xs-12 hidden-sm hidden-md hidden-lg" style="text-align:center;padding-bottom:20px;overflow: visible;margin-left:-15px;margin-bottom:15px;">
+
+<div class="col-xs-12 hidden-sm hidden-md hidden-lg" style="text-align:center;padding-bottom:20px;overflow: visible;margin-left:0;margin-bottom:15px;">
   <!--  ad tags Size: 320x100 ZoneId:1175812-->
   <script type="text/javascript" src="https://js.medi-8.net/t/175/812/a1175812.js"></script>
 </div>
@@ -87,14 +89,16 @@
   </div>
 </div>
 
-<ul id="board_comment_lists">
+<div id="board_comment_lists">
   <%= render 'board_comments_lists', board_comments: @board_comments %>
-</ul>
+</div>
 
 <%= link_to_next_page @board_comments, 'もっと見る', remote: true, id: 'board_comments_more_link' %>
 
 <% if user_signed_in? %>
   <% if current_user.user_level > 1 %>
+  <div class="delete-boards-comment col-xs-12">
     <%= link_to '削除する', board_path(@board), method: :delete, data: { confirm: "削除してよろしいですか？" } %>
+  </div>
   <% end %>
 <% end %>

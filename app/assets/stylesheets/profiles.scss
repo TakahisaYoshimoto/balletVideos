@@ -23,7 +23,7 @@
 }
 #prifile_left_area_picture {
   border-radius: 100%;
-  margin-top:10px;
+  margin-top:20px;
 }
   @media screen and (max-width:767px) {
     #prifile_left_area_picture {
@@ -63,18 +63,26 @@
     }
   }
 
-  @media screen and (min-width:768px) {
+
+  .mypage-user-name {
+    margin-top:110px;
+  }
+  @media screen and (max-width:991px) {
     .mypage-user-name {
-      margin-top:40px;
+      margin-top:70px;
+    }
+  }
+  @media screen and (max-width:767px) {
+    .mypage-user-name {
+      margin-top:10px;
     }
   }
 
-
-.prifile_area_xs {
-  background: black;
+#prifile_right_area {
+  min-height:50px;
 }
-
-.prifile_area_xs p {
-  color: white;
-  padding-left:0px;
-}
+  @media screen and (max-width:767px) {
+    #prifile_right_area {
+      padding-top:15px;
+    }
+  }
