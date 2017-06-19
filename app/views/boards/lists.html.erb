@@ -1,6 +1,12 @@
 <% if controller.action_name == 'my_post' || controller.action_name == 'my_commented' || controller.action_name == 'like_lists' %>
   <%= render '/bits/mypage_header' %>
 <% end %>
+
+<%# 検索ワードを表示 %>
+<% if @search_params.present? %>
+  <p><%= @search_params %></p>
+<% end %>
+
 <div id="community_search_area" class="col-xs-12">
   <div class="form-group row">
     <%= form_tag({controller: '/boards', action: :Search }, method: :get) do %>
