@@ -21,18 +21,21 @@
             <p>
               <span class="icon mp-nav-icon icon-information" style="color:#000;font-size:48px">
               </span>
-              <br>ご登録情報
-            </p>
+              <p style="padding-top:5px;">
+              ご登録情報</p>
           </div>
         </div>
       </div>
       <div id="mypage_header_activity_history" class="col-xs-6">
         <div id="mypage_header_activity_history_child" class=" col-xs-6">
-          <div class="mypage_header_container">
-            <span class="icon mp-nav-icon icon-history" style="color:#FFF;font-size:48px">
-            </span>
-            <br>
-            <%= link_to '活動履歴', { :controller => '/bits', action: :view_histories, or: 'history' } %>
+          <div class="mypage_header_activity_container">
+            <p>
+              <span class="icon mp-nav-icon icon-history" style="color:#FFF;font-size:48px">
+              </span>
+            </p>
+            <p style="padding-top:13px;">
+              <%= link_to '活動履歴', { :controller => '/bits', action: :view_histories, or: 'history' } %>
+            </p>
           </div>
         </div>
       </div>
@@ -44,21 +47,24 @@
       <div id="mypage_header_infomation" class="col-xs-6">
         <div id="mypage_header_infomation_child" class="col-xs-6 col-xs-offset-6">
           <div class="mypage_header_information_container_change_2nd">
-            <span class="icon mp-nav-icon icon-information" style="color:#FFF;font-size:48px">
-            </span>
-            <br>
+            <p>
+              <span class="icon mp-nav-icon icon-information" style="color:#FFF;font-size:48px">
+              </span>
+            </p>
+            <p style="padding-top:7px;padding-bottom:3px;">
             <%= link_to ' ご登録情報', profile_path(current_user.id) %>
+          </p>
           </div>
         </div>
       </div>
-      <div id="mypage_header_activity_history" class="col-xs-6">
+      <div id="mypage_header_activity_history_2nd" class="col-xs-6">
         <div id="mypage_header_activity_history_child_2nd" class=" col-xs-6">
-          <div class="mypage_header_container_2nd">
-            <p>
+          <div class="mypage_header_activity_container_2nd">
+            <p style="margin-bottom:0px">
               <span class="icon mp-nav-icon icon-history" style="color:#000;font-size:48px">
               </span>
-              <br>活動履歴
-            </p>
+              <p style="padding-top:3px;margin-bottom:0px;">
+              活動履歴</p>
           </div>
         </div>
       </div>
