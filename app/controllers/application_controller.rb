@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_tags
-  after_filter :store_location
+  after_action :store_location
   
   def user_level_check(level)
     if current_user.nil?
