@@ -67,6 +67,16 @@ class BoardsController < ApplicationController
     render '/boards/lists'
   end
 
+  def like_lists
+    unless user_signed_in?
+      redirect_to root_path and return
+    end
+
+    @boards = Board.joins(:board_likes).where('board_likes.user_id = ?', current_user.id).page(params[:page]).includes(:user)
+
+    render '/boards/lists'
+  end
+
   def show
     @board_comment = BoardComment.new
     @master_comment = BoardComment.where(board_id: @board.id).order('created_at asc').first
