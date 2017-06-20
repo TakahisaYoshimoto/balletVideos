@@ -97,33 +97,41 @@
             <ul class="nav navbar-nav navbar-right">
               <li class="nav-divider"></li>
               <% if user_signed_in? %>
-                <li>
+                <li class="nav-mypage">
                   <%= link_to(profile_path(current_user.id)) do %>
                     <span class="icon icon-mypage"  style="font-size:24px;margin-right:0;color:#FFF">
                     </span>
+                    <p>
                     マイページ
+                    </p>
                   <% end %>
                 </li>
-                <li>
+                <li class="nav-logout">
                   <%= link_to(destroy_user_session_path, method: :delete) do %>
                     <span class="icon icon-login"  style="font-size:24px;margin-right:0;color:#FFF">
                     </span>
+                    <p>
                     ログアウト
+                    </p>
                   <% end %>
                 </li>
               <% else %>
-                <li>
+                <li class="nav-user-reg">
                   <%= link_to(new_user_registration_path) do %>
                     <span class="icon icon-mypage"  style="font-size:24px;margin-right:0;color:#FFF">
                     </span>
+                    <p>
                     ユーザー登録
+                    </p>
                   <% end %>
                 </li>
-                <li>
+                <li class="nav-login">
                   <%= link_to(new_user_session_path) do %>
                     <span class="icon icon-login" style="font-size:24px;margin-right:0;color:#FFF">
                     </span>
+                    <p>
                     ログイン
+                    </p>
                   <% end %>
                 </li>
               <% end %>
