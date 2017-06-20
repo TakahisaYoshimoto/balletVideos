@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   resources :boards, only: [:index, :new, :create, :edit, :update, :show, :destroy] do
     collection do
       get :Search
-      get :my_post
+      get :my_posts
       get :my_commented
       get :new_lists
       get :attention

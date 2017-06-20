@@ -52,7 +52,10 @@
         </div>
       </div>
 
-      <!-- <div class="nav_community_collapse_frame_1_2">
+<%
+=begin
+%>
+      <div class="nav_community_collapse_frame_1_2">
         <div class="nav_community_collapse_area_tag_area">
           <div class="nav_community_collapse_area_tag">
             <strong>管理</strong>
@@ -60,13 +63,17 @@
         </div>
         <div class="nav_community_collapse_area_child_area">
           <div class="nav_community_collapse_area_child">
-            <%= link_to 'マイトークルーム', my_post_boards_path  %>
+            <%= link_to 'マイトークルーム', my_posts_boards_path  %>
           </div>
           <div class="nav_community_collapse_area_child">
             <%= link_to 'コメントしたトーク', my_commented_boards_path  %>
           </div>
         </div>
-      </div> -->
+      </div>
+<%
+=end
+%>
+
     </div>
     <a id="nav_community_collapse_close_button" data-toggle="collapse" data-parent="#accordion" data-target="#nav_community_collapse_area"><span class="icon icon-main icon-closed_nav_button"></span></a>
   </div>

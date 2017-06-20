@@ -1,4 +1,4 @@
-<% if controller.action_name == 'my_post' || controller.action_name == 'my_commented' || controller.action_name == 'like_lists' %>
+<% if controller.action_name == 'my_posts' || controller.action_name == 'my_commented' || controller.action_name == 'like_lists' %>
   <%= render '/bits/mypage_header' %>
 <% end %>
 
@@ -24,8 +24,6 @@
     <% end %>
   </div>
 </div>
-
-<p class="new_talk_text col-sx-12">新着トーク</p>
 
 <ul id="board_lists" class="col-xs-12">
   <% @boards.each do |board| %>

@@ -74,36 +74,80 @@
 
     <%# sm以上のマイページヘッダー %>
     <div id="mypage_header_bottom" class="hidden-xs hidden-sm">
-      <div id="mypage_header_view_history">
-        <%= link_to '視聴履歴', { :controller => '/bits', action: :view_histories, or: 'history' } %>
-        <span class="icon icon-mp icon-video">
-        </span>
-      </div>
-      <div id="mypage_header_myfavorite">
-        <%= link_to 'お気に入り', { :controller => '/bits', action: :like_videos, or: 'history' } %>
-        <span class="icon icon-mp icon-video"></span>
-      </div>
+      <% if (controller.controller_name == 'bits' && controller.action_name == 'view_histories') %>
+        <div id="mypage_header_view_history" class="mypage_header_active">
+          <p>視聴履歴</p>
+          <span class="icon icon-mp icon-video"></span>
+        </div>
+      <% else %>
+        <div id="mypage_header_view_history">
+          <%= link_to({ :controller => '/bits', action: :view_histories, or: 'history' }) do %>
+            <p>視聴履歴</p>
+            <span class="icon icon-mp icon-video"></span>
+          <% end %>
+        </div>
+      <% end %>
 
-      <div id="mypage_header_comments">
-        <%= link_to 'コメント', my_commented_boards_path  %>
-        <span class="icon icon-mp icon-first icon-video"></span>
-        <span class="icon icon-mp icon-talk"></span>
-      </div>
+      <% if (controller.controller_name == 'bits' && controller.action_name == 'like_videos') %>
+        <div id="mypage_header_myfavorite" class="mypage_header_active">
+          <p>お気に入り</p>
+          <span class="icon icon-mp icon-video"></span>
+        </div>
+      <% else %>
+        <div id="mypage_header_myfavorite">
+          <%= link_to({ :controller => '/bits', action: :like_videos, or: 'history' }) do %>
+            <p>お気に入り</p>
+            <span class="icon icon-mp icon-video"></span>
+          <% end %>
+        </div>
+      <% end %>
 
-      <div id="mypage_header_board_like">
-        <%= link_to '気になる', like_lists_boards_path  %>
-        <span class="icon icon-mp icon-talk"></span>
-      </div>
+      <% if (controller.controller_name == 'boards' && controller.action_name == 'my_commented') %>
+        <div id="mypage_header_comments" class="mypage_header_active">
+          <p>コメント</p>
+          <span class="icon icon-mp icon-talk"></span>
+        </div>
+      <% else %>
+        <div id="mypage_header_comments">
+          <%= link_to(my_commented_boards_path) do  %>
+            <p>コメント</p>
+            <span class="icon icon-mp icon-talk"></span>
+          <% end %>
+        </div>
+      <% end %>
 
-      <div id="mypage_header_mytolkroom">
-        <%= link_to 'マイトークルーム', my_post_boards_path  %>
-        <span class="icon icon-mp icon-talk"></span>
-      </div>
+      <% if (controller.controller_name == 'boards' && controller.action_name == 'like_lists') %>
+        <div id="mypage_header_board_like" class="mypage_header_active">
+          <p>気になる</p>
+          <span class="icon icon-mp icon-talk"></span>
+        </div>
+      <% else %>
+        <div id="mypage_header_board_like">
+          <%= link_to(like_lists_boards_path) do %>
+            <p>気になる</p>
+            <span class="icon icon-mp icon-talk"></span>
+          <% end %>
+        </div>
+      <% end %>
+
+      <% if (controller.controller_name == 'boards' && controller.action_name == 'my_posts') %>
+        <div id="mypage_header_mytolkroom" class="mypage_header_active">
+          <p>マイトークルーム</p>
+          <span class="icon icon-mp icon-talk"></span>
+        </div>
+      <% else %>
+        <div id="mypage_header_mytolkroom">
+          <%= link_to(my_posts_boards_path) do %>
+            <p>マイトークルーム</p>
+            <span class="icon icon-mp icon-talk"></span>
+          <% end %>
+        </div>
+      <% end %>
     </div>
 
     <%# xsの時のマイページヘッダー %>
     <%# ドロップダウンメニューにいれるタイトルを条件分岐で決める %>
-    <% if controller.action_name == 'my_post' %>
+    <% if controller.action_name == 'my_posts' %>
       <% dropdown_title = 'マイトークルーム' %>
     <% elsif controller.action_name == 'my_commented' %>
       <% dropdown_title = 'コメントした動画' %>
@@ -123,7 +167,7 @@
           <li><%= link_to 'お気に入り', { :controller => '/bits', action: :like_videos, or: 'history' } %></li>
           <li><%= link_to 'コメント', my_commented_boards_path  %></li>
           <li><%= link_to '気になる', my_commented_boards_path  %></li>
-          <li><%= link_to 'マイトークルーム', my_post_boards_path  %></li>
+          <li><%= link_to 'マイトークルーム', my_posts_boards_path  %></li>
         </ul>
       </div>
     </div>

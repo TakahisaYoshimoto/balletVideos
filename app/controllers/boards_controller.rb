@@ -47,7 +47,7 @@ class BoardsController < ApplicationController
     render '/boards/lists'
   end
 
-  def my_post
+  def my_posts
     unless user_signed_in?
       redirect_to root_path and return
     end
