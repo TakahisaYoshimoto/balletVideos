@@ -27,6 +27,11 @@
 
 <ul id="board_lists" class="col-xs-12">
   <% @boards.each do |board| %>
+<%
+=begin
+%>
+    横一列表示、いったん保留、削除かも
+    
     <li class="board_link">
       <div class="board_link_picture_area">
         <%= render 'profile_picture_lists', i: board %>
@@ -38,6 +43,38 @@
         </div>
       <% end -%>
     </li>
+<%
+=end
+%>
+
+    <%= link_to board_path(board) do %>
+      <div class="community_index_board col-md-4 col-sm-6">
+        <div class="community_index_board_child">
+          <div class="community_index_profile_picture">
+            <%= render 'profile_picture', i: board %>
+          </div>
+          <div class="community_index_board_title">
+            <p><%= truncate(board.title, length: 35) %></p>
+          </div>
+          <div class="community_index_board_tags_area">
+          <% board.board_tags.each do |tag| %>
+            <div class="community_index_board_tags" style="display: inline-block;">
+              <p><%= truncate("##{tag.name}",length:12) %></p>
+            </div>
+          <% end %>
+          </div>
+          <div class="community_index_board_comments">
+              <p class="bits_index_board_comments_count">
+                コメント数 : <%= board.board_comments_count %>
+                <br>
+              </p>
+              <p class="community_index_board_time">
+                <%= board.created_at.strftime('%Y/%m/%d/ %H:%M') %>
+              </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
 
   <% end %>
 </ul>
