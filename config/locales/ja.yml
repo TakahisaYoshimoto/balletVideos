@@ -48,6 +48,7 @@ ja:
         password: 'パスワード'
         password_confirmation: '確認用パスワード'
         current_password: '現在のパスワード'
+        rule_confirmed: '利用規約'
       youtube_video:
         title: 'タイトル'
         category: 'カテゴリ'

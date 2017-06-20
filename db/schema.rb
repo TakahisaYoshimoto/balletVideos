@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170613014949) do
+ActiveRecord::Schema.define(version: 20170620190133) do
 
   create_table "board_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "text",       limit: 65535
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20170613014949) do
   create_table "boards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
     t.integer  "user_id"
+    t.string   "category"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.integer  "board_comments_count", default: 0
@@ -126,6 +127,7 @@ ActiveRecord::Schema.define(version: 20170613014949) do
     t.text     "profile",                limit: 65535
     t.string   "picture_lg"
     t.boolean  "notice_email",                         default: true, null: false
+    t.boolean  "rule_confirmed",                                      null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   #validates :email, uniqueness: true
+  validate :rule_confirmed_valid?
 
   has_many :users
   has_many :likes, dependent: :destroy
@@ -18,4 +19,9 @@ class User < ApplicationRecord
   validates :username, uniqueness: true
 
   paginates_per 30  # 1ページあたり30項目表示
+
+  private
+    def rule_confirmed_valid?
+      errors.add(:rule_confirmed, 'に同意して頂かない場合は、登録できません。') unless rule_confirmed == true
+    end
 end

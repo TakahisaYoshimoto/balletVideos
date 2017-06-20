@@ -42,6 +42,15 @@
     <label><%= f.check_box :notice_email, {}, 'true', 'false' %> 通知メールを受信する。</label>
   </div>
 
+  <h3>利用規約</h3>
+  <div>
+    <p><%= simple_format(@terms.contents) if @terms.present? %></p>
+  </div>
+
+  <div class="field form-group">
+    <label><%= f.check_box :rule_confirmed, {}, 'true', 'false' %> 利用規約に同意する。</label>
+  </div>
+
   <p>
 「メール送信」ボタンを押すとご登録のメールアドレスに認証メールが送信されます。<br>
 承認処理を実施してください。

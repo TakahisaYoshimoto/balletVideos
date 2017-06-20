@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_tags
   after_action :store_location
-  
+
   def user_level_check(level)
     if current_user.nil?
       return true
@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
 
   private
     def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :acceptance, :notice_email])
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :acceptance, :notice_email, :rule_confirmed])
       devise_parameter_sanitizer.permit(:account_update, keys: [:username, :acceptance, :picture, :profile, :notice_email])
     end
 
