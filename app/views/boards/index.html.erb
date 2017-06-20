@@ -65,7 +65,8 @@
               </p>
             </div>
             <div class="community_index_board_tags_area">
-            <% board.board_tags.each do |tag| %>
+            <% board.board_tags.each.with_index(1) do |tag, i| %>
+              <% break if i > 6 %>
               <div class="community_index_board_tags" style="display:inline-block;">
                 <p><%= truncate("##{tag.name}",length:12) %></p>
               </div>
@@ -127,7 +128,8 @@
               <p>🖤 <%= truncate(board.title, length: 35) %></p>
             </div>
             <div class="community_index_board_tags_area">
-            <% board.board_tags.each do |tag| %>
+            <% board.board_tags.each.with_index(1) do |tag, i| %>
+              <% break if i > 6 %>
               <div class="community_index_board_tags" style="display: inline-block;">
                 <p><%= truncate("##{tag.name}",length:12) %></p>
               </div>
