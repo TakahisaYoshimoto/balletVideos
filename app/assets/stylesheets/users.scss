@@ -2,6 +2,9 @@
 .field_with_errors {
   display: inline-block;
 }
+.user_error_msg p {
+  color: red;
+}
 
 #profile_text_area {
   height: 250px;
