@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   private
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :acceptance, :notice_email, :rule_confirmed])
-      devise_parameter_sanitizer.permit(:account_update, keys: [:username, :acceptance, :picture, :profile, :notice_email])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:username, :acceptance, :picture, :profile, :notice_email, :rule_confirmed])
     end
 
     def set_tags
