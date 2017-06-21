@@ -2,31 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#prifile_area {
+#profile_area {
   // border: 1px solid black;
   width: 100%;
 }
   @media screen and (max-width: 767px) {
-    #prifile_area td,
-    #prifile_area tr {
+    #profile_area td,
+    #profile_area tr {
       width: 100%;
       display: inline-block;
     }
   }
 
-#prifile_left_area {
+#profile_left_area {
   background: black;
   border: 1px solid black;
 }
-#prifile_left_area p {
+#profile_left_area p {
   color: white;
 }
-#prifile_left_area_picture {
+#profile_left_area_picture {
   border-radius: 100%;
   margin-top:20px;
 }
   @media screen and (max-width:767px) {
-    #prifile_left_area_picture {
+    #profile_left_area_picture {
       width: 150px;
       height:150px;
       border-radius: 100%;
@@ -36,28 +36,28 @@
   }
 
 
-#prifile_check_area p {
+#profile_check_area p {
   font-size:12px;
 }
 
-#prifile_right_area {
+#profile_right_area {
   background: white;
   border: 2px solid black;
 }
 
-#prifile_area_edit_link_area {
+#profile_area_edit_link_area {
   text-align: right;
   padding-right:0;
 }
 
-#prifile_area_edit_link_area a:hover {
+#profile_area_edit_link_area a:hover {
   text-decoration: none;
   color:grey;
   }
 
 
 
-#prifile_area_edit_link {
+#profile_area_edit_link {
   margin-top: 20px;
   border: 3px solid black;
   padding: 20px 30px;
@@ -86,11 +86,11 @@
     }
   }
 
-#prifile_right_area {
+#profile_right_area {
   min-height:50px;
 }
   @media screen and (max-width:767px) {
-    #prifile_right_area {
+    #profile_right_area {
       padding-top:15px;
     }
   }

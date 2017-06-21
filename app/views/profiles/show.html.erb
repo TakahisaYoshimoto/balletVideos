@@ -1,21 +1,21 @@
 <%= render '/bits/mypage_header' %>
 
-<div id="prifile_area" class="col-xs-12" style="padding:0;">
+<div id="profile_area" class="col-xs-12" style="padding:0;">
 
 <!--
-  <div class="prifile_area_xs col-xs-12 hidden-sm hidden-sm hidden-lg">
-    <div class="prifile_left_area_picture" style="text-align:center">
+  <div class="profile_area_xs col-xs-12 hidden-sm hidden-sm hidden-lg">
+    <div class="profile_left_area_picture" style="text-align:center">
       <% if @user.picture_lg.present? %>
         <% if Rails.env == 'production' %>
-          <%= image_tag ENV['AWS_PICTURE_PATH']+"#{ @user.picture_lg }", width: '80%', id: 'prifile_left_area_picture' %>
+          <%= image_tag ENV['AWS_PICTURE_PATH']+"#{ @user.picture_lg }", width: '80%', id: 'profile_left_area_picture' %>
         <% else %>
-          <%= image_tag "/docs/#{ @user.picture_lg }", width: '80%', width: '80%', id: 'prifile_left_area_picture' %>
+          <%= image_tag "/docs/#{ @user.picture_lg }", width: '80%', width: '80%', id: 'profile_left_area_picture' %>
         <% end -%>
       <% else %>
-        <%= image_tag "no-picture-lg.gif", width: '80%', width: '80%', id: 'prifile_left_area_picture' %>
+        <%= image_tag "no-picture-lg.gif", width: '80%', width: '80%', id: 'profile_left_area_picture' %>
       <% end %>
     </div>
-    <div class="prifile_left_area_name col-xs-12">
+    <div class="profile_left_area_name col-xs-12">
       <p class="mypage-user-name col-xs-12" style="font-weight:bold;"><%= @user.username %> さん</p>
     </div>
 
@@ -24,7 +24,7 @@
         <div id="profile_email_area" class="col-xs-12">
           <p><%= @user.email %></p>
         </div>
-        <div id="prifile_check_area" class="col-xs-12">
+        <div id="profile_check_area" class="col-xs-12">
           <% if @user.acceptance %>
             <p>運営からのお知らせメールを受け取る</p>
           <% else %>
@@ -40,7 +40,7 @@
     <% end %>
   </div>
 
-  <div id="prifile_right_area" class="col-xs-12 hidden-sm hidden-sm hidden-lg">
+  <div id="profile_right_area" class="col-xs-12 hidden-sm hidden-sm hidden-lg">
     <% if @user.profile.present? %>
       <%= simple_format(@user.profile) %>
     <% else %>
@@ -51,22 +51,22 @@
 -->
 
 
-  <div class="prifile_area">
+  <div class="profile_area">
     <table>
       <tr>
-        <td id="prifile_left_area" class="col-xs-6">
-          <div class="prifile_left_area_picture col-sm-6" style="text-align:center">
+        <td id="profile_left_area" class="col-xs-6">
+          <div class="profile_left_area_picture col-sm-6" style="text-align:center">
             <% if @user.picture_lg.present? %>
               <% if Rails.env == 'production' %>
-                <%= image_tag ENV['AWS_PICTURE_PATH']+"#{ @user.picture_lg }", width: '85%', id: 'prifile_left_area_picture' %>
+                <%= image_tag ENV['AWS_PICTURE_PATH']+"#{ @user.picture_lg }", width: '85%', id: 'profile_left_area_picture' %>
               <% else %>
-                <%= image_tag "/docs/#{ @user.picture_lg }", width: '85%', id: 'prifile_left_area_picture' %>
+                <%= image_tag "/docs/#{ @user.picture_lg }", width: '85%', id: 'profile_left_area_picture' %>
               <% end -%>
             <% else %>
-              <%= image_tag "no-picture-lg.gif", width: '85%', id: 'prifile_left_area_picture' %>
+              <%= image_tag "no-picture-lg.gif", width: '85%', id: 'profile_left_area_picture' %>
             <% end %>
           </div>
-          <div class="prifile_left_area_name col-xs-6">
+          <div class="profile_left_area_name col-xs-6">
             <p class="mypage-user-name" style="font-weight:bold;"><%= @user.username %>さん</p>
           </div>
 
@@ -75,7 +75,7 @@
               <div id="profile_email_area" class="col-xs-12">
                 <p><%= @user.email %></p>
               </div>
-              <div id="prifile_check_area" class="col-xs-12">
+              <div id="profile_check_area" class="col-xs-12">
                 <% if @user.acceptance %>
                   <p>運営からのお知らせメールを受け取る</p>
                 <% else %>
@@ -91,7 +91,7 @@
           <% end %>
         </td>
 
-        <td id="prifile_right_area" class="col-xs-12 col-sm-6">
+        <td id="profile_right_area" class="col-xs-12 col-sm-6">
           <% if @user.profile.present? %>
             <%= simple_format(@user.profile) %>
           <% else %>
@@ -102,6 +102,6 @@
     </table>
   </div>
 
-<div id="prifile_area_edit_link_area" class="col-xs-12">
-  <%= link_to 'プロフィールを編集する', edit_user_registration_path, id: 'prifile_area_edit_link' %>
+<div id="profile_area_edit_link_area" class="col-xs-12">
+  <%= link_to 'プロフィールを編集する', edit_user_registration_path, id: 'profile_area_edit_link' %>
 </div>
