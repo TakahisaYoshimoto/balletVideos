@@ -144,13 +144,17 @@
           <% if i > 8 %>
             <div class="sm-display-none">
           <% end %>
-          <div class="bits_index_board col-xs-12 col-sm-6 col-md-4">
+          <div class="bits_index_board col-xs-12 original-col-sm-6 original-col-md-4">
             <div class="bits_index_board_child">
               <div class="bits_index_profile_picture">
                 <%= render 'profile_picture', i: board %>
               </div>
               <div class="bits_index_board_title">
-                <p>🖤 <%= truncate(board.title, length: 35) %></p>
+                <p>
+                  <span class="icon icon-maked_talk"  style="font-size:14px;margin-right:0;color:#000">
+                  </span>
+                  <%= truncate(board.title, length: 30) %>
+                </p>
               </div>
               <div class="bits_index_board_tags_area">
               <% board.board_tags.each do |tag| %>
@@ -171,7 +175,7 @@
             </div>
           </div>
           <% if i > 8 %>
-            </div>>
+            </div>
           <% end %>
         <% end %>
       <% end %>

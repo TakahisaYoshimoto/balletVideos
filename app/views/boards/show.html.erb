@@ -13,7 +13,7 @@
     <%= simple_format(@master_comment.text) %>
 
     <% @board.board_tags.each do |tag| %>
-      <div style="display: inline-block;margin-right:10px;">
+      <div class="board_tag" style="display: inline-block;margin-right:10px">
         <%= link_to "##{tag.name}", { controller: :boards, action: :Search, search_params: tag.name } %>
       </div>
     <% end %>

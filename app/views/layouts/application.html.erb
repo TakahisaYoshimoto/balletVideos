@@ -10,8 +10,8 @@
     <%= javascript_include_tag 'application' %>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Bit（ビット）は、クラシックバレエにおける動画や交流を楽しめるサービスです。コンクールや発表会に向けて参考となる情報がたくさん掲載されています。" />
-    <meta name="keywords" content="バレエ,動画,コンクール,発表会,レッスン,交流" />
+    <meta name="description" content="Bit（ビット）は、クラシックバレエにおける動画や交流を楽しめるサービスです。トーク機能では、質問や返信することができます。コンクールや発表会に向けて参考となる情報がたくさん掲載されています。" />
+    <meta name="keywords" content="バレエ,動画,質問,情報,コンクール,発表会,レッスン,交流" />
     <% if controller.controller_name == 'youtube_videos' && controller.action_name == 'show' %>
       <meta property="og:title" content="<%= @youtube.title %>" />
       <meta property="og:type" content="article" />
@@ -97,33 +97,41 @@
             <ul class="nav navbar-nav navbar-right">
               <li class="nav-divider"></li>
               <% if user_signed_in? %>
-                <li>
+                <li class="nav-mypage">
                   <%= link_to(profile_path(current_user.id)) do %>
                     <span class="icon icon-mypage"  style="font-size:24px;margin-right:0;color:#FFF">
                     </span>
+                    <p>
                     マイページ
+                    </p>
                   <% end %>
                 </li>
-                <li>
+                <li class="nav-logout">
                   <%= link_to(destroy_user_session_path, method: :delete) do %>
                     <span class="icon icon-login"  style="font-size:24px;margin-right:0;color:#FFF">
                     </span>
+                    <p>
                     ログアウト
+                    </p>
                   <% end %>
                 </li>
               <% else %>
-                <li>
+                <li class="nav-user-reg">
                   <%= link_to(new_user_registration_path) do %>
                     <span class="icon icon-mypage"  style="font-size:24px;margin-right:0;color:#FFF">
                     </span>
+                    <p>
                     ユーザー登録
+                    </p>
                   <% end %>
                 </li>
-                <li>
+                <li class="nav-login">
                   <%= link_to(new_user_session_path) do %>
                     <span class="icon icon-login" style="font-size:24px;margin-right:0;color:#FFF">
                     </span>
+                    <p>
                     ログイン
+                    </p>
                   <% end %>
                 </li>
               <% end %>
@@ -139,7 +147,6 @@
             <%= render '/layouts/nav_community', tags: @tags %>
           </div>
         </div>
-
       </nav>
 
       <div id="contants" class="container">
@@ -152,10 +159,12 @@
     <div class="container" style="text-align:center;">
       <div id="top_footer_contents">
         <div id="top_footer_left_area">
-          <span class="icon icon-footer icon-video"></span>
-          <%= link_to '動画 -Video', videotop_bits_path,  class: 'top_footer_title' %>
+          <div style="font-size:16px">
+            <span class="icon icon-footer icon-video"></span>
+            <%= link_to '動画 -Video', videotop_bits_path,  class: 'top_footer_title', style:"font-size:16px" %>
+          </div>
 
-          <div id="top_footer_search_link_area">
+          <div id="top_footer_search_link_area" style="margin-top:5px;padding-left:13px;">
             <%= link_to '演目から探す', { :controller => "/bits", action: :genreSearch, search_params: '演目', or: 'pv' } %><br>
             <%= link_to 'レッスンから探す', { :controller => "/bits", action: :genreSearch, search_params: 'レッスン', or: 'pv' } %><br>
             <%= link_to 'その他から探す', { :controller => "/bits", action: :genreSearch, search_params: "その他", or: 'pv' } %><br>
@@ -163,10 +172,12 @@
         </div>
 
         <div id="top_footer_second_area">
-          <span class="icon icon-footer icon-talk"></span>
-          <%= link_to 'トーク -Talk', boards_path, class: 'top_footer_title' %>
+          <div style="font-size:16px">
+            <span class="icon icon-footer icon-talk"></span>
+            <%= link_to 'トーク -Talk', boards_path, class: 'top_footer_title', style:"font-size:16px" %>
+          </div>
 
-          <div id="top_footer_search_link_area">
+          <div id="top_footer_search_link_area" style="margin-top:5px;padding-left:13px;">
             <%= link_to '新着から見る', new_lists_boards_path %><br>
             <%= link_to '急上昇から見る', attention_boards_path %><br>
             <%= link_to 'トークルームを作る', new_board_path %><br>
@@ -174,37 +185,25 @@
         </div>
 
         <div id="top_footer_third_area">
-          <!-- <%= link_to 'Bitについて', { :controller => "/bits", action: :index, anchor: 'search_area'}, class: 'top_footer_title hidden-xs' %>
-          <%= link_to 'Bitについて', { :controller => "/bits", action: :index, anchor: 'results_search_area'}, class: 'top_footer_title hidden-sm hidden-md hidden-lg' %> -->
-
-          <p class="top_footer_title" style="color:#FFF;margin-bottom:0px">Bitについて</p>
-
-          <div id="top_footer_search_link_area">
+          <div style="font-size:16px">
+            <p class="top_footer_title" style="color:#FFF;margin-bottom:0px">　Bitについて</p>
+          </div>
+          <div id="top_footer_search_link_area" style="margin-top:5px;padding-left:13px;">
             <%= link_to '利用規約', terms_bits_path %><br>
             <%= link_to 'プライバシーポリシー', privacy_policy_bits_path, class: 'top_footer_title' %><br>
             <%= link_to '運営情報', operation_information_bits_path, class: 'top_footer_title' %><br>
             <%= link_to 'お問い合わせ', inquiry_bits_path, class: 'top_footer_title' %><br>
-            <%= link_to ' マイページ', edit_user_registration_path, class: 'top_footer_title hidden-sm hidden-md hidden-lg' %><br>
-            <%= link_to ' ログアウト', destroy_user_session_path, method: :delete, class: 'top_footer_title hidden-sm hidden-md hidden-lg' %><br>
-
-          </div>
-        </div>
-<!-- 終了-->
-        <div class="hidden-xs"id="top_footer_center_area">
-          <% if user_signed_in? %>
             <%= link_to ' マイページ', edit_user_registration_path, class: 'top_footer_title' %><br>
             <%= link_to ' ログアウト', destroy_user_session_path, method: :delete, class: 'top_footer_title' %><br>
-          <% else %>
-            <%= link_to 'ユーザー登録', new_user_registration_path, class: 'top_footer_title' %><br>
-            <%= link_to 'ログイン', new_user_session_path, class: 'top_footer_title' %><br>
-          <% end %>
+          </div>
         </div>
 
         <div id="top_footer_sns_area">
-          <%= link_to 'SNS', { :controller => "/bits", action: :index, anchor: 'search_area'}, class: 'top_footer_title hidden-xs' %>
-          <%= link_to 'SNS', { :controller => "/bits", action: :index, anchor: 'results_search_area'}, class: 'top_footer_title hidden-sm hidden-md hidden-lg' %>
+          <div style="font-size:16px">
+            <p class="top_footer_title" style="color:#FFF;margin-bottom:0px">　SNS</p>
+          </div>
           <div id="top_footer_search_link_area">
-            <a href="https://www.facebook.com/bit.ballet/" target=”_blank”>
+            <a href="https://www.facebook.com/bit.ballet/" target=”_blank” style="margin-top:5px;padding-left:20px;">
               公式Facebook</a>
           </div>
         </div>

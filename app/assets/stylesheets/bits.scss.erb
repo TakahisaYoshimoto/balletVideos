@@ -749,7 +749,6 @@
 
 
 /* mypage_header */
-
 #mypage_header_top {
   background: black;
   width: 100%;
@@ -758,10 +757,18 @@
   padding-top: 10px;
   margin-bottom:50px;
 }
+
 #mypage_header_infomation {
   text-align: right;
   padding-right:0px;
 }
+
+#mypage_header_activity_history {
+  text-align: left;
+  padding-left:0px;
+  padding-right:0px;
+}
+
 #mypage_header_infomation_child {
   padding-left:0px;
   padding-right:0px;
@@ -771,50 +778,30 @@
   color: white;
 }
 
-/*#mypage_header_infomation p {
-  background: white;
-  color: black;
-}*/
-
 .mypage_header_information_container {
   background: white;
-  padding-top:5px;
-  padding-bottom:5px;
-  text-align:center;
-}
-
-.mypage_header_information_container_change {
-  background: black;
-  padding-top:5px;
-  padding-bottom:5px;
+  padding-top:10px;
+  padding-bottom:10px;
   text-align:center;
 }
 
 .mypage_header_information_container_change_2nd {
   background: black;
-  padding-top:5px;
-  padding-bottom:5px;
+  padding-top:10px;
+  padding-bottom:10px;
   text-align:center;
 }
 
 .mypage_header_information_container p {
   margin-bottom:0px;
   text-align:center;
+  padding-top:10px;
 }
 
-.mypage_header_information_container_change p{
+.mypage_header_information_container_change_2nd p{
   margin-bottom:0px;
   text-align:center;
-}
-
-
-#mypage_header_activity_history {
-  text-align: left;
-  padding-left:0px;
-}
-
-.container_mypage td {
-  padding:4px;
+  padding-top:10px;
 }
 
 #mypage_header_activity_history_child {
@@ -822,50 +809,72 @@
   padding-right:0px;
 }
 
+
+#mypage_header_infomation_child_2nd:hover > a {
+  text-decoration: none;
+  color:gray;
+}
+
+#mypage_header_infomation_child_2nd:hover  .icon-information:before {
+  color:gray;
+}
+
+#mypage_header_activity_history_child:hover > a {
+  text-decoration: none;
+  color:gray;
+}
+
+#mypage_header_activity_history_child:hover  .icon-history:before {
+  color:gray;
+}
+
+#mypage_header_activity_history_child:hover > p {
+  color:gray;
+}
+
+
 #mypage_header_activity_history_child_2nd {
   padding-left:0px;
   padding-right:0px;
 }
 
 #mypage_header_activity_history_child p{
-margin-bottom:-5px;
-}
-
-#mypage_header_activity_history_child_2nd p{
 margin-bottom:0px;
-padding-top:5px;
-padding-bottom:5px;
 }
 
-.mypage_header_container {
+.mypage_header_activity_container {
   text-align:center;
-  margin-top:0px;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
-.mypage_header_container_2nd {
+.mypage_header_activity_container_2nd {
+  background:#FFF;
   text-align:center;
-  margin-top:0px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-
-}
-
-.mypage_header_container p{
-  text-align:center;
-  padding-top:5px;
-  padding-bottom:5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 #mypage_header_activity_history a {
+  text-align:center;
   color: white;
+  margin-top:10px;
 }
 #mypage_header_activity_history p {
-  background: white;
-  color: black;
+  text-align:center;
+  padding-top:5px;
 }
 
+#mypage_header_activity_history_2nd p {
+  text-align:center;
+  background: white;
+  color: black;
+  padding-top:10px;
+  margin-bottom:0;
+}
+
+/*sm以上のマイページヘッダー*/
+/*xsの時のマイページヘッダー*/
 #mypage_header_bottom {
   display:inline-block;
   margin: 20px 0;
@@ -934,14 +943,7 @@ padding-bottom:5px;
 
 .mp-nav-icon {
   padding:0;
-  padding-left:25px;
 }
-  @media screen and (max-width: 767px) {
-    .mp-nav-icon {
-      padding:0;
-      padding-left:13px;
-    }
-  }
 
 .icon-first {
   padding-right:5px;
@@ -953,7 +955,8 @@ padding-bottom:5px;
 }
 
 .mypage_btn {
-  padding-left:15px;
+  padding-left:0px;
+  margin-bottom:20px;
 }
 
 .mypage_btn button{

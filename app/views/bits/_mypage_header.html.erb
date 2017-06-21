@@ -18,22 +18,25 @@
       <div id="mypage_header_infomation" class="col-xs-6">
         <div id="mypage_header_infomation_child" class=" col-xs-6 col-xs-offset-6">
           <div class="mypage_header_information_container">
-            <p>
-              <span class="icon mp-nav-icon icon-information" style="color:#000;font-size:48px">
-              </span>
-              <br>ご登録情報
+            <span class="icon mp-nav-icon icon-information" style="color:#000;font-size:48px">
+            </span>
+            <p style="padding-top:5px;padding-bottom:3px:">
+            ご登録情報
             </p>
           </div>
         </div>
       </div>
       <div id="mypage_header_activity_history" class="col-xs-6">
         <div id="mypage_header_activity_history_child" class=" col-xs-6">
-          <div class="mypage_header_container">
-            <span class="icon mp-nav-icon icon-history" style="color:#FFF;font-size:48px">
-            </span>
-            <br>
-            <%= link_to '活動履歴', { :controller => '/bits', action: :view_histories, or: 'history' } %>
+          <%= link_to ({ :controller => '/bits', action: :view_histories, or: 'history' } ) do %>
+          <div class="mypage_header_activity_container">
+              <span class="icon mp-nav-icon icon-history" style="color:#FFF;font-size:48px">
+              </span>
+              <p style="padding-top:5px;padding-bottom:3px:">
+                活動履歴
+            </p>
           </div>
+          <% end %>
         </div>
       </div>
     </div>
@@ -42,22 +45,25 @@
   <% else %><%# プロフィールページでは無い場合 %>
     <div id="mypage_header_top" class="col-xs-12 row">
       <div id="mypage_header_infomation" class="col-xs-6">
-        <div id="mypage_header_infomation_child" class="col-xs-6 col-xs-offset-6">
+        <div id="mypage_header_infomation_child_2nd" class="col-xs-6 col-xs-offset-6">
+          <%= link_to profile_path(current_user.id) do %>
           <div class="mypage_header_information_container_change_2nd">
             <span class="icon mp-nav-icon icon-information" style="color:#FFF;font-size:48px">
             </span>
-            <br>
-            <%= link_to ' ご登録情報', profile_path(current_user.id) %>
+            <p style="padding-top:5px;padding-bottom:3px:">
+              ご登録情報
+            </p>
           </div>
+          <% end %>
         </div>
       </div>
-      <div id="mypage_header_activity_history" class="col-xs-6">
+      <div id="mypage_header_activity_history_2nd" class="col-xs-6">
         <div id="mypage_header_activity_history_child_2nd" class=" col-xs-6">
-          <div class="mypage_header_container_2nd">
-            <p>
-              <span class="icon mp-nav-icon icon-history" style="color:#000;font-size:48px">
-              </span>
-              <br>活動履歴
+          <div class="mypage_header_activity_container_2nd">
+            <span class="icon mp-nav-icon icon-history" style="color:#000;font-size:48px">
+            </span>
+            <p style="padding-top:5px;padding-bottom:3px:">
+            活動履歴
             </p>
           </div>
         </div>
@@ -73,7 +79,6 @@
         <span class="icon icon-mp icon-video">
         </span>
       </div>
-
       <div id="mypage_header_myfavorite">
         <%= link_to 'お気に入り', { :controller => '/bits', action: :like_videos, or: 'history' } %>
         <span class="icon icon-mp icon-video"></span>
