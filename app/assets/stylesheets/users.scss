@@ -61,6 +61,7 @@
 
 #user_edit_left_area {
   background: black;
+  border: 2px solid black;
 }
 #user_edit_profile_picture {
   display: inline-block;
@@ -78,6 +79,15 @@
   }
 }
 
+#profile_left_area {
+  border: 2px solid black;
+}
+
+#profile_right_area {
+  vertical-align: top;
+  padding-top:30px;
+}
+
 #user_edit_picture {
   border-radius: 100%;
   width:35%;
@@ -86,6 +96,7 @@
 
 #user_edit_right_area {
   background: white;
+  vertical-align: top;
 }
   #user_edit_cancel {
     display: inline-block;
