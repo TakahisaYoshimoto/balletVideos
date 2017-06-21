@@ -29,9 +29,36 @@
         </span><%= @category_params %>
       </h3>
     <% else %>
-      <h3>
-        <%= @genre %>
-      </h3>
+
+    <% if (controller.controller_name == 'bits' && controller.action_name == 'view_histories') %>
+      <div class="mypage_header_list hidden-sm hidden-xs">
+        <span class="icon icon-main icon-history_video"></span>
+        <p class="video-text">これまで視聴した動画</p>
+      </div>
+      <% elsif (controller.controller_name == 'bits' && controller.action_name == 'like_videos') %>
+        <div class="mypage_header_list hidden-sm hidden-xs">
+          <span class="icon icon-main icon-checked_video"></span>
+          <p class="video-text">お気に入りの動画</p>
+        </div>
+    <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <% end %>
   </div>
 
