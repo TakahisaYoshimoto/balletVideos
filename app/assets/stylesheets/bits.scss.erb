@@ -353,6 +353,18 @@ transition: opacity 0.4s ease-out;
     }
   }
 
+.mp-icon-main {
+  font-size:30px;
+  margin-right:10px;
+}
+@media screen and (max-width:767px) {
+  .mp-icon-main {
+    font-size:26px;
+    margin-right:10px;
+  }
+}
+
+
 .talk-title {
  margin-bottom:35px;
  margin-top:60px;
@@ -762,7 +774,22 @@ transition: opacity 0.4s ease-out;
 /* mypage_header */
 .mypage_header_active {
   background: black;
+  color:#FFF;
+  font-size:16px;
+  padding-top:0px;
 }
+
+.icon-mp  {
+  padding-top:7px;
+}
+
+.mypage_header_no_active {
+  background: #FFF;
+  color:#000;
+  font-size:16px;
+  padding-top:0px;
+}
+
 #mypage_header_top {
   background: black;
   width: 100%;
@@ -896,12 +923,13 @@ margin-bottom:0px;
   display: block;
   padding-left:0;
   padding-right:0;
+  font-size:0;
 }
 
 #mypage_header_view_history,
 #mypage_header_board_like, {
   display:inline-block;
-  width:140px;
+  width:150px;
   padding-left:0px;
   padding-right:0px;
   margin-left:0;
@@ -910,20 +938,20 @@ margin-bottom:0px;
 }
 #mypage_header_myfavorite {
   display:inline-block;
-  width:170px;
+  width:165px;
 }
 
 
 #mypage_header_comments{
   display:inline-block;
-  width:170px;
+  width:165px;
 }
 
 
 #mypage_header_mytolkroom
  {
   display:inline-block;
-  width:200px;
+  width:195px;
 }
 
 #mypage_header_view_history a,
@@ -945,7 +973,13 @@ margin-bottom:0px;
 #mypage_header_view_history,
 #mypage_header_myfavorite,
 #mypage_header_comments,
-#mypage_header_board_like,
+#mypage_header_board_like {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+  height:36px;
+}
+
 #mypage_header_mytolkroom {
   border-top: 2px solid black;
   border-bottom: 2px solid black;
@@ -953,6 +987,7 @@ margin-bottom:0px;
   border-right: 2px solid black;
   height:36px;
 }
+
 
 #mypage_header_bottom a {
   padding-right:5px;

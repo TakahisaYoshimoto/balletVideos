@@ -80,7 +80,7 @@
           <span class="icon icon-mp icon-video"></span>
         </div>
       <% else %>
-        <div id="mypage_header_view_history">
+        <div id="mypage_header_view_history" class="mypage_header_no_active">
           <%= link_to({ :controller => '/bits', action: :view_histories, or: 'history' }) do %>
             <p>視聴履歴</p>
             <span class="icon icon-mp icon-video"></span>
@@ -94,7 +94,7 @@
           <span class="icon icon-mp icon-video"></span>
         </div>
       <% else %>
-        <div id="mypage_header_myfavorite">
+        <div id="mypage_header_myfavorite" class="mypage_header_no_active">
           <%= link_to({ :controller => '/bits', action: :like_videos, or: 'history' }) do %>
             <p>お気に入り</p>
             <span class="icon icon-mp icon-video"></span>
@@ -108,7 +108,7 @@
           <span class="icon icon-mp icon-talk"></span>
         </div>
       <% else %>
-        <div id="mypage_header_comments">
+        <div id="mypage_header_comments" class="mypage_header_no_active">
           <%= link_to(my_commented_boards_path) do  %>
             <p>コメント</p>
             <span class="icon icon-mp icon-talk"></span>
@@ -122,7 +122,7 @@
           <span class="icon icon-mp icon-talk"></span>
         </div>
       <% else %>
-        <div id="mypage_header_board_like">
+        <div id="mypage_header_board_like" class="mypage_header_no_active">
           <%= link_to(like_lists_boards_path) do %>
             <p>気になる</p>
             <span class="icon icon-mp icon-talk"></span>
@@ -136,7 +136,7 @@
           <span class="icon icon-mp icon-talk"></span>
         </div>
       <% else %>
-        <div id="mypage_header_mytolkroom">
+        <div id="mypage_header_mytolkroom" class="mypage_header_no_active">
           <%= link_to(my_posts_boards_path) do %>
             <p>マイトークルーム</p>
             <span class="icon icon-mp icon-talk"></span>
