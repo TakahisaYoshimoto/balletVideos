@@ -2,8 +2,9 @@
   <%= render '/bits/mypage_header' %>
 <% end %>
 
-<div id="y_index_links">
-  <div class="col-sm-12">
+<% unless @youtubes.blank? %>
+  <div id="y_index_links">
+    <div class="col-sm-12">
 
   <div id="y_videolist_breadcrumb">
     <% if @category_params.present? && @genre.present? %>
@@ -29,160 +30,150 @@
         </span><%= @category_params %>
       </h3>
     <% else %>
-
-    <% if (controller.controller_name == 'bits' && controller.action_name == 'view_histories') %>
-      <div class="mypage_header_list hidden-sm hidden-xs">
-        <span class="icon mp-icon-main icon-history_video"></span>
-        <p class="video-text">これまで視聴した動画</p>
-      </div>
+      <% if (controller.controller_name == 'bits' && controller.action_name == 'view_histories') %>
+        <div class="mypage_header_list hidden-sm hidden-xs">
+          <span class="icon icon-main icon-history_video"></span>
+          <p class="video-text">これまで視聴した動画</p>
+        </div>
       <% elsif (controller.controller_name == 'bits' && controller.action_name == 'like_videos') %>
         <div class="mypage_header_list hidden-sm hidden-xs">
-          <span class="icon mp-icon-main icon-checked_video"></span>
+          <span class="icon icon-main icon-checked_video"></span>
           <p class="video-text">お気に入りの動画</p>
         </div>
-    <% end %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      <% end %>
     <% end %>
   </div>
 
-  <% unless @relation_tags.nil? %>
-    <div id="y_video_search_result_tagarea">
-      <% @relation_tags.each do |tag| %>
-        <div style="display: inline-block;margin-right:10px;">
-          <% if @genre.present? %>
-            <% unless controller.action_name == 'genreSearch' %>
-              <% search = @genre + " " + tag %>
+    <% unless @relation_tags.nil? %>
+      <div id="y_video_search_result_tagarea">
+        <% @relation_tags.each do |tag| %>
+          <div style="display: inline-block;margin-right:10px;">
+            <% if @genre.present? %>
+              <% unless controller.action_name == 'genreSearch' %>
+                <% search = @genre + " " + tag %>
+              <% else %>
+                <% search = tag %>
+              <% end %>
             <% else %>
               <% search = tag %>
             <% end %>
-          <% else %>
-            <% search = tag %>
-          <% end %>
-          <% unless @genre.include?(tag) %>
-            <%= link_to "#{tag}", { controller: :bits, action: :Search, search_params: search, category_params: @category_params, or: 'pv' } %>
-          <% end %>
-        </div>
+            <% unless @genre.include?(tag) %>
+              <%= link_to "#{tag}", { controller: :bits, action: :Search, search_params: search, category_params: @category_params, or: 'pv' } %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div id="order_change">
+      <% if controller.action_name == 'view_histories' || controller.action_name == 'like_videos' %>
+        <% if /or=history/ =~ request.fullpath %>
+          視聴順|
+        <% else %>
+          <%= link_to_unless_current '視聴順', { controller: :bits,
+            action: controller.action_name,
+            or: 'history' } %>|
+        <% end %>
+      <% end %>
+      <% if /or=pv/ =~ request.fullpath %>
+        再生回数順|<%= link_to '新着順', { controller: :bits,
+          action: controller.action_name,
+          search_params: @genre,
+          category_params: @category_params,
+          or: 'time' } %>
+      <% elsif /or=time/ =~ request.fullpath %>
+        <%= link_to '再生回数順', { controller: :bits,
+          action: controller.action_name,
+          search_params: @genre,
+          category_params: @category_params,
+          or: 'pv' } %>|新着順
+      <% else %>
+        <%= link_to '再生回数順', { controller: :bits,
+          action: controller.action_name,
+          search_params: @genre,
+          category_params: @category_params,
+          or: 'pv' } %>|
+        <%= link_to '新着順', { controller: :bits,
+          action: controller.action_name,
+          search_params: @genre,
+          category_params: @category_params,
+          or: 'time' } %>
       <% end %>
     </div>
-  <% end %>
 
-  <div id="order_change">
-    <% if controller.action_name == 'view_histories' || controller.action_name == 'like_videos' %>
-      <% if /or=history/ =~ request.fullpath %>
-        視聴順|
-      <% else %>
-        <%= link_to_unless_current '視聴順', { controller: :bits,
-          action: controller.action_name,
-          or: 'history' } %>|
-      <% end %>
-    <% end %>
-    <% if /or=pv/ =~ request.fullpath %>
-      再生回数順|<%= link_to '新着順', { controller: :bits,
-        action: controller.action_name,
-        search_params: @genre,
-        category_params: @category_params,
-        or: 'time' } %>
-    <% elsif /or=time/ =~ request.fullpath %>
-      <%= link_to '再生回数順', { controller: :bits,
-        action: controller.action_name,
-        search_params: @genre,
-        category_params: @category_params,
-        or: 'pv' } %>|新着順
-    <% else %>
-      <%= link_to '再生回数順', { controller: :bits,
-        action: controller.action_name,
-        search_params: @genre,
-        category_params: @category_params,
-        or: 'pv' } %>|
-      <%= link_to '新着順', { controller: :bits,
-        action: controller.action_name,
-        search_params: @genre,
-        category_params: @category_params,
-        or: 'time' } %>
-    <% end %>
-  </div>
+    <div class="col-xs-12 row-eq-height" style="padding: 0;">
+      <% @youtubes.each.with_index(1) do |youtube, i| %>
+        <% if i == 9 %>
+          <%# 広告エリア %>
+          <div class="col-xs-12 hidden-sm hidden-md hidden-lg" style="text-align:center;padding-bottom:15px;overflow: visible;margin-left: -15px;">
+            <!--  ad tags Size: 320x100 ZoneId:1175806-->
+            <script type="text/javascript" src="https://js.medi-8.net/t/175/806/a1175806.js"></script>
+          </div>
+          <div class="hidden-xs col-sm-12 col-md-12 hidden-lg" style="text-align:center;padding-bottom:15px;">
+            <!--  ad tags Size: 468x60 ZoneId:1175768-->
+            <script type="text/javascript" src="https://js.medi-8.net/t/175/768/a1175768.js"></script>
+          </div>
+          <div class="visible-lg col-lg-12" style="text-align:center;padding-bottom:15px;">
+            <!--  ad tags Size: 728x90 ZoneId:1175732-->
+            <script type="text/javascript" src="https://js.medi-8.net/t/175/732/a1175732.js"></script>
+          </div>
+        <% end %>
 
-  <div class="col-xs-12 row-eq-height" style="padding: 0;">
-    <% @youtubes.each.with_index(1) do |youtube, i| %>
-      <% if i == 9 %>
-        <%# 広告エリア %>
-        <div class="col-xs-12 hidden-sm hidden-md hidden-lg" style="text-align:center;padding-bottom:15px;overflow: visible;margin-left: -15px;">
-          <!--  ad tags Size: 320x100 ZoneId:1175806-->
-          <script type="text/javascript" src="https://js.medi-8.net/t/175/806/a1175806.js"></script>
-        </div>
-        <div class="hidden-xs col-sm-12 col-md-12 hidden-lg" style="text-align:center;padding-bottom:15px;">
-          <!--  ad tags Size: 468x60 ZoneId:1175768-->
-          <script type="text/javascript" src="https://js.medi-8.net/t/175/768/a1175768.js"></script>
-        </div>
-        <div class="visible-lg col-lg-12" style="text-align:center;padding-bottom:15px;">
-          <!--  ad tags Size: 728x90 ZoneId:1175732-->
-          <script type="text/javascript" src="https://js.medi-8.net/t/175/732/a1175732.js"></script>
-        </div>
-      <% end %>
+        <% if i == 17 %>
+          <%# 広告エリア %>
+          <div class="col-xs-12 hidden-sm hidden-md hidden-lg" style="text-align:center;padding-bottom:15px;overflow: visible;margin-left: -15px;">
+            <!--  ad tags Size: 320x100 ZoneId:1175807-->
+            <script type="text/javascript" src="https://js.medi-8.net/t/175/807/a1175807.js"></script>
+          </div>
+          <div class="hidden-xs col-sm-12 col-md-12 hidden-lg" style="text-align:center;padding-bottom:15px;">
+            <!--  ad tags Size: 468x60 ZoneId:1175769-->
+            <script type="text/javascript" src="https://js.medi-8.net/t/175/769/a1175769.js"></script>
+          </div>
+          <div class="visible-lg col-lg-12" style="text-align:center;padding-bottom:15px;">
+            <!--  ad tags Size: 728x90 ZoneId:1175734-->
+            <script type="text/javascript" src="https://js.medi-8.net/t/175/734/a1175734.js"></script>
+          </div>
+        <% end %>
 
-      <% if i == 17 %>
-        <%# 広告エリア %>
-        <div class="col-xs-12 hidden-sm hidden-md hidden-lg" style="text-align:center;padding-bottom:15px;overflow: visible;margin-left: -15px;">
-          <!--  ad tags Size: 320x100 ZoneId:1175807-->
-          <script type="text/javascript" src="https://js.medi-8.net/t/175/807/a1175807.js"></script>
-        </div>
-        <div class="hidden-xs col-sm-12 col-md-12 hidden-lg" style="text-align:center;padding-bottom:15px;">
-          <!--  ad tags Size: 468x60 ZoneId:1175769-->
-          <script type="text/javascript" src="https://js.medi-8.net/t/175/769/a1175769.js"></script>
-        </div>
-        <div class="visible-lg col-lg-12" style="text-align:center;padding-bottom:15px;">
-          <!--  ad tags Size: 728x90 ZoneId:1175734-->
-          <script type="text/javascript" src="https://js.medi-8.net/t/175/734/a1175734.js"></script>
-        </div>
-      <% end %>
-
-      <%= link_to youtube_video_path(youtube), class: 'videolists_link col-xs-12 col-sm-3 row-eq-height', style: 'margin-bottom:10px;' do %>
-        <div class="y_video_img_area col-xs-5 col-sm-12" style="padding: 0;">
-          <div class="y_video_img">
-            <% url = youtube.url.gsub(/http.+v=/, "") %>
-            <% url = url.gsub(/&.+./, "") %>
-            <%= image_tag('https://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
-              width: '100%',
-              class: 'bits_index_link_img') %>
-            <div class="y_video_img_video_time">
-              <%= youtube.video_time %>
+        <%= link_to youtube_video_path(youtube), class: 'videolists_link col-xs-12 col-sm-3 row-eq-height', style: 'margin-bottom:10px;' do %>
+          <div class="y_video_img_area col-xs-5 col-sm-12" style="padding: 0;">
+            <div class="y_video_img">
+              <% url = youtube.url.gsub(/http.+v=/, "") %>
+              <% url = url.gsub(/&.+./, "") %>
+              <%= image_tag('https://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
+                width: '100%',
+                class: 'bits_index_link_img') %>
+              <div class="y_video_img_video_time">
+                <%= youtube.video_time %>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="y_video_top_textarea col-xs-7 col-sm-12" style="padding: 0;margin-top:0;">
-          <p class="videolists_title hidden-md hidden-lg"><%= truncate(youtube.title, length: 25) %></p>
-          <p class="videolists_catchphrase hidden-md hidden-lg"><%= truncate(youtube.catchphrase, length: 25) %></p>
-          <p class="videolists_title hidden-xs hidden-sm"><%= truncate(youtube.title, length: 29) %></p>
-          <p class="videolists_catchphrase hidden-xs hidden-sm"><%= truncate(youtube.catchphrase, length: 29) %></p>
-          <div class="videolists_viewcount">
-            <p>視聴回数 <%= youtube.pv_count %></p>
+          <div class="y_video_top_textarea col-xs-7 col-sm-12" style="padding: 0;margin-top:0;">
+            <p class="videolists_title hidden-md hidden-lg"><%= truncate(youtube.title, length: 25) %></p>
+            <p class="videolists_catchphrase hidden-md hidden-lg"><%= truncate(youtube.catchphrase, length: 25) %></p>
+            <p class="videolists_title hidden-xs hidden-sm"><%= truncate(youtube.title, length: 29) %></p>
+            <p class="videolists_catchphrase hidden-xs hidden-sm"><%= truncate(youtube.catchphrase, length: 29) %></p>
+            <div class="videolists_viewcount">
+              <p>視聴回数 <%= youtube.pv_count %></p>
+            </div>
           </div>
-        </div>
-      <% end -%>
-    <% end %>
-  </div><%# y_index_link %>
+        <% end -%>
+      <% end %>
+    </div><%# y_index_link %>
 
-    <p class="pagenation_count"><%= page_entries_info @youtubes %></p>
+      <p class="pagenation_count"><%= page_entries_info @youtubes %></p>
 
-    <div class="pagenation_bar">
-      <%= paginate @youtubes %>
+      <div class="pagenation_bar">
+        <%= paginate @youtubes %>
+      </div>
     </div>
   </div>
-</div>
+<% else %>
+  <% if (controller.controller_name == 'bits' && controller.action_name == 'view_histories') %>
+    <p>まだ動画をみていません。<br>たくさんの動画の中からお目当てのものを探してみましょう</p>
+  <% elsif (controller.controller_name == 'bits' && controller.action_name == 'like_videos') %>
+    <p>まだ気になる動画はありません。<br>自分だけのお気に入りを探してみましょう。</p>
+  <% end %>
+
+  <%= link_to '動画を探す', bits_path %>
+<% end %>

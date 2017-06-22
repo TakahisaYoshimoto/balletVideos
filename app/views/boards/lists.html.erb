@@ -65,8 +65,9 @@
 %>
 
 
-<ul id="board_lists" class="col-xs-12">
-  <% @boards.each do |board| %>
+<% unless @boards.blank? %>
+  <ul id="board_lists" class="col-xs-12">
+    <% @boards.each do |board| %>
 <%
 =begin
 %>
@@ -81,46 +82,62 @@
           <p class="board_link_text"><%= board.title %></p>
           <p class="board_link_comments_count">コメント数 : <%= board.board_comments_count %></p>
         </div>
-      <% end -%>
-    </li>
+        <%= link_to board_path(board) do %>
+          <div class="board_link_text_area">
+            <p class="board_link_text"><%= board.title %></p>
+            <p class="board_link_comments_count">コメント数 : <%= board.board_comments_count %></p>
+          </div>
+        <% end -%>
+      </li>
 <%
 =end
 %>
 
-    <%= link_to board_path(board) do %>
-      <div class="community_index_board col-md-4 col-sm-6">
-        <div class="community_index_board_child">
-          <div class="community_index_profile_picture">
-            <%= render 'profile_picture', i: board %>
-          </div>
-          <div class="community_index_board_title">
-            <p><%= truncate(board.title, length: 35) %></p>
-          </div>
-          <div class="community_index_board_tags_area">
-          <% board.board_tags.each do |tag| %>
-            <div class="community_index_board_tags" style="display: inline-block;">
-              <p><%= truncate("##{tag.name}",length:12) %></p>
+      <%= link_to board_path(board) do %>
+        <div class="community_index_board col-md-4 col-sm-6">
+          <div class="community_index_board_child">
+            <div class="community_index_profile_picture">
+              <%= render 'profile_picture', i: board %>
             </div>
-          <% end %>
-          </div>
-          <div class="community_index_board_comments">
-              <p class="bits_index_board_comments_count">
-                コメント数 : <%= board.board_comments_count %>
-                <br>
-              </p>
-              <p class="community_index_board_time">
-                <%= board.created_at.strftime('%Y/%m/%d/ %H:%M') %>
-              </p>
+            <div class="community_index_board_title">
+              <p><%= truncate(board.title, length: 35) %></p>
+            </div>
+            <div class="community_index_board_tags_area">
+            <% board.board_tags.each do |tag| %>
+              <div class="community_index_board_tags" style="display: inline-block;">
+                <p><%= truncate("##{tag.name}",length:12) %></p>
+              </div>
+            <% end %>
+            </div>
+            <div class="community_index_board_comments">
+                <p class="bits_index_board_comments_count">
+                  コメント数 : <%= board.board_comments_count %>
+                  <br>
+                </p>
+                <p class="community_index_board_time">
+                  <%= board.created_at.strftime('%Y/%m/%d/ %H:%M') %>
+                </p>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
+
     <% end %>
+  </ul>
 
+  <p class="pagenation_count"><%= page_entries_info @boards %></p>
+
+  <div class="pagenation_bar">
+    <%= paginate @boards %>
+  </div>
+<% else %>
+  <% if (controller.controller_name == 'boards' && controller.action_name == 'my_commented') %>
+    <p>まだコメントしていません。<br>気になるトークにコメントしてみましょう。</p>
+  <% elsif (controller.controller_name == 'boards' && controller.action_name == 'like_lists') %>
+    <p>まだ気になるトークはありません。<br>たくさんのトークから気になるものを探してみましょう。</p>
+  <% elsif (controller.controller_name == 'boards' && controller.action_name == 'my_posts') %>
+    <p>まだトークを投稿していません。<br>質問や悩みなどをみんなと共有してみましょう。</p>
   <% end %>
-</ul>
 
-<p class="pagenation_count"><%= page_entries_info @boards %></p>
-
-<div class="pagenation_bar">
-  <%= paginate @boards %>
-</div>
+  <%= link_to 'トークを探す', boards_path %>
+<% end %>

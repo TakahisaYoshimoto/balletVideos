@@ -2,6 +2,9 @@
 .field_with_errors {
   display: inline-block;
 }
+.user_error_msg p {
+  color: red;
+}
 
 #profile_text_area {
   height: 250px;
@@ -61,6 +64,51 @@
   padding-top:15px;
   border-top: 1px solid white;
 }
+
+#user_edit_left_area {
+  background: black;
+}
+#user_edit_profile_picture {
+  display: inline-block;
+}
+@media screen and (max-width:767px) {
+  #user_edit_profile_picture {
+    text-align:center;
+  }
+}
+
+@media screen and (max-width:767px) {
+  #user_edit_picture_link {
+    text-align:center;
+    padding-top:15px;
+  }
+}
+
+#user_edit_picture {
+  border-radius: 100%;
+  width:35%;
+  margin-top:20px;
+}
+
+#user_edit_right_area {
+  background: white;
+  vertical-align: top;
+}
+  #user_edit_cancel {
+    display: inline-block;
+  }
+  #user_edit_submit_area {
+    display: inline-block;
+  }
+  #user_edit_submit_area input {
+    margin-top: 20px;
+    margin-left:20px;
+    border: 1px solid black;
+    padding: 15px 20px 15px 20px;
+    color: black;
+    display: inline-block;
+    background: white;
+  }
 
 .self-introduction {
   padding:0;
