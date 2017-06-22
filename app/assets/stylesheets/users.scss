@@ -141,6 +141,16 @@
   color:gray;
 }
 
+@media screen and (max-width:767px) {
+  #user_edit_picture_link {
+    text-align:center;
+    padding-top:5px;
+    margin-top:15px;
+  }
+}
+
+
+
 #user_edit_picture_link:hover {
   text-decoration: none;
   color:white;
