@@ -455,6 +455,7 @@ transition: opacity 0.4s ease-out;
   padding: 2px;
   display: inline-block;
 }
+
 #board_like_button_area_cancel_child {
   border-radius: 100%;
   border: 2px solid pink;
@@ -470,6 +471,12 @@ transition: opacity 0.4s ease-out;
   display: inline-block;
   text-align: center;
 }
+
+#board_like_button_area_child:hover #board_like_area p {
+  color:pink;
+}
+
+
 #board_like_cancel_area {
   border-radius: 100%;
   border: 2px solid pink;
@@ -615,6 +622,13 @@ transition: opacity 0.4s ease-out;
   margin-bottom: 50px;
   padding-right:115px;
 }
+  @media screen and(max-width: 767px) {
+    #board_show_comments_count_area_out {
+      margin-bottom: 60px;
+    }
+  }
+
+
 
 #board_show_comments_count_area {
   border-radius: 100%;
