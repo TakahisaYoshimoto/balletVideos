@@ -73,7 +73,7 @@ class BitsController < ApplicationController
     end
 
     @search_params = ""
-    @genre = "グッドした動画"
+    @genre = "お気に入りの動画"
     @category_params = ""
     render 'videolist'
   end

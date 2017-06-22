@@ -2,8 +2,44 @@
   <%= render '/bits/mypage_header' %>
 <% end %>
 
+<% if (controller.controller_name == 'bits' && controller.action_name == 'view_histories') %>
+  <div class="mypage_header_list hidden-sm hidden-xs">
+    <span class="icon mp-icon-main icon-checked_video"></span>
+    <p class="video-text">これまで視聴した動画</p>
+  </div>
+  <% elsif (controller.controller_name == 'bits' && controller.action_name == 'like_videos') %>
+    <div class="mypage_header_list hidden-sm hidden-xs">
+      <span class="icon mp-icon-main icon-video"></span>
+      <p class="video-text">お気に入りの動画</p>
+    </div>
+  <% elsif (controller.controller_name == 'boards' && controller.action_name == 'my_commented') %>
+    <div class="mypage_header_list_talk hidden-sm hidden-xs">
+      <span class="icon mp-icon-main icon-comment"></span>
+      <p class="video-text">コメントしたトーク</p>
+    </div>
+  <% elsif (controller.controller_name == 'boards' && controller.action_name == 'like_lists') %>
+    <div class="mypage_header_list_talk hidden-sm hidden-xs">
+      <span class="icon mp-icon-main icon-checked_talk"></span>
+      <p class="video-text">気になるトーク</p>
+    </div>
+  <% elsif (controller.controller_name == 'boards' && controller.action_name == 'my_posts') %>
+    <div class="mypage_header_list_talk hidden-sm hidden-xs">
+      <span class="icon mp-icon-main icon-maked_talk"></span>
+      <p class="video-text">マイトークルーム</p>
+    </div>
+<% end %>
+
+
+
+
+
+
 <%# 検索ワードを表示 %>
-<% if @search_params.present? %>
+<%
+=begin
+%>
+
+ <% if @search_params.present? %>
   <p><%= @search_params %></p>
 <% end %>
 
@@ -23,7 +59,11 @@
       </div>
     <% end %>
   </div>
-</div>
+</div> -->
+<%
+=end
+%>
+
 
 <% unless @boards.blank? %>
   <ul id="board_lists" class="col-xs-12">
@@ -31,11 +71,16 @@
 <%
 =begin
 %>
-      横一列表示、いったん保留、削除かも
-      
-      <li class="board_link">
-        <div class="board_link_picture_area">
-          <%= render 'profile_picture_lists', i: board %>
+    横一列表示、いったん保留、削除かも
+
+    <li class="board_link">
+      <div class="board_link_picture_area">
+        <%= render 'profile_picture_lists', i: board %>
+      </div>
+      <%= link_to board_path(board) do %>
+        <div class="board_link_text_area">
+          <p class="board_link_text"><%= board.title %></p>
+          <p class="board_link_comments_count">コメント数 : <%= board.board_comments_count %></p>
         </div>
         <%= link_to board_path(board) do %>
           <div class="board_link_text_area">

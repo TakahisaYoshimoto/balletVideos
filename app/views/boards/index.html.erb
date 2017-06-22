@@ -15,7 +15,7 @@
   <p class="board_top_img_text_a"><%= @top_img_text.contents if @top_img_text.present? %></p>
 
   <div id="board_top_img_secondarea" class="col-xs-12">
-    <div class="board_top_img_link_out col-xs-12 col-sm-6"><%= link_to 'トークルームを作る', new_board_path, class: 'board_top_img_link' %></div>
+    <div class="board_top_img_link_out col-xs-12 col-sm-6"><%= link_to 'トークを投稿する', new_board_path, class: 'board_top_img_link' %></div>
 
 
     <div id="board_top_img_search_area" class="col-xs-12">
@@ -125,7 +125,7 @@
               <%= render 'profile_picture', i: board %>
             </div>
             <div class="community_index_board_title">
-              <p>🖤 <%= truncate(board.title, length: 35) %></p>
+              <p>🖤 <%= truncate(board.title, length: 20) %></p>
             </div>
             <div class="community_index_board_tags_area">
             <% board.board_tags.each.with_index(1) do |tag, i| %>

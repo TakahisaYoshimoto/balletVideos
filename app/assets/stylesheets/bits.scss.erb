@@ -217,9 +217,9 @@ transition: opacity 0.4s ease-out;
 .bits_index_board_tags_area {
   position: absolute;
   top: 140px;
-  left: 25px;
+  left: 13px;
   text-align:center;
-  width:85%
+  width:90%
 }
   @media screen and (max-width:767px) {
     .bits_index_board_tags_area {
@@ -332,7 +332,7 @@ transition: opacity 0.4s ease-out;
   }
 
 .video-text {
-  font-size:28px;
+  font-size:22px;
   margin:0 0 5px 0;
 }
 @media screen and (max-width:767px) {
@@ -352,6 +352,18 @@ transition: opacity 0.4s ease-out;
       margin-right:10px;
     }
   }
+
+.mp-icon-main {
+  font-size:30px;
+  margin-right:10px;
+}
+@media screen and (max-width:767px) {
+  .mp-icon-main {
+    font-size:26px;
+    margin-right:10px;
+  }
+}
+
 
 .talk-title {
  margin-bottom:35px;
@@ -633,8 +645,16 @@ transition: opacity 0.4s ease-out;
   text-align: center;
 }
 
+#y_videolist_breadcrumb {
+  margin-top:10px;
+}
+
 #y_videolist_breadcrumb * {
   color: black;
+}
+
+#y_videolist_breadcrumb p {
+  font-size:22px;
 }
 
 #y_videolist_breadcrumb h3{
@@ -678,8 +698,14 @@ transition: opacity 0.4s ease-out;
 #order_change {
   width: 100%;
   text-align: right;
-  padding: 15px
+  padding: 15px;
 }
+@media screen and (max-width: 767px) {
+  #order_change {
+    padding-top: 0px;
+  }
+}
+
 
 .videolists_link {
   padding: 0 !important;
@@ -762,7 +788,28 @@ transition: opacity 0.4s ease-out;
 /* mypage_header */
 .mypage_header_active {
   background: black;
+  color:#FFF;
+  font-size:16px;
+  padding-top:0px;
 }
+
+.icon-mp  {
+  padding-top:7px;
+}
+
+.mypage_header_no_active {
+  background: #FFF;
+  color:#000;
+  font-size:16px;
+  padding-top:0px;
+}
+
+.mypage_header_no_active:hover * {
+  text-decoration: none;
+  color:gray;
+}
+
+
 #mypage_header_top {
   background: black;
   width: 100%;
@@ -896,12 +943,13 @@ margin-bottom:0px;
   display: block;
   padding-left:0;
   padding-right:0;
+  font-size:0;
 }
 
 #mypage_header_view_history,
 #mypage_header_board_like, {
   display:inline-block;
-  width:140px;
+  width:150px;
   padding-left:0px;
   padding-right:0px;
   margin-left:0;
@@ -910,20 +958,20 @@ margin-bottom:0px;
 }
 #mypage_header_myfavorite {
   display:inline-block;
-  width:170px;
+  width:165px;
 }
 
 
 #mypage_header_comments{
   display:inline-block;
-  width:170px;
+  width:165px;
 }
 
 
 #mypage_header_mytolkroom
  {
   display:inline-block;
-  width:200px;
+  width:195px;
 }
 
 #mypage_header_view_history a,
@@ -945,7 +993,13 @@ margin-bottom:0px;
 #mypage_header_view_history,
 #mypage_header_myfavorite,
 #mypage_header_comments,
-#mypage_header_board_like,
+#mypage_header_board_like {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+  height:36px;
+}
+
 #mypage_header_mytolkroom {
   border-top: 2px solid black;
   border-bottom: 2px solid black;
@@ -953,6 +1007,7 @@ margin-bottom:0px;
   border-right: 2px solid black;
   height:36px;
 }
+
 
 #mypage_header_bottom a {
   padding-right:5px;
@@ -989,4 +1044,24 @@ margin-bottom:0px;
 .btn-mypage:hover{
   color:gray !important;
   background-color: #FFF !important;
+}
+
+.mypage_header_list {
+  margin-top:20px;
+  margin-bottom:0px;
+  display:inline-block;
+}
+.mypage_header_list *{
+  display:inline-block;
+}
+
+
+.mypage_header_list_talk {
+  margin-top:30px;
+  margin-bottom:40px !important;
+  margin-bottom:0px;
+  display:inline-block;
+}
+.mypage_header_list_talk *{
+  display:inline-block;
 }

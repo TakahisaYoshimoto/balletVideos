@@ -16,7 +16,7 @@
         (controller.controller_name == 'registrations' && controller.action_name == 'edit') %><%# プロフィールページの場合 %>
     <div id="mypage_header_top" class="col-xs-12 row">
       <div id="mypage_header_infomation" class="col-xs-6">
-        <div id="mypage_header_infomation_child" class=" col-xs-6 col-xs-offset-6">
+        <div id="mypage_header_infomation_child" class="col-sm-6 col-sm-offset-6 col-xs-8 col-xs-offset-4">
           <div class="mypage_header_information_container">
             <span class="icon mp-nav-icon icon-information" style="color:#000;font-size:48px">
             </span>
@@ -27,7 +27,7 @@
         </div>
       </div>
       <div id="mypage_header_activity_history" class="col-xs-6">
-        <div id="mypage_header_activity_history_child" class=" col-xs-6">
+        <div id="mypage_header_activity_history_child" class="col-sm-6 col-xs-8">
           <%= link_to ({ :controller => '/bits', action: :view_histories, or: 'history' } ) do %>
           <div class="mypage_header_activity_container">
               <span class="icon mp-nav-icon icon-history" style="color:#FFF;font-size:48px">
@@ -45,7 +45,7 @@
   <% else %><%# プロフィールページでは無い場合 %>
     <div id="mypage_header_top" class="col-xs-12 row">
       <div id="mypage_header_infomation" class="col-xs-6">
-        <div id="mypage_header_infomation_child_2nd" class="col-xs-6 col-xs-offset-6">
+        <div id="mypage_header_infomation_child_2nd" class="col-sm-6 col-sm-offset-6 col-xs-8 col-xs-offset-4">
           <%= link_to profile_path(current_user.id) do %>
           <div class="mypage_header_information_container_change_2nd">
             <span class="icon mp-nav-icon icon-information" style="color:#FFF;font-size:48px">
@@ -58,7 +58,7 @@
         </div>
       </div>
       <div id="mypage_header_activity_history_2nd" class="col-xs-6">
-        <div id="mypage_header_activity_history_child_2nd" class=" col-xs-6">
+        <div id="mypage_header_activity_history_child_2nd" class=" col-sm-6 col-xs-8">
           <div class="mypage_header_activity_container_2nd">
             <span class="icon mp-nav-icon icon-history" style="color:#000;font-size:48px">
             </span>
@@ -80,7 +80,7 @@
           <span class="icon icon-mp icon-video"></span>
         </div>
       <% else %>
-        <div id="mypage_header_view_history">
+        <div id="mypage_header_view_history" class="mypage_header_no_active">
           <%= link_to({ :controller => '/bits', action: :view_histories, or: 'history' }) do %>
             <p>視聴履歴</p>
             <span class="icon icon-mp icon-video"></span>
@@ -94,7 +94,7 @@
           <span class="icon icon-mp icon-video"></span>
         </div>
       <% else %>
-        <div id="mypage_header_myfavorite">
+        <div id="mypage_header_myfavorite" class="mypage_header_no_active">
           <%= link_to({ :controller => '/bits', action: :like_videos, or: 'history' }) do %>
             <p>お気に入り</p>
             <span class="icon icon-mp icon-video"></span>
@@ -108,7 +108,7 @@
           <span class="icon icon-mp icon-talk"></span>
         </div>
       <% else %>
-        <div id="mypage_header_comments">
+        <div id="mypage_header_comments" class="mypage_header_no_active">
           <%= link_to(my_commented_boards_path) do  %>
             <p>コメント</p>
             <span class="icon icon-mp icon-talk"></span>
@@ -122,7 +122,7 @@
           <span class="icon icon-mp icon-talk"></span>
         </div>
       <% else %>
-        <div id="mypage_header_board_like">
+        <div id="mypage_header_board_like" class="mypage_header_no_active">
           <%= link_to(like_lists_boards_path) do %>
             <p>気になる</p>
             <span class="icon icon-mp icon-talk"></span>
@@ -136,7 +136,7 @@
           <span class="icon icon-mp icon-talk"></span>
         </div>
       <% else %>
-        <div id="mypage_header_mytolkroom">
+        <div id="mypage_header_mytolkroom" class="mypage_header_no_active">
           <%= link_to(my_posts_boards_path) do %>
             <p>マイトークルーム</p>
             <span class="icon icon-mp icon-talk"></span>
@@ -161,7 +161,7 @@
 
     <div class="visible-xs visible-sm">
       <div class="btn-group mypage_btn">
-        <button class="btn btn-default btn-mypage dropdown-toggle" data-toggle="dropdown"><%= dropdown_title %><span class="caret"></span></button>
+        <button class="btn btn-default btn-mypage dropdown-toggle" data-toggle="dropdown"style="margin-left:15px;"><%= dropdown_title %><span class="caret"></span></button>
         <ul class="dropdown-menu">
           <li><%= link_to '視聴履歴', { :controller => '/bits', action: :view_histories, or: 'history' } %></li>
           <li><%= link_to 'お気に入り', { :controller => '/bits', action: :like_videos, or: 'history' } %></li>
