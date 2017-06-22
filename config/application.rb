@@ -20,5 +20,10 @@ module BalletVideos
         helper_specs: false,
         fixture: false
     end
+
+    #フォームでエラーが出た時にfield_with_errorsというdivでエラーが出たフィールドが囲まれるのを拒否
+    config.action_view.field_error_proc = Proc.new do |html_tag, instance|
+      %Q(#{html_tag}).html_safe
+    end
   end
 end
