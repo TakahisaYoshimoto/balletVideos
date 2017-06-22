@@ -185,7 +185,7 @@ button.talk_btn:hover {
 .board_link:not(:last-child) {
   border-bottom: 1px solid #F0F0F0;
 }
-.board_link img　{
+.board_link img {
   width: 50px;
   height: 50px;
   border-radius: 5px;
@@ -589,7 +589,7 @@ transition: opacity 0.4s ease-out;
     .board_comments_pic_area img{
       border-radius: 100%;
       width:50px;
-      margin-top:10px;
+      margin-top:5px;
     }
   }
 
@@ -650,6 +650,32 @@ transition: opacity 0.4s ease-out;
 #board_show_comments_count_area_child p {
   color: white;
 }
+
+.board_comments_login img,.board_comments_nologin img {
+  border-radius: 100%;
+  width:70px;
+}
+  @media screen and(max-width: 767px) {
+    .board_comments_login img, .board_comments_nologin img{
+      border-radius: 100%;
+      width:50px;
+      margin-top:5px;
+      margin-bottom:0px;
+    }
+  }
+
+  .board_comments_text_area_reject {
+    border: 2px solid gray;
+    padding: 15px;
+    display: inline-block;
+    width: 80%;
+  }
+  @media screen and(max-width: 767px) {
+    .board_comments_text_area_reject {
+      display: block;
+      width: 100%;
+    }
+  }
 
 /*form*/
 .div_right_button {
