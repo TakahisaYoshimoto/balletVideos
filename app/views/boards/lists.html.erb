@@ -29,101 +29,15 @@
     </div>
 <% end %>
 
-
-
-
-
-
 <%# 検索ワードを表示 %>
-<%
-=begin
-%>
-
- <% if @search_params.present? %>
+<% if @search_params.present? %>
   <p><%= @search_params %></p>
 <% end %>
 
-<div id="community_search_area" class="col-xs-12">
-  <div class="form-group row">
-    <%= form_tag({controller: '/boards', action: :Search }, method: :get) do %>
-      <div class="input-group form-group">
-        <%= search_field_tag :search_params,
-          @search_params,
-          class: 'form-control',
-          placeholder: '検索' %>
-        <span class="input-group-btn">
-        <button type="submit" class="btn btn-default">
-          <i class="glyphicon glyphicon-search"></i>
-        </button>
-        </span>
-      </div>
-    <% end %>
-  </div>
-</div> -->
-<%
-=end
-%>
-
-
 <% unless @boards.blank? %>
-  <ul id="board_lists" class="col-xs-12">
-    <% @boards.each do |board| %>
-<%
-=begin
-%>
-    横一列表示、いったん保留、削除かも
-
-    <li class="board_link">
-      <div class="board_link_picture_area">
-        <%= render 'profile_picture_lists', i: board %>
-      </div>
-      <%= link_to board_path(board) do %>
-        <div class="board_link_text_area">
-          <p class="board_link_text"><%= board.title %></p>
-          <p class="board_link_comments_count">コメント数 : <%= board.board_comments_count %></p>
-        </div>
-        <%= link_to board_path(board) do %>
-          <div class="board_link_text_area">
-            <p class="board_link_text"><%= board.title %></p>
-            <p class="board_link_comments_count">コメント数 : <%= board.board_comments_count %></p>
-          </div>
-        <% end -%>
-      </li>
-<%
-=end
-%>
-
-      <%= link_to board_path(board) do %>
-        <div class="community_index_board col-md-4 col-sm-6">
-          <div class="community_index_board_child">
-            <div class="community_index_profile_picture">
-              <%= render 'profile_picture', i: board %>
-            </div>
-            <div class="community_index_board_title">
-              <p><%= truncate(board.title, length: 35) %></p>
-            </div>
-            <div class="community_index_board_tags_area">
-            <% board.board_tags.each do |tag| %>
-              <div class="community_index_board_tags" style="display: inline-block;">
-                <p><%= truncate("##{tag.name}",length:12) %></p>
-              </div>
-            <% end %>
-            </div>
-            <div class="community_index_board_comments">
-                <p class="bits_index_board_comments_count">
-                  コメント数 : <%= board.board_comments_count %>
-                  <br>
-                </p>
-                <p class="community_index_board_time">
-                  <%= board.created_at.strftime('%Y/%m/%d/ %H:%M') %>
-                </p>
-            </div>
-          </div>
-        </div>
-      <% end %>
-
-    <% end %>
-  </ul>
+  <div id="board_lists" class="col-xs-12">
+    <%= render 'list_contents', boards: @boards %>
+  </div>
 
   <p class="pagenation_count"><%= page_entries_info @boards %></p>
 
