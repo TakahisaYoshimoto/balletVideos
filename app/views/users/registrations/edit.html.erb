@@ -104,10 +104,12 @@
           </div>
         </div>
 
-        <%= link_to "キャンセル", :back, id: 'user_edit_cancel' %>
+        <div class="edit_block">
+          <%= link_to "キャンセル", :back, id: 'user_edit_cancel' %>
 
-        <div class="actions form-group" id="user_edit_submit_area">
-          <%= f.submit "更新" %>
+          <div class="actions form-group" id="user_edit_submit_area">
+            <%= f.submit "更新" %>
+          </div>
         </div>
       </td>
     </tr>
