@@ -149,9 +149,28 @@
   }
 }
 
-
-
 #user_edit_picture_link:hover {
   text-decoration: none;
   color:white;
+}
+
+.mypage_terms {
+  border: 1px solid white;
+  color:#FFF;
+  height: 300px;
+  overflow: auto;
+  padding-right:13px;
+  margin-left:10px;
+  margin-right:10px;
+  margin-top:15px;
+  margin-bottom:15px;
+}
+
+.mypage_terms_title h3 {
+  color:#FFF;
+}
+@media screen and (max-width:767px) {
+  .mypage_terms_title h3 {
+    font-size:18px;
+  }
 }
