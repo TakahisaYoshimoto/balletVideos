@@ -416,6 +416,13 @@ transition: opacity 0.4s ease-out;
   border-radius: 100%;
   width:130px;
 }
+  @media screen and(max-width: 767px) {
+    #board_show_top_pic img {
+      border-radius: 100%;
+      width:100px;
+    }
+  }
+
 
 #board_show_top_pic p {
   color:gray;
@@ -427,12 +434,13 @@ transition: opacity 0.4s ease-out;
   padding: 30px 15px 15px 40px;
   margin-bottom: 50px;
 }
-@media screen and(max-width: 768px) {
+@media screen and(max-width: 767px) {
   #board_show_top_pic {
     width: 100%;
   }
   #board_show_top_text {
     width: 100%;
+    padding: 15px;
   }
 }
 #board_like_button_area {

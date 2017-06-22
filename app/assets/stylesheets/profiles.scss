@@ -45,6 +45,12 @@
   padding-top:40px;
   background: black;
 }
+  @media screen and (max-width:767px) {
+    #profile_left_area {
+      padding-top:30px;
+    }
+  }
+
 
 #profile_right_area {
   vertical-align: top;
@@ -102,8 +108,8 @@
 }
   @media screen and (max-width:767px) {
     #profile_left_area_picture {
-      width: 150px;
-      height:150px;
+      width: 120px;
+      height:120px;
       border-radius: 100%;
       margin-top:10px;
       margin-bottom:25px;
