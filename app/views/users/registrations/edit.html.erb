@@ -88,6 +88,17 @@
           <div class="field form-group">
             <label><%= f.check_box :notice_email, {}, 'true', 'false' %> 通知メールを受信する</label>
           </div>
+
+          <% unless @user.rule_confirmed == true %>
+            <h3>利用規約</h3>
+            <div>
+              <p><%= simple_format(@terms.contents) if @terms.present? %></p>
+            </div>
+
+            <div class="field form-group">
+              <label><%= f.check_box :rule_confirmed, {}, 'true', 'false' %> 利用規約に同意する。</label>
+            </div>
+          <% end %>
       </td>
 
       <td id="user_edit_right_area" class="col-xs-12 col-sm-6">
