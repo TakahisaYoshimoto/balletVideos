@@ -1,5 +1,10 @@
 <div class="container col-xs-12" id="community_index_boards_lists" style="padding:0;">
-  <p>新着トーク</p>
+  <h3 class="search_words">
+    <span class="icon icon-new_talk" style="margin-right:10px">
+    </span>
+    <p style="display:inline-block;">新着トーク</p>
+  </h3>
+
   <% @boards.each.with_index(1) do |board, i| %>
   <% if i == 7 %>
     <%# 広告エリア %>
