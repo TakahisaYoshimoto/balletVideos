@@ -175,12 +175,19 @@
   }
 }
 
-.terms_title {
-  border: 1px solid gray;
+@media screen and (max-width:767px) {
+  .terms_title {
+  font-size:18px;
+  }
 }
 
 .user_reg_terms{
+  height:300px;
   overflow: auto;
+  border: 1px solid gray;
+  padding-right:13px;
+  margin-left:10px;
+  margin-right:10px;
 }
 
 @media screen and (max-width:767px) {
