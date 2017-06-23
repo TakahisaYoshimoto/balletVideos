@@ -14,7 +14,7 @@ class BoardsController < ApplicationController
 
   def new_lists
     @boards = Board.all.order('created_at desc').page(params[:page]).per(24).includes(:user)
-    render '/boards/new_lists'
+    render '/boards/lists'
   end
 
   def Search
@@ -49,7 +49,7 @@ class BoardsController < ApplicationController
 
   def my_posts
     unless user_signed_in?
-      redirect_to root_path and return
+      redirect_to new_user_session_path and return
     end
 
     @boards = Board.where(user_id: current_user.id).page(params[:page]).includes(:user)
@@ -59,7 +59,7 @@ class BoardsController < ApplicationController
 
   def my_commented
     unless user_signed_in?
-      redirect_to root_path and return
+      redirect_to new_user_session_path and return
     end
 
     @boards = Board.joins(:board_comments).where('board_comments.user_id = ?', current_user.id).page(params[:page]).includes(:user)
@@ -69,7 +69,7 @@ class BoardsController < ApplicationController
 
   def like_lists
     unless user_signed_in?
-      redirect_to root_path and return
+      redirect_to new_user_session_path and return
     end
 
     @boards = Board.joins(:board_likes).where('board_likes.user_id = ?', current_user.id).page(params[:page]).includes(:user)
@@ -99,7 +99,7 @@ class BoardsController < ApplicationController
 
   def new
     unless user_signed_in?
-      redirect_to root_path
+      redirect_to new_user_session_path and return
     end
 
     @board = Board.new
@@ -109,7 +109,7 @@ class BoardsController < ApplicationController
 
   def create
     unless user_signed_in?
-      redirect_to root_path
+      redirect_to new_user_session_path and return
     end
 
     ActiveRecord::Base.transaction do

@@ -27,6 +27,11 @@
       <span class="icon mp-icon-main icon-maked_talk"></span>
       <p class="video-text">マイトークルーム</p>
     </div>
+  <% elsif (controller.controller_name == 'boards' && controller.action_name == 'new_lists') %>
+    <div class="mypage_header_list_talk hidden-sm hidden-xs">
+      <span class="icon mp-icon-main icon-maked_talk"></span>
+      <p class="video-text">新着トーク</p>
+    </div>
 <% end %>
 
 <%# 検索ワードを表示 %>
