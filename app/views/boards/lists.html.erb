@@ -29,20 +29,14 @@
     </div>
 <% end %>
 
-
-
-
-
-
 <%# 検索ワードを表示 %>
-<%
-=begin
-%>
-
- <% if @search_params.present? %>
+<% if @search_params.present? %>
   <p><%= @search_params %></p>
 <% end %>
 
+<%
+=begin
+%>
 <div id="community_search_area" class="col-xs-12">
   <div class="form-group row">
     <%= form_tag({controller: '/boards', action: :Search }, method: :get) do %>
@@ -138,6 +132,5 @@
   <% elsif (controller.controller_name == 'boards' && controller.action_name == 'my_posts') %>
     <p>まだトークを投稿していません。<br>質問や悩みなどをみんなと共有してみましょう。</p>
   <% end %>
-
   <%= link_to 'トークを探す', boards_path %>
 <% end %>
