@@ -35,20 +35,37 @@
   </div>
 
   <div class="field form-group">
-    <label><%= f.check_box :acceptance, {}, 'true', 'false' %> 運営からのお知らせメールを受け取る。</label>
+    <label class="checker">
+      <%= f.check_box :acceptance, { class: 'checker_class'}, 'true', 'false' %>
+      <span class="check">
+      </span>
+      <p class="check_text" style="display:inline-block">運営からのお知らせメールを受け取る</p>
+    </label>
   </div>
 
   <div class="field form-group">
-    <label><%= f.check_box :notice_email, {}, 'true', 'false' %> 通知メールを受信する。</label>
+    <label class="checker">
+      <%= f.check_box :notice_email, {class: 'checker_class'}, 'true', 'false' %>
+      <span class="check">
+      </span>
+      <p class="check_text" style="display:inline-block">通知メールを受信する</p>
+    </label>
   </div>
 
-  <h3>利用規約</h3>
-  <div>
+  <div class="terms_title">
+    <h3>利用規約</h3>
+  </div>
+  <div class="user_reg_terms">
     <p><%= simple_format(@terms.contents) if @terms.present? %></p>
   </div>
 
   <div class="field form-group">
-    <label><%= f.check_box :rule_confirmed, {}, 'true', 'false' %> 利用規約に同意する。</label>
+    <label class="checker">
+      <%= f.check_box :rule_confirmed, {class: 'checker_class'}, 'true', 'false' %>
+      <span class="check">
+      </span>
+      <p class="check_text" style="display:inline-block">利用規約に同意する</p>
+    </label>
   </div>
 
   <p>

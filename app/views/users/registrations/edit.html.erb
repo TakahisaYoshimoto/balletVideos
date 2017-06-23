@@ -82,11 +82,21 @@
           </div>
 
           <div class="field form-group">
-            <label><%= f.check_box :acceptance, {}, 'true', 'false' %> 運営からのお知らせメールを受け取る</label>
+            <label class="checker_mp">
+              <%= f.check_box :acceptance, { class: 'checker_class_mp'}, 'true', 'false' %>
+              <span class="check_mp">
+              </span>
+              <p class="check_text" style="display:inline-block">運営からのお知らせメールを受け取る</p>
+            </label>
           </div>
 
-          <div class="field form-group check_email">
-            <label><%= f.check_box :notice_email, {}, 'true', 'false' %> 通知メールを受信する</label>
+          <div class="field form-group">
+            <label class="checker_mp">
+              <%= f.check_box :notice_email, {class: 'checker_class_mp'}, 'true', 'false' %>
+              <span class="check_mp">
+              </span>
+              <p class="check_text" style="display:inline-block">通知メールを受信する</p>
+            </label>
           </div>
 
           <% unless @user.rule_confirmed == true %>
@@ -96,10 +106,15 @@
 
           <div class="mypage_terms">
             <p><%= simple_format(@terms.contents) if @terms.present? %></p>
-            </div>
+          </div>
 
             <div class="field form-group">
-              <label><%= f.check_box :rule_confirmed, {}, 'true', 'false' %> 利用規約に同意する。</label>
+              <label class="checker_mp">
+                <%= f.check_box :rule_confirmed, {class: 'checker_class_mp'}, 'true', 'false' %>
+                <span class="check_mp">
+                </span>
+                <p class="check_text" style="display:inline-block">利用規約に同意する</p>
+              </label>
             </div>
           <% end %>
       </td>
