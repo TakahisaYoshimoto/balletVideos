@@ -6,6 +6,7 @@
     <% end -%>
   <% end -%>
 
+
   <div class="field form-group row">
     <div class="col-sm-5">
       <%= f.label :title, 'タイトル', class: 'control-label' %>
@@ -13,22 +14,7 @@
     </div>
   </div>
 
-  <label class="control-label">タグ</label>
-  <%= f.nested_fields_for :board_tags, wrapper_tag: :div, wrapper_options: { class: 'row field form-group' } do |q| %>
-    <div class="col-xs-9 col-sm-5">
-      <%= q.text_field :name, class: 'form-control' %>
-    </div>
-    <div class="col-xs-2 col-sm-2">
-      <%= q.remove_nested_fields_link '削除', class: 'btn btn-danger', role: 'button', tabindex: -1 %>
-    </div>
-  <% end %>
-
-  <div class="row">
-    <div class="div_right_button col-sm-7">
-      <%= f.add_nested_fields_link :board_tags, 'タグ追加', class: 'btn btn-primary right_button', role: 'button' %>
-    </div>
-  </div>
-
+  <label class="control-label">本文</label>
   <%= fields_for board_comment do |sf| %>
     <% if board_comment.errors.any? %>
       <%= board_comment.errors.count %>個のエラーがあります<br>
@@ -47,12 +33,36 @@
       </div>
     </div>
   <% end %>
+  <div class="col-xs-12">
+    <input type="text" id="characnt" disabled="disabled">
+  </div>
+
+  <label class="control-label">タグ</label>
+  <%= f.nested_fields_for :board_tags, wrapper_tag: :div, wrapper_options: { class: 'row field form-group' } do |q| %>
+    <div class="col-xs-9 col-sm-5">
+      <%= q.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="delete-btn col-xs-3 col-sm-4">
+      <%= q.remove_nested_fields_link '削除', class: 'btn btn-danger', role: 'button', tabindex: -1 %>
+    </div>
+  <% end %>
+
+  <div class="row">
+      <div class="col-xs-9 col-sm-5">
+      </div>
+      <div class="div_right_button col-xs-3 col-sm-4">
+        <div style="display:inline-block;">
+      <%= f.add_nested_fields_link :board_tags, 'タグ追加', class: 'btn btn-primary right_button', role: 'button' %>
+    </div>
+  </div>
+
+
 
   <%= f.hidden_field :board_id, value: @board.id %>
 
   <div class="row">
-    <div id="board_comment_submit" class="actions　form-group col-sm-7">
-      <input type="text" id="characnt" disabled="disabled">
+    <div id="board_comment_submit" class="actions form-group col-sm-7">
+
       <%= f.submit '確定', class: 'btn btn-primary right_button' %>
     </div>
   </div>
