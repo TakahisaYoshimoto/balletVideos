@@ -185,7 +185,7 @@ button.talk_btn:hover {
 .board_link:not(:last-child) {
   border-bottom: 1px solid #F0F0F0;
 }
-.board_link img　{
+.board_link img {
   width: 50px;
   height: 50px;
   border-radius: 5px;
@@ -389,7 +389,16 @@ transition: opacity 0.4s ease-out;
   border: 1px solid black;
   position: relative;
   margin-bottom: 100px;
+  padding-left:0px;
+  padding-right:0px;
 }
+  @media screen and (max-width:767px) {
+    #board_title_comment_area {
+      margin-left:5px;
+      margin-right:5px;
+    }
+  }
+
 #board_show_title {
   background: black;
 }
@@ -404,6 +413,10 @@ transition: opacity 0.4s ease-out;
     }
   }
 
+.board_orner_area {
+  border: 1px solid gray;
+  margin-bottom:40px;
+}
 
 #board_show_top_pic {
   display: inline-block;
@@ -414,8 +427,14 @@ transition: opacity 0.4s ease-out;
 
 #board_show_top_pic img {
   border-radius: 100%;
-  width:130px;
+  width:100px;
 }
+  @media screen and(max-width: 767px) {
+    #board_show_top_pic img {
+      border-radius: 100%;
+      width:100px;
+    }
+  }
 
 #board_show_top_pic p {
   color:gray;
@@ -423,16 +442,17 @@ transition: opacity 0.4s ease-out;
 
 #board_show_top_text {
   display: inline-block;
-  width: 70%;
-  padding: 30px 15px 15px 40px;
+  width: 65%;
+  padding: 25px 0px 15px 0px;
   margin-bottom: 50px;
 }
-@media screen and(max-width: 768px) {
+@media screen and(max-width: 767px) {
   #board_show_top_pic {
     width: 100%;
   }
   #board_show_top_text {
     width: 100%;
+    padding: 10px 20px 25px 20px;
   }
 }
 #board_like_button_area {
@@ -447,6 +467,7 @@ transition: opacity 0.4s ease-out;
   padding: 2px;
   display: inline-block;
 }
+
 #board_like_button_area_cancel_child {
   border-radius: 100%;
   border: 2px solid pink;
@@ -462,6 +483,12 @@ transition: opacity 0.4s ease-out;
   display: inline-block;
   text-align: center;
 }
+
+#board_like_button_area_child:hover #board_like_area p {
+  color:pink;
+}
+
+
 #board_like_cancel_area {
   border-radius: 100%;
   border: 2px solid pink;
@@ -509,6 +536,7 @@ transition: opacity 0.4s ease-out;
   padding: 15px;
   display: inline-block;
   width: 80%;
+  word-wrap:break-word;
 }
 @media screen and(max-width: 767px) {
   .board_comments_pic_area {
@@ -574,7 +602,7 @@ transition: opacity 0.4s ease-out;
     .board_comments_pic_area img{
       border-radius: 100%;
       width:50px;
-      margin-top:10px;
+      margin-top:5px;
     }
   }
 
@@ -604,9 +632,16 @@ transition: opacity 0.4s ease-out;
   position: relative;
   text-align: center;
   border-bottom: 1px solid #F2F2F2;
-  margin-bottom: 50px;
+  margin-bottom: 75px;
   padding-right:115px;
 }
+  @media screen and(max-width: 767px) {
+    #board_show_comments_count_area_out {
+      margin-bottom: 75px;
+    }
+  }
+
+
 
 #board_show_comments_count_area {
   border-radius: 100%;
@@ -628,6 +663,39 @@ transition: opacity 0.4s ease-out;
 #board_show_comments_count_area_child p {
   color: white;
 }
+
+.board_comments_login img,.board_comments_nologin img {
+  border-radius: 100%;
+  width:70px;
+  margin-left:12px;
+}
+  @media screen and(max-width: 767px) {
+    .board_comments_login img, .board_comments_nologin img{
+      border-radius: 100%;
+      width:50px;
+      margin-top:5px;
+      margin-bottom:0px;
+      margin-left:0px;
+    }
+  }
+  @media screen and(max-width: 991px) {
+    .board_comments_login img, .board_comments_nologin img{
+      margin-left:0px;
+    }
+  }
+
+  .board_comments_text_area_reject {
+    border: 2px solid gray;
+    padding: 15px;
+    display: inline-block;
+    width: 80%;
+  }
+  @media screen and(max-width: 767px) {
+    .board_comments_text_area_reject {
+      display: block;
+      width: 100%;
+    }
+  }
 
 /*form*/
 .div_right_button {

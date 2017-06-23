@@ -85,14 +85,17 @@
             <label><%= f.check_box :acceptance, {}, 'true', 'false' %> 運営からのお知らせメールを受け取る</label>
           </div>
 
-          <div class="field form-group">
+          <div class="field form-group check_email">
             <label><%= f.check_box :notice_email, {}, 'true', 'false' %> 通知メールを受信する</label>
           </div>
 
           <% unless @user.rule_confirmed == true %>
+          <div class="mypage_terms_title">
             <h3>利用規約</h3>
-            <div>
-              <p><%= simple_format(@terms.contents) if @terms.present? %></p>
+          </div>
+
+          <div class="mypage_terms">
+            <p><%= simple_format(@terms.contents) if @terms.present? %></p>
             </div>
 
             <div class="field form-group">

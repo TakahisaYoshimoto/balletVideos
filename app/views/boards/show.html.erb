@@ -1,14 +1,14 @@
-<div id="board_title_comment_area">
+<div id="board_title_comment_area" class="col-xs-12">
   <div id="board_show_title">
     <h3><%= @board.title %></h3>
   </div>
 
-  <div id="board_show_top_pic">
+  <div id="board_show_top_pic" class="col-xs-3">
     <%= render 'profile_picture_lists', i: @master_comment %>
     <p style="margin-top:10px;margin-bottom:5px;color:gray;"><%= @master_comment.user.username %>さん</p>
     <p><%= @master_comment.created_at.strftime('%Y/%m/%d %H:%M') %></p>
   </div>
-  <div id="board_show_top_text">
+  <div id="board_show_top_text" class="col-xs-9">
 
     <%= simple_format(@master_comment.text) %>
 
