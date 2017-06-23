@@ -22,6 +22,6 @@ class User < ApplicationRecord
 
   private
     def rule_confirmed_valid?
-      errors.add(:rule_confirmed, 'に同意して頂かない場合は、登録できません。') unless rule_confirmed == true
+      errors.add(:rule_confirmed, 'にチェックが付いていません。') unless rule_confirmed == true
     end
 end
