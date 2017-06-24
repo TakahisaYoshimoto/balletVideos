@@ -38,9 +38,14 @@
   color: white;
   border: 2px solid white;
   border-radius: 5px;
-  height:38px;
   padding: 7px 20px 5px 20px;
 }
+@media screen and (max-width: 767px){
+  .board_top_img_link {
+    height:38px;
+  }
+}
+
 .board_top_img_link:hover {
   text-decoration: none;
   color: pink;
@@ -212,6 +217,25 @@ button.talk_btn:hover {
     }
   }
 
+.board_talk_title table {
+  margin:0 auto;
+}
+
+.board_talk_title {
+ margin-bottom:35px;
+ margin-top:40px;
+}
+ @media screen and (max-width:767px) {
+   .board_talk_title {
+     margin-bottom:25px;
+     margin-top:15px;
+   }
+ }
+
+.board_talk_title table {
+  margin:0 auto;
+}
+
 .new_talk_text{
   margin-top:30px;
   margin-bottom:30px;
@@ -327,24 +351,42 @@ transition: opacity 0.4s ease-out;
 }
 
 .community_index_board_time {
-  color: black;
+  color: gray;
   font-size:10px;
-  margin-bottom:2px;
+  margin-bottom:3px;
   padding-left:2px;
+}
+
+.bits_index_board_comments_count {
+  color:pink;
 }
 
 .community_index_board_tags_area {
   position: absolute;
-  top: 135px;
+  top: 124px;
   left: 13px;
   text-align:center;
   width:90%
 }
   @media screen and (max-width:767px) {
     .community_index_board_tags_area {
-      top: 110px;
+      top: 100px;
     }
   }
+
+.board-ad-area {
+  text-align:center;
+  padding-bottom:15px;
+  overflow: visible;
+  margin-left:-15px;
+  margin-top:25px;
+}
+
+.board-talk-title {
+  margin-bottom: 35px;
+  margin-top: 40px;
+}
+
 
 .board_tag a {
   color:gray;
