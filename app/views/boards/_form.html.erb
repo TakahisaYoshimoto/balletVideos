@@ -52,7 +52,7 @@
       </div>
       <div class="div_right_button col-xs-3 col-sm-4">
         <div style="display:inline-block;">
-      <%= f.add_nested_fields_link :board_tags, 'タグ追加', class: 'btn btn-primary right_button', role: 'button' %>
+      <%= f.add_nested_fields_link :board_tags, 'タグ追加', class: 'btn btn-primary right_button tag_ad_btn', role: 'button' %>
     </div>
   </div>
 
@@ -60,10 +60,14 @@
 
   <%= f.hidden_field :board_id, value: @board.id %>
 
-  <div class="row">
-    <div id="board_comment_submit" class="actions form-group col-sm-7">
-
-      <%= f.submit '確定', class: 'btn btn-primary right_button' %>
+  <div class="row col-xs-12">
+    <div class="board_cancel col-xs-9 col-sm-5">
+      <%= link_to "キャンセル", :back, id: 'board_edit_cancel' %>
+    </div>
+    <div id="board_comment_submit" class="actions form-group col-xs-3 col-sm-4">
+      <div style="display:inline-block">
+      <%= f.submit '投稿', class: 'btn btn-primary board_button' %>
+      </div>
     </div>
   </div>
 <% end %>
