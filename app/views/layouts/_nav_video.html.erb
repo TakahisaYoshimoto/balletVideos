@@ -16,26 +16,47 @@
       <% end %>
     </div>
 
-    <div class="nav_video_collapse_frame_1">
-      <div class="nav_video_collapse_area_tag_area">
-        <div class="nav_video_collapse_area_tag">
-          <strong><%= link_to '注目キーワード', { :controller => '/bits', action: :attentionSearch, search_params: '注目キーワード', or: 'pv' } %></strong>
+    <div class="nav_video_collapse_frame_1 col-sm-12">
+      <div class="movie-sm-4 col-sm-4">
+        <div class="nav_video_collapse_area_tag_area">
+          <div class="nav_video_collapse_area_tag">
+           <strong><%= link_to '動画', videotop_bits_path %></strong>
+          </div>
         </div>
-      </div>
-      <div class="nav_video_collapse_area_child_area">
-        <% tags.each do |tag| %>
-          <% if tag.genre == '注目キーワード' %>
-            <div class="nav_video_collapse_area_child" style="display:block;">
-              <%= link_to "#{tag.tag_name}", { :controller => '/bits', action: :Search, search_params: tag.tag_name, category_params: '注目キーワード', or: 'pv' } %>
-            </div>
+        <div class="nav_video_collapse_area_child_area">
+         <div class="nav_video_collapse_area_child" style="display:block;">
+           <%= link_to '演目', { :controller => '/bits', action: :genreSearch, search_params: '演目', or: 'pv' } %>
+         </div>
+         <div class="nav_video_collapse_area_child" style="display:block;">
+           <%= link_to 'レッスン', { :controller => '/bits', action: :genreSearch, search_params: 'レッスン', or: 'pv' } %>
+         </div>
+         <div class="nav_video_collapse_area_child" style="display:block;">
+           <%= link_to 'その他', { :controller => '/bits', action: :genreSearch, search_params: "その他", or: 'pv' } %>
+         </div>
+        </div>
+       </div>
+
+      <div class="col-sm-8">
+        <div class="nav_video_collapse_area_tag_area">
+          <div class="nav_video_collapse_area_tag">
+            <strong><%= link_to '注目キーワード', { :controller => '/bits', action: :attentionSearch, search_params: '注目キーワード', or: 'pv' } %></strong>
+          </div>
+        </div>
+        <div class="nav_video_collapse_area_child_area">
+          <% tags.each do |tag| %>
+            <% if tag.genre == '注目キーワード' %>
+              <div class="nav_video_collapse_area_child" style="display:block;">
+                <%= link_to "#{tag.tag_name}", { :controller => '/bits', action: :Search, search_params: tag.tag_name, category_params: '注目キーワード', or: 'pv' } %>
+              </div>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
     </div>
 
-    <div class="nav_video_collapse_frame_2">
-      <div class="nav_video_collapse_area_tag_area">
-        <div class="nav_video_collapse_area_tag">
+    <div class="nav_video_collapse_frame_2 col-sm-12">
+      <div class="nav_video_collapse_area_tag">
+        <div class="nav_video_collapse_area_tag_area_repertoire">
           <strong><%= link_to '演目', { :controller => '/bits', action: :genreSearch, search_params: '演目', or: 'pv' } %></strong>
         </div>
       </div>
@@ -51,24 +72,7 @@
     </div>
 
     <div class="nav_video_collapse_frame_3">
-      <div class="nav_video_collapse_frame_3_1">
-        <div class="nav_video_collapse_area_tag_area">
-          <div class="nav_video_collapse_area_tag">
-            <strong><%= link_to '動画', videotop_bits_path %></strong>
-          </div>
-        </div>
-        <div class="nav_video_collapse_area_child_area">
-          <div class="nav_video_collapse_area_child" style="display:block;">
-            <%= link_to '演目', { :controller => '/bits', action: :genreSearch, search_params: '演目', or: 'pv' } %>
-          </div>
-          <div class="nav_video_collapse_area_child" style="display:block;">
-            <%= link_to 'レッスン', { :controller => '/bits', action: :genreSearch, search_params: 'レッスン', or: 'pv' } %>
-          </div>
-          <div class="nav_video_collapse_area_child" style="display:block;">
-            <%= link_to 'その他', { :controller => '/bits', action: :genreSearch, search_params: "その他", or: 'pv' } %>
-          </div>
-        </div>
-      </div>
+
 
 
       <!-- <div class="nav_video_collapse_frame_3_2">
