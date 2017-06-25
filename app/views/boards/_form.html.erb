@@ -10,7 +10,8 @@
   <div class="field form-group row">
     <div class="col-sm-5">
       <%= f.label :title, 'タイトル', class: 'control-label' %>
-      <%= f.text_field :title, class: 'form-control' %>
+      <%= f.text_field :title, class: 'form-control',
+      placeholder: 'タイトルを入力する' %>
     </div>
   </div>
 
@@ -29,7 +30,8 @@
           id: 'comment_text_area',
           onkeydown: 'if(event.keyCode == 13){javascript:transmission();}',
           onkeyup: "document.getElementById('characnt').value=800 - this.value.length",
-          class: 'form-control' %>
+          class: 'form-control',
+          placeholder: 'トークを入力する' %>
       </div>
     </div>
   <% end %>
@@ -40,7 +42,8 @@
   <label class="control-label">タグ</label>
   <%= f.nested_fields_for :board_tags, wrapper_tag: :div, wrapper_options: { class: 'row field form-group' } do |q| %>
     <div class="col-xs-9 col-sm-5">
-      <%= q.text_field :name, class: 'form-control' %>
+      <%= q.text_field :name, class: 'form-control',
+      placeholder: 'タグを１つずつ入力する' %>
     </div>
     <div class="delete-btn col-xs-3 col-sm-4">
       <%= q.remove_nested_fields_link '削除', class: 'btn btn-danger', role: 'button', tabindex: -1 %>
