@@ -77,19 +77,44 @@
   top: 10px;
   left: 0;
 }
+
 #good_button_area {
   position: absolute;
-  width: 250px;
+  width: 200px;
   top: 0;
-  right: -171px;
+  right: 205px;
   margin-right: 10px;
 }
-#good_button_count {
-  position: absolute;
-  top: 11%;
-  left: 13%;
-}
-@media screen and (max-width: 768px) {
+  @media screen and (max-width: 1999px) {
+    #good_button_area {
+      position: absolute;
+      width: 200px;
+      top: 0;
+      right: 120px;
+      margin-right: 10px;
+    }
+  }
+
+  @media screen and (max-width: 991px) {
+    #good_button_area {
+      position: absolute;
+      width: 200px;
+      top: 0;
+      right: 0;
+      margin-right: 10px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    #good_button_area {
+      position: absolute;
+      width: 200px;
+      top: 7px;
+      right: -105px;
+      margin-right: 10px;
+    }
+  }
+
+@media screen and (max-width: 767px) {
   #video_show_button_area {
     position: relative;
     margin-bottom: 35px;
@@ -100,19 +125,8 @@
     top: 10px;
     left: 0;
   }
-  #good_button_area {
-    position: absolute;
-    width: 100px;
-    top: 40px;
-    right: -35px;
-    margin-right: 10px;
-  }
-  #good_button_count {
-    position: absolute;
-    top: 11%;
-    left: 33%;
-  }
 }
+
 #good_button_area a {
   height: 100%;
 }
@@ -122,20 +136,31 @@
 #good_button_heart,
 #good_button_hand {
   display: inline;
-  padding: 0 10px 0 0;
+  padding: 0;
   margin: 0;
-  font-size: 23px;
+  font-size: 5px;
   text-align: right;
 }
 #good_button_hand {
   color: gray;
 }
-#good_button_hand:hover {
-  color: #383838;
+
+#board_like_count {
+  margin-bottom:0px !important;
 }
-#good_button_heart {
-  color: blue;
+
+.icon-good:before{
+  font-size:23px;
+  color:black;
 }
+
+#good_button_hand:hover .icon-good:before{
+  color: gray;
+}
+#good_button_heart .icon-good:before {
+  color: pink;
+}
+
 #good_button_heart:hover {
   text-decoration: none;
 }
