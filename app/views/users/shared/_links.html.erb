@@ -4,21 +4,24 @@
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
   <div class="sign_up_link">
-    <%= link_to "ユーザー登録がまだの方は、こちら", new_registration_path(resource_name) %><br />
+    <%= link_to "ユーザー登録がまだの方はこちら", new_registration_path(resource_name) %><br />
   </div>
 <% end -%>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
   <div class="forget_password_link">
-    <%= link_to "パスワードを忘ましたか?", new_password_path(resource_name) %><br />
+    <%= link_to "パスワードを忘れましたか?", new_password_path(resource_name) %><br />
   </div>
 <% end -%>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-  <%= link_to "ユーザー登録メールの再送信", new_confirmation_path(resource_name) %><br />
-  <p>こちらは承認作業を完了されていない方向けのリンクです。<br />
-    ※承認メールを紛失された方<br />
-    ※誤ってメールを消してしまった方</p>
+  <div class="remail_link">
+    <%= link_to "ユーザー登録メールの再送信", new_confirmation_path(resource_name) %><br />
+  </div>
+  <p>　こちらは承認作業を完了されていない方向けのリンクです。
+  <br />
+    　※承認メールを紛失された方<br />
+    　※誤ってメールを消してしまった方</p>
 <% end -%>
 
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
@@ -30,12 +33,3 @@
     <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><br />
   <% end -%>
 <% end -%>
-
-<style>
-  .sign_up_link {
-    margin: 30px 0 15px 0;
-  }
-  .forget_password_link {
-    margin: 0 0 30px 0;
-  }
-</style>

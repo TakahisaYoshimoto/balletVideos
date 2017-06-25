@@ -9,7 +9,7 @@
           <%= render 'profile_picture', i: board %>
         </div>
         <div class="community_index_board_title">
-          <p>🖤 <%= truncate(board.title, length: 20) %></p>
+          <p>🖤 <%= truncate(board.title, length: 15) %></p>
         </div>
         <div class="community_index_board_tags_area">
         <% board.board_tags.each.with_index(1) do |tag, i| %>
@@ -18,7 +18,7 @@
             <div class="xs-display-none">
           <% end %>
           <div class="community_index_board_tags" style="display: inline-block;">
-            <p><%= truncate("##{tag.name}",length:12) %></p>
+            <p><%= truncate("##{tag.name}",length:10) %></p>
           </div>
           <% if i > 4 %>
             </div>
