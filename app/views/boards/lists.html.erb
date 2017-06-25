@@ -51,11 +51,23 @@
   </div>
 <% else %>
   <% if (controller.controller_name == 'boards' && controller.action_name == 'my_commented') %>
-    <p>まだコメントしていません。<br>気になるトークにコメントしてみましょう。</p>
+    <div class="no_lists">
+      <p>まだコメントしていません。
+        <br>気になるトークにコメントしてみましょう。</p>
+      </div>
   <% elsif (controller.controller_name == 'boards' && controller.action_name == 'like_lists') %>
-    <p>まだ気になるトークはありません。<br>たくさんのトークから気になるものを探してみましょう。</p>
+    <div class="no_lists">
+      <p>まだ気になるトークはありません。
+        <br>たくさんのトークから気になるものを探してみましょう。</p>
+    </div>
   <% elsif (controller.controller_name == 'boards' && controller.action_name == 'my_posts') %>
-    <p>まだトークを投稿していません。<br>質問や悩みなどをみんなと共有してみましょう。</p>
+    <div class="no_lists">
+      <p>まだトークを投稿していません。
+        <br>質問や悩みなどをみんなと共有してみましょう。</p>
+    </div>
   <% end %>
-  <%= link_to 'トークを探す', boards_path %>
+  <div class="search_contents">
+    <span class="icon icon-main icon-video"></span>
+    <%= link_to 'トークを探す', boards_path %>
+  </div>
 <% end %>

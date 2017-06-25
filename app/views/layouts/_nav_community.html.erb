@@ -16,22 +16,6 @@
       <% end %>
     </div>
 
-    <div class="nav_community_collapse_frame_2">
-      <div class="nav_community_collapse_area_tag_area">
-        <div class="nav_community_collapse_area_tag">
-          <strong>人気タグ</strong>
-        </div>
-      </div>
-      <div class="nav_community_collapse_area_child_area">
-        <% @board_tags.each do |b_tag| %>
-          <div class="nav_community_collapse_area_child">
-            <% tagname = truncate(b_tag[0], length: 10) %>
-            <%= link_to "##{tagname}", { :controller => '/boards', action: :Search, search_params: b_tag[0] } %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-
     <div class="nav_community_collapse_frame_1">
       <div class="nav_community_collapse_frame_1_1">
         <div class="nav_community_collapse_area_tag_area">
@@ -75,6 +59,23 @@
 %>
 
     </div>
+
+    <div class="nav_community_collapse_frame_2">
+      <div class="nav_community_collapse_area_tag_area">
+        <div class="nav_community_collapse_area_tag">
+          <strong>人気タグ</strong>
+        </div>
+      </div>
+      <div class="nav_community_collapse_area_child_area">
+        <% @board_tags.each do |b_tag| %>
+          <div class="nav_community_collapse_area_child">
+            <% tagname = truncate(b_tag[0], length: 10) %>
+            <%= link_to "##{tagname}", { :controller => '/boards', action: :Search, search_params: b_tag[0] } %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
     <a id="nav_community_collapse_close_button" data-toggle="collapse" data-parent="#accordion" data-target="#nav_community_collapse_area"><span class="icon icon-main icon-closed_nav_button"></span></a>
   </div>
 </div>
