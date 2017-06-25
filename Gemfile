@@ -50,7 +50,8 @@ gem 'nokogiri'
 gem 'cropper-rails'
 gem 'aws-sdk', '1.61'
 gem 'bootstrap-kaminari-views'
-
+gem 'clockwork'
+gem 'minitest', '~> 5.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
