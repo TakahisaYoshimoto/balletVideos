@@ -56,7 +56,11 @@
 }
 
 #user_edit_area label {
-  color:black !important;
+  color: white !important;
+}
+
+#user_edit_right_area label{
+  color: black !important;  
 }
 
 #user_edit_area label,
@@ -202,6 +206,7 @@
   color:#FFF;
   height: 300px;
   overflow: auto;
+  padding-left:5px;
   padding-right:13px;
   margin-left:10px;
   margin-right:10px;
@@ -295,6 +300,7 @@
 }
 
 .check_text {
+  color:white;
   padding-top:5px;
   margin-top:5px;
   margin-bottom:0;
