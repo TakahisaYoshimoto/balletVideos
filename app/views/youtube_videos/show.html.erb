@@ -86,110 +86,6 @@
         <%= simple_format(@youtube.text, class: :text) %>
       </div>
     <% end %>
-
-    <div id="y_video_commentsarea">
-      <% unless current_user.nil? %>
-        <div id="y_video_newcomment_edit_area">
-          <%= form_for(@comment) do |f| %>
-            <div class="form-group">
-              <%= f.text_area :text,
-                maxlength: "400",
-                id: 'comment_text_area',
-                onkeydown: 'if(event.keyCode == 13){javascript:transmission();}',
-                onkeyup: "document.getElementById('y_video_commentsarea_characnt').value=400 - this.value.length",
-                class: 'form-control' %>
-            </div>
-            <div id="comment_submit" class="actions　form-group">
-              <input type="text" id="y_video_commentsarea_characnt" disabled="disabled">
-              <%= f.submit 'コメント投稿', class: 'btn btn-primary' %>
-            </div>
-            <%= f.hidden_field :youtube_video_id, value: @youtube.id %>
-          <% end %>
-        </div>
-      <% else %>
-        <div id="y_video_newcomment_edit_area">
-          <p><%= link_to 'ログイン', new_user_session_path %>するとコメントの投稿ができます。</p>
-        </div>
-      <% end %>
-
-      <% if @youtube.poster_comment.present? || @comments.present? %>
-        <div id="y_video_comment_list_area">
-          <% if @youtube.poster_comment.present? %>
-            <div id="y_video_show_poster_comment_area">
-              <strong>ビット運営</strong>
-              <%= simple_format(@youtube.poster_comment, class: 'y_video_show_poster_comment_text') %>
-            </div>
-          <% end %>
-          <% if @comments.present? %>
-            <% @comments.each do |comment| %>
-              <% if comment.reply == 0 %>
-                <div class="y_video_comment_list_view">
-                  <% unless comment.user.nil? %>
-                    <%= render 'profile_picture', i: comment %>
-                    <strong><%= comment.user.username %></strong>
-                  <% else %>
-                    <strong>削除されたユーザー</strong>
-                  <% end %>
-                  <%= comment.created_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %><br>
-                  <p><%= simple_format(comment.text) %></p>
-
-                  <% @replys.each do |reply| %>
-                    <% if reply.reply == comment.id %>
-                      <div class="y_video_reply_list_view">
-                        <% unless reply.user.nil? %>
-                          <%= render 'profile_picture', i: reply %>
-                          <strong><%= reply.user.username %></strong>
-                        <% else %>
-                          <strong>削除されたユーザー</strong>
-                        <% end %>
-                        <%= reply.created_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %><br>
-                        <%= simple_format(reply.text) %>
-                      </div>
-                    <% end %>
-                  <% end %>
-
-                  <% unless current_user.nil? %>
-                    <div id="y_video_reply_edit_area<%= comment.id %>" class="y_video_reply_edit_area" style="display: none;">
-                      <%= form_tag('/comments/reply', method: :post) do %>
-                        <div class="form-group">
-                          <%= text_area_tag :text,
-                            "",
-                            maxlength: "400",
-                            onkeydown: 'if(event.keyCode == 13){javascript:transmission();}',
-                            onkeyup: "document.getElementById('y_video_replyarea_characnt').value=400 - this.value.length",
-                            id: 'reply_edit_textarea'+comment.id.to_s,
-                            class: 'reply_text_area form-control' %>
-                        </div>
-                        <div id="reply_submit" class="actions　form-group">
-                          <input type="text" id="y_video_replyarea_characnt" disabled="disabled">
-                          <%= submit_tag '返信', class: 'btn btn-primary' %>
-                        </div>
-                        <%= hidden_field :reply_params, :youtube_video_id, value: @youtube.id%>
-                        <%= hidden_field :reply_params, :comment_id, value: comment.id %>
-                      <% end %>
-                    </div>
-
-                    <div class="reply_view_button_area">
-                      <p id="reply_view_button<%= comment.id %>"
-                        class="reply_view_button"
-                        onClick="reply_display(<%= comment.id %>)">返信する
-                      </p>
-                    </div>
-                  <% end %>
-                </div>
-              <% end %>
-            <% end %>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-
-    <% unless current_user.nil? %>
-      <% if current_user.user_level > 1 %>
-        <%= link_to '編集する', edit_youtube_video_path(@youtube) %>
-        <%= link_to '削除する', youtube_video_path(@youtube), method: :delete, data: { confirm: "削除してよろしいですか？" } %>
-      <% end %>
-    <% end %>
   </div>
 </div>
 
@@ -201,58 +97,74 @@
     <div class="visible-xs co-xs-12" style="padding:0;">
       <%= link_to image_tag('mu_ad_img2.jpg', width: '100%'), 'http://mu-ballet.com', target: '_blank' %>
     </div>
-    <p>関連動画</p>
+  </div>
+</div>
+
+<div class="col-xs-12">
+  <p>関連動画</p>
+  <div class="col-xs-12 row-eq-height" style="padding: 0;">
     <% @relatedVideos.each do |rv| %>
-      <div class="related_videos_link row-eq-height">
-        <% url = rv.url.gsub(/http.+v=/, "") %>
-        <% url = url.gsub(/&.+./, "") %>
-        <%= link_to(youtube_video_path(rv)) do %>
-          <div class="related_videos_link_img col-xs-5 col-sm-5 col-md-6" style="padding:0;">
+      <%= link_to youtube_video_path(rv), class: 'videolists_link col-xs-12 col-sm-3 row-eq-height', style: 'margin-bottom:10px;' do %>
+        <div class="y_video_img_area col-xs-5 col-sm-12" style="padding: 0;">
+          <div class="y_video_img">
+            <% url = rv.url.gsub(/http.+v=/, "") %>
+            <% url = url.gsub(/&.+./, "") %>
             <%= image_tag('https://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
-                                    width: '100%',
-                                    class: 'bits_show_link_img') %>
-            <div class="y_video_show_img_video_time">
+              width: '100%',
+              class: 'bits_index_link_img') %>
+            <div class="y_video_img_video_time">
               <%= rv.video_time %>
             </div>
           </div>
-          <div class="related_videos_link_title_area col-xs-7 col-sm-7 col-md-6" style="padding:0;">
-            <p class="related_videos_link_title"><%= truncate(rv.title, length: 25) %></p>
-            <p class="related_videos_link_catchphrase"><%= truncate(rv.catchphrase, length: 25 ) %></p>
+        </div>
+        <div class="y_video_top_textarea col-xs-7 col-sm-12" style="padding: 0;margin-top:0;">
+          <p class="videolists_title hidden-md hidden-lg"><%= truncate(rv.title, length: 25) %></p>
+          <p class="videolists_catchphrase hidden-md hidden-lg"><%= truncate(rv.catchphrase, length: 25) %></p>
+          <p class="videolists_title hidden-xs hidden-sm"><%= truncate(rv.title, length: 29) %></p>
+          <p class="videolists_catchphrase hidden-xs hidden-sm"><%= truncate(rv.catchphrase, length: 29) %></p>
+          <div class="videolists_viewcount">
+            <p>視聴回数 <%= rv.pv_count %></p>
           </div>
-          <div class="related_video_view_count">
-            <p>視聴回数<%= rv.pv_count %>回</p>
-          </div>
-        <% end -%>
-      </div>
+        </div>
+      <% end -%>
     <% end %>
     <%# 関連動画が20個以下の時、PV数が多い順に20個になるまで表示する %>
     <% if @popularVideos.present? %>
       <% @popularVideos.each do |rv| %>
-        <div class="related_videos_link row-eq-height">
-          <% url = rv.url.gsub(/http.+v=/, "") %>
-          <% url = url.gsub(/&.+./, "") %>
-          <%= link_to(youtube_video_path(rv)) do %>
-            <div class="related_videos_link_img col-xs-5 col-sm-5 col-md-6" style="padding:0;">
+        <%= link_to youtube_video_path(rv), class: 'videolists_link col-xs-12 col-sm-3 row-eq-height', style: 'margin-bottom:10px;' do %>
+          <div class="y_video_img_area col-xs-5 col-sm-12" style="padding: 0;">
+            <div class="y_video_img">
+              <% url = rv.url.gsub(/http.+v=/, "") %>
+              <% url = url.gsub(/&.+./, "") %>
               <%= image_tag('https://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
-                                      width: '100%',
-                                      class: 'bits_show_link_img') %>
-              <div class="y_video_show_img_video_time">
+                width: '100%',
+                class: 'bits_index_link_img') %>
+              <div class="y_video_img_video_time">
                 <%= rv.video_time %>
               </div>
             </div>
-            <div class="related_videos_link_title_area col-xs-7 col-sm-7 col-md-6" style="padding:0;">
-              <p class="related_videos_link_title"><%= truncate(rv.title, length: 25) %></p>
-              <p class="related_videos_link_catchphrase"><%= truncate(rv.catchphrase, length: 25 ) %></p>
+          </div>
+          <div class="y_video_top_textarea col-xs-7 col-sm-12" style="padding: 0;margin-top:0;">
+            <p class="videolists_title hidden-md hidden-lg"><%= truncate(rv.title, length: 25) %></p>
+            <p class="videolists_catchphrase hidden-md hidden-lg"><%= truncate(rv.catchphrase, length: 25) %></p>
+            <p class="videolists_title hidden-xs hidden-sm"><%= truncate(rv.title, length: 29) %></p>
+            <p class="videolists_catchphrase hidden-xs hidden-sm"><%= truncate(rv.catchphrase, length: 29) %></p>
+            <div class="videolists_viewcount">
+              <p>視聴回数 <%= rv.pv_count %></p>
             </div>
-            <div class="related_video_view_count">
-              <p>視聴回数<%= rv.pv_count %>回</p>
-            </div>
-          <% end -%>
-        </div>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
   </div>
 </div>
+
+<% unless current_user.nil? %>
+  <% if current_user.user_level > 1 %>
+    <%= link_to '編集する', edit_youtube_video_path(@youtube) %>
+    <%= link_to '削除する', youtube_video_path(@youtube), method: :delete, data: { confirm: "削除してよろしいですか？" } %>
+  <% end %>
+<% end %>
 
 <script>
   function reply_display(comment_id) {
