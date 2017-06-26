@@ -36,9 +36,7 @@
         </div>
       </div>
 
-<%
-=begin
-%>
+
       <div class="nav_community_collapse_frame_1_2">
         <div class="nav_community_collapse_area_tag_area">
           <div class="nav_community_collapse_area_tag">
@@ -46,22 +44,25 @@
           </div>
         </div>
         <div class="nav_community_collapse_area_child_area">
-          <div class="nav_community_collapse_area_child">
-            <%= link_to 'マイトークルーム', my_posts_boards_path  %>
-          </div>
+
+
           <div class="nav_community_collapse_area_child">
             <%= link_to 'コメントしたトーク', my_commented_boards_path  %>
           </div>
+          <div class="nav_community_collapse_area_child">
+            <%= link_to '気になるトーク', like_lists_boards_path  %>
+          </div>
+          <div class="nav_community_collapse_area_child">
+            <%= link_to 'マイトークルーム', my_posts_boards_path  %>
+          </div>
         </div>
       </div>
-<%
-=end
-%>
+
 
     </div>
 
     <div class="nav_community_collapse_frame_2">
-      <div class="nav_community_collapse_area_tag_area">
+      <div class="nav_community_collapse_area_tag_area_popular">
         <div class="nav_community_collapse_area_tag">
           <strong>人気タグ</strong>
         </div>

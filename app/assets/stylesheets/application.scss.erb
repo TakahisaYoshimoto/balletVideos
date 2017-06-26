@@ -82,6 +82,15 @@ body {
   border-color:black;
 }
 
+.pagination > li > a:hover {
+  color:black;
+}
+
+.pagination > .active > a:hover {
+  background: black;
+  border-color:black;
+}
+
 .pagination > li > a {
   color:black;
 }
@@ -93,9 +102,9 @@ body {
   border-color: #000;
 }
 .btn-primary:hover {
-  color: gray;
-  background-color: #FFF;
-  border-color: gray;
+  color: white;
+  background-color: black;
+  border-color: black;
 }
 
 .btn-primary[type=submit]:focus {
@@ -147,8 +156,13 @@ body {
 
 /*form*/
 .form-control:focus {
-  border-color:pink;
+  /*border-color:#FF6D8F;*/
+  border: 2px solid pink;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px rgb(255,153,204) inset!important;
 }
 
 /*navbar*/
@@ -260,6 +274,11 @@ body {
   color: white;
 }
 
+.nav_community_collapse_area_tag_area_popular {
+  border-bottom: 1px solid white;
+  width: 80%;
+}
+
 .nav a {
   cursor: pointer;
 }
@@ -294,7 +313,7 @@ body {
 .nav_video_collapse_area_tag_area_repertoire
  {
   border-bottom: 1px solid white;
-  width: 80%;
+  width: 90%;
 }
 
 .nav_video_collapse_area_tag,
@@ -313,6 +332,13 @@ body {
   display: inline-block;
   width: 235px;
 }
+  @media screen and(max-width: 991px) {
+    .nav_video_collapse_area_child,
+    .nav_community_collapse_area_child  {
+      display: inline-block;
+      width: 210px;
+    }
+  }
 
 .nav_submenu_contents {
   padding-left: 10px;

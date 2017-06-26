@@ -251,9 +251,32 @@ button.talk_btn:hover {
 
   /*index*/
 .community_index_board:hover .community_index_board_child{
-  opacity:0.6;
-  background-color:rgba(245,245,245,0.5);
+  opacity:0.9;
+  background-color:rgba(0,0,0,1.0);
   }
+
+.community_index_board:hover .community_index_board_child *{
+  color:white;
+}
+
+.community_index_board:hover .community_index_profile_picture p{
+  color:white !important;
+}
+
+.title_icon {
+  font-size:20px;
+  color:black;
+}
+
+.title_icon:before {
+  position:relative;
+  top:3px;
+}
+
+.community_index_board_title span {
+  margin-top:10px;
+  margin-left:10px;
+}
 
 .community_index_board .community_index_board_child {
 -webkit-transition: opacity 0.4s ease-out;
@@ -320,6 +343,7 @@ transition: opacity 0.4s ease-out;
 }
 
 .community_index_board_title {
+  display:inline-block;
   text-align: left;
   margin-bottom: 5px;
   padding-left:10px;
@@ -333,9 +357,10 @@ transition: opacity 0.4s ease-out;
 }
 
 .community_index_board_title p {
+  display:inline-block;
   margin: 0 auto;
   color: black;
-  font-size: 14px;
+  font-size: 16px;
 }
   @media screen and (max-width:767px) {
     .community_index_board_comments p {
@@ -358,7 +383,7 @@ transition: opacity 0.4s ease-out;
 }
 
 .bits_index_board_comments_count {
-  color:#ff6d8f;
+  color:black;
 }
 
 .community_index_board_tags_area {
@@ -482,12 +507,12 @@ transition: opacity 0.4s ease-out;
 
 #board_show_top_pic img {
   border-radius: 100%;
-  width:100px;
+  width:80px;
 }
   @media screen and(max-width: 767px) {
     #board_show_top_pic img {
       border-radius: 100%;
-      width:100px;
+      width:90px;
     }
   }
 
@@ -656,7 +681,7 @@ transition: opacity 0.4s ease-out;
   @media screen and(max-width: 767px) {
     .board_comments_pic_area img{
       border-radius: 100%;
-      width:50px;
+      width:65px;
       margin-top:5px;
     }
   }

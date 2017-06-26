@@ -66,7 +66,7 @@
     <div id="order_change">
       <% if controller.action_name == 'view_histories' || controller.action_name == 'like_videos' %>
         <% if /or=history/ =~ request.fullpath %>
-          視聴順|
+          <strong>視聴順</strong>|
         <% else %>
           <%= link_to_unless_current '視聴順', { controller: :bits,
             action: controller.action_name,
@@ -74,7 +74,7 @@
         <% end %>
       <% end %>
       <% if /or=pv/ =~ request.fullpath %>
-        再生回数順|<%= link_to '新着順', { controller: :bits,
+        <strong>再生回数順</strong>|<%= link_to '新着順', { controller: :bits,
           action: controller.action_name,
           search_params: @genre,
           category_params: @category_params,
@@ -84,7 +84,7 @@
           action: controller.action_name,
           search_params: @genre,
           category_params: @category_params,
-          or: 'pv' } %>|新着順
+          or: 'pv' } %>|<strong>新着順</strong>
       <% else %>
         <%= link_to '再生回数順', { controller: :bits,
           action: controller.action_name,
