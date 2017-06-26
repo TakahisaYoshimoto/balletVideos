@@ -38,6 +38,13 @@
   color:black;
 }
 
+/*form*/
+.form-control-origin:focus {
+  border-color:#FF6D8F;
+  border: 3px solid black;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
 
 /* users/edit */
 #user_edit_left_area {
@@ -46,6 +53,10 @@
 
 #user_edit_right_area {
   border: 2px solid black;
+}
+
+#user_edit_area label {
+  color:black !important;
 }
 
 #user_edit_area label,
