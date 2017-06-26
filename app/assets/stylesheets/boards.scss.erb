@@ -48,9 +48,10 @@
 
 .board_top_img_link:hover {
   text-decoration: none;
-  color: pink;
+  color: black;
   background: white;
 }
+
 #board_top_img_search_area {
   width: 95%;
   text-align: center;
@@ -271,11 +272,7 @@ button.talk_btn:hover {
 .title_icon:before {
   position:relative;
   top:3px;
-}
-
-.community_index_board_title span {
-  margin-top:10px;
-  margin-left:10px;
+  left:10px;
 }
 
 .community_index_board .community_index_board_child {
@@ -346,9 +343,18 @@ transition: opacity 0.4s ease-out;
   display:inline-block;
   text-align: left;
   margin-bottom: 5px;
-  padding-left:10px;
+  margin-left:-15px;
   margin-bottom: 10px;
+  width:245px;
 }
+  @media screen and (max-width:991px) {
+    .community_index_board_title {
+      margin-left:0px;
+    }
+  }
+
+
+
 
 .community_index_board_comments {
   position: absolute;
@@ -735,8 +741,8 @@ transition: opacity 0.4s ease-out;
 
 .board_button {
   padding: 15px 70px 15px 70px !important;
+  border: 2px solid black !important;
 }
-
 
 .board_cancel {
   height:50px;
