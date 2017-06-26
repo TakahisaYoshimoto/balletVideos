@@ -9,7 +9,8 @@
           <%= render 'profile_picture', i: board %>
         </div>
         <div class="community_index_board_title">
-          <p>🖤 <%= truncate(board.title, length: 15) %></p>
+          <span class="icon icon-main icon-maked_talk title_icon"></span>
+          <p><%= truncate(board.title, length: 15) %></p>
         </div>
         <div class="community_index_board_tags_area">
         <% board.board_tags.each.with_index(1) do |tag, i| %>
