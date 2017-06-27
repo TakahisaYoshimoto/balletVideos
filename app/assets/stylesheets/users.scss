@@ -1,3 +1,7 @@
+.title_words {
+  margin-bottom:30px;
+}
+
 .user_error_msg p {
   color: red;
 }
@@ -23,18 +27,22 @@
   margin: 0 0 15px 0;
 }
 
+.sign_up_link a, .forget_password_link a, .remail_link a {
+  text-decoration: underline;
+}
+
 .sign_up_link a:hover {
-  text-decoration: none;
+  /*text-decoration: none;*/
   color:black;
 }
 
 .forget_password_link a:hover {
-  text-decoration: none;
+  /*text-decoration: none;*/
   color:black;
 }
 
 .remail_link a:hover {
-  text-decoration: none;
+  /*text-decoration: none;*/
   color:black;
 }
 
