@@ -14,17 +14,17 @@
     </div>
   <% elsif (controller.controller_name == 'boards' && controller.action_name == 'my_commented') %>
     <div class="mypage_header_list_talk hidden-sm hidden-xs">
-      <span class="icon mp-icon-main icon-comment"></span>
+      <span class="icon mp-icon-main icon-comment icon-mypage-comment"></span>
       <p class="video-text">コメントしたトーク</p>
     </div>
   <% elsif (controller.controller_name == 'boards' && controller.action_name == 'like_lists') %>
     <div class="mypage_header_list_talk hidden-sm hidden-xs">
-      <span class="icon mp-icon-main icon-checked_talk"></span>
+      <span class="icon mp-icon-main icon-checked_talk icon-mypage-checked-talk"></span>
       <p class="video-text">気になるトーク</p>
     </div>
   <% elsif (controller.controller_name == 'boards' && controller.action_name == 'my_posts') %>
     <div class="mypage_header_list_talk hidden-sm hidden-xs">
-      <span class="icon mp-icon-main icon-maked_talk"></span>
+      <span class="icon mp-icon-main icon-maked_talk icon-mypage-marked-talk"></span>
       <p class="video-text">マイトークルーム</p>
     </div>
   <% elsif (controller.controller_name == 'boards' && controller.action_name == 'new_lists') %>
@@ -36,7 +36,11 @@
 
 <%# 検索ワードを表示 %>
 <% if @search_params.present? %>
-  <p><%= @search_params %></p>
+  <h3 class="search_words_talk">
+    <span class="icon icon-search" style="margin-right:10px">
+    </span>
+    <p><%= @search_params %></p>
+  </h3>
 <% end %>
 
 <% unless @boards.blank? %>
@@ -68,7 +72,7 @@
   <% end %>
   <div class="top_each_page_link_area col-xs-12">
     <div class="top_each_page_link">
-      <%= link_to '→　トークを探す', boards_path %>
+      <%= link_to '→ トークを探す', boards_path %>
     </div>
   </div>
   </div>

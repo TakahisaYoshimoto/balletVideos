@@ -232,6 +232,17 @@
   }
 }
 
+.terms_title h3{
+  font-size: 20px;
+}
+  @media screen and (max-width:767px) {
+    .terms_title h3{
+      font-size: 18px;
+      margin-left:10px;
+    }
+}
+
+
 @media screen and (max-width:767px) {
   .terms_title {
   font-size:18px;
@@ -242,10 +253,20 @@
   height:300px;
   overflow: auto;
   border: 1px solid gray;
-  padding-right:13px;
-  margin-left:10px;
-  margin-right:10px;
+  padding:15px;
 }
+  @media screen and (max-width:767px) {
+    .user_reg_terms{
+      height:300px;
+      overflow: auto;
+      border: 1px solid gray;
+      padding:10px;
+      margin-left:10px;
+      margin-right:10px;
+  }
+}
+
+
 
 @media screen and (max-width:767px) {
 .user_error_msg {
