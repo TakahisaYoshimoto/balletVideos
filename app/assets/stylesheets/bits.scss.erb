@@ -1026,11 +1026,22 @@ margin-bottom:0px;
   top:5px;
 }
 
-.no_lists {
-  margin-top:70px;
+.no_lists_container {
+  margin-top:40px;
+  margin-bottom: 40px;
+  display:inline-block;
 }
   @media screen and (max-width: 767px) {
-    .no_lists {
+    .no_lists_container {
       margin-top:20px;
     }
   }
+
+.no_lists_container * {
+  display:inline-block;
+  font-size: 22px;
+}
+.no_lists_container span {
+  position: relative;
+  top: 3px;
+}
