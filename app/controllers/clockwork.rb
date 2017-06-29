@@ -62,7 +62,7 @@ require File.expand_path('../../../config/environment', __FILE__)
         end
         #メールする
         users.each do |user|
-          @mail = SupportMailer.sendmail_periodic_notification(user.email, youtubes, boards, master_comments)
+          @mail = SupportMailer.sendmail_periodic_notification(user.email, youtubes, boards, master_comments,user.name)
             .deliver
         end
 
