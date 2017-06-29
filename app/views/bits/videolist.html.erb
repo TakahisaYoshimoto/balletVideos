@@ -63,41 +63,34 @@
       </div>
     <% end %>
 
-    <div id="order_change">
-      <% if controller.action_name == 'view_histories' || controller.action_name == 'like_videos' %>
-        <% if /or=history/ =~ request.fullpath %>
-          <strong>視聴順</strong>|
-        <% else %>
-          <%= link_to_unless_current '視聴順', { controller: :bits,
+    <% unless controller.action_name == 'view_histories' || controller.action_name == 'like_videos' %>
+      <div id="order_change">
+        <% if /or=pv/ =~ request.fullpath %>
+          <strong>再生回数順</strong>|<%= link_to '新着順', { controller: :bits,
             action: controller.action_name,
-            or: 'history' } %>|
+            search_params: @genre,
+            category_params: @category_params,
+            or: 'time' } %>
+        <% elsif /or=time/ =~ request.fullpath %>
+          <%= link_to '再生回数順', { controller: :bits,
+            action: controller.action_name,
+            search_params: @genre,
+            category_params: @category_params,
+            or: 'pv' } %>|<strong>新着順</strong>
+        <% else %>
+          <%= link_to '再生回数順', { controller: :bits,
+            action: controller.action_name,
+            search_params: @genre,
+            category_params: @category_params,
+            or: 'pv' } %>|
+          <%= link_to '新着順', { controller: :bits,
+            action: controller.action_name,
+            search_params: @genre,
+            category_params: @category_params,
+            or: 'time' } %>
         <% end %>
-      <% end %>
-      <% if /or=pv/ =~ request.fullpath %>
-        <strong>再生回数順</strong>|<%= link_to '新着順', { controller: :bits,
-          action: controller.action_name,
-          search_params: @genre,
-          category_params: @category_params,
-          or: 'time' } %>
-      <% elsif /or=time/ =~ request.fullpath %>
-        <%= link_to '再生回数順', { controller: :bits,
-          action: controller.action_name,
-          search_params: @genre,
-          category_params: @category_params,
-          or: 'pv' } %>|<strong>新着順</strong>
-      <% else %>
-        <%= link_to '再生回数順', { controller: :bits,
-          action: controller.action_name,
-          search_params: @genre,
-          category_params: @category_params,
-          or: 'pv' } %>|
-        <%= link_to '新着順', { controller: :bits,
-          action: controller.action_name,
-          search_params: @genre,
-          category_params: @category_params,
-          or: 'time' } %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
 
     <div class="col-xs-12 row-eq-height" style="padding: 0;">
       <% @youtubes.each.with_index(1) do |youtube, i| %>

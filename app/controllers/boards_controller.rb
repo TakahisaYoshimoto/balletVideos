@@ -62,7 +62,11 @@ class BoardsController < ApplicationController
       redirect_to new_user_session_path and return
     end
 
-    @boards = Board.joins(:board_comments).where('board_comments.user_id = ?', current_user.id).page(params[:page]).includes(:user)
+    @boards = Board.joins(:board_comments)
+                    .where('board_comments.user_id = ?', current_user.id)
+                    .order('board_comments.created_at desc')
+                    .page(params[:page])
+                    .includes(:user)
 
     render '/boards/lists'
   end
@@ -72,7 +76,11 @@ class BoardsController < ApplicationController
       redirect_to new_user_session_path and return
     end
 
-    @boards = Board.joins(:board_likes).where('board_likes.user_id = ?', current_user.id).page(params[:page]).includes(:user)
+    @boards = Board.joins(:board_likes)
+                    .where('board_likes.user_id = ?', current_user.id)
+                    .order('board_likes.created_at desc')
+                    .page(params[:page])
+                    .includes(:user)
 
     render '/boards/lists'
   end
