@@ -24,6 +24,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
+  def after_update_path_for(resource)
+    profile_path(current_user.id)
+  end
   # DELETE /resource
   # def destroy
   #   super
