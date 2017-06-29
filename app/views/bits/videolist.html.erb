@@ -39,10 +39,12 @@
           <p class="video-text">お気に入りの動画</p>
         </div>
       <% else %>
-        <h3 class="search_words">
-          <span class="icon icon-search" style="margin-right:10px"></span>
-          <%= @search_params %>
-        </h3>
+        <% if @search_params.present? %>
+          <h3 class="search_words">
+            <span class="icon icon-search" style="margin-right:10px"></span>
+            <%= @search_params %>
+          </h3>
+        <% end %>
       <% end %>
     <% end %>
   </div>
