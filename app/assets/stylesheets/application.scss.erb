@@ -83,7 +83,9 @@ body {
 }
 
 .pagination > li > a:hover {
-  color:black;
+  color: white;
+  background: black;
+  border-color:black;
 }
 
 .pagination > .active > a:hover {
@@ -137,6 +139,18 @@ body {
   border-color: gray;
 }
 
+
+.login-btn {
+  color:black;
+  border-color: #000;
+}
+
+.login-btn:hover {
+  color: white;
+  background-color: #000;
+  border-color: #000;
+}
+
 .btn-default[type=submit]:focus {
     outline: 0;
     box-shadow: none;
@@ -157,12 +171,18 @@ body {
 /*form*/
 .form-control:focus {
   /*border-color:#FF6D8F;*/
-  border: 2px solid pink;
+  border: 2px solid gray;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
 
+/*input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px rgb(255,153,204)
+   inset!important;
+}*/
+
 input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px rgb(255,153,204) inset!important;
+  -webkit-box-shadow: 0 0 0px 1000px rgb(255,223,233)
+   inset!important;
 }
 
 /*navbar*/
@@ -446,6 +466,10 @@ input:-webkit-autofill {
       min-height: 75px;
     }
   }
+
+.mypage_icon_nav a, .logout_icon_nav a {
+  padding: 25px 0px 10px 10px !important;
+}
 
 /*footer*/
 #footer {

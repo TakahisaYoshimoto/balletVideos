@@ -20,17 +20,18 @@
 .top_img_text_a {
   position: absolute;
   color: white;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: bold;
-  top: 19%;
+  top: 31%;
   width: 100%;
   text-align: center;
 }
+
 .top_img_text_b {
   position: absolute;
   color: white;
   font-size: 16px;
-  top: 71%;
+  top: 62%;
   width: 100%;
   text-align: center;
 }
@@ -54,21 +55,21 @@
 
 .top_img_link:hover {
   text-decoration: none;
-  color:white;
-  background: black;
-  border: 4px solid black;
+  color: gray;
+  background: white;
+  border: 4px solid white;
 }
 @media screen and (min-width: 768px){
   .top_img{
     height: 400px;
   }
   .top_img_text_a {
-    top: 37%;
-    font-size: 45px;
+    top: 30%;
+    font-size: 40px;
   }
   .top_img_text_b {
     top: 63%;
-    font-size: 30px;
+    font-size: 28px;
   }
   .top_img_link_out {
     top: 80%;
@@ -84,10 +85,10 @@
     height: 500px;
   }
   .top_img_text_a {
-    font-size: 60px;
+    font-size: 50px;
   }
   .top_img_text_b {
-    font-size: 32px;
+    font-size: 30px;
   }
   .top_img_link {
     font-size: 24px;
@@ -900,6 +901,31 @@ margin-bottom:0px;
 }
 
 
+#mypage_header_view_history:hover,
+#mypage_header_myfavorite:hover,
+#mypage_header_comments:hover,
+#mypage_header_board_like:hover,
+#mypage_header_mytolkroom:hover
+ {
+  background:black;
+}
+
+#mypage_header_view_history:hover p,
+#mypage_header_myfavorite:hover p,
+#mypage_header_comments:hover p,
+#mypage_header_board_like:hover p,
+#mypage_header_mytolkroom:hover p {
+  color:white;
+}
+
+#mypage_header_view_history:hover span,
+#mypage_header_myfavorite:hover span,
+#mypage_header_comments:hover span,
+#mypage_header_board_like:hover span,
+#mypage_header_mytolkroom:hover span {
+  color:white;
+}
+
 #mypage_header_bottom a {
   padding-right:5px;
   color:#000;
@@ -955,6 +981,38 @@ margin-bottom:0px;
 }
 .mypage_header_list_talk *{
   display:inline-block;
+}
+
+.icon-mypage-history, .icon-mypage-checked-video {
+  font-size:30px;
+}
+
+.icon-mypage-history:before, .icon-mypage-checked-video:before {
+  position:relative;
+  top:5px;
+}
+
+.icon-mypage-comment {
+  font-size:33px;
+}
+
+.icon-mypage-comment:before {
+  position:relative;
+  top:3px;
+}
+
+.icon-mypage-checked-talk {
+  font-size:33px;
+}
+
+.icon-mypage-checked-talk:before {
+  position:relative;
+  top:3px;
+}
+
+.icon-mypage-marked-talk:before {
+  position:relative;
+  top:5px;
 }
 
 .no_lists {

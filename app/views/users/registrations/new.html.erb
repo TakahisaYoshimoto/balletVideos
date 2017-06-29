@@ -1,4 +1,6 @@
-<h1>ユーザー登録</h1>
+<div class="title_words">
+  <h1>ユーザー登録</h1>
+</div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <span style="color:red;"><%= devise_error_messages! %></span>
@@ -39,7 +41,7 @@
       <%= f.check_box :acceptance, { class: 'checker_class'}, 'true', 'false' %>
       <span class="check">
       </span>
-      <p class="check_text" style="display:inline-block">運営からのお知らせメールを受け取る</p>
+      <p class="check_text user_check_text" style="display:inline-block">運営からのお知らせメールを受け取る</p>
     </label>
   </div>
 
@@ -48,7 +50,7 @@
       <%= f.check_box :notice_email, {class: 'checker_class'}, 'true', 'false' %>
       <span class="check">
       </span>
-      <p class="check_text" style="display:inline-block">通知メールを受信する</p>
+      <p class="check_text user_check_text" style="display:inline-block">通知メールを受信する</p>
     </label>
   </div>
 
@@ -64,7 +66,7 @@
       <%= f.check_box :rule_confirmed, {class: 'checker_class'}, 'true', 'false' %>
       <span class="check">
       </span>
-      <p class="check_text" style="display:inline-block">利用規約に同意する</p>
+      <p class="check_text user_check_text" style="display:inline-block">利用規約に同意する</p>
     </label>
   </div>
 

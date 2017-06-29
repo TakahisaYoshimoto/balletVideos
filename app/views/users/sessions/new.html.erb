@@ -1,4 +1,6 @@
-<h1>ログイン</h1>
+<div class="title_words">
+  <h1>ログイン</h1>
+</div>
 
 <% if notice %>
   <p class="alert alert-notice"><%= notice %></p>
@@ -30,7 +32,7 @@
   <% end -%>
 
   <div class="actions form-group">
-    <%= f.submit "ログイン", class: 'btn btn-default' %>
+    <%= f.submit "ログイン", class: 'btn btn-default login-btn' %>
   </div>
 <% end %>
 
