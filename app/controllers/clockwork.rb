@@ -8,8 +8,18 @@ require File.expand_path('../../../config/environment', __FILE__)
       d = Date.today
       t = Time.now
 
+      if (d.wday == 0 || d.wday == 5)
+        p '1'
+      end
+      if (t.hour > 1)
+        p '2'
+      end
+      if (lastsend != d.day)
+        p '3'
+      end
+
       #火曜日か金曜日で、１８時以降で、今日メールを送っていなかったら、メールを送る
-      if (d.wday == 2 || d.wday == 5) && (t.hour > 17) && (lastsend != d.day)
+      if (d.wday == 0 || d.wday == 5) && (t.hour > 1) && (lastsend != d.day)
         #メールを受信する設定にしているユーザーの一覧を取得
         users = User.where('acceptance = ?', true)
 
