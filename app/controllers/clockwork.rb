@@ -78,6 +78,6 @@ require File.expand_path('../../../config/environment', __FILE__)
       end
     end
 
-    every(15.seconds, 'frequent.job')
-    #every(1.minutes, 'sendmail')
+    #every(15.seconds, 'frequent.job')
+    every(3.minutes, 'sendmail')
   end
