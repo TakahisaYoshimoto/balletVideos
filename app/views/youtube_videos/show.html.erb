@@ -91,7 +91,7 @@
 <div class="col-xs-12">
   <p class="related_videos">関連動画</p>
   <div class="col-xs-12 row-eq-height" style="padding: 0;">
-    <% @relatedVideos.each do |rv| %>
+    <% @relatedVideos.each.with_index(1) do |rv, i| %>
       <%= link_to youtube_video_path(rv), class: 'videolists_link col-xs-12 col-sm-3 row-eq-height', style: 'margin-bottom:10px;' do %>
         <div class="y_video_img_area col-xs-5 col-sm-12" style="padding: 0;">
           <div class="y_video_img">
