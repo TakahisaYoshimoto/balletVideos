@@ -97,7 +97,7 @@
             <ul class="nav navbar-nav navbar-right">
               <li class="nav-divider"></li>
               <% if user_signed_in? %>
-                <li class="nav-mypage">
+                <li class="nav-mypage mypage_icon_nav">
                   <%= link_to(profile_path(current_user.id)) do %>
                     <span class="icon icon-mypage"  style="font-size:24px;margin-right:0;color:#FFF">
                     </span>
@@ -106,7 +106,7 @@
                     </p>
                   <% end %>
                 </li>
-                <li class="nav-logout">
+                <li class="nav-logout logout_icon_nav">
                   <%= link_to(destroy_user_session_path, method: :delete) do %>
                     <span class="icon icon-login"  style="font-size:24px;margin-right:0;color:#FFF">
                     </span>
@@ -118,14 +118,14 @@
               <% else %>
                 <li class="nav-user-reg">
                   <%= link_to(new_user_registration_path) do %>
-                    <span class="icon icon-mypage"  style="font-size:24px;margin-right:0;color:#FFF">
+                    <span class="icon icon-mypage mypage_icon_nav"  style="font-size:24px;margin-right:0;color:#FFF">
                     </span>
                     <p>
                     ユーザー登録
                     </p>
                   <% end %>
                 </li>
-                <li class="nav-login">
+                <li class="nav-login logout_icon_nav">
                   <%= link_to(new_user_session_path) do %>
                     <span class="icon icon-login" style="font-size:24px;margin-right:0;color:#FFF">
                     </span>

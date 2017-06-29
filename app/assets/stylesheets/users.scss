@@ -1,3 +1,7 @@
+.title_words {
+  margin-bottom:30px;
+}
+
 .user_error_msg p {
   color: red;
 }
@@ -23,24 +27,29 @@
   margin: 0 0 15px 0;
 }
 
+.sign_up_link a, .forget_password_link a, .remail_link a {
+  text-decoration: underline;
+}
+
 .sign_up_link a:hover {
-  text-decoration: none;
+  /*text-decoration: none;*/
   color:black;
 }
 
 .forget_password_link a:hover {
-  text-decoration: none;
+  /*text-decoration: none;*/
   color:black;
 }
 
 .remail_link a:hover {
-  text-decoration: none;
+  /*text-decoration: none;*/
   color:black;
 }
 
 /*form*/
 .form-control-origin:focus {
-  border-color:#FF6D8F;
+  border-color: #FF6D8F;
+  border-color: pink;
   border: 3px solid black;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }
@@ -145,7 +154,7 @@
 #user_edit_submit_area input {
   margin-top: 20px;
   margin-left:20px;
-  border: 1px solid black;
+  border: 2px solid black;
   padding: 15px 20px 15px 20px;
   color: black;
   display: inline-block;
@@ -223,6 +232,17 @@
   }
 }
 
+.terms_title h3{
+  font-size: 20px;
+}
+  @media screen and (max-width:767px) {
+    .terms_title h3{
+      font-size: 18px;
+      margin-left:10px;
+    }
+}
+
+
 @media screen and (max-width:767px) {
   .terms_title {
   font-size:18px;
@@ -233,10 +253,20 @@
   height:300px;
   overflow: auto;
   border: 1px solid gray;
-  padding-right:13px;
-  margin-left:10px;
-  margin-right:10px;
+  padding:15px;
 }
+  @media screen and (max-width:767px) {
+    .user_reg_terms{
+      height:300px;
+      overflow: auto;
+      border: 1px solid gray;
+      padding:10px;
+      margin-left:10px;
+      margin-right:10px;
+  }
+}
+
+
 
 @media screen and (max-width:767px) {
 .user_error_msg {
@@ -304,6 +334,10 @@
   padding-top:5px;
   margin-top:5px;
   margin-bottom:0;
+}
+
+.user_check_text {
+  color:black;
 }
 
 /* チェックボックス周辺の見た目調整 */

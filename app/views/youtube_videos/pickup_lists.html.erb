@@ -1,13 +1,13 @@
 <% @youtubes.each do |youtube| %>
   <div class="col-xs-12 row-eq-height" style="padding:10px;">
     <div class="y_video_img_area col-sm-3" style="padding: 0;">
-      <div class="y_video_img">
+      <div class="y_video_img ">
         <% url = youtube.url.gsub(/http.+v=/, "") %>
         <% url = url.gsub(/&.+./, "") %>
         <%= image_tag('https://i.ytimg.com/vi/' + url + '/mqdefault.jpg',
           width: '100%',
-          class: 'bits_index_link_img') %>
-        <div class="y_video_img_video_time">
+          class: 'bits_index_link_img bits_index_link_img_mag') %>
+        <div class="y_video_img_video_time y_video_img_video_time_mag">
           <%= youtube.video_time %>
         </div>
       </div>
