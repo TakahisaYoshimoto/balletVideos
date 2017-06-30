@@ -39,8 +39,8 @@
           <div style="display: inline-block;margin-right:10px;">
             <%= link_to "##{tag.name}", { controller: :bits, action: :Search, search_params: tag.name } %>
           </div>
-        </div>
         <% end -%>
+        </div>
         <div class="make_border_3"></div>
 
         <div id="video_show_button_area">
@@ -90,25 +90,25 @@
 
 <div class="col-xs-12">
   <p class="related_videos">関連動画</p>
+  <%= i = 0 %>
   <div class="col-xs-12 row-eq-height" style="padding: 0;">
-    <% @relatedVideos.each.with_index(1) do |rv, i| %>
-
+    <% @relatedVideos.each do |rv| %>
+      <% i = i + 1 %>
       <% if i == 9 %>
-        <%# 広告エリア %>
-        <div class="col-xs-12 hidden-sm hidden-md hidden-lg" style="text-align:center;padding-bottom:15px;overflow: visible;margin-left: -15px;">
-          <!--  ad tags Size: 320x100 ZoneId:1175806-->
-          <script type="text/javascript" src="https://js.medi-8.net/t/175/806/a1175806.js"></script>
-        </div>
-        <div class="hidden-xs col-sm-12 col-md-12 hidden-lg" style="text-align:center;padding-bottom:15px;">
-          <!--  ad tags Size: 468x60 ZoneId:1175768-->
-          <script type="text/javascript" src="https://js.medi-8.net/t/175/768/a1175768.js"></script>
-        </div>
-        <div class="visible-lg col-lg-12" style="text-align:center;padding-bottom:15px;">
-          <!--  ad tags Size: 728x90 ZoneId:1175732-->
-          <script type="text/javascript" src="https://js.medi-8.net/t/175/732/a1175732.js"></script>
-        </div>
-      <% end %>
-
+      <%# 広告エリア %>
+      <div class="col-xs-12 hidden-sm hidden-md hidden-lg" style="text-align:center;padding-bottom:15px;overflow: visible;margin-left: -15px;">
+        <!--  ad tags Size: 320x100 ZoneId:1175806-->
+        <script type="text/javascript" src="https://js.medi-8.net/t/175/806/a1175806.js"></script>
+      </div>
+      <div class="hidden-xs col-sm-12 col-md-12 hidden-lg" style="text-align:center;padding-bottom:15px;">
+        <!--  ad tags Size: 468x60 ZoneId:1175768-->
+        <script type="text/javascript" src="https://js.medi-8.net/t/175/768/a1175768.js"></script>
+      </div>
+      <div class="visible-lg col-lg-12" style="text-align:center;padding-bottom:15px;">
+        <!--  ad tags Size: 728x90 ZoneId:1175732-->
+        <script type="text/javascript" src="https://js.medi-8.net/t/175/732/a1175732.js"></script>
+      </div>
+    <% end %>
       <%= link_to youtube_video_path(rv), class: 'videolists_link col-xs-12 col-sm-3 row-eq-height', style: 'margin-bottom:10px;' do %>
         <div class="y_video_img_area col-xs-5 col-sm-12" style="padding: 0;">
           <div class="y_video_img">
@@ -136,6 +136,23 @@
     <%# 関連動画が20個以下の時、PV数が多い順に20個になるまで表示する %>
     <% if @popularVideos.present? %>
       <% @popularVideos.each do |rv| %>
+      <% i = i + 1 %>
+      <% if i == 9 %>
+      <%# 広告エリア %>
+      <div class="col-xs-12 hidden-sm hidden-md hidden-lg" style="text-align:center;padding-bottom:15px;overflow: visible;margin-left: -15px;">
+        <!--  ad tags Size: 320x100 ZoneId:1175806-->
+        <script type="text/javascript" src="https://js.medi-8.net/t/175/806/a1175806.js"></script>
+      </div>
+      <div class="hidden-xs col-sm-12 col-md-12 hidden-lg" style="text-align:center;padding-bottom:15px;">
+        <!--  ad tags Size: 468x60 ZoneId:1175768-->
+        <script type="text/javascript" src="https://js.medi-8.net/t/175/768/a1175768.js"></script>
+      </div>
+      <div class="visible-lg col-lg-12" style="text-align:center;padding-bottom:15px;">
+        <!--  ad tags Size: 728x90 ZoneId:1175732-->
+        <script type="text/javascript" src="https://js.medi-8.net/t/175/732/a1175732.js"></script>
+      </div>
+    <% end %>
+
         <%= link_to youtube_video_path(rv), class: 'videolists_link col-xs-12 col-sm-3 row-eq-height', style: 'margin-bottom:10px;' do %>
           <div class="y_video_img_area col-xs-5 col-sm-12" style="padding: 0;">
             <div class="y_video_img">
