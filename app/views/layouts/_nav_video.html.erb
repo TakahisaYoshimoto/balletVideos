@@ -60,10 +60,10 @@
         </div>
         <div class="nav_video_collapse_area_child_area">
           <div class="nav_video_collapse_area_child" style="display:block;">
-            <%= link_to 'グッドした動画', { :controller => '/bits', action: :like_videos, or: 'history' } %>
+            <%= link_to '視聴履歴', { :controller => '/bits', action: :view_histories, or: 'history' } %>
           </div>
           <div class="nav_video_collapse_area_child" style="display:block;">
-            <%= link_to '視聴履歴', { :controller => '/bits', action: :view_histories, or: 'history' } %>
+            <%= link_to 'お気に入り動画', { :controller => '/bits', action: :like_videos, or: 'history' } %>
           </div>
         </div>
       </div>
