@@ -17,6 +17,13 @@
         <%= link_to "##{tag.name}", { controller: :boards, action: :Search, search_params: tag.name } %>
       </div>
     <% end %>
+
+    <% if user_signed_in? %>
+      <% if current_user.user_level > 1 %>
+      <div class="delete-boards-comment col-xs-12">
+        <%= link_to '削除する', board_path(@board), method: :delete, data: { confirm: "削除してよろしいですか？" } %>
+      </div>
+    <% end %>
   </div>
 
   <div id="board_like_button_area" class="col-xs-12">
@@ -95,10 +102,4 @@
 
 <%= link_to_next_page @board_comments, 'もっと見る', remote: true, id: 'board_comments_more_link' %>
 
-<% if user_signed_in? %>
-  <% if current_user.user_level > 1 %>
-  <div class="delete-boards-comment col-xs-12">
-    <%= link_to '削除する', board_path(@board), method: :delete, data: { confirm: "削除してよろしいですか？" } %>
-  </div>
-  <% end %>
 <% end %>

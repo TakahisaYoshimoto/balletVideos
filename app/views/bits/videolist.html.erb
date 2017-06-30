@@ -164,12 +164,17 @@
   </div>
 <% else %>
   <% if (controller.controller_name == 'bits' && controller.action_name == 'view_histories') %>
-    <div class="no_lists">
+    <div class="no_lists_container">
       <span class="icon icon-main icon-video"></span>
+      <p class="no_list_title">これまで視聴した動画</p>
+    </div>
       <p>まだ動画をみていません。<br>たくさんの動画の中からお目当てのものを探してみましょう</p>
     </div>
   <% elsif (controller.controller_name == 'bits' && controller.action_name == 'like_videos') %>
-    <div class="no_lists">
+    <div class="no_lists_container">
+      <span class="icon icon-main icon-checked_video"></span>
+      <p class="no_list_title">お気に入りの動画</p>
+    </div>
       <p>まだ気になる動画はありません。<br>自分だけのお気に入りを探してみましょう。</p>
     </div>
   <% else %>
@@ -181,8 +186,13 @@
       <p>検索結果はありません。</p>
     </div>
   <% end %>
-  <div class="search_contents">
+  <div class="top_each_page_link_area col-xs-12">
+    <div class="top_each_page_link">
+      <%= link_to '→ 動画を探す', videotop_bits_path %>
+    </div>
+  </div>
+  <!-- <div class="search_contents">
     <span class="icon icon-main icon-video"></span>
     <%= link_to '動画を探す', videotop_bits_path %>
-  </div>
+  </div> -->
 <% end %>

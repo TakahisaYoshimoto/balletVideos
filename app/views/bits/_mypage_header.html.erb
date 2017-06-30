@@ -77,13 +77,13 @@
       <% if (controller.controller_name == 'bits' && controller.action_name == 'view_histories') %>
         <div id="mypage_header_view_history" class="mypage_header_active">
           <p>視聴履歴</p>
-          <span class="icon icon-mp icon-video"></span>
+          <span class="icon icon-mp icon-video mp-icon-table-a"></span>
         </div>
       <% else %>
         <div id="mypage_header_view_history" class="mypage_header_no_active">
           <%= link_to({ :controller => '/bits', action: :view_histories, or: 'history' }) do %>
             <p>視聴履歴</p>
-            <span class="icon icon-mp icon-video"></span>
+            <span class="icon icon-mp icon-video mp-icon-table-a"></span>
           <% end %>
         </div>
       <% end %>
@@ -91,13 +91,13 @@
       <% if (controller.controller_name == 'bits' && controller.action_name == 'like_videos') %>
         <div id="mypage_header_myfavorite" class="mypage_header_active">
           <p>お気に入り</p>
-          <span class="icon icon-mp icon-video"></span>
+          <span class="icon icon-mp icon-video mp-icon-table"></span>
         </div>
       <% else %>
         <div id="mypage_header_myfavorite" class="mypage_header_no_active">
           <%= link_to({ :controller => '/bits', action: :like_videos, or: 'history' }) do %>
             <p>お気に入り</p>
-            <span class="icon icon-mp icon-video"></span>
+            <span class="icon icon-mp icon-video mp-icon-table"></span>
           <% end %>
         </div>
       <% end %>
@@ -105,13 +105,13 @@
       <% if (controller.controller_name == 'boards' && controller.action_name == 'my_commented') %>
         <div id="mypage_header_comments" class="mypage_header_active">
           <p>コメント</p>
-          <span class="icon icon-mp icon-talk"></span>
+          <span class="icon icon-mp icon-talk mp-icon-table"></span>
         </div>
       <% else %>
         <div id="mypage_header_comments" class="mypage_header_no_active">
           <%= link_to(my_commented_boards_path) do  %>
             <p>コメント</p>
-            <span class="icon icon-mp icon-talk"></span>
+            <span class="icon icon-mp icon-talk mp-icon-table"></span>
           <% end %>
         </div>
       <% end %>
@@ -119,13 +119,13 @@
       <% if (controller.controller_name == 'boards' && controller.action_name == 'like_lists') %>
         <div id="mypage_header_board_like" class="mypage_header_active">
           <p>気になる</p>
-          <span class="icon icon-mp icon-talk"></span>
+          <span class="icon icon-mp icon-talk mp-icon-table"></span>
         </div>
       <% else %>
         <div id="mypage_header_board_like" class="mypage_header_no_active">
           <%= link_to(like_lists_boards_path) do %>
             <p>気になる</p>
-            <span class="icon icon-mp icon-talk"></span>
+            <span class="icon icon-mp icon-talk mp-icon-table"></span>
           <% end %>
         </div>
       <% end %>
@@ -133,13 +133,13 @@
       <% if (controller.controller_name == 'boards' && controller.action_name == 'my_posts') %>
         <div id="mypage_header_mytolkroom" class="mypage_header_active">
           <p>マイトークルーム</p>
-          <span class="icon icon-mp icon-talk"></span>
+          <span class="icon icon-mp icon-talk mp-icon-table"></span>
         </div>
       <% else %>
         <div id="mypage_header_mytolkroom" class="mypage_header_no_active">
           <%= link_to(my_posts_boards_path) do %>
             <p>マイトークルーム</p>
-            <span class="icon icon-mp icon-talk"></span>
+            <span class="icon icon-mp icon-talk mp-icon-table"></span>
           <% end %>
         </div>
       <% end %>
