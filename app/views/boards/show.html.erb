@@ -24,6 +24,7 @@
         <%= link_to '削除する', board_path(@board), method: :delete, data: { confirm: "削除してよろしいですか？" } %>
       </div>
     <% end %>
+<% end %>
   </div>
 
   <div id="board_like_button_area" class="col-xs-12">
@@ -101,5 +102,3 @@
 </div>
 
 <%= link_to_next_page @board_comments, 'もっと見る', remote: true, id: 'board_comments_more_link' %>
-
-<% end %>
