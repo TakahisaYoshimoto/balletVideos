@@ -19,27 +19,30 @@
         </h3>
       <% else %>
         <h3 class="search_words">
-          <span class="icon icon-search" style="margin-right:10px">
-          </span>
+          <span class="icon icon-search" style="margin-right:10px"></span>
           <%= @category_params %>
         </h3>
       <% end %>
-      <% elsif @category_params.present? && @genre.blank? %>
-        <h3 class="search_words">
-          <!-- <span class="icon icon-search" style="margin-right:10px"> -->
-          </span><%= @category_params %>
-        </h3>
-      <% elsif (controller.controller_name == 'bits' && controller.action_name == 'view_histories') %>
-        <div class="mypage_header_list hidden-sm hidden-xs">
-          <span class="icon icon-main icon-history_video icon-mypage-history"></span>
-          <p class="video-text">これまで視聴した動画</p>
-        </div>
-      <% elsif (controller.controller_name == 'bits' && controller.action_name == 'like_videos') %>
-        <div class="mypage_header_list hidden-sm hidden-xs">
-          <span class="icon icon-main icon-checked_video icon-mypage-checked-video"></span>
-          <p class="video-text">お気に入りの動画</p>
-        </div>
-      <% end %>
+    <% elsif @category_params.present? && @genre.blank? %>
+      <h3 class="search_words">
+        <%= @category_params %>
+      </h3>
+    <% elsif (controller.controller_name == 'bits' && controller.action_name == 'view_histories') %>
+      <div class="mypage_header_list hidden-sm hidden-xs">
+        <span class="icon icon-main icon-history_video icon-mypage-history"></span>
+        <p class="video-text">これまで視聴した動画</p>
+      </div>
+    <% elsif (controller.controller_name == 'bits' && controller.action_name == 'like_videos') %>
+      <div class="mypage_header_list hidden-sm hidden-xs">
+        <span class="icon icon-main icon-checked_video icon-mypage-checked-video"></span>
+        <p class="video-text">お気に入りの動画</p>
+      </div>
+    <% else %>
+      <h3 class="search_words">
+        <span class="icon icon-search" style="margin-right:10px"></span>
+        <%= @search_params %>
+      </h3>
+    <% end %>
   </div>
 
     <% unless @relation_tags.nil? %>
@@ -63,41 +66,34 @@
       </div>
     <% end %>
 
-    <div id="order_change">
-      <% if controller.action_name == 'view_histories' || controller.action_name == 'like_videos' %>
-        <% if /or=history/ =~ request.fullpath %>
-          <strong>視聴順</strong>|
-        <% else %>
-          <%= link_to_unless_current '視聴順', { controller: :bits,
+    <% unless controller.action_name == 'view_histories' || controller.action_name == 'like_videos' %>
+      <div id="order_change">
+        <% if /or=pv/ =~ request.fullpath %>
+          <strong>再生回数順</strong>|<%= link_to '新着順', { controller: :bits,
             action: controller.action_name,
-            or: 'history' } %>|
+            search_params: @genre,
+            category_params: @category_params,
+            or: 'time' } %>
+        <% elsif /or=time/ =~ request.fullpath %>
+          <%= link_to '再生回数順', { controller: :bits,
+            action: controller.action_name,
+            search_params: @genre,
+            category_params: @category_params,
+            or: 'pv' } %>|<strong>新着順</strong>
+        <% else %>
+          <%= link_to '再生回数順', { controller: :bits,
+            action: controller.action_name,
+            search_params: @genre,
+            category_params: @category_params,
+            or: 'pv' } %>|
+          <%= link_to '新着順', { controller: :bits,
+            action: controller.action_name,
+            search_params: @genre,
+            category_params: @category_params,
+            or: 'time' } %>
         <% end %>
-      <% end %>
-      <% if /or=pv/ =~ request.fullpath %>
-        <strong>再生回数順</strong>|<%= link_to '新着順', { controller: :bits,
-          action: controller.action_name,
-          search_params: @genre,
-          category_params: @category_params,
-          or: 'time' } %>
-      <% elsif /or=time/ =~ request.fullpath %>
-        <%= link_to '再生回数順', { controller: :bits,
-          action: controller.action_name,
-          search_params: @genre,
-          category_params: @category_params,
-          or: 'pv' } %>|<strong>新着順</strong>
-      <% else %>
-        <%= link_to '再生回数順', { controller: :bits,
-          action: controller.action_name,
-          search_params: @genre,
-          category_params: @category_params,
-          or: 'pv' } %>|
-        <%= link_to '新着順', { controller: :bits,
-          action: controller.action_name,
-          search_params: @genre,
-          category_params: @category_params,
-          or: 'time' } %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
 
     <div class="col-xs-12 row-eq-height" style="padding: 0;">
       <% @youtubes.each.with_index(1) do |youtube, i| %>
@@ -180,6 +176,14 @@
       <p class="no_list_title">お気に入りの動画</p>
     </div>
       <p>まだ気になる動画はありません。<br>自分だけのお気に入りを探してみましょう。</p>
+    </div>
+  <% else %>
+    <div class="container">
+      <h3 class="search_words">
+        <span class="icon icon-search" style="margin-right:10px"></span>
+        <%= @search_params %>
+      </h3>
+      <p>検索結果はありません。</p>
     </div>
   <% end %>
   <div class="top_each_page_link_area col-xs-12">

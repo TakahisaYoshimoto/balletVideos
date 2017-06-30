@@ -68,7 +68,7 @@ class BitsController < ApplicationController
       @youtubes = YoutubeVideo.joins(:likes).joins(:view_histories)
         .where("likes.user_id = ?", current_user.id)
         .page(params[:page])
-        .order('view_histories.updated_at desc')
+        .order('likes.created_at desc')
         .order(created_at: :desc)
     end
 
@@ -83,23 +83,10 @@ class BitsController < ApplicationController
       redirect_to new_user_session_path and return
     end
 
-    if params[:or] == "pv"
-      @youtubes = YoutubeVideo.joins(:view_histories)
-        .where("view_histories.user_id = ?", current_user.id)
-        .page(params[:page])
-        .order(pv_count: :desc)
-        .order(created_at: :desc)
-    elsif params[:or] == "time"
-      @youtubes = YoutubeVideo.joins(:view_histories)
-        .where("view_histories.user_id = ?", current_user.id)
-        .page(params[:page])
-        .order(created_at: :desc)
-    else
-      @youtubes = YoutubeVideo.joins(:view_histories)
-        .where("view_histories.user_id = ?", current_user.id)
-        .page(params[:page])
-        .order('view_histories.updated_at desc')
-    end
+    @youtubes = YoutubeVideo.joins(:view_histories)
+      .where("view_histories.user_id = ?", current_user.id)
+      .page(params[:page])
+      .order('view_histories.updated_at desc')
 
     @search_params = ""
     @genre = "視聴履歴"
