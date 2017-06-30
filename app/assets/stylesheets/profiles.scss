@@ -109,6 +109,15 @@
     }
   }
 
+.profile_left_area_picture img {
+  width:60%;
+}
+  @media screen and (max-width:991px) {
+    .profile_left_area_picture img {
+      width:70%;
+    }
+  }
+
 #profile_check_area p {
   font-size:12px;
 }
@@ -146,11 +155,11 @@
 
 
 .mypage-user-name {
-  margin-top:85px;
+  margin-top:60px;
 }
   @media screen and (max-width:991px) {
     .mypage-user-name {
-      margin-top:70px;
+      margin-top:40px;
     }
   }
   @media screen and (max-width:767px) {

@@ -8,12 +8,12 @@
           <div class="profile_left_area_picture col-sm-6 col-xs-12" style="text-align:center">
             <% if @user.picture_lg.present? %>
               <% if Rails.env == 'production' %>
-                <%= image_tag ENV['AWS_PICTURE_PATH']+"#{ @user.picture_lg }", width: '70%', id: 'profile_left_area_picture' %>
+                <%= image_tag ENV['AWS_PICTURE_PATH']+"#{ @user.picture_lg }", id: 'profile_left_area_picture' %>
               <% else %>
-                <%= image_tag "/docs/#{ @user.picture_lg }", width: '70%', id: 'profile_left_area_picture' %>
+                <%= image_tag "/docs/#{ @user.picture_lg }", id: 'profile_left_area_picture' %>
               <% end -%>
             <% else %>
-              <%= image_tag "no-picture-lg.gif", width: '70%', id: 'profile_left_area_picture' %>
+              <%= image_tag "no-picture-lg.gif", id: 'profile_left_area_picture' %>
             <% end %>
           </div>
           <div class="profile_left_area_name col-sm-6 col-xs-12">
