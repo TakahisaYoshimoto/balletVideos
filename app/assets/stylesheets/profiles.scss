@@ -146,7 +146,7 @@
 
 
 .mypage-user-name {
-  margin-top:110px;
+  margin-top:85px;
 }
   @media screen and (max-width:991px) {
     .mypage-user-name {
@@ -161,9 +161,16 @@
 
 #profile_right_area {
   min-height:50px;
+  padding-top: 10px;
+  padding-bottom:10px;
 }
-  @media screen and (max-width:767px) {
-    #profile_right_area {
-      padding-top:15px;
-    }
+
+@media screen and (max-width:767px) {
+  .profile_left_area_name {
+    text-align: center;
   }
+
+  .profile_left_area_name p {
+    margin-bottom:20px;
+  }
+}
