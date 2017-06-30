@@ -1,56 +1,6 @@
 <%= render '/bits/mypage_header' %>
 
 <div id="profile_area" class="col-xs-12" style="padding:0;">
-
-<!--
-  <div class="profile_area_xs col-xs-12 hidden-sm hidden-sm hidden-lg">
-    <div class="profile_left_area_picture" style="text-align:center">
-      <% if @user.picture_lg.present? %>
-        <% if Rails.env == 'production' %>
-          <%= image_tag ENV['AWS_PICTURE_PATH']+"#{ @user.picture_lg }", width: '80%', id: 'profile_left_area_picture' %>
-        <% else %>
-          <%= image_tag "/docs/#{ @user.picture_lg }", width: '80%', width: '80%', id: 'profile_left_area_picture' %>
-        <% end -%>
-      <% else %>
-        <%= image_tag "no-picture-lg.gif", width: '80%', width: '80%', id: 'profile_left_area_picture' %>
-      <% end %>
-    </div>
-    <div class="profile_left_area_name col-xs-12">
-      <p class="mypage-user-name col-xs-12" style="font-weight:bold;"><%= @user.username %> さん</p>
-    </div>
-
-    <% if user_signed_in? %>
-      <% if current_user.id == @user.id %>
-        <div id="profile_email_area" class="col-xs-12">
-          <p><%= @user.email %></p>
-        </div>
-        <div id="profile_check_area" class="col-xs-12">
-          <% if @user.acceptance %>
-            <p>運営からのお知らせメールを受け取る</p>
-          <% else %>
-            <p>運営からのお知らせメールを受け取らない</p>
-          <% end %>
-          <% if @user.notice_email %>
-            <p>コメントへのアクション通知を受け取る</p>
-          <% else %>
-            <p>コメントへのアクション通知を受け取らない</p>
-          <% end %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-
-  <div id="profile_right_area" class="col-xs-12 hidden-sm hidden-sm hidden-lg">
-    <% if @user.profile.present? %>
-      <%= simple_format(@user.profile) %>
-    <% else %>
-      <p>自己紹介が登録されていません</p>
-    <% end %>
-  </div>
-
--->
-
-
   <div class="profile_area">
     <table>
       <tr>
@@ -102,6 +52,10 @@
     </table>
   </div>
 
-<div id="profile_area_edit_link_area" class="col-xs-12">
-  <%= link_to 'プロフィールを編集する', edit_user_registration_path, id: 'profile_area_edit_link' %>
-</div>
+<% if user_signed_in? %>
+  <% if current_user.id == @user.id %>
+    <div id="profile_area_edit_link_area" class="col-xs-12">
+      <%= link_to 'プロフィールを編集する', edit_user_registration_path, id: 'profile_area_edit_link' %>
+    </div>
+  <% end %>
+<% end %>
