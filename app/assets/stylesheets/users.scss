@@ -8,13 +8,19 @@
 
 #profile_text_area {
   height: 250px;
-  width: 100%;
+  max-width: 100%;
 }
-@media screen and (min-width: 768px) {
-  #profile_text_area {
-    height: 350px;
+  @media screen and (min-width: 768px) {
+    #profile_text_area {
+      height: 350px;
+    }
   }
-}
+  @media screen and (max-width: 767px) {
+    #profile_text_area {
+      max-width: 330px;
+    }
+  }
+
 #profile_text_area::-webkit-input-placeholder::after {
  display:block;
  content:"Second line \a Third line";

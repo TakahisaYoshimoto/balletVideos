@@ -99,7 +99,7 @@
               <% if user_signed_in? %>
                 <li class="nav-mypage mypage_icon_nav">
                   <%= link_to(profile_path(current_user.id)) do %>
-                    <span class="icon icon-mypage"  style="font-size:24px;margin-right:0;color:#FFF">
+                    <span class="icon icon-mypage icon-mypage-logo"  style="font-size:24px;margin-right:0;color:#FFF">
                     </span>
                     <p>
                     マイページ
@@ -118,7 +118,7 @@
               <% else %>
                 <li class="nav-user-reg">
                   <%= link_to(new_user_registration_path) do %>
-                    <span class="icon icon-mypage mypage_icon_nav"  style="font-size:24px;margin-right:0;color:#FFF">
+                    <span class="icon icon-mypage mypage_icon_nav icon-mypage-logo"  style="font-size:24px;margin-right:0;color:#FFF">
                     </span>
                     <p>
                     ユーザー登録
