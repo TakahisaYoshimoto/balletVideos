@@ -1,20 +1,25 @@
-【タイトル（件名）】　◯◯さん、おすすめの動画やトークが多数掲載されています！
-いつもビットのご利用ありがとうございます。
-最近の気になる動画やトークをお届けします。
-———————————
-◇動画
-<% @youtubes.each do |youtube| %>
-  タイトル:<%= truncate(youtube.title, length: 60) %>
-  コメント:<%= truncate(youtube.text, length: 60) %>
-  URL:<%= youtube_video_url(youtube.id) %>
-  ———————————
+<%= @username %>さん、おすすめの動画やトークが多数掲載されています！
 
+いつもビットのご利用ありがとうございます。
+最近人気の動画やトーク情報をお届けします。
+
+◆動画◆
+
+  ———————————
+<% @youtubes.each do |youtube| %>
+【タイトル】<%= truncate(youtube.title, length: 25) %>
+【詳細】<%= truncate(youtube.text, length: 25) %>
+【ＵＲＬ】<%= youtube_video_url(youtube.id) %>
+  ———————————
 <% end %>
-◇トーク
+
+◆トーク◆
+
+  ———————————
 <% @boards.each do |board| %>
-  タイトル:<%= truncate(board.title, length: 60) %>
-  内容:<%= truncate(@master_comments[board.id], length: 60) %>
-  URL:<%= board_url(board.id) %>
+【タイトル】<%= truncate(board.title, length: 25) %>
+【コメント】<%= truncate(@master_comments[board.id], length: 25) %>
+【ＵＲＬ】<%= board_url(board.id) %>
   ———————————
 
 <% end %>
@@ -28,12 +33,14 @@ https://www.bit-ballet.com/videotop
 ◆新着トークの一覧◆
 https://www.bit-ballet.com/boards
 
+
 2017年7月よりトークを開設しました。
 バレエダンサーの悩みや質問を他のユーザーと共有しましょう。
 ※このメールは送信専用のため、このメールに返信をされてもお答えできませんのでご了承ください。
 ・お問い合わせは下記アドレスよりお願いします。
 ・メールマガジンの変更・解除は「マイページ」＞「プロフィール変更」から「運営局からのお知らせを受け取る」のチェックを外してください。
-----------------------------------------------------------------------
+
+---------------------------------
 ━━━━━━━━━━━━━━
 　◆お問い合わせ◆
 ━━━━━━━━━━━━━━
@@ -41,4 +48,4 @@ https://www.bit-ballet.com/boards
 株式会社GORIGORI　ビット運営事務局
 URL：https://www.bit-ballet.com
 お問い合わせ先：support@bit-ballet.com
-----------------------------------------------------------------------
+---------------------------------
