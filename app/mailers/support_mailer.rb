@@ -23,10 +23,11 @@ class SupportMailer < ApplicationMailer
     mail(to: @board.user.email, from: ENV['EMAIL_ADDRESS'], subject: 'あなたのトークルームにコメントがつきました。')
   end
 
-  def sendmail_periodic_notification(user, youtubes, boards, master_comments)
+  def sendmail_periodic_notification(useremail, youtubes, boards, master_comments, username)
     @youtubes = youtubes
     @boards = boards
     @master_comments = master_comments
-    mail(to: user, from: ENV['EMAIL_ADDRESS'], subject: 'Bit新着情報配信メール')
+    @username = username
+    mail(to: useremail, from: ENV['EMAIL_ADDRESS'], subject: 'Bit新着情報配信メール')
   end
 end
