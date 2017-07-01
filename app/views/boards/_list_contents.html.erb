@@ -1,23 +1,19 @@
 <% boards.each.with_index(1) do |board, i| %>
 
 <% if i == 5 %>
-<%# 広告エリア %>
+<%# col-xs広告エリア %>
   <div class="col-xs-12 hidden-sm hidden-md hidden-lg" style="text-align:center;padding-bottom:15px;overflow: visible;margin-left: -15px;">
     <!--  ad tags Size: 320x100 ZoneId:1175812-->
     <script type="text/javascript" src="https://js.medi-8.net/t/175/812/a1175812.js"></script>
   </div>
-<% end %>
-
-<% if i == 10 %>
-<%# 広告エリア %>
+  <% elsif i == 10 %>
+  <%# col-xs広告エリア %>
   <div class="col-xs-12 hidden-sm hidden-md hidden-lg" style="text-align:center;padding-bottom:15px;overflow: visible;margin-left: -15px;">
     <!--  ad tags Size: 320x100 ZoneId:1175813-->
     <script type="text/javascript" src="https://js.medi-8.net/t/175/813/a1175813.js"></script>
   </div>
-<% end %>
-
-<% if i == 7 %>
-<%# 広告エリア %>
+  <% elsif i == 7 %>
+  <%# col-sm以上広告エリア %>
   <div class="hidden-xs col-sm-12 col-md-12 hidden-lg" style="text-align:center;padding-bottom:15px;">
     <!--  ad tags Size: 468x60 ZoneId:1175798-->
     <script type="text/javascript" src="https://js.medi-8.net/t/175/798/a1175798.js"></script>
@@ -26,10 +22,8 @@
     <!--  ad tags Size: 728x90 ZoneId:1175748-->
     <script type="text/javascript" src="https://js.medi-8.net/t/175/748/a1175748.js"></script>
   </div>
-<% end %>
-
-<% if i == 13 %>
-<%# 広告エリア %>
+  <% elsif i == 13 %>
+  <%# col-sm以上広告エリア %>
   <div class="hidden-xs col-sm-12 col-md-12 hidden-lg" style="text-align:center;padding-bottom:15px;">
     <!--  ad tags Size: 468x60 ZoneId:1175799-->
     <script type="text/javascript" src="https://js.medi-8.net/t/175/799/a1175799.js"></script>
