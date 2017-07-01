@@ -8,7 +8,7 @@
 <% @youtubes.each do |youtube| %>
 【タイトル】<%= truncate(youtube.title, length: 25) %>
 【詳細】<%= truncate(youtube.text, length: 25) %>
-【ＵＲＬ】<%= youtube_video_url(youtube.id) %>
+【URL】<%= youtube_video_url(youtube.id) %>
   ———————————
 <% end %>
 
@@ -17,11 +17,10 @@
 <% @boards.each do |board| %>
 【タイトル】<%= truncate(board.title, length: 25) %>
 【コメント】<%= truncate(@master_comments[board.id], length: 25) %>
-【ＵＲＬ】<%= board_url(board.id) %>
+【URL】<%= board_url(board.id) %>
   ———————————
 
 <% end %>
-
 
 トークではバレエダンサー同士で交流をすることができます。
 多くのバレエダンサーと繋がり、バレエをもっと楽しみましょう！
