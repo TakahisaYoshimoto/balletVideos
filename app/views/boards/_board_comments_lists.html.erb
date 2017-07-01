@@ -44,8 +44,8 @@
         <%# ログインしてても管理者じゃない場合、非表示 %>
 
         <div class="board_comments_login col-xs-12">
-          <div class="col-sm-2 col-xs-3">
-            <%= image_tag("no-picture-min.gif") %>
+          <div class="board_comments_no_pic_area col-sm-2 col-xs-3">
+            <%= image_tag("no-picture-min.gif") %>         
           </div>
           <div class="board_comments_text_area_reject col-sm-10 col-xs-9">
             <p style="font-size:12px;color:gray;">非表示コメントです</p>
@@ -55,7 +55,7 @@
       <% else %>
       <%# ログインしてない場合非表示 %>
         <div class="board_comments_nologin col-xs-12">
-          <div class="col-sm-2 col-xs-3">
+          <div class="board_comments_no_pic_area col-sm-2 col-xs-3">
             <%= image_tag("no-picture-min.gif") %>
           </div>
         <div class="board_comments_text_area_reject col-sm-10 col-xs-9">
