@@ -127,6 +127,42 @@
   }
 }
 
+#user_edit_profile_picture {
+  border-radius: 100%;
+  margin-top:0px;
+  margin-bottom:20px;
+}
+  @media screen and (max-width:767px) {
+    #user_edit_profile_picture {
+      width: 120px;
+      height:120px;
+      border-radius: 100%;
+      margin-top:10px;
+      margin-bottom:25px;
+    }
+  }
+
+  #user_edit_left_area {
+    border: 2px solid black;
+    vertical-align: top;
+    padding-top:40px;
+    background: black;
+  }
+    @media screen and (max-width:767px) {
+      #user_edit_left_area {
+        padding-top:30px;
+      }
+    }
+
+#user_edit_profile_picture img {
+  width:35%;
+}
+  @media screen and (max-width:991px) {
+    #user_edit_profile_picture img {
+      width:70%;
+    }
+  }
+
 @media screen and (max-width:767px) {
   #user_edit_picture_link {
     text-align:center;
