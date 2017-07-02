@@ -177,9 +177,12 @@
       <p>まだ気になる動画はありません。<br>自分だけのお気に入りを探してみましょう。</p>
     </div>
   <% else %>
-    <div class="container">
+    <div id="y_videolist_breadcrumb" class="container">
       <h3 class="search_words">
         <span class="icon icon-search" style="margin-right:10px"></span>
+        <% if @category_params.present? && @genre.present? %>
+          <%= link_to @category_params, { controller: :bits, action: :genreSearch, search_params: @category_params, or: 'pv' } %> >
+        <% end %>
         <%= @search_params %>
       </h3>
       <p>検索結果はありません。</p>
