@@ -42,6 +42,7 @@ class ApplicationController < ActionController::Base
       if (request.fullpath != "/users/sign_in" &&
           request.fullpath != "/users/sign_up" &&
           request.fullpath != "/users/password" &&
+          request.fullpath.include?("confirmation") == false &&
           request.fullpath !~ Regexp.new("\\A/users/password.*\\z") &&
           !request.xhr?)
         session[:previous_url] = request.fullpath
