@@ -6,13 +6,13 @@
     <!--  ad tags Size: 320x100 ZoneId:1175812-->
     <script type="text/javascript" src="https://js.medi-8.net/t/175/812/a1175812.js"></script>
   </div>
-  <% elsif i == 10 %>
+<% elsif i == 10 %>
   <%# col-xs広告エリア %>
   <div class="col-xs-12 hidden-sm hidden-md hidden-lg" style="text-align:center;padding-bottom:15px;overflow: visible;margin-left: -15px;">
     <!--  ad tags Size: 320x100 ZoneId:1175813-->
     <script type="text/javascript" src="https://js.medi-8.net/t/175/813/a1175813.js"></script>
   </div>
-  <% elsif i == 7 %>
+<% elsif i == 7 %>
   <%# col-sm以上広告エリア %>
   <div class="hidden-xs col-sm-12 col-md-12 hidden-lg" style="text-align:center;padding-bottom:15px;">
     <!--  ad tags Size: 468x60 ZoneId:1175798-->
@@ -22,7 +22,7 @@
     <!--  ad tags Size: 728x90 ZoneId:1175748-->
     <script type="text/javascript" src="https://js.medi-8.net/t/175/748/a1175748.js"></script>
   </div>
-  <% elsif i == 13 %>
+<% elsif i == 13 %>
   <%# col-sm以上広告エリア %>
   <div class="hidden-xs col-sm-12 col-md-12 hidden-lg" style="text-align:center;padding-bottom:15px;">
     <!--  ad tags Size: 468x60 ZoneId:1175799-->
@@ -34,9 +34,12 @@
   </div>
 <% end %>
 
-  <% if i > 8 %>
-    <div class="sm-display-none">
+  <%if controller.controller_name == 'boards' && controller.action_name == 'index' %>
+    <% if i > 8 %>
+      <div class="sm-display-none">
+    <% end %>
   <% end %>
+
   <%= link_to board_path(board) do %>
     <div class="community_index_board col-xs-12 col-sm-6 original-col-md-4">
       <div class="community_index_board_child">
@@ -73,7 +76,10 @@
       </div>
     </div>
   <% end %>
-  <% if i > 8 %>
-    </div>
+
+  <%if controller.controller_name == 'boards' && controller.action_name == 'index' %>
+    <% if i > 8 %>
+      </div>
+    <% end %>
   <% end %>
 <% end %>
