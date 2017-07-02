@@ -818,20 +818,28 @@ text-decoration: none;
 .board_comments_login img,.board_comments_nologin img {
   border-radius: 100%;
   width:70px;
-  margin-left:12px;
 }
   @media screen and(max-width: 767px) {
     .board_comments_login img, .board_comments_nologin img{
       border-radius: 100%;
-      width:50px;
-      margin-top:5px;
+      width:60px;
+      margin-top:0px;
       margin-bottom:0px;
-      margin-left:0px;
     }
   }
-  @media screen and(max-width: 991px) {
-    .board_comments_login img, .board_comments_nologin img{
-      margin-left:0px;
+
+.board_comments_no_pic_area {
+  padding-left:0px !important;
+  text-align:center;
+}
+.board_comments_no_pic_area img{
+  border-radius: 100%;
+  width:60px;
+}
+
+  @media screen and(max-width: 767px) {
+    .board_comments_no_pic_area img{
+      width:55px;
     }
   }
 
