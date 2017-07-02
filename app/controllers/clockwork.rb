@@ -62,7 +62,7 @@ require File.expand_path('../../../config/environment', __FILE__)
         end
         #メールする
         users.each do |user|
-          @mail = SupportMailer.sendmail_periodic_notification(user.email, youtubes, boards, master_comments,user.name)
+          @mail = SupportMailer.sendmail_periodic_notification(user.email, youtubes, boards, master_comments,user.username)
             .deliver
         end
 
@@ -78,6 +78,6 @@ require File.expand_path('../../../config/environment', __FILE__)
       end
     end
 
-    every(15.seconds, 'frequent.job')
-    #every(1.minutes, 'sendmail')
+    #every(15.seconds, 'frequent.job')
+    every(3.minutes, 'sendmail')
   end

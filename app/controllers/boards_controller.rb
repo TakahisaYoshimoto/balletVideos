@@ -13,7 +13,7 @@ class BoardsController < ApplicationController
   end
 
   def new_lists
-    @boards = Board.all.order('created_at desc').page(params[:page]).per(24).includes(:user)
+    @boards = Board.all.order('created_at desc').page(params[:page]).per(24).includes(:user).includes(:board_tags)
     render '/boards/lists'
   end
 
@@ -52,7 +52,7 @@ class BoardsController < ApplicationController
       redirect_to new_user_session_path and return
     end
 
-    @boards = Board.where(user_id: current_user.id).page(params[:page]).includes(:user)
+    @boards = Board.where(user_id: current_user.id).page(params[:page]).includes(:user).includes(:board_tags)
 
     render '/boards/lists'
   end
