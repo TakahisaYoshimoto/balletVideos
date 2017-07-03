@@ -1,5 +1,5 @@
 class BoardCommentsController < ApplicationController
-  before_action :set_board_comment, only: [:destroy]
+  before_action :set_board_comment, only: [:edit, :update, :destroy]
 
   def create
     if user_signed_in?
@@ -21,6 +21,17 @@ class BoardCommentsController < ApplicationController
       end
     end
     #redirect_to board_path(@board_comment.board_id) and return
+  end
+
+  def edit
+  end
+
+  def update
+    if @board_comment.update(board_comment_params)
+      redirect_to board_path(@board_comment.board_id)
+    else
+      render 'edit'
+    end 
   end
 
   def destroy

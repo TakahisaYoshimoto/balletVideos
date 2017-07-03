@@ -141,11 +141,17 @@ class BoardsController < ApplicationController
   end
 
   def edit
+    unless user_signed_in?
+      redirect_to new_user_session_path and return
+    end
+
+    @board_comment = BoardComment.where(board_id: @board.id).order('created_at asc').first
+    @board.board_tags.build
   end
 
   def destroy
     redirect_to root_path and return if user_level_check(2)
-    @board.destroy
+    #@board.destroy
     redirect_to boards_path
   end
 
