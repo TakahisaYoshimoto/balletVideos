@@ -17,7 +17,7 @@
             <% end %>
           </div>
           <div class="profile_left_area_name col-sm-6 col-xs-12">
-            <p class="mypage-user-name" style="font-weight:bold;"><%= @user.username %>さん</p>
+            <p class="mypage-user-name" style="font-weight:bold;"><%= @user.username %><% if @user.user_level == 1 %>さん<% end %></p>
           </div>
 
           <% if user_signed_in? %>

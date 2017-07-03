@@ -5,7 +5,7 @@
 
   <div id="board_show_top_pic" class="col-xs-3">
     <%= render 'profile_picture_lists', i: @master_comment %>
-    <p style="margin-top:10px;margin-bottom:5px;color:gray;"><%= @master_comment.user.username %>さん</p>
+    <p style="margin-top:10px;margin-bottom:5px;color:gray;"><%= @master_comment.user.username %><% if @master_comment.user.user_level == 1 %>さん<% end %></p>
     <p><%= @master_comment.created_at.strftime('%Y/%m/%d %H:%M') %></p>
   </div>
   <div id="board_show_top_text" class="col-xs-9">
@@ -46,7 +46,7 @@
           <% else %>
             <%= link_to image_tag("no-picture-min.gif"), profile_path(@user) %>
           <% end %>
-          <p style="color:gray;"><%= @user.username %>さん</p>
+          <p style="color:gray;"><%= @user.username %><% if @user.user_level == 1 %>さん<% end %></p>
         </div>
         <div class="form-group col-sm-10 col-xs-9">
           <%= f.text_area :text,

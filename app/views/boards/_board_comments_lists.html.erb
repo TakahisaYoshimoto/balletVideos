@@ -8,7 +8,7 @@
     <% end %>
       <div class="board_comments_pic_area col-sm-2 col-xs-3">
         <%= render 'profile_picture_lists', i: bc %>
-        <p style="color:gray;"><%= bc.user.username %>さん</p>
+        <p style="color:gray;"><%= bc.user.username %><% if bc.user.user_level == 1 %>さん<% end %></p>
       </div>
       <div class="board_comments_text_area col-sm-10 col-xs-9">
         <%= bc.created_at.strftime('%Y/%m/%d/ %H:%M') %>
@@ -31,7 +31,7 @@
         <% end %>
         <div class="board_comments_pic_area col-sm-2 col-xs-3">
           <%= render 'profile_picture_lists', i: bc %>
-          <p style="color:gray;"><%= bc.user.username %>さん</p>
+          <p style="color:gray;"><%= bc.user.username %><% if bc.user.user_level == 1 %>さん<% end %></p>
         </div>
         <div class="board_comments_text_area col-sm-10 col-xs-9">
           <%= bc.created_at.strftime('%Y/%m/%d/ %H:%M') %>
