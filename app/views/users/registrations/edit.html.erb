@@ -30,6 +30,10 @@
         </div>
 
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%# safariのオートコンプリートバグ対策の２行 %>
+          <input type="text" name="dummy_text"  disabled="disabled" style="width:2px;height:2px;position:absolute;opacity:0"/>
+          <input type="password" name="dummy_password" disabled="disabled" style="width:2px;height:2px;position:absolute;opacity:0"/>
+
           <span style="color:red;"><%= devise_error_messages! %></span>
 
           <div class="field form-group">
