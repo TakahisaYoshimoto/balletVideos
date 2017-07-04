@@ -35,7 +35,7 @@
           <div class="field form-group">
             <div style="padding:0;max-width:500px;">
               <%= f.label :username, 'ユーザーネーム', class: 'control-label col-sm-12' %><br />
-              <%= f.text_field :username, class: 'form-control', autofocus: true %>
+              <%= f.text_field :username, class: 'form-control', autofocus: true, autocomplete: 'off', name: 'username' %>
             </div>
           </div>
 
