@@ -4,7 +4,7 @@
   <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
+  <div class="field pass_field">
     <%= f.label :password, "新しいパスワード" %><br />
     <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> 文字以上にしてください  )</em><br />
@@ -12,13 +12,13 @@
     <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
   </div>
 
-  <div class="field">
+  <div class="field pass_field">
     <%= f.label :password_confirmation, "確認のためもう一度入力してください" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "パスワードを変更する" %>
+    <%= f.submit "パスワードを変更する", class: 'btn btn-default login-btn' %>
   </div>
 <% end %>
 
