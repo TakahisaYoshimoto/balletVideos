@@ -611,6 +611,14 @@ transition: opacity 0.4s ease-out;
   list-style: none;
   margin-bottom: 15px;
 }
+  @media screen and(max-width: 767px) {
+    .board_comments,
+    .board_master_comments {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    }
+  }
+
 .board_comments_pic_area {
   display: inline-block;
   width: 15%;
@@ -815,6 +823,11 @@ text-decoration: none;
   color: white;
 }
 
+.board_comments_nologin {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
 .board_comments_login img,.board_comments_nologin img {
   border-radius: 100%;
   width:70px;
@@ -834,7 +847,7 @@ text-decoration: none;
 }
 .board_comments_no_pic_area img{
   border-radius: 100%;
-  width:60px;
+  width:70px;
 }
 
   @media screen and(max-width: 767px) {
