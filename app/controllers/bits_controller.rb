@@ -248,4 +248,10 @@ class BitsController < ApplicationController
   def terms
     @terms = SiteConfiguration.find_by(item: 'site_terms')
   end
+
+  def sign_up_mail
+    if user_signed_in?
+      redirect_to root_path
+    end
+  end
 end

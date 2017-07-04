@@ -35,14 +35,14 @@
           <div class="field form-group">
             <div style="padding:0;max-width:500px;">
               <%= f.label :username, 'ユーザーネーム', class: 'control-label col-sm-12' %><br />
-              <%= f.text_field :username, class: 'form-control' %>
+              <%= f.text_field :username, class: 'form-control', autofocus: true %>
             </div>
           </div>
 
           <div class="field form-group col-sm-12" style="padding:0;">
             <div style="padding:0;max-width:500px;">
               <%= f.label :email, 'メールアドレス', class: 'control-label col-sm-12' %><br />
-              <%= f.email_field :email, class: 'form-control col-sm-6', autofocus: true %>
+              <%= f.email_field :email, class: 'form-control col-sm-6' %>
             </div>
           </div>
 
