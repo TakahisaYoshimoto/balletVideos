@@ -1,12 +1,12 @@
 <% if i.user.picture_lg.present? %>
   <% if Rails.env == 'production' %>
       <%= image_tag(ENV['AWS_PICTURE_PATH']+"#{ i.user.picture_min }") %>
-      <p class="user_name_talk" style="display:inline;color:#3d3d3d;"><%= i.user.username %>さん</p>
+      <p class="user_name_talk" style="display:inline;color:#3d3d3d;"><%= i.user.username %><% if i.user.user_level == 1 %>さん<% end %></p>
   <% else %>
       <%= image_tag("/docs/#{ i.user.picture_min }") %>
-      <p class="user_name_talk" style="display:inline;color:#3d3d3d"><%= i.user.username %>さん</p>
+      <p class="user_name_talk" style="display:inline;color:#3d3d3d"><%= i.user.username %><% if i.user.user_level == 1 %>さん<% end %></p>
   <% end %>
 <% else %>
   <%= image_tag("no-picture-min.gif") %>
-  <p style="display:inline;color:#3d3d3d"><%= i.user.username %>さん</p>
+  <p style="display:inline;color:#3d3d3d"><%= i.user.username %><% if i.user.user_level == 1 %>さん<% end %></p>
 <% end %>

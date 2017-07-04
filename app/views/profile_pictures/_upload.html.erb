@@ -84,7 +84,7 @@
       elem.innerHTML =  '<img src="' + img_b64 + '" style="border-radius:100%;">';
     });
 
-    ImgB64Resize(url, 200, 200, function(img_b64) {
+    ImgB64Resize(url, 100, 100, function(img_b64) {
       formData.append('croppedImage', img_b64);
       formData.append('size', "min");
 

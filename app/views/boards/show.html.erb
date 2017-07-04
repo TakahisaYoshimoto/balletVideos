@@ -22,6 +22,7 @@
       <% if current_user.user_level > 1 %>
       <div class="delete-boards-comment col-xs-12">
         <%= link_to '削除する', board_path(@board), method: :delete, data: { confirm: "削除してよろしいですか？" } %>
+        <%= link_to '編集する', edit_board_path(@board) %>
       </div>
     <% end %>
 <% end %>

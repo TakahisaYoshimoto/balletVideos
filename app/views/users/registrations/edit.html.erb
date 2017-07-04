@@ -30,12 +30,16 @@
         </div>
 
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%# safariのオートコンプリートバグ対策の２行 %>
+          <input type="text" name="dummy_text"  disabled="disabled" style="width:2px;height:2px;position:absolute;opacity:0"/>
+          <input type="password" name="dummy_password" disabled="disabled" style="width:2px;height:2px;position:absolute;opacity:0"/>
+
           <span style="color:red;"><%= devise_error_messages! %></span>
 
           <div class="field form-group">
             <div style="padding:0;max-width:500px;">
               <%= f.label :username, 'ユーザーネーム', class: 'control-label col-sm-12' %><br />
-              <%= f.text_field :username, class: 'form-control', autofocus: true, autocomplete: 'off', name: 'username' %>
+              <%= f.text_field :username, class: 'form-control', autofocus: true, autocomplete: 'off' %>
             </div>
           </div>
 
