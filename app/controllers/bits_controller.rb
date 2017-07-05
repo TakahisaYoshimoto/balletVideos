@@ -32,8 +32,8 @@ class BitsController < ApplicationController
       .offset(0)
     @search_params = ""
 
-    @top_img_text_a = SiteConfiguration.find_by(item: 'top_img_text_a')
-    @top_img_text_b = SiteConfiguration.find_by(item: 'top_img_text_b')
+    @top_img_text_a = SiteConfiguration.find_by(item: 'video_top_img_text_a')
+    @top_img_text_b = SiteConfiguration.find_by(item: 'video_top_img_text_b')
   end
 
   def all

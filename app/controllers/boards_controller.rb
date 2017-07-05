@@ -9,7 +9,8 @@ class BoardsController < ApplicationController
       .includes(:user)
       .includes(:board_tags)
     @boards = Board.all.order('created_at desc').limit(9).offset(0).includes(:user).includes(:board_tags)
-    @top_img_text = SiteConfiguration.find_by(item: 'board_top_img_text_a')
+    @top_img_text_a = SiteConfiguration.find_by(item: 'board_top_img_text_a')
+    @top_img_text_b = SiteConfiguration.find_by(item: 'board_top_img_text_b')
   end
 
   def new_lists

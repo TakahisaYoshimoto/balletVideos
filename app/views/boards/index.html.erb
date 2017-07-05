@@ -12,7 +12,8 @@
   </style>
 <% end %>
 <div class="board_top_img col-xs-12" style="margin-bottom:15px;padding:0;">
-  <p class="board_top_img_text_a"><%= @top_img_text.contents if @top_img_text.present? %></p>
+  <p class="board_top_img_text_a"><%= @top_img_text_a.contents if @top_img_text_a.present? %></p>
+  <p class="board_top_img_text_b"><%= @top_img_text_b.contents if @top_img_text_b.present? %></p>
 
   <div id="board_top_img_secondarea" class="col-xs-12">
     <div class="board_top_img_link_out col-xs-12 col-sm-6"><%= link_to 'トークを投稿する', new_board_path, class: 'board_top_img_link' %></div>
