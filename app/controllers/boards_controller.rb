@@ -94,6 +94,9 @@ class BoardsController < ApplicationController
     if user_signed_in?
       @user = User.find(current_user.id)
     end
+    if @master_comment.user.blank?
+      render text: '削除されています' and return
+    end
   end
 
   def like
