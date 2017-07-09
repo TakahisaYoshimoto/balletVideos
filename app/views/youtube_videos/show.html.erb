@@ -93,6 +93,11 @@
   <% i = 0 %>
   <div class="col-xs-12 row-eq-height" style="padding: 0;">
     <% @relatedVideos.each do |rv| %>
+
+<%
+=begin
+%>
+
       <% i = i + 1 %>
       <% if i == 9 %>
       <%# 広告エリア %>
@@ -109,6 +114,10 @@
         <script type="text/javascript" src="https://js.medi-8.net/t/175/743/a1175743.js"></script>
       </div>
     <% end %>
+<%
+=end
+%>
+
       <%= link_to youtube_video_path(rv), class: 'videolists_link col-xs-12 col-sm-3 row-eq-height', style: 'margin-bottom:10px;' do %>
         <div class="y_video_img_area col-xs-5 col-sm-12" style="padding: 0;">
           <div class="y_video_img">
@@ -133,9 +142,15 @@
         </div>
       <% end -%>
     <% end %>
+
     <%# 関連動画が20個以下の時、PV数が多い順に20個になるまで表示する %>
     <% if @popularVideos.present? %>
       <% @popularVideos.each do |rv| %>
+
+<%
+=begin
+%>
+
       <% i = i + 1 %>
       <% if i == 9 %>
       <%# 広告エリア %>
@@ -152,6 +167,10 @@
         <script type="text/javascript" src="https://js.medi-8.net/t/175/732/a1175732.js"></script>
       </div>
     <% end %>
+
+<%
+=end
+%>
 
         <%= link_to youtube_video_path(rv), class: 'videolists_link col-xs-12 col-sm-3 row-eq-height', style: 'margin-bottom:10px;' do %>
           <div class="y_video_img_area col-xs-5 col-sm-12" style="padding: 0;">
