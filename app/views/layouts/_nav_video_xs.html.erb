@@ -2,7 +2,7 @@
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="icon nav-menu-icon icon-video"></span>動画<span class="caret"></span></a>
   <ul class="dropdown-menu multi-level" role="menu">
     <li>
-      <div class="form-group row">
+      <div class="form-group row" style="margin:0; padding-right:30px;">
         <%= form_tag({controller: '/bits', action: :Search }, method: :get) do %>
           <div class="input-group form-group form-group_xs">
             <%= search_field_tag :search_params,
