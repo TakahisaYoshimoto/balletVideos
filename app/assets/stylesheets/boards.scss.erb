@@ -15,7 +15,7 @@
 .board_top_img_text_a {
   position: absolute;
   color: white;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: bold;
   top: 19%;
   width: 100%;
@@ -24,7 +24,7 @@
 .board_top_img_text_b {
   position: absolute;
   color: white;
-  font-size: 24px;
+  font-size: 16px;
   font-weight: bold;
   top: 38%;
   width: 100%;
@@ -375,7 +375,12 @@ transition: opacity 0.4s ease-out;
     }
   }
 
-
+  @media screen and (max-width:400px) {
+    .community_index_board_title {
+      width:250px;
+      margin-left:-18px;
+    }
+  }
 
 
 .community_index_board_comments {

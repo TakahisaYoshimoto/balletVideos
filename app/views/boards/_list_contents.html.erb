@@ -1,5 +1,9 @@
 <% boards.each.with_index(1) do |board, i| %>
 
+<%
+=begin
+%>
+
 <% if i == 5 %>
 <%# col-xs広告エリア %>
   <div class="col-xs-12 hidden-sm hidden-md hidden-lg" style="text-align:center;padding-bottom:15px;overflow: visible;margin-left: -15px;">
@@ -33,6 +37,9 @@
     <script type="text/javascript" src="https://js.medi-8.net/t/175/750/a1175750.js"></script>
   </div>
 <% end %>
+<%
+=end
+%>
 
   <%if controller.controller_name == 'boards' && controller.action_name == 'index' %>
     <% if i > 8 %>
@@ -49,7 +56,7 @@
         <div class="community_index_board_title">
           <span class="icon icon-main icon-maked_talk title_icon"></span>
           <p class="hidden-xs"><%= truncate(board.title, length: 15) %></p>
-          <p class="hidden-sm hidden-md hidden-lg"><%= truncate(board.title, length: 18) %></p>
+          <p class="hidden-sm hidden-md hidden-lg"><%= truncate(board.title, length: 15) %></p>
         </div>
         <div class="community_index_board_tags_area">
         <% board.board_tags.each.with_index(1) do |tag, i| %>
