@@ -185,6 +185,15 @@
     }
   }
 
+  @media screen and (max-width: 500px) {
+    #good_button_area {
+      position: relative;
+    }
+  }
+
+
+
+
 @media screen and (max-width: 767px) {
   #video_show_button_area {
     position: relative;
