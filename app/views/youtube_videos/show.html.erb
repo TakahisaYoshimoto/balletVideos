@@ -69,10 +69,10 @@
     <div id="related_videos_list" class="col-sm-4">
       <div id="related_videos_list_in">
         <div class="hidden-xs col-sm-12" style="padding:0;">
-          <%= link_to image_tag('mu_ad_img1.jpg', width: '100%'), 'http://mu-ballet.com', target: '_blank' %>
+          <%= link_to image_tag('mu_ad_img1.jpg', width: '100%'), 'http://mu-ballet.com', target: '_blank', onClick: 'ga(‘send’, ‘ad’, ‘link’, ‘click’, ‘広告リンクはこちら’, true);' %>
         </div>
         <div class="visible-xs co-xs-12" style="padding:0;">
-          <%= link_to image_tag('mu_ad_img2.jpg', width: '100%'), 'http://mu-ballet.com', target: '_blank' %>
+          <%= link_to image_tag('mu_ad_img2.jpg', width: '100%'), 'http://mu-ballet.com', target: '_blank', onClick: 'ga(‘send’, ‘ad’, ‘link’, ‘click’, ‘広告リンクはこちら’, true);' %>
         </div>
       </div>
     </div>
