@@ -11,7 +11,7 @@
         <p style="color:gray;"><%= bc.user.username %><% if bc.user.user_level == 1 %>さん<% end %></p>
       </div>
       <div class="board_comments_text_area col-sm-10 col-xs-9">
-        <%= bc.created_at.strftime('%Y/%m/%d/ %H:%M') %>
+        <p class="board_time"><%= bc.created_at.strftime('%Y/%m/%d/ %H:%M') %></p>
         <%= simple_format(bc.text) %>
         <% if user_signed_in? %>
           <% if current_user.user_level > 1 %>
@@ -46,7 +46,7 @@
 
         <div class="board_comments_login col-xs-12">
           <div class="board_comments_no_pic_area col-sm-2 col-xs-3">
-            <%= image_tag("no-picture-min.gif") %>         
+            <%= image_tag("no-picture-min.gif") %>
           </div>
           <div class="board_comments_text_area_reject col-sm-10 col-xs-9">
             <p style="font-size:12px;color:gray;">非表示コメントです</p>
