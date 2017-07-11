@@ -21,6 +21,28 @@
   <button class="btn btn-primary" data-dismiss="modal" onClick="image_up()">確定！</button>
 </div>
 
+<style>
+  .cropper-move {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+    filter: alpha(opacity=100);
+    background-color: rgba(0,0,0,0);
+  }
+  .cropper-face {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%; 
+    border: 2px solid rgba(55, 141, 246, 0.5);
+  }
+</style>
+
 <script>
   function up_open() {
     var upinput = document.getElementById("uploadFile");
