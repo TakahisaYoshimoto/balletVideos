@@ -362,7 +362,7 @@ transition: opacity 0.4s ease-out;
   margin-bottom: 5px;
   margin-left:-15px;
   margin-bottom: 10px;
-  width:245px;
+  width:300px;
 }
   @media screen and (max-width:991px) {
     .community_index_board_title {
@@ -371,14 +371,14 @@ transition: opacity 0.4s ease-out;
   }
   @media screen and (max-width:767px) {
     .community_index_board_title {
-      width:330px;
+      width:350px;
     }
   }
 
   @media screen and (max-width:400px) {
     .community_index_board_title {
-      width:250px;
-      margin-left:-18px;
+      width:300px;
+      margin-left:-14px;
     }
   }
 
@@ -395,6 +395,12 @@ transition: opacity 0.4s ease-out;
   color: black;
   font-size: 16px;
 }
+@media screen and (max-width:767px) {
+  .community_index_board_title p {
+    font-size: 14px;
+  }
+}
+
   @media screen and (max-width:767px) {
     .community_index_board_comments p {
       font-size: 12px;
@@ -430,7 +436,14 @@ transition: opacity 0.4s ease-out;
     .community_index_board_tags_area {
       top: 100px;
     }
+
+    .community_index_board_tags_area p {
+      font-size:12px;
+    }
   }
+
+
+
 
 .board-ad-area {
   text-align:center;
@@ -651,6 +664,17 @@ transition: opacity 0.4s ease-out;
   width: 15%;
   text-align: center;
 }
+  @media screen and(max-width: 767px) {
+    .board_comments_pic_area {
+      display: block;
+      width: 100%;
+    }
+  }
+
+.board_time {
+  margin-bottom:5px;
+}
+
 .board_comments_text_area {
   border: 2px solid black;
   padding: 15px;
@@ -658,16 +682,24 @@ transition: opacity 0.4s ease-out;
   width: 80%;
   word-wrap:break-word;
 }
-@media screen and(max-width: 767px) {
-  .board_comments_pic_area {
-    display: block;
-    width: 100%;
+  @media screen and(max-width: 767px) {
+    .board_comments_text_area {
+      border: 1px solid black;
+      padding: 10px;
+      display: block;
+      width: 100%;
+    }
+
+    .board_comments_text_area p, .board_comments_text_area a {
+      font-size:12px;
+    }
+    .board_time {
+      margin-bottom:2px;
+    }
   }
-  .board_comments_text_area {
-    display: block;
-    width: 100%;
-  }
-}
+
+
+
 .board_master_comments > .board_comments_text_area {
   background: #F2F2F2;
 }
