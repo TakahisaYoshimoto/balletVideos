@@ -214,6 +214,11 @@
   color:white;
 }
 
+#user_edit_submit_area  input:focus{
+  outline-color: gray;
+  outline-width: 3px;
+}
+
 .self-introduction {
   padding:0;
   max-width:450px
