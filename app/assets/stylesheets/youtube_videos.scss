@@ -158,39 +158,21 @@
 }
   @media screen and (max-width: 1199px) {
     #good_button_area {
-      position: absolute;
-      width: 200px;
-      top: 0;
       right: 120px;
-      margin-right: 10px;
     }
   }
 
   @media screen and (max-width: 991px) {
     #good_button_area {
-      position: absolute;
-      width: 200px;
-      top: 0;
       right: 0;
-      margin-right: 10px;
     }
   }
   @media screen and (max-width: 767px) {
     #good_button_area {
-      position: absolute;
-      width: 200px;
       top: 43px;
       right: 50px;
-      margin-right: 10px;
     }
   }
-
-  @media screen and (max-width: 500px) {
-    #good_button_area {
-      position: absolute;
-    }
-  }
-
 
 @media screen and (max-width: 767px) {
   #video_show_button_area {
@@ -204,6 +186,19 @@
     left: 0;
   }
 }
+
+  @media screen and (max-width: 299px) {
+    #video_show_button_area,
+    #share_button_area,
+    #good_button_area {
+      position: static;
+    }
+    #share_button_area,
+    #good_button_area {
+      display: block;
+      width: 100%;
+    }
+  }
 
 #good_button_area a {
   height: 100%;
@@ -254,6 +249,12 @@
     padding-top: 52px;
   }
 }
+@media screen and (max-width: 299px) {
+  #y_video_show_pv_count {
+    padding-top: 0;
+  }
+}
+
 .ad_area {
   padding: 15px 0 0 0;
   margin: 5px 0;
