@@ -59,19 +59,10 @@
             <div class="line-it-button" data-lang="ja" data-type="share-a" data-url=<%= lineUrl %> style="display: none;"></div>
             <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
           </div>
-          <div class="hidden-xs" id="good_button_area">
+          <div id="good_button_area">
             <%= render 'like', youtube: @youtube, likes: @likes %>
           </div>
-          <p class="hidden-xs" id="y_video_show_pv_count">視聴回数<%= @youtube.pv_count %>回</p>
-
-          <div class="visible-xs col-xs-12" style="margin-top:50px; padding-left:35px;">
-            <div class="col-xs-5">
-              <%= render 'like', youtube: @youtube, likes: @likes %>
-            </div>
-            <div class="col-xs-7">
-              <p style="padding-top:12px;">視聴回数<%= @youtube.pv_count %>回</p>
-            </div>
-          </div>
+          <p id="y_video_show_pv_count">視聴回数<%= @youtube.pv_count %>回</p>
         </div>
       </div>
     </div>
