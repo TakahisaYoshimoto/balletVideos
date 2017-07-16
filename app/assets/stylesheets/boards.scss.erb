@@ -94,14 +94,12 @@
       border: 2px solid white;
       color:#FFF;
       font-size:14px;
-      /*width:156px;*/
     }
   }
 
 #board_top_img_search_area button {
   margin-left: 10px;
 }
-
 
 input.talk_search::-webkit-input-placeholder {
     color: #FFF;
@@ -119,11 +117,6 @@ input.talk_search::-moz-placeholder {
 input.talk_search {
   border-bottom-right-radius: 5px !important;
   border-top-right-radius: 5px !important;
-}
-  @media screen and (max-width: 767px){
-input.talk_search {
-  /*margin-left:28%;*/
-}
 }
 
 button.talk_btn {
@@ -200,6 +193,59 @@ button.talk_btn:hover {
     width: 30%;
   }
 }
+
+.original_xxxs {
+  display:none;
+}
+  @media screen and (max-width:350px) {
+    .original_xxxs {
+      display:inline-block;
+    }
+  }
+
+.original_xxs {
+  display:none;
+}
+  @media screen and (min-width:551px) and ( max-width:767px) {
+    .original_xxs {
+      display:inline-block;
+    }
+  }
+  @media screen and (max-width:550px) {
+    .original_xxs {
+      display:inline-block;
+    }
+  }
+  @media screen and (max-width:350px) {
+    .original_xxs {
+      display:none;
+    }
+  }
+
+.original_xs {
+  display:none;
+}
+  @media screen and (min-width:768px) {
+    .original_xs {
+      display:inline-block;
+    }
+  }
+  @media screen and (min-width:1200px) {
+    .original_xs {
+      display:none;
+    }
+  }
+
+  .original_s {
+    display:none;
+  }
+    @media screen and (min-width:1200px) {
+      .original_s {
+        display:inline-block;
+      }
+    }
+
+
 
 /*検索結果とかのページ*/
 #community_search_area {
@@ -355,27 +401,19 @@ transition: opacity 0.4s ease-out;
   margin-bottom: 5px;
   margin-left: -18px;
   margin-bottom: 10px;
-  width:275px;
+  width:115%;
 }
   @media screen and (max-width:991px) {
     .community_index_board_title {
-      margin-left:0px;
-    }
-  }
-  @media screen and (max-width:767px) {
-    .community_index_board_title {
       margin-left: -15px;
-      width:350px;
     }
   }
 
-  @media screen and (max-width:400px) {
+  @media screen and (max-width:600px) {
     .community_index_board_title {
-      width:300px;
-      margin-left:-14px;
+      width:100%;
     }
   }
-
 
 .community_index_board_comments {
   position: absolute;
@@ -398,6 +436,7 @@ transition: opacity 0.4s ease-out;
   @media screen and (max-width:767px) {
     .community_index_board_comments p {
       font-size: 12px;
+      margin-bottom:0px;
     }
   }
 
@@ -421,23 +460,19 @@ transition: opacity 0.4s ease-out;
 
 .community_index_board_tags_area {
   position: absolute;
-  top: 124px;
+  top: 145px;
   left: 13px;
   text-align:center;
   width:90%
 }
   @media screen and (max-width:767px) {
     .community_index_board_tags_area {
-      top: 100px;
+      top: 120px;
     }
-
     .community_index_board_tags_area p {
       font-size:12px;
     }
   }
-
-
-
 
 .board-ad-area {
   text-align:center;
