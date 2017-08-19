@@ -134,6 +134,10 @@ class BoardsController < ApplicationController
         unless @board_comment.save
           raise
         end
+        #トークルーム作成完了したら管理者にメールを送る
+        @mail = SupportMailer.sendmail_board_created_after(@board.title,
+          @board.id)
+          .deliver
       else
         @board_comment = BoardComment.new(board_comment_params)
         raise

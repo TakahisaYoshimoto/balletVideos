@@ -15,6 +15,13 @@ class SupportMailer < ApplicationMailer
     mail(to: ENV['SUPPORT_EMAIL_ADDRESS'], from: ENV['EMAIL_ADDRESS'], subject: title)
   end
 
+  def sendmail_board_created_after(title, board_id)
+    @board = Board.find(board_id)
+    @title = title
+
+    mail(to: ENV['SUPPORT_EMAIL_ADDRESS'], from: ENV['EMAIL_ADDRESS'], subject: title)
+  end
+
   def sendmail_board_commented_after(board_id, text, username)
     @board = Board.find(board_id)
     @text = text
