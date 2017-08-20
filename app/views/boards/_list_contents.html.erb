@@ -54,9 +54,9 @@
           <%= render 'profile_picture', i: board %>
         </div>
         <div class="community_index_board_title">
-          <span class="icon icon-main icon-maked_talk title_icon"></span>
-          <p class="hidden-xs"><%= truncate(board.title, length: 16) %></p>
-          <p class="hidden-sm hidden-md hidden-lg"><%= truncate(board.title, length: 20) %></p>
+          <p class="visible-xs visible-sm"><span class="icon icon-main icon-maked_talk title_icon"> </span><%= truncate(board.title, length: 16) %></p>
+          <p class="hidden-xs hidden-sm"><span class="icon icon-main icon-maked_talk title_icon"> </span><%= truncate(board.title, length: 30) %></p>
+
         </div>
         <div class="community_index_board_tags_area">
         <% board.board_tags.each.with_index(1) do |tag, i| %>
